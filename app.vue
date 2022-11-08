@@ -18,7 +18,7 @@
           <span class="ml-3 text-xl"><NuxtLink class="mr-5 hover:text-gray-900" to="/">Nuxt-WP</NuxtLink></span>
         </NuxtLink>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <NuxtLink class="mr-5 hover:text-gray-900" to="/posts">Posts</NuxtLink>
+          <NuxtLink class="mr-5 hover:text-gray-900" to="/blog">Blog</NuxtLink>
           <NuxtLink class="mr-5 hover:text-gray-900" to="/about">About</NuxtLink>
         </nav>
       </div>
