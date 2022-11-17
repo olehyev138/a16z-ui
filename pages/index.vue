@@ -734,5 +734,18 @@
 <script>
 export default {
   name: "HomePage",
+  data() {
+    return {
+      apiData: [],
+    };
+  },
+  mounted() {
+    // this.$axios
+    //   .get("http://wpheadless.test/wp-json/wp/v2/posts?_embed")
+    //   .then((res) => {
+    //     this.apiData = res.data;
+    //     console.log(this.apiData);
+    //   });
+  },
 };
 </script>

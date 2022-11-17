@@ -1,5 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: true,
+  target: "static",
   head: {
     title: "a16zc",
     htmlAttrs: {
@@ -24,7 +26,7 @@ export default {
   css: ["@assets/sass/app.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "~/plugins/custom.js", mode: "client" }],
+  plugins: [{ src: "~/plugins/custom.js", mode: "client", ssr: true }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
@@ -46,7 +48,11 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/axios"],
+  axios: {
+    // extra config e.g
+    // BaseURL: 'https://link-to-API'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: { postcss: null },
