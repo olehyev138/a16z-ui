@@ -1,0 +1,133 @@
+.profile-detail {
+
+  .profile-body {
+    padding: 48px 0 86px;
+    text-align: justify;
+
+    @include media('<tablet') {
+      padding: 25px 0;
+      line-height: 22px;
+    }
+
+    .img {
+      margin-bottom: 24px;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    p {
+
+      + p {
+        text-indent: 35px;
+      }
+    }
+  }
+
+  .des {
+    display: block;
+    font: 12px/1 $abcfavorit-mono;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+  }
+
+  .social-networks {
+    @extend %listreset;
+    @extend %borderwide;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    padding-top: 12px;
+    font: 12px/1 $abcfavorit-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    @include media('<tablet') {
+      margin-bottom: 18px;
+    }
+
+    li {
+      margin: 0 16px 16px 0;
+
+      a {
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 16px;
+        position: relative;
+
+        &:after {
+          content: "\e917";
+          @include box-align(vc);
+          right: 0;
+          font: 10px/1 "icomoon";
+        }
+      }
+    }
+  }
+}
+
+.profile-featured {
+  padding: 64px 0;
+
+  @include media('<tablet') {
+    padding: 36px 0;
+  }
+
+  &.bg-grey {
+    background: $grey-01;
+  }
+
+  .box {
+    @extend %borderleft;
+    position: relative;
+    padding-left: 24px;
+
+    @include media('<tablet') {
+      padding: 9px 0 25px;
+    }
+
+    &:after {
+      @include media('<tablet') {
+        width: auto;
+        left: 0;
+        bottom: auto;
+        top: 0;
+        right: 0;
+        right: -9999px;
+        height: 1px;
+        background-image: linear-gradient(to right, $grey-dark 40%, rgba($white, 0) 0%);
+        background-size: 10px 1px;
+        background-repeat: repeat-x;
+      }
+    }
+  }
+
+  .category-title {
+    margin-bottom: 15px;
+
+    @include media('<tablet') {
+      margin-bottom: 9px;
+    }
+  }
+
+  h6 {
+    margin-bottom: 16px;
+
+    @include media('<tablet') {
+      margin-bottom: 8px;
+    }
+  }
+
+  .authors {
+    font-size: 16px;
+    margin-bottom: 16px;
+
+    @include media('<tablet') {
+      font-size: 14px;
+    }
+  }
+}

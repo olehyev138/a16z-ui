@@ -1,0 +1,98 @@
+// ---------------------------------------------------------===
+// Common styles
+// ---------------------------------------------------------===
+
+// .btn {
+// 	font-size: 12px;
+// 	line-height: 1.2;
+// 	font-family: $abcfavorit-mono;
+// 	min-height: 32px;
+// 	text-align: center;
+// 	display: inline-flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	padding: 2px 10px;
+// 	min-width: 81px;
+// 	color: color(white);
+// 	background-color: color(black,2);
+// }
+
+.p1 {
+	font-size: 20px;
+	line-height: 1.3;
+
+	@include media('<tablet') {
+		font-size: 16px;
+		line-height: 1.375;
+	}
+}
+
+
+.inline-bg-black {
+	background: $grey-dark;
+	color: $white;
+}
+
+.inline-bg-white {
+	background: $grey-light;
+	color: $grey-dark;
+}
+
+.cta-w-arrow {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 20px;
+	position: relative;
+	font: 14px/1.4 $abcfavorit-mono;
+
+	@include media('<tablet') {
+		font-size: 12px;
+		padding-right: 16px;
+	}
+
+	&:after {
+		content: "\e914";
+		@include box-align(vc);
+		right: 0;
+		font: 13px/1 "icomoon";
+
+		@include media('<tablet') {
+			font-size: 12px;
+		}
+	}
+}
+
+.block-title {
+	display: block;
+	font: 14px/1 $abcfavorit-mono;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding-top: 8px;
+
+	@include media('<tablet') {
+		font-size: 12px;
+		padding-top: 6px;
+	}
+}
+
+
+.hero-heading {
+	padding: 128px 0 50px;
+
+	@include media('<tablet') {
+		padding: 128px 0 58px;
+	}
+
+	.highlight-display {
+		&:before {
+			top: 0;
+			bottom: 5px;
+		}
+
+		h1 {
+			span {
+				display: block;
+			}
+		}
+	}
+}

@@ -1,0 +1,89 @@
+.article {
+	position: relative;
+	padding: 6px 0 24px;
+	position: relative;
+	@extend %borderwide;
+
+	@include media('<tablet') {
+		padding-bottom: 17px;
+		padding-top: 8px;
+	}
+
+	.category-title {
+		padding-top: 2px;
+
+		@include media('<tablet') {
+			padding: 0 0 8px;
+		}
+	}
+
+	h5 {
+		margin-bottom: 8px;
+	}
+	
+	h6 {
+		margin-bottom: 8px;
+	}
+
+	.tags {
+		margin-bottom: 14px;
+
+		@include media('<tablet') {
+			display: none;
+		}
+	}
+}
+
+.posted-by {
+	font-size: 16px;
+	display: block;
+	margin-bottom: 17px;
+
+	@include media('<tablet') {
+		font-size: 14px;
+	}
+}
+
+.category-title {
+	display: block;
+	font: 12px/1.2 $abcfavorit-mono;
+
+	@include media('<tablet') {
+		font-size: 10px;
+	}
+}
+
+.featured {
+	padding: 55px 0 18px;
+
+	@include media('<tablet') {
+		padding: 36px 0 8px;
+	}
+}
+
+.categories {
+	padding: 80px 0 46px;
+
+	@include media('<tablet') {
+		padding: 34px 0 24px;
+	}
+
+	.category-row {
+
+		+ .category-row {
+			margin-top: 18px;
+
+			@include media('<tablet') {
+				margin-top: 15px;
+			}
+		}
+	}
+
+	.article {
+		padding-bottom: 33px;
+
+		@include media('<tablet') {
+			padding-bottom: 7px;
+		}
+	}
+}
