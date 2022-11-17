@@ -317,24 +317,6 @@ $animation-speed: 0.3s !default;
   $style: normal,
   $icomoon: false
 ) {
-  // @font-face {
-  //   font-family: $font-name;
-  //   font-weight: $weight;
-  //   font-style: $style;
-  //   @if $icomoon {
-  //     font-display: block;
-  //     src: url("#{$url}.eot?5sv48p");
-  //     src: url("#{$url}.eot?#iefix5sv48p") format("embedded-opentype"),
-  //       url("#{$url}.svg?5sv48p") format("svg"),
-  //       url("#{$url}.ttf?5sv48p") format("truetype"),
-  //       url("#{$url}.woff?5sv48p") format("woff");
-  //   } @else {
-  //     src: local("#{$local-font-name}"), local("#{$font-name}"),
-  //       url("#{$url}.woff2") format("woff2"), url("#{$url}.woff") format("woff");
-  //     font-display: swap;
-  //   }
-  // }
-
   @font-face {
     font-family: $font-name;
     font-weight: $weight;
@@ -344,13 +326,31 @@ $animation-speed: 0.3s !default;
       src: url("#{$url}.eot?5sv48p");
       src: url("#{$url}.eot?#iefix5sv48p") format("embedded-opentype"),
         url("#{$url}.svg?5sv48p") format("svg"),
-        url("#{$url}.ttf?5sv48p") format("truetype");
+        url("#{$url}.ttf?5sv48p") format("truetype"),
+        url("#{$url}.woff?5sv48p") format("woff");
     } @else {
       src: local("#{$local-font-name}"), local("#{$font-name}"),
-        url("#{$url}.woff2") format("woff2");
+        url("#{$url}.woff2") format("woff2"), url("#{$url}.woff") format("woff");
       font-display: swap;
     }
   }
+
+  // @font-face {
+  //   font-family: $font-name;
+  //   font-weight: $weight;
+  //   font-style: $style;
+  //   @if $icomoon {
+  //     font-display: block;
+  //     src: url("#{$url}.eot?5sv48p");
+  //     src: url("#{$url}.eot?#iefix5sv48p") format("embedded-opentype"),
+  //       url("#{$url}.svg?5sv48p") format("svg"),
+  //       url("#{$url}.ttf?5sv48p") format("truetype");
+  //   } @else {
+  //     src: local("#{$local-font-name}"), local("#{$font-name}"),
+  //       url("#{$url}.woff2") format("woff2");
+  //     font-display: swap;
+  //   }
+  // }
 }
 
 // set font
