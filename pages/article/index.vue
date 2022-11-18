@@ -381,6 +381,6 @@
 
 <script>
 export default {
-  name: "AboutPage",
+  name: "Article",
 };
 </script>

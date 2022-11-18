@@ -16,43 +16,32 @@
       </div>
     </header>
 
-    <hr class="divider" />
-
-    <div class="breadcrumbs-holder">
+    <div class="section-divider">
       <div class="container">
-        <ul class="breadcrumbs">
-          <li><a href="#">Jobs</a></li>
-          <li><a href="#">Companies</a></li>
-          <li class="active">Coinbase</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="company">
-      <div class="container">
-        <h2><span>Coinbase</span></h2>
-      </div>
-    </div>
-
-    <div class="related-tags">
-      <div class="container">
-        <ul class="tags">
-          <li><a class="tag small-tag" href="#">Series A</a></li>
-          <li><a class="tag small-tag" href="#">Web 3</a></li>
-          <li><a class="tag small-tag" href="#">Crypto</a></li>
-        </ul>
-        <div class="web">
-          <a href="#" class="web-link">coinbase.com</a>
-        </div>
+        <span class="block-title">View jobs with:</span>
       </div>
     </div>
 
     <div class="tabs-wrap">
       <div class="container">
+        <div class="tab-nav-hold">
+          <ul class="tab-nav">
+            <li><a class="active" href="#" data-tab="tab1">A16z crypto</a></li>
+            <li><a href="#" data-tab="tab2">our companies</a></li>
+          </ul>
+        </div>
         <div class="filter">
           <div class="select">
             <select>
-              <option>Industry: All</option>
+              <option>Department: All</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+            </select>
+          </div>
+          <div class="select">
+            <select>
+              <option>Location: All</option>
               <option>Option 2</option>
               <option>Option 3</option>
               <option>Option 4</option>
@@ -71,30 +60,6 @@
         <span class="search-result-num">
           <a href="#">[109 results]</a>
         </span>
-        <div class="applied-filters">
-          <span class="title">Applied Filters:</span>
-          <ul class="filter-list">
-            <li>
-              <span>
-                Healthcare
-                <a href="#" class="close"></a>
-              </span>
-            </li>
-            <li>
-              <span>
-                Blockchain
-                <a href="#" class="close"></a>
-              </span>
-            </li>
-            <li>
-              <span>
-                NFTS
-                <a href="#" class="close"></a>
-              </span>
-            </li>
-          </ul>
-          <a href="#" class="cta-w-underline">Clear all</a>
-        </div>
       </div>
     </div>
 
@@ -392,6 +357,6 @@
 
 <script>
 export default {
-  name: "CareersJobsSelectedCompany",
+  name: "CareesJobWithUs",
 };
 </script>

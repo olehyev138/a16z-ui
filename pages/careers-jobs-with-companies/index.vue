@@ -218,6 +218,6 @@
 
 <script>
 export default {
-  name: "AboutPage",
+  name: "CareersJobsWithCompanies",
 };
 </script>
