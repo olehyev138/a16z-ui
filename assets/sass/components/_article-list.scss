@@ -1,89 +1,178 @@
+// ---------------------------------------------------------===
+// Article List style
+// ---------------------------------------------------------===
+
 .article {
-	position: relative;
-	padding: 6px 0 24px;
-	position: relative;
-	@extend %borderwide;
+  position: relative;
+  padding: 6px 0 24px;
+  position: relative;
+  @include borderwide();
+  
+  @include media('<tablet') {
+    padding-bottom: 17px;
+    padding-top: 8px;
+  }
+  
+  [class*="col-"] {
+    position: static;
+  }
+  
+  &.has-img {
+    
+    @include media('<tablet') {
+      padding-right: 88px;
+    }
+    
+    .img {
+      
+      @include media('<tablet') {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        right: 0;
+        top: 8px;
+      }
+      
+      img {
+        
+        @include media('<tablet') {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  
+  .category-title {
+    padding-top: 2px;
+    
+    @include media('<tablet') {
+      padding: 0 0 8px;
+    }
+  }
+  
+  h5 {
+    margin-bottom: 8px;
+  }
+  
+  h6 {
+    margin-bottom: 8px;
+  }
+  
+  .tags {
+    margin-bottom: 14px;
+    
+    @include media('<tablet') {
+      display: none;
+    }
+  }
+  
+  .img {
+    
+    a {
+      display: block;
+      position: relative;
+      
+      @include media('<tablet') {
+        height: 100%;
+      }
+      
+      .icon-play {
+        @include box-align(vhc);
+        width: 35px;
+        height: 35px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 17px 0 17px 27px;
+        border-color: transparent transparent transparent $white;
+        
+        @include media('<tablet') {
+          border-width: 12px 0 12px 18px;
+        }
+      }
+    }
+  }
 
-	@include media('<tablet') {
-		padding-bottom: 17px;
-		padding-top: 8px;
-	}
+  .cta-wrap {
+    display: block;
+    text-align: right;
 
-	.category-title {
-		padding-top: 2px;
+    @include media('<tablet') {
+      text-align: left;
+      margin: 10px 0 16px;
+    }
+  }
 
-		@include media('<tablet') {
-			padding: 0 0 8px;
-		}
-	}
+  .place {
+    font: 12px/1 $abcfavorit-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
 
-	h5 {
-		margin-bottom: 8px;
-	}
-	
-	h6 {
-		margin-bottom: 8px;
-	}
-
-	.tags {
-		margin-bottom: 14px;
-
-		@include media('<tablet') {
-			display: none;
-		}
-	}
+    @include media('<tablet') {
+      font-size: 10px;
+    }
+  }
 }
 
 .posted-by {
-	font-size: 16px;
-	display: block;
-	margin-bottom: 17px;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 17px;
+  
+  @include media('<tablet') {
+    font-size: 14px;
+  }
 
-	@include media('<tablet') {
-		font-size: 14px;
-	}
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .category-title {
-	display: block;
-	font: 12px/1.2 $abcfavorit-mono;
-
-	@include media('<tablet') {
-		font-size: 10px;
-	}
+  display: block;
+  font: 12px/1.2 $abcfavorit-mono;
+  
+  @include media('<tablet') {
+    font-size: 10px;
+  }
 }
 
 .featured {
-	padding: 55px 0 18px;
-
-	@include media('<tablet') {
-		padding: 36px 0 8px;
-	}
+  padding: 55px 0 18px;
+  overflow: hidden;
+  
+  @include media('<tablet') {
+    padding: 36px 0 8px;
+  }
 }
 
 .categories {
-	padding: 80px 0 46px;
-
-	@include media('<tablet') {
-		padding: 34px 0 24px;
-	}
-
-	.category-row {
-
-		+ .category-row {
-			margin-top: 18px;
-
-			@include media('<tablet') {
-				margin-top: 15px;
-			}
-		}
-	}
-
-	.article {
-		padding-bottom: 33px;
-
-		@include media('<tablet') {
-			padding-bottom: 7px;
-		}
-	}
+  padding: 80px 0 46px;
+  overflow: hidden;
+  
+  @include media('<tablet') {
+    padding: 34px 0 24px;
+  }
+  
+  .category-row {
+    
+    + .category-row {
+      margin-top: 18px;
+      
+      @include media('<tablet') {
+        margin-top: 15px;
+      }
+    }
+  }
+  
+  .article {
+    padding-bottom: 33px;
+    
+    @include media('<tablet') {
+      padding-bottom: 7px;
+    }
+  }
 }

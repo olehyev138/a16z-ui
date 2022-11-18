@@ -1,51 +1,56 @@
-.card-group-rail {
-    padding: 24px 0 62px;
+// ---------------------------------------------------------===
+// Card Group Rail style
+// ---------------------------------------------------------===
 
-    @include media('<tablet') {
-        padding: 24px 0 4px;
-    }
+.card-group-rail {
+  padding: 24px 0 62px;
+  overflow: hidden;
+  
+  @include media('<tablet') {
+    padding: 24px 0 4px;
+  }
 }
 
 .rail-row {
-    margin-top: 54px;
-
-    @include media('<tablet') {
-        margin-top: 14px;
-    }
-
-    .group-header {
-        margin-bottom: 14px;
-    }
+  margin-top: 54px;
+  
+  @include media('<tablet') {
+    margin-top: 14px;
+  }
+  
+  .group-header {
+    margin-bottom: 14px;
+  }
 }
 
 .rail-slider {
-    white-space: nowrap;
-    overflow: hidden;
-    width: 9999px;
-
-    .category-title {
-        margin-bottom: 16px;
-
-        @include media('<tablet') {
-            margin-bottom: 8px;
-        }
+  white-space: nowrap;
+  overflow: hidden;
+  width: 9999px;
+  
+  .category-title {
+    margin-bottom: 16px;
+    
+    @include media('<tablet') {
+      margin-bottom: 8px;
     }
-
-    .card-wrap {
-        float: left;
-        width: 387px;
-        margin-right: 24px;
-
-        @include media('<tablet') {
-            width: 296px;
-            margin-right: 15px;
-        }
-
-        .card {
-
-            .img-hold {
-                margin-bottom: 9px;
-            }
-        }
+  }
+  
+  .card-wrap {
+    float: left;
+    width: 387px;
+    margin-right: 24px;
+    
+    @include media('<tablet') {
+      width: 296px;
+      margin-right: 15px;
     }
+    
+    .card {
+      
+      .img-hold {
+        margin-bottom: 9px;
+      }
+    }
+  }
 }

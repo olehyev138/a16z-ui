@@ -1,110 +1,212 @@
+// ---------------------------------------------------------===
+// Hero style
+// ---------------------------------------------------------===
+
 .hero {
+  position: relative;
+  
+  .container {
     position: relative;
-
-    .container {
-        position: relative;
-        padding-top: 184px;
-        padding-bottom: 125px;
-
-        @include media('<tablet') {
-            padding-top: 118px;
-            padding-bottom: 79px;
-        }
+    padding-top: 184px;
+    padding-bottom: 125px;
+    
+    @include media('<tablet') {
+      padding-top: 118px;
+      padding-bottom: 79px;
     }
-
-    .bg {
-        position: absolute;
-        right: 38px;
-        top: 0;
-        width: 1131px;
-        height: 542px;
-        pointer-events: none;
-        z-index: -1;
-
-        @include media('<tablet') {
-            background-size: 686px 404px;
-            width: 686px;
-            height: 404px;
-        }
+  }
+  
+  .bg {
+    position: absolute;
+    right: 38px;
+    top: 0;
+    pointer-events: none;
+    z-index: -1;
+    
+    @include media('<tablet') {
+      right: 0;
     }
-
-    .desc {
-        max-width: 446px;
-        position: relative;
+  }
+  
+  .desc {
+    max-width: 446px;
+    position: relative;
+    z-index: 2;
+    
+    &:before {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: -2px;
+      bottom: -2px;
+      left: -9999px;
+      background: $grey-light;
+      
+      @include media('<tablet') {
+        bottom: -4px;
         z-index: 2;
-
-        &:before {
-            content: "";
-            position: absolute;
-            right: 100%;
-            top: -2px;
-            bottom: -2px;
-            left: -9999px;
-            background: $grey-light;
-
-            @include media('<tablet') {
-                bottom: -4px;
-                z-index: 2;
-                top: 0;
-            }
-        }
-
-        h6 {
-            display: inline;
-            margin: 0;
-            background: $grey-light;
-
-            @include media('<tablet') {
-                box-shadow: 0 4px 0 $grey-light;
-                line-height: 1;
-            }
-        }
+        top: 0;
+      }
     }
+    
+    h6 {
+      display: inline;
+      margin: 0;
+      background: $grey-light;
+      
+      @include media('<tablet') {
+        box-shadow: 0 4px 0 $grey-light;
+        line-height: 1;
+      }
+    }
+  }
 }
 
 .hero--sm {
-    .container {
-        padding-top: 128px;
-        padding-bottom: 115px;
-
-        @include media('<tablet') {
-            padding-top: 116px;
-            padding-bottom: 77px;
-        }
+  .container {
+    padding-top: 128px;
+    padding-bottom: 115px;
+    
+    @include media('<tablet') {
+      padding-top: 116px;
+      padding-bottom: 77px;
     }
-
-    .highlight-display {
-        &:before {
-            top: 0px;
-            bottom: 5px;
-        }
+  }
+  
+  .highlight-display {
+    &:before {
+      top: 0px;
+      bottom: 5px;
     }
-
-    .bg {
-        background: none;
-        width: auto;
-        left: 0;
-        height: 350px;
-
-        @include media('>=tablet') {
-            text-align: center;
-        }
-
-        @include media('<tablet') {
-            text-align: right;
-            right: 0;
-        }
+  }
+  
+  .bg {
+    background: none;
+    width: auto;
+    left: 0;
+    height: 350px;
+    
+    @include media('>=tablet') {
+      text-align: center;
     }
+    
+    @include media('<tablet') {
+      text-align: right;
+      right: 0;
+    }
+  }
 }
 
 .hero--about {
-    .container {
-        padding-top: 128px;
-        padding-bottom: 64px;
-
-        @include media('<tablet') {
-            padding-top: 116px;
-            padding-bottom: 60px;
-        }
+  .container {
+    padding-top: 128px;
+    padding-bottom: 64px;
+    
+    @include media('<tablet') {
+      padding-top: 116px;
+      padding-bottom: 60px;
     }
+  }
+}
+
+.hero--announcement {
+  
+  .bg {
+    left: -40px;
+    right: -40px;
+    height: 347px;
+    
+    @include media('<tablet') {
+      height: 207px;
+      text-align: left;
+      left: 0;
+      right: 0;
+    }
+  }
+  
+  .container {
+    padding-top: 128px;
+    padding-bottom: 52px;
+    
+    @include media('<tablet') {
+      padding-top: 120px;
+      padding-bottom: 59px;
+    }
+  }
+  
+  .highlight-display h1 {
+    
+    @include media('<tablet') {
+      font-size: 32px;
+    }
+  }
+}
+
+.hero--research {
+  
+  .bg {
+    text-align: left;
+    height: 309px;
+    left: -40px;
+    
+    @include media('<tablet') {
+      text-align: right;
+    }
+  }
+}
+
+.hero--follow-us {
+
+  .bg {
+    text-align: right;
+    right: -40px;
+
+    @include media('<tablet') {
+      right: 0;
+    }
+  }
+
+  .container {
+    padding-top: 128px;
+    padding-bottom: 52px;
+
+    @include media('<tablet') {
+      padding-top: 115px;
+      padding-bottom: 49px;
+    }
+  }
+
+  .highlight-display {
+
+    @include media('<tablet') {
+      padding-right: 15px;
+    }
+
+    &:before {
+
+      @include media('<tablet') {
+        top: -4px;
+        bottom: 1px;
+      }
+    }
+
+    h1 {
+      @include media('<tablet') {
+        font-size: 44px;
+        line-height: 0.75;
+        display: inline;
+      }
+    }
+  }
+}
+
+.hero--jobs {
+
+  .bg {
+    right: 0;
+  }
+
+  .container {
+    padding-bottom: 52px;
+  }
 }

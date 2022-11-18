@@ -1,0 +1,37 @@
+.breadcrumbs-holder {
+  padding-top: 62px;
+  padding-bottom: 24px;
+
+  @include media('<tablet') {
+    padding-top: 6px;
+    padding-bottom: 48px;
+  }
+}
+
+.breadcrumbs {
+  @extend %listreset;
+  display: flex;
+  flex-wrap: wrap;
+  font: 12px/1 $abcfavorit-mono;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  li {
+    position: relative;
+
+    + li {
+      padding-left: 12px;
+      margin-left: 12px;
+
+      &:before {
+        content: "/";
+        @include box-align(vc);
+        left: -4px;
+      }
+    }
+
+    &.active {
+      color: $grey-mid;
+    }
+  }
+}

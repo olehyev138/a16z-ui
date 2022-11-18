@@ -1,0 +1,122 @@
+// ---------------------------------------------------------===
+// Social Networks style
+// ---------------------------------------------------------===
+
+.social-networks {
+  @extend %listreset;
+  overflow: hidden;
+
+  li {
+    @extend %borderwide;
+    position: relative;
+
+    &:after {
+      right: -9999px;
+    }
+
+    + li {
+      margin-top: 18px;
+
+      @include media('<tablet') {
+        margin-top: 9px;
+      }
+    }
+
+    .title {
+      font: 12px/1 $abcfavorit-mono;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    a {
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include media('<tablet') {
+        padding: 8px 0;
+      }
+    }
+
+    [class*="icon-"] {
+      font-size: 24px;
+    }
+  }
+}
+
+.social-blocks {
+  margin: -13px;
+  padding-top: 28px;
+
+  @include media('<tablet') {
+    margin: -8px;
+    padding-top: 11px;
+  }
+
+  [class*="col-"] {
+    padding: 13px;
+
+    @include media('<tablet') {
+      padding: 8px;
+    }
+  }
+
+  a {
+    @include animate(all);
+    display: block;
+    background: $grey-dark;
+    color: $white;
+    padding: 8px 8px 8px 48px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    position: relative;
+    font: 12px/1 $abcfavorit-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    &:after {
+      content: "\e910";
+      font: 15px/1 "icomoon";
+      @include box-align(vc);
+      right: 8px;
+    }
+
+
+    &:hover {
+      background: $grey-mid;
+      color: $grey-dark;
+    }
+  }
+
+  .icon-wrap {
+    @include box-align(vc);
+    left: 8px;
+    font-size: 20px;
+  }
+
+  .icon-github {
+    font-size: 24px;
+  }
+
+  .icon-discord {
+    font-size: 26px;
+  }
+
+  .icon-podcasts {
+    font-size: 22px;
+  }
+
+  .icon-tiktok {
+    font-size: 24px;
+  }
+
+  .icon-instagram {
+    font-size: 24px;
+  }
+
+  .icon-linkedin {
+    font-size: 24px;
+  }
+}

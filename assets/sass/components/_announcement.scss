@@ -1,190 +1,199 @@
+// ---------------------------------------------------------===
+// Announcement style
+// ---------------------------------------------------------===
+
 .announcement {
-	padding: 64px 0 57px;
-	overflow: hidden;
+  padding: 64px 0 57px;
+  overflow: hidden;
 
-	@include media('<tablet') {
-		padding: 64px 0 19px;
-	}
+  @include media('<tablet') {
+    padding: 64px 0 19px;
+  }
 
-	&.bg-grey {
-		background: $grey-01;
-	}
+  &.bg-grey {
+    background: $grey-01;
+  }
 
-	.card-news {
-		width: 312px;
-		margin-right: 24px;
-
-		@include media('<tablet') {
-			width: 216px;
-			margin-right: 16px;
-		}
-	}
-
-	.group-header {
-		margin-bottom: 24px;
-	}
+  .group-header {
+    margin-bottom: 24px;
+  }
 }
 
-.announcement-cards {
-	white-space: nowrap;
-	overflow: hidden;
-	width: 9999px;
+.cards-slider {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 9999px;
 
-	.card-news {
-		float: left;
-	}
+  .card-news {
+    float: left;
+    width: 312px;
+    margin-right: 24px;
+
+    @include media('<tablet') {
+      width: 216px;
+      margin-right: 16px;
+    }
+  }
 }
 
 .card-news {
-	min-height: 296px;
-	padding: 17px 17px;
-	display: flex;
-	flex-direction: column;
-	background: $lime;
-	margin: 8px 0 24px;
-	position: relative;
+  min-height: 296px;
+  padding: 17px 17px;
+  display: flex;
+  flex-direction: column;
+  background: $lime;
+  margin: 8px 0 24px;
+  position: relative;
 
-	@include media('<tablet') {
-		min-height: 200px;
-		margin: 4px 0 16px;
-		padding: 9px 9px 6px;
-	}
+  @include media('<tablet') {
+    min-height: 200px;
+    margin: 4px 0 16px;
+    padding: 9px 9px 6px;
+  }
 
-	&:before {
-		height: 8px;
-		position: absolute;
-		top: -8px;
-		width: 62%;
-		content: "";
-		background: inherit;
+  &:before {
+    height: 8px;
+    position: absolute;
+    top: -8px;
+    width: 62%;
+    content: "";
+    background: inherit;
 
-		@include media('<tablet') {
-			height: 4px;
-			top: -4px;
-		}
-	}
+    @include media('<tablet') {
+      height: 4px;
+      top: -4px;
+    }
+  }
 
-	&.decor-style-1:before {
-		left: 28%;
-	}
+  &.decor-style-1:before {
+    left: 28%;
+  }
 
-	&.decor-style-2:before {
-		left: 6%;
-	}
+  &.decor-style-2:before {
+    left: 6%;
+  }
 
-	&.decor-style-3:before {
-		left: 0;
-	}
+  &.decor-style-3:before {
+    left: 0;
+  }
 
-	&.decor-style-4:before {
-		left: auto;
-		right: 0;
-	}
+  &.decor-style-4:before {
+    left: auto;
+    right: 0;
+  }
 
-	h5 {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		color: color(black,2);
-		@include animate(color);
-		line-height: 1.2188;
+  h5 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: color(black,2);
+    @include animate(color);
+    line-height: 1.2188;
 
-		@include media('<tablet') {
-			line-height: 1.2;
-		}
+    @include media('<tablet') {
+      line-height: 1.2;
+    }
 
-		span {
-			background: color(white);
-			@include animate(background);
-			padding-left: 2px;
+    span {
+      background: color(white);
+      @include animate(background);
+      padding-left: 2px;
 
-			@include media('<tablet') {
-				padding: 1px;
-			}
-		}
-	}
+      @include media('<tablet') {
+        padding: 1px;
+      }
+    }
+  }
 
-	.name {
-		font-size: 16px;
-		line-height: 1;
-		text-transform: capitalize;
-		color: color(black,2);
-		display: block;
-	}
+  .name {
+    font-size: 16px;
+    line-height: 1;
+    text-transform: capitalize;
+    color: color(black,2);
+    display: block;
+  }
 
-	.twiter-id {
-		font-family: $abcfavorit-mono;
-		font-size: 14px;
-		color: color(black,4);
-	}
+  .twiter-id {
+    font-family: $abcfavorit-mono;
+    font-size: 14px;
+    color: color(black,4);
+  }
 
-	.icon-twitter {
-		font-size: 11px;
-	}
+  .icon-twitter {
+    font-size: 11px;
+  }
 
-	time {
-		margin-right: 10px;
-	}
+  time {
+    margin-right: 10px;
+  }
 
-	.head {
-		margin-bottom: 14px;
-	}
+  .head {
+    margin-bottom: 14px;
+  }
 
-	.sub-title {
-		font-size: 18px;
-		line-height: 1.4;
+  .sub-title {
+    font-size: 18px;
+    line-height: 1.4;
 
-		span {
-			padding: 1px;
-		}
-	}
+    span {
+      padding: 1px;
+    }
+  }
 
-	.content-t {
-		flex: 1;
-		padding-bottom: 20px;
-	}
+  .content-t {
+    flex: 1;
+    padding-bottom: 20px;
+  }
 
-	.content-b {
-		flex-basis: 0;
-		flex-shrink: 0;
-		font-family: $abcfavorit-mono;
-		font-size: 14px;
-		display: flex;
-		justify-content: space-between;
-		color: color(black,2);
+  .content-b {
+    flex-basis: 0;
+    flex-shrink: 0;
+    font-family: $abcfavorit-mono;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    color: color(black,2);
 
-		@include media('<tablet') {
-			font-size: 12px;
-		}
-	}
+    @include media('<tablet') {
+      font-size: 12px;
+    }
+  }
 
-	&:hover {
-		h5 {
-			color: color(white);
+  &:hover {
+    h5 {
+      color: color(white);
 
-			span {
-				background: color(black,3);
-			}
-		}
-	}
+      span {
+        background: color(black,3);
+      }
+    }
+  }
 
-	&.purple {
-		background-color: $mauve;
+  &.purple {
+    background-color: $mauve;
 
-		&:before {
-			background: $mauve;
-		}
-	}
+    &:before {
+      background: $mauve;
+    }
+  }
 
-	&.maroon {
-		background-color: $mulberry;
+  &.teal {
+    background-color: $teal;
 
-		&:before {
-			background: $mulberry;
-		}
+    &:before {
+      background: $teal;
+    }
+  }
 
-		.content-b {
-			color: color(white);
-		}
-	}
+  &.maroon {
+    background-color: $mulberry;
+
+    &:before {
+      background: $mulberry;
+    }
+
+    .content-b {
+      color: color(white);
+    }
+  }
 }

@@ -1,54 +1,58 @@
+// ---------------------------------------------------------===
+// Group Header style
+// ---------------------------------------------------------===
+
 .group-header {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	position: relative;
-	padding: 4px;
-
-	@include media('<tablet') {
-		padding: 4px 1px;
-	}
-
-	&:after {
-		content: "";
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: -9999px;
-	}
-
-	&.bg-grey {
-		background: $grey-light;
-
-		&:after {
-			background: $grey-light;
-			z-index: -1;
-		}
-	}
-
-	&.has-dotted-border {
-		@extend %borderwide;
-		background: none;
-		padding: 7px 0;
-
-		@include media('<tablet') {
-			padding: 2px 0;
-		}
-
-		&:after {
-			top: auto;
-			bottom: 0;
-		}
-	}
-
-	h6 {
-		margin: 0;
-		flex: 1;
-		padding-right: 20px;
-
-		@include media('<tablet') {
-			font-size: 18px;
-		}
-	}
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  padding: 4px;
+  
+  @include media('<tablet') {
+    padding: 4px 1px;
+  }
+  
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -9999px;
+  }
+  
+  &.bg-grey {
+    background: $grey-light;
+    
+    &:after {
+      background: $grey-light;
+      z-index: -1;
+    }
+  }
+  
+  &.has-dotted-border {
+    @extend %borderwide;
+    background: none;
+    padding: 7px 0;
+    
+    @include media('<tablet') {
+      padding: 2px 0;
+    }
+    
+    &:after {
+      top: auto;
+      bottom: 0;
+    }
+  }
+  
+  h6 {
+    margin: 0;
+    flex: 1;
+    padding-right: 20px;
+    
+    @include media('<tablet') {
+      font-size: 18px;
+    }
+  }
 }

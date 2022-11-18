@@ -1,0 +1,95 @@
+.filter {
+  display: flex;
+  flex-wrap:wrap;
+
+  .select {
+    width: 264px;
+
+    @include media('<desktop') {
+      width: 220px;
+    }
+
+    @include media('<tablet') {
+      width: 100%;
+    }
+  }
+
+  .search-form {
+    flex: 1;
+
+    @include media('<tablet') {
+      flex: none;
+      width: 100%;
+    }
+  }
+}
+
+.search-result-num {
+  display: block;
+  margin-top: 24px;
+  font: 12px/1 $abcfavorit-mono;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @include media('<tablet') {
+    margin-top: 14px;
+  }
+}
+
+.applied-filters {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .title {
+    font: 12px/1 $abcfavorit-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 24px 6px 0;
+  }
+}
+
+.filter-list {
+  @extend %listreset;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -2px;
+  padding: 4px 24px 4px 0;
+
+  li {
+    padding: 2px;
+
+    span {
+      display: block;
+      padding: 7px 30px 7px 8px;
+      border-radius: 16px;
+      background: $grey-light;
+      position: relative;
+      font: 12px/1 $abcfavorit-mono;
+      text-transform: uppercase;
+      position: relative;
+
+      .close {
+        @include animate(all);
+        @include box-align(vc);
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: $grey-05;
+
+        &:hover {
+          background: $rust;
+        }
+
+        &:after {
+          content: "\e913";
+          @include box-align(vhc);
+          font: 6px/1 "icomoon";
+          color: $white;
+        }
+      }
+    }
+  }
+}

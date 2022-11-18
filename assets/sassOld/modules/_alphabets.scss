@@ -1,0 +1,80 @@
+// ---------------------------------------------------------===
+// Alphabet styles
+// ---------------------------------------------------------===
+
+.has-alphabet {
+  margin-bottom: 0;
+
+  @include media('>=tablet') {
+    display: none;
+  }
+
+  &.open,
+  &.close {
+    >a {
+      background: $grey-dark;
+      color: $white;
+
+      &:after {
+        content: '\e916';
+      }
+    }
+  }
+
+  &.close>a:after {
+    content: '\e90e';
+  }
+
+  &:after {
+    content: none;
+  }
+
+  .alphabet {
+    position: absolute;
+    top: 0;
+    left: -64px;
+    height: auto;
+    background: $grey-light;
+  }
+}
+
+.alphabet {
+  @include size(32px);
+  text-align: center;
+  font: 14px/1 $abcfavorit-mono;
+  padding: 9px 4px;
+  display: block;
+  text-transform: uppercase;
+
+  &:after {
+    font: 8px/1 icomoon;
+    display: block;
+    border-top: .5px solid rgba($grey-light, .3);
+    margin-top: 7px;
+    padding: 13px 0 3px;
+  }
+
+  &:hover,
+  &:focus,
+  .active > &,
+  &.active {
+    background: $grey-dark;
+    color: $white;
+  }
+}
+
+.alphabets {
+  @extend %listreset;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 0 -15px 40px 0;
+
+  @include media('<tablet') {
+    display: none;
+  }
+
+  a {
+    display: block;
+  }
+}

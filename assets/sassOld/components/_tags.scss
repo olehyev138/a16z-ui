@@ -1,0 +1,196 @@
+// ---------------------------------------------------------===
+// Components styles
+// ---------------------------------------------------------===
+
+.tags {
+    @extend %listreset;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px -4px;
+
+    @include media('<tablet') {
+        margin: -4px;
+    }
+
+    li {
+        padding: 8px 4px;
+
+        @include media('<tablet') {
+            padding: 4px;
+        }
+    }
+}
+
+.tag {
+    display: block;
+    background: color(white,3);
+    color: $grey-dark;
+    font: 14px/1 $abcfavorit-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 13px 16px;
+    border-radius: 100px;
+    text-decoration: none;
+    vertical-align: top;
+
+    @include media('<tablet') {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+
+    &:hover {
+        color: $grey-06;
+        background: $grey-mid;
+    }
+
+    &:focus {
+        background: $grey-05;
+        color: $grey-dark;
+    }
+
+    &.disabled {
+        background: $grey-mid;
+        background: color(white,3);
+        opacity: 0.8;
+        pointer-events: none;
+    }
+
+    &.small-tag {
+        font-size: 12px;
+        padding: 6px 7px;
+        letter-spacing: 0.7px;
+
+        @include media('<tablet') {
+            font-size: 10px;
+            padding: 4px 10px;
+        }
+    }
+
+    &.white-tag {
+        background: $white;
+
+        &:hover {
+            background: $grey-mid;
+        }
+
+        &.disabled {
+            background: $white;
+            color: rgba($grey-mid, 0.8);
+        }
+    }
+}
+
+.tab-nav-hold {
+    margin-bottom: 40px;
+    border-bottom: 1px solid $black;
+    border-left: 1px solid $black;
+}
+
+.tab-nav {
+    @extend %listreset;
+    display: flex;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1;
+
+    @include media('<tablet') {
+        font-size: 12px;
+    }
+
+    a {
+        color: rgba($grey-dark, 0.8);
+        background: color(white,3);
+        display: block;
+        padding: 16px 47px;
+        text-decoration: none;
+        border-bottom: 1px solid $grey-dark;
+
+        @include media('<tablet') {
+            padding: 13px 23px;
+        }
+
+        &:hover {
+            background: $grey-mid;
+            color: $grey-06;
+        }
+
+        &.active {
+            background: transparent;
+            color: $grey-dark;
+            border-bottom: 1px solid $white;
+        }
+    }
+
+    li {
+        border-width: 1px 1px 0 0;
+        border-style: solid;
+        border-color: $grey-dark;
+        margin-bottom: -1px;
+    }
+}
+
+
+.tags-banner {
+    margin-bottom: 40px;
+
+    @include media('<tablet') {
+        margin-bottom: 25px;
+    }
+}
+
+.tags-banner-box {
+    background: $grey-mid;
+    padding: 48px 90px;
+    position: relative;
+
+    @include media('<desktop') {
+        padding: 40px;
+    }
+
+    @include media('<tablet') {
+        padding: 43px 16px;
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        background: url('#{$image-path}/bg-banner-tags.svg') no-repeat 0 0 / cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        z-index: 2;
+
+        @include media('<tablet') {
+            background-image: url('#{$image-path}/bg-bannar-tags-mob.svg');
+            width: auto;
+            height: 4px;
+            bottom: auto;
+            right: 0;
+            top: -1px;
+        }
+    }
+
+    &:after {
+        left: auto;
+        right: 0;
+
+        @include media('<tablet') {
+            top: auto;
+            left: 0;
+            bottom: -1px;
+        }
+    }
+
+    .block-title {
+        padding: 0;
+        margin-bottom: 24px;
+
+        @include media('<tablet') {
+            margin-bottom: 32px;
+        }
+    }
+}

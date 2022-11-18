@@ -1,0 +1,46 @@
+.text-block {
+	padding: 64px 0 82px;
+
+	@include media('<tablet') {
+		padding: 27px 0;
+	}
+
+	+ .highlight-list-wrap {
+		padding-top: 0;
+	}
+
+	h4 {
+		text-align: justify;
+		padding-right: 23px;
+
+		@include media('<tablet') {
+			margin-bottom: 24px;
+			padding: 0;
+		}
+	}
+
+	.desc {
+		padding-left: 25px;
+
+		@include media('<tablet') {
+			padding-left: 0;
+		}
+
+		a {
+			@include animate(all);
+			color: $grey-dark;
+			border-bottom: 1px dashed $grey-dark;
+
+			&:hover {
+				border-color: transparent;
+			}
+		}
+	}
+
+	p {
+
+		@include media('<tablet') {
+			text-align: justify;
+		}
+	}
+}

@@ -8,6 +8,7 @@
   padding: 52px 0 56px;
   text-align: right;
   position: relative;
+  overflow: hidden;
 
   @include media('<tablet') {
     clip-path: polygon(0% 4px, 11% 4px, 11% 0%, 77% 0%, 77% 4px, 100% 4px, 100% 100%, 52% 100%, 52% calc(100% - 4px), 0% calc(100% - 4px));
@@ -130,5 +131,95 @@
     max-width: 530px;
     margin-left: auto;
     justify-content: flex-start;
+  }
+}
+
+.banner-newsletter {
+  padding: 26px;
+  margin: 70px 24px;
+  background-color: $lavender;
+  position: relative;
+
+  @include media('<tablet') {
+    margin: 32px 0;
+    padding: 29px 16px;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+
+    @include media('>=tablet') {
+      width: 24px;
+      top: 0;
+      bottom: 0;
+      background: url('#{$image-path}/pattern01.svg') repeat-y;
+    }
+
+    @include media('<tablet') {
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(to right,
+        transparent 0px,
+        transparent 31px,
+        $white 31px,
+        $white 62px);
+    }
+  }
+
+  &:before {
+    @include media('>=tablet') {
+      left: 100%;
+      transform: scale(-1,1);
+    }
+
+    @include media('<tablet') {
+      top: 0;
+    }
+  }
+
+  &:after {
+    @include media('>=tablet') {
+      right: 100%;
+    }
+
+    @include media('<tablet') {
+      bottom: 0;
+    }
+  }
+
+  .heading {
+    max-width: 395px;
+    font-size: 20px;
+    line-height: 1.2;
+
+    @include media('<tablet') {
+      max-width: 80%;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    p {margin-bottom: 0;}
+  }
+
+  h6 {
+    margin-bottom: 19px;
+
+    @include media('<tablet') {
+      margin-bottom: 20px;
+    }
+
+    span {
+      background: $white;
+      padding-bottom: 3px;
+    }
+  }
+
+  .form-group {
+    @include media('<tablet') {
+      padding-top: 28px;
+    }
   }
 }

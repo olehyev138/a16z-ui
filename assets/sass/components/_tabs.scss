@@ -1,0 +1,74 @@
+.tab-nav-hold {
+  margin-bottom: 40px;
+  border-bottom: 1px solid $black;
+  border-left: 1px solid $black;
+
+  @include media('<tablet') {
+    margin-bottom: 24px;
+  }
+}
+
+.tab-nav {
+  @extend %listreset;
+  display: flex;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font: 14px/1 $abcfavorit-mono;
+  
+  @include media('<tablet') {
+    font-size: 12px;
+  }
+  
+  a {
+    color: rgba($grey-dark, 0.8);
+    background: color(white,3);
+    display: block;
+    padding: 16px 47px;
+    text-decoration: none;
+    border-bottom: 1px solid $grey-dark;
+    
+    @include media('<tablet') {
+      padding: 13px 23px;
+    }
+    
+    &:hover {
+      background: $grey-mid;
+      color: $grey-06;
+    }
+    
+    &.active {
+      background: transparent;
+      color: $grey-dark;
+      border-bottom: 1px solid $white;
+    }
+  }
+  
+  li {
+    border-width: 1px 1px 0 0;
+    border-style: solid;
+    border-color: $grey-dark;
+    margin-bottom: -1px;
+  }
+}
+
+.tabs-wrap {
+  padding: 40px 0;
+
+  @include media('<tablet') {
+    padding: 27px 0 42px;
+  }
+
+  + .tab-content {
+    padding-top: 0;
+  }
+}
+
+.tab-content {
+  padding: 80px 0;
+  overflow: hidden;
+
+  .categories {
+    padding: 0;
+  }
+}

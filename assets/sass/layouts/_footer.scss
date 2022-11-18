@@ -34,20 +34,30 @@
       padding-bottom: 3px;
     }
   }
+
+  .subscribe-form {
+    padding: 25px 20px 25px 41px;
+
+    @include media("<desktop") {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    @include media("<tablet") {
+      padding: 24px 16px;
+    }
+
+    .form-group {
+      padding-top: 24px;
+
+      @include media("<tablet") {
+        padding-top: 7px;
+      }
+    }
+  }
 }
 
 .subscribe-form {
-  padding: 25px 20px 25px 41px;
-
-  @include media("<desktop") {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
-  @include media("<tablet") {
-    padding: 24px 16px;
-  }
-
   &.style-1 {
     input[type="email"] {
       background: $white;
@@ -72,14 +82,6 @@
 
     @include placeholder {
       color: $grey-dark;
-    }
-  }
-
-  .form-group {
-    padding-top: 24px;
-
-    @include media("<tablet") {
-      padding-top: 7px;
     }
   }
 
@@ -235,6 +237,13 @@
         border-top: 1px dashed $grey-dark;
       }
     }
+
+    &:hover {
+      .slide {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   [class^="icon-"] {
@@ -288,6 +297,7 @@
   }
 
   .slide {
+    @include animate(all);
     position: absolute;
     left: 20px;
     right: 20px;
@@ -295,6 +305,8 @@
     background: $grey-light;
     padding: 10px;
     z-index: 1;
+    opacity: 0;
+    visibility: hidden;
 
     .podcast-list {
       display: block;

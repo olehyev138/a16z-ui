@@ -29,7 +29,7 @@ textarea {
   width: 100%;
   outline: none;
   @include animate(color border box-shadow);
-  color: color(black,2);
+  color: $grey-dark;
   background-color: transparent;
 
   @include placeholder {
@@ -37,20 +37,24 @@ textarea {
     @include animate(color);
     font-size: 14px;
   }
+
+  @include media('<tablet') {
+    height: 40px;
+  }
   
   &:hover {
     border-color: $form-element-focus-border-color;
     box-shadow: 0px 0px 0px 1px rgba(0,0,0,1) inset;
 
     @include placeholder {
-      color: color(black,2);
+      color: $grey-dark;
     }
   }
 
   .error & {
-    box-shadow: 0px 0px 0px 1px $rust inset;
-    border: 1px solid $rust;
-    color: $rust;
+    box-shadow: 0px 0px 0px 1px $rust inset !important;
+    border: 1px solid $rust !important;
+    color: $rust !important;
   }
 }
 
@@ -95,7 +99,7 @@ input[type='submit'] {
     text-decoration: none;
     @extend .ellipsis;
     @include animate(color);
-    color: color(black,2);
+    color: $grey-dark;
     flex: 1;
     height: 46px;
     padding: 5px 40px 5px 5px;
@@ -120,7 +124,7 @@ input[type='submit'] {
     
     &.active,
     &:hover {
-      color: color(black,2);
+      color: $grey-dark;
 
       &:before {
         box-shadow: 0px 0px 0px 1px rgba(0,0,0,1) inset;
@@ -135,7 +139,7 @@ input[type='submit'] {
     top: 100%;
     left: -1px;
     right: -1px;
-    border: 2px solid color(black,2);
+    border: 2px solid $grey-dark;
     background-color: color(white);
     margin-top: -2px;
     padding: 7px 0;
@@ -146,13 +150,13 @@ input[type='submit'] {
       padding: 11px 14px;
       @include animate(color background-color);
       font-size: 14px;
-      color: color(black,2);
+      color: $grey-dark;
     }
 
     .active a,
     a:hover {
-       background-color: color(black,7);
-      color: color(black,5);
+       background-color: $grey-mid;
+      color: $grey-06;
     }
   }
 }
@@ -211,7 +215,7 @@ input[type='submit'] {
         top: 1px;
         width: 20px;
         height: 20px;
-        border: 1px solid color(black,2);
+        border: 1px solid $grey-dark;
         background-color: color(white);
         font: 10px/1 icomoon;
         display: flex;
@@ -241,9 +245,8 @@ input[type='submit'] {
     background: none;
     border: none;
     font-size: 12px;
-    text-transform: capitalize;
-    color: color(black,7);
-    border-bottom: 1px solid color(black,7);
+    color: $grey-mid;
+    border-bottom: 1px solid $grey-mid;
     padding: 5px 0 5px;
     border-radius: 0;
     padding: 1px 16px 1px 0;
@@ -268,8 +271,8 @@ input[type='submit'] {
 
     &:hover {
       + button {
-        color: color(black,2);
-        border-color: color(black,2);
+        color: $grey-dark;
+        border-color: $grey-dark;
       }
     }
   }
@@ -337,5 +340,111 @@ input[type='submit'] {
         }
       }
     }
+  }
+}
+
+select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  height: 100%;
+  padding: 18px 54px 18px 16px;
+  color: $grey-dark;
+  background-color: $white;
+  cursor: pointer;
+  border-radius: 0;
+  font: 12px/1 $abcfavorit-mono;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 100%;
+
+  @include media('<tablet') {
+    padding: 12px 54px 12px 16px;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  @include animate(border);
+  position: relative;
+  height: 48px;
+
+  @include media('<tablet') {
+    height: 40px;
+  }
+
+  + .select {
+
+    &:before {
+
+      @include media('>=tablet') {
+        border-left-color: transparent;
+      }
+
+      @include media('<tablet') {
+        border-top-color: transparent;
+      }
+    }
+
+    &:hover:before {
+
+      @include media('>=tablet') {
+        border-left-color: $grey-dark;
+        border-left-width: 1px;
+      }
+
+      @include media('<tablet') {
+        border-top-color: $grey-dark;
+        border-top-width: 1px;
+      }
+    }
+  }
+
+  + .search-form {
+
+    @include media('>=tablet') {
+        margin-left: -1px;
+    }
+
+    @include media('<tablet') {
+      margin-top: -1px;
+    }
+
+    input {
+
+      @include media('>=tablet') {
+        border-left-color: transparent;
+      }
+
+      @include media('<tablet') {
+        border-top-color: transparent;
+      }
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid $grey-dark;
+    pointer-events: none;
+  }
+
+  &:hover:before {
+    border-width: 2px;
+  }
+
+  &:after {
+    content: "\e916";
+    @include box-align(vc);
+    font: 6px/1 "icomoon";
+    right: 19px;
   }
 }

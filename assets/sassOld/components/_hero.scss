@@ -1,0 +1,110 @@
+.hero {
+    position: relative;
+
+    .container {
+        position: relative;
+        padding-top: 184px;
+        padding-bottom: 125px;
+
+        @include media('<tablet') {
+            padding-top: 118px;
+            padding-bottom: 79px;
+        }
+    }
+
+    .bg {
+        position: absolute;
+        right: 38px;
+        top: 0;
+        width: 1131px;
+        height: 542px;
+        pointer-events: none;
+        z-index: -1;
+
+        @include media('<tablet') {
+            background-size: 686px 404px;
+            width: 686px;
+            height: 404px;
+        }
+    }
+
+    .desc {
+        max-width: 446px;
+        position: relative;
+        z-index: 2;
+
+        &:before {
+            content: "";
+            position: absolute;
+            right: 100%;
+            top: -2px;
+            bottom: -2px;
+            left: -9999px;
+            background: $grey-light;
+
+            @include media('<tablet') {
+                bottom: -4px;
+                z-index: 2;
+                top: 0;
+            }
+        }
+
+        h6 {
+            display: inline;
+            margin: 0;
+            background: $grey-light;
+
+            @include media('<tablet') {
+                box-shadow: 0 4px 0 $grey-light;
+                line-height: 1;
+            }
+        }
+    }
+}
+
+.hero--sm {
+    .container {
+        padding-top: 128px;
+        padding-bottom: 115px;
+
+        @include media('<tablet') {
+            padding-top: 116px;
+            padding-bottom: 77px;
+        }
+    }
+
+    .highlight-display {
+        &:before {
+            top: 0px;
+            bottom: 5px;
+        }
+    }
+
+    .bg {
+        background: none;
+        width: auto;
+        left: 0;
+        height: 350px;
+
+        @include media('>=tablet') {
+            text-align: center;
+        }
+
+        @include media('<tablet') {
+            text-align: right;
+            right: 0;
+        }
+    }
+}
+
+.hero--about {
+    .container {
+        padding-top: 128px;
+        padding-bottom: 64px;
+
+        @include media('<tablet') {
+            padding-top: 116px;
+            padding-bottom: 60px;
+        }
+    }
+}

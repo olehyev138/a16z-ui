@@ -1,0 +1,57 @@
+// ---------------------------------------------------------===
+// Twitter Share styles
+// ---------------------------------------------------------===
+
+.twitter-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 4px 8px;
+  background-color: $lemonchiffon;
+  font: normal 300 14px/1.4 $abcfavorit;
+
+  &:hover {
+    color: $grey-dark;
+    background-color: darken($lemonchiffon,15%);
+  }
+
+  span {
+    flex: 1;
+    padding-top: 3px;
+
+    &:before {
+      content: '';
+      height: 24px;
+      border-left: 1px solid rgba($grey-dark,.2);
+      margin-right: 8px;
+    }
+  }
+}
+
+.tooltip {
+  position: absolute;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(100% - 3px);
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 12px;
+    background-color: $grey-dark;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    pointer-events: none;
+  }
+
+  .twitter-share {
+    background-color: $grey-dark;
+    color: $white;
+
+    span {
+      &:before {
+        border-color: rgba($grey-mid,.4);
+      }
+    }
+  }
+}

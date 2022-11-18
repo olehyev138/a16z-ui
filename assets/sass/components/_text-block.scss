@@ -1,46 +1,94 @@
+// ---------------------------------------------------------===
+// Text Block style
+// ---------------------------------------------------------===
+
 .text-block {
-	padding: 64px 0 82px;
+  padding: 64px 0 82px;
+  overflow: hidden;
 
-	@include media('<tablet') {
-		padding: 27px 0;
-	}
+  @include media('<tablet') {
+    padding: 27px 0;
+  }
 
-	+ .highlight-list-wrap {
-		padding-top: 0;
-	}
+  + .highlight-list-wrap {
+    padding-top: 0;
+  }
 
-	h4 {
-		text-align: justify;
-		padding-right: 23px;
+  h4 {
+    text-align: justify;
+    padding-right: 23px;
 
-		@include media('<tablet') {
-			margin-bottom: 24px;
-			padding: 0;
-		}
-	}
+    @include media('<tablet') {
+      margin-bottom: 24px;
+      padding: 0;
+    }
+  }
 
-	.desc {
-		padding-left: 25px;
+  h5 {
+    text-align: justify;
+    padding-right: 23px;
 
-		@include media('<tablet') {
-			padding-left: 0;
-		}
+    @include media('<tablet') {
+      margin-bottom: 24px;
+      padding: 0;
+    }
+  }
 
-		a {
-			@include animate(all);
-			color: $grey-dark;
-			border-bottom: 1px dashed $grey-dark;
+  .desc {
+    padding-left: 25px;
+    text-align: justify;
 
-			&:hover {
-				border-color: transparent;
-			}
-		}
-	}
+    @include media('<tablet') {
+      padding-left: 0;
+    }
 
-	p {
+    a:not([class]) {
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+  }
 
-		@include media('<tablet') {
-			text-align: justify;
-		}
-	}
+  p {
+
+    @include media('<tablet') {
+      text-align: justify;
+    }
+  }
+
+  &.text-block--research {
+    padding: 0 0 46px;
+
+    @include media('<tablet') {
+      padding: 23px 0 0;
+    }
+
+    h5 {
+
+      @include media('<tablet') {
+        font-size: 24px;
+        line-height: 1.2;
+      }
+    }
+
+    .desc {
+
+      p {
+        text-indent: 27px;
+
+        @include media('<tablet') {
+          text-indent: 60px;
+        }
+      }
+    }
+  }
+}
+
+.text-block-subheadline {
+  padding: 80px 0 64px;
+
+  @include media('<tablet') {
+    padding: 27px 0 22px;
+  }
 }

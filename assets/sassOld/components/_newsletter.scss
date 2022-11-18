@@ -1,0 +1,103 @@
+.newsletter {
+	margin-bottom: 40px;
+
+	@include media('<tablet') {
+		margin-bottom: 24px;
+	}
+
+	.inner {
+		background: $azure;
+		position: relative;
+		min-height: 260px;
+		padding: 68px 90px;
+		background: $azure url('#{$image-path}/bg-newsletter.svg') no-repeat 0 0 / cover;
+
+		@include media('<widescreen') {
+			padding: 60px 50px;
+		}
+
+		@include media('<tablet') {
+			padding: 20px 16px;
+		}
+
+		&:after,
+		&:before {
+			content: "";
+			position: absolute;
+			top: 50px;
+			left: 0;
+			right: 0;
+			height: 41px;
+			border: solid $white;
+			border-width: 0 8px;
+			pointer-events: none;
+
+			@include media('<tablet') {
+				height: auto;
+				width: 72px;
+				border-width: 4px 0;
+				top: 0;
+				bottom: 0;
+				right: auto;
+				left: 63px;
+			}
+		}
+
+		&:after {
+			top: auto;
+			bottom: 50px;
+
+			@include media('<tablet') {
+				top: 0;
+				bottom: 0;
+				left: auto;
+				right: 63px;
+			}
+		}
+	}
+
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	h3 {
+		margin: 0;
+
+		@include media('<tablet') {
+			font-size: 24px;
+			line-height: 32px;
+			padding-right: 10px;
+			margin-bottom: 1px;
+		}
+
+		span {
+			background: $grey-dark;
+			color: $white;
+		}
+	}
+
+	.txt {
+		max-width: 301px;
+		margin-bottom: 18px;
+
+		@include media('<tablet') {
+			max-width: none;
+			margin-bottom: 50px;
+		}
+
+		.p1 {
+			margin: 0;
+		}
+	}
+
+	.subscribe-form {
+		padding: 0;
+		max-width: 422px;
+
+		.form-group {
+			padding: 0;
+		}
+	}
+}

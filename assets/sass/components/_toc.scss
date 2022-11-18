@@ -1,0 +1,165 @@
+// ---------------------------------------------------------===
+// TOC style
+// ---------------------------------------------------------===
+
+.toc {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.4;
+  width: calc(100% + 40px);
+
+  @include media('>=tablet') {
+    width: 25.5%;
+    padding-right: 15px;
+  }
+
+  @include media('<tablet') {
+    order: -99;
+    position: sticky;
+    top: 56px;
+    margin: 0 -20px;
+    z-index: 2;
+  }
+
+  &.active {
+    @include media('<tablet') {
+      .toc-opener {
+        &:after {
+          transform: rotate(-180deg);
+        }
+      }
+
+      .inner {
+        display: block;
+      }
+    }
+  }
+
+  .inner {
+    @include media('>=tablet') {
+      max-width: 224px;
+      position: sticky;
+      top: 10px;
+    }
+
+    @include media('<tablet') {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: $white;
+      padding: 8px 20px 30px;
+      border-bottom: 1px solid $grey-dark;
+      display: none;
+    }
+  }
+
+  .toc-opener {
+    @include media('<tablet') {
+      display: block;
+      background-color: $white;
+      font: 14px/1.2 $abcfavorit;
+      padding: 12px 40px 8px 20px;
+      position: relative;
+      border-bottom: 1px solid $grey-dark;
+      color: $grey-dark;
+
+      &:after {
+        content: '\e916';
+        font: 6px/1 icomoon;
+        position: absolute;
+        right: 20px;
+        bottom: 14px;
+        @include animate(transform);
+      }
+    }
+  }
+
+  h3 {
+    margin-bottom: 16px;
+
+    @include media('<tablet') {
+      margin-bottom: 32px;
+
+      &:after {
+        content: ':';
+      }
+    }
+  }
+
+  ul {
+    @extend %listreset;
+    
+    @include media('>=tablet') {
+      border-left: 1px solid $grey-dark;
+      padding-left: 7px;
+      margin-bottom: 30px;
+    }
+
+    @include media('<tablet') {
+      counter-reset: item;
+    }
+
+    > li {
+      margin-bottom: 18px;
+
+      @include media('<tablet') {
+        counter-increment: item;
+        position: relative;
+        margin-bottom: 26px;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: -3px;
+          left: 0;
+          width: calc(100vw - 20px);
+          @include dashedborder;
+        }
+      }
+    }
+
+    a {
+      @include animate(background-color box-shadow);
+
+      @include media('<tablet') {
+        background-color: $grey-03;
+
+        &:before {
+          content: counters(item, '.', decimal-leading-zero) '/ ';
+        }
+      }
+    }
+
+    .active a,
+    a:hover {
+      color: $grey-dark;
+      background-color: $lemonchiffon;
+      box-shadow: 0 2px 0 $lemonchiffon, 0 -2px 0 $lemonchiffon, -2px 0 0 $lemonchiffon, -2px 2px 0 $lemonchiffon, -2px -2px 0 $lemonchiffon;
+    }
+  }
+
+  .info {
+    @extend %borderwide;
+    padding-top: 32px;
+    display: flex;
+    gap: 15px;
+
+    @include media('<tablet') {
+      display: none;
+    }
+
+    &:after {
+      right: 0;
+    }
+
+    .icon-info {
+      font-size: 22px;
+    }
+
+    > span {
+      flex: 1;
+      padding-top: 2px;
+    }
+  }
+}

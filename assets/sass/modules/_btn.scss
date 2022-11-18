@@ -1,3 +1,7 @@
+// ---------------------------------------------------------===
+// Btn style
+// ---------------------------------------------------------===
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -62,6 +66,13 @@
   }
 }
 
+.btn--sm {
+  height: 32px;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 4px 14px 2px;
+}
+
 .btn--white {
   background-color: $white;
   color: $grey-dark;
@@ -107,19 +118,65 @@
 
 .btn-link {
   display: inline-block;
-  @extend .caption-2;
+  font: 14px/1 $abcfavorit-mono;
+  color: $grey-dark;
+  position: relative;
+  padding-bottom: 4px;
 
-  &:before,
-  &:after {
-    content: '';
-    height: 1px;
-    background-color: $grey-dark;
+  &:before {
+    @include animate(all);
+    content: "";
+    position: absolute;
+    top: 7px;
     left: 0;
-    bottom: 5px;
+    right: 0;
+    height: 1px;
+    background: $grey-mid;
+    width: 0;
   }
 
   &:after {
+    @include animate(all);
+    content: "";
+    position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: $grey-dark;
+    width: 0;
+  }
+
+  &:hover {
+    color: $grey-mid;
+
+    &:after {
+      width: 60%;
+      background: $grey-mid;
+    }
+
+    &:before {
+      width: 50%;
+    }
+  }
+
+  &.disabled {
+    background: $grey-mid;
+    pointer-events: none;
+
+    &:after {
+      background: $grey-mid;
+    }
+  }
+
+  &.underlined {
+
+    &:after {
+      width: 100%;
+    }
+
+    &:hover:after {
+      width: 60%;
+    }
   }
 }
