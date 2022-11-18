@@ -197,6 +197,11 @@
 
 <script>
 export default {
-  name: "AboutPage",
+  name: "FollowPage",
+  head() {
+    return {
+      title: "Follow us",
+    };
+  },
 };
 </script>

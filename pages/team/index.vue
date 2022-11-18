@@ -1091,5 +1091,10 @@
 <script>
 export default {
   name: "TeamPage",
+  head() {
+    return {
+      title: "Team members",
+    };
+  },
 };
 </script>

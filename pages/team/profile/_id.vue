@@ -271,6 +271,11 @@
 <script>
 export default {
   name: "TeamProfilePage",
+  head() {
+    return {
+      title: "Team profile",
+    };
+  },
   mounted() {
     console.log(this.$route.params.id);
   },

@@ -144,5 +144,10 @@
 <script>
 export default {
   name: "PortfolioPage",
+  head() {
+    return {
+      title: "Portfolio",
+    };
+  },
 };
 </script>

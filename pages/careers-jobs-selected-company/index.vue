@@ -393,5 +393,10 @@
 <script>
 export default {
   name: "CareersJobsSelectedCompany",
+  head() {
+    return {
+      title: "Careers jobs selected company",
+    };
+  },
 };
 </script>

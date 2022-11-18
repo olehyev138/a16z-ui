@@ -357,6 +357,11 @@
 
 <script>
 export default {
-  name: "CareesJobWithUs",
+  name: "CareesrJobWithUs",
+  head() {
+    return {
+      title: "Careers jobs with us",
+    };
+  },
 };
 </script>

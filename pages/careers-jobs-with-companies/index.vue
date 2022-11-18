@@ -219,5 +219,10 @@
 <script>
 export default {
   name: "CareersJobsWithCompanies",
+  head() {
+    return {
+      title: "Careers jobs with companies",
+    };
+  },
 };
 </script>

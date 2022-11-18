@@ -734,6 +734,11 @@
 <script>
 export default {
   name: "HomePage",
+  head() {
+    return {
+      title: "Home page",
+    };
+  },
   data() {
     return {
       apiData: [],

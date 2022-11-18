@@ -575,5 +575,10 @@
 <script>
 export default {
   name: "EditorialList",
+  head() {
+    return {
+      title: "Editorial list",
+    };
+  },
 };
 </script>
