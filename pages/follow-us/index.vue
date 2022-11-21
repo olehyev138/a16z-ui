@@ -197,7 +197,7 @@
 
 <script>
 export default {
-  name: "FollowPage",
+  name: "FollowUsPage",
   head() {
     return {
       title: "Follow us",

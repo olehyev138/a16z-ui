@@ -574,7 +574,7 @@
 
 <script>
 export default {
-  name: "EditorialList",
+  name: "EditorialListPage",
   head() {
     return {
       title: "Editorial list",
