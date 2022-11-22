@@ -382,5 +382,10 @@
 <script>
 export default {
   name: "Article",
+  head() {
+    return {
+      title: "Article",
+    };
+  },
 };
 </script>
