@@ -1,0 +1,135 @@
+.search-results-section {
+  padding: 64px 0;
+  position: relative;
+
+  @include media('<tablet') {
+    padding: 32px 0 48px;
+  }
+
+  [class*="col-"] {
+    position: static;
+  }
+
+  .search-topic {
+    display: block;
+    font: 14px/1 $abcfavorit-mono;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+
+    &:after {
+      @include animate(transform);
+      content: "\e916";
+      color: $grey-06;
+      @include box-align(vc);
+      right: 0;
+      font: 7px/1 "icomoon";
+    }
+
+    &.active:after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+}
+
+.topic-list {
+  @extend %listreset;
+  padding-top: 8px;
+
+  li {
+
+    + li {
+      margin-top: 5px;
+    }
+  }
+}
+
+.filter-opener {
+  position: absolute;
+  top: -13px;
+  right: 20px;
+  font: 12px/1.2 $abcfavorit-mono;
+  padding-right: 16px;
+  border-bottom: 1px solid $grey-dark;
+  padding-bottom: 2px;
+
+  @include media('>=tablet') {
+    display: none;
+  }
+
+  &:after {
+    content: "\e920";
+    font: 10px/1 "icomoon";
+    @include box-align(vc);
+    right: 0;
+  }
+
+  &:hover {
+    color: $grey-mid;
+    border-color: $grey-mid;
+  }
+}
+
+.filter-boxes-wrap {
+
+ @include media('<tablet') {
+  display: none;
+ }
+}
+
+.filter-box {
+  padding-bottom: 30px;
+  border-bottom: 1px solid $grey-mid;
+
+  + .filter-box {
+    padding: 32px 0;
+  }
+}
+
+.checkbox {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    &:checked + .fake-input {
+      background: $grey-dark;
+      border-color: $grey-dark;
+
+      &:hover {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .fake-input {
+    @include animate(all);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    border: 1px solid $grey-mid;
+    width: 16px;
+    height: 16px;
+
+    &:after {
+      @include animate(all);
+      @include box-align(vhc);
+      content: "\e915";
+      font: 7px/1 "icomoon";
+      color: $white;
+      margin-top: -1px;
+    }
+  }
+
+  .fake-label {
+    font: 350 14px/1.4 $abcfavorit;
+    color: #4e4e4e;
+  }
+}

@@ -210,3 +210,30 @@
     padding-bottom: 52px;
   }
 }
+
+.hero--startup {
+  overflow: hidden;
+
+  .container {
+    padding-bottom: 121px;
+
+    @include media('<tablet') {
+      padding-bottom: 67px;
+    }
+  }
+
+  img {
+    min-height: 305px;
+  }
+
+  .bg {
+    left: -250px;
+    top: 2px;
+    right: 34px;
+
+    @include media('<tablet') {
+      right: -140px;
+      top: 0;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+.navigation-bar {
+  background: $grey-01;
+  border: solid $grey-dark;
+  border-width: 1px 0;
+
+  .search-form {
+    position: relative;
+
+    &:before {
+      content: "\e911";
+      @include box-align(vc);
+      left: 0;
+      font: 22px/1 "icomoon";
+      pointer-events: none;
+
+      @include media('<tablet') {
+        font-size: 15px;
+      }
+    }
+  }
+
+  input[type="search"] {
+    padding: 28px 35px;
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font: 32px/1.2 $abcfavorit;
+    height: 91px;
+
+    @include media('<tablet') {
+      height: 64px;
+      font-size: 18px;
+      padding: 20px 32px;
+    }
+  }
+
+  button[type="reset"] {
+    @include box-align(vc);
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    font-size: 0;
+    line-height: 0;
+    padding: 0;
+
+    @include media('<tablet') {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:before {
+      @include animate(all);
+      content: "\e913";
+      @include box-align(vhc);
+      font: 20px/1 "icomoon";
+
+      @include media('<tablet') {
+        font-size: 12px;
+      }
+    }
+
+    &:hover {
+
+      &:before {
+        color: $grey-mid;
+      }
+    }
+  }
+}

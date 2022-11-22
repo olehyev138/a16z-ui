@@ -1,0 +1,69 @@
+// ---------------------------------------------------------===
+// COURSE-READER styles
+// ---------------------------------------------------------===
+
+.course-reader {
+	padding: 39px 0;
+	overflow: hidden;
+
+	@include media('<tablet') {
+		padding: 27px 0;
+	}
+}
+
+.tab-navs-container {
+	position: relative;
+	margin-bottom: 59px;
+
+	@include media('<tablet') {
+		margin-bottom: 34px;
+	}
+
+	&:after {
+		width: 99999px;
+		top: 45px;
+		left: 100%;
+		position: absolute;
+		height: 1px;
+		content: "";
+		background: $grey-dark;
+
+		@include media('<tablet') {
+			top: 39px;
+		}
+	}
+
+	.hold {
+		overflow-x: auto;
+	}
+
+	.tab-nav-hold {
+		margin-bottom: 0;
+	}
+
+	.tab-nav {
+		font-size: 12px;
+		letter-spacing: 0.1em;
+		border-color: $grey-dark;
+
+		li {
+			border-color: $grey-dark;
+		}
+
+		a {
+			padding-left: 15px;
+			padding-right: 15px;
+			white-space: nowrap;
+			color: rgba($grey-dark, 0.8);
+			background: $grey-01;
+
+			&:hover {
+				background: $grey-mid;
+			}
+
+			&.active {
+				background: color(white);
+			}
+		}
+	}
+}

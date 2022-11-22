@@ -83,6 +83,48 @@
       }
     }
   }
+
+  &.text-block--startup {
+    padding: 0 0 64px;
+
+    @include media('<tablet') {
+      padding: 23px 0 0;
+    }
+
+    h5 {
+
+      @include media('<tablet') {
+        font-size: 24px;
+        line-height: 1.2;
+      }
+    }
+
+    .desc {
+      max-width: 561px;
+      margin-left: auto;
+
+      @include media('<tablet') {
+        max-width: none;
+        padding: 17px 0 48px;
+      }
+
+      p {
+        text-indent: 0;
+
+        &:last-of-type {
+          @include media('<tablet') {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+
+    input[type=email] {
+      @include media('<tablet') {
+        height: 48px;
+      }
+    }
+  }
 }
 
 .text-block-subheadline {

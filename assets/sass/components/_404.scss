@@ -1,0 +1,46 @@
+.page-not-found {
+	min-height: 100vh;
+	padding: 100px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: url('#{$image-path}/bg-not-found.svg') no-repeat 0 0 / cover;
+
+	strong {
+		display: inline-block;
+		font: 400 110px/0.8 $sixteen-mono-regular;
+		padding: 10px;
+
+		@include media('<tablet') {
+			font-size: 60px;
+			line-height: 0.66;
+		}
+
+		span {
+			background: $grey-dark;
+			color: $white;
+			box-shadow: -8px 0px 0 $grey-dark, 8px 0 0 $grey-dark
+		}
+	}
+
+	h5{
+		margin: 0;
+
+		span {
+			background: $lime;
+
+			&:first-child {
+				margin-left: 101px;
+
+				@include media('<tablet') {
+					margin-left: 58px;
+				}
+			}
+
+			&:last-child {
+				margin-left: -92px;
+			}
+		}
+	}
+}

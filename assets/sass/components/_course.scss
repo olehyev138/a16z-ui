@@ -1,0 +1,38 @@
+// ---------------------------------------------------------===
+// Course styles
+// ---------------------------------------------------------===
+
+.course {
+	color:color(black,5);
+	padding: 63px 0 20px;
+	min-height: 209px;
+
+	@include media('<tablet') {
+		padding: 27px 0 20px;
+		font-size: 14px;
+		line-height: 1.4;
+		min-height: 133px;
+	}
+
+	h6 {
+		margin-bottom: 5px;
+
+		@include media('<tablet') {
+			margin-bottom: 9px;
+		}
+	}
+
+	a {
+		border-bottom: 1px dashed color(black,5);
+		color:color(black,5);
+
+		&:hover {
+			color: color(black,2);
+			border-color: color(black,2);
+		}
+	}
+
+	.text {
+		max-width: 810px;
+	}
+}

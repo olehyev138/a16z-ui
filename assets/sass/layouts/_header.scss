@@ -8,7 +8,7 @@
   width: 100%;
   left: 0;
   top: 0;
-  z-index: 101;
+  z-index: 999;
   border-bottom: 1px solid transparent;
   @include animate(border-color);
   
@@ -34,6 +34,10 @@
   .search {
     margin-left: 33px;
     font-size: 23px;
+
+    @include media('<tablet') {
+      margin-left: 14px;
+    }
   }
   
   .header-r {
@@ -43,6 +47,12 @@
       background: none;
       padding: 0;
       border: none;
+    }
+
+    .btn {
+      height: 34px;
+      font-size: 12px;
+      padding: 6px 19px 4px;
     }
   }
   

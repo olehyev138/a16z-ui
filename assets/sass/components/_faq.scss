@@ -1,0 +1,102 @@
+// ---------------------------------------------------------===
+// FAQ styles
+// ---------------------------------------------------------===
+
+.faq {
+	padding: 64px 0 45px;
+	overflow: hidden;
+
+	@include media('<tablet') {
+		padding: 26px 0 17px;
+	}
+}
+
+.faq-list {
+	@extend %listreset;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 48px;
+	margin-bottom: 48px;
+
+	@include media('<desktop') {
+		gap: 25px 35px;
+	}
+
+	@include media('<tablet') {
+		grid-template-columns: repeat(1, 1fr);
+		margin-bottom: 25px;
+		gap: 26px;
+	}
+
+	.opener {
+		font-size: 20px;
+		line-height: 1.2;
+		color: $grey-dark;
+		position: relative;
+		padding: 8px 110px 8px 0;
+		display: block;
+
+		@include media('<widescreen') {
+			padding-right: 50px;
+		}
+
+		@include media('<tablet') {
+			font-size: 16px;
+			line-height: 1.4;
+			padding-right: 30px;
+		}
+
+		&:hover {
+			color: color(black,7);
+		}
+
+		&:before {
+			position: absolute;
+			top: 12px;
+			right: 0;
+			content: "\e919";
+			font-family: 'icomoon';
+			font-size: 14px;
+			color: color(black,5);
+		}
+
+		&.active {
+			&:before {
+				content: "\e91a";
+			}
+		}
+	}
+
+	li {
+		@extend %borderwide;
+
+		&:after {
+			right: 0;
+
+			@include media('<tablet') {
+				right: -999px;
+			}
+		}
+	}
+}
+
+.faq-footer {
+	font-size: 14px;
+	color: color(black,4);
+
+	@include media('<tablet') {
+		font-size: 12px;
+		line-height: 1.4;
+	}
+
+	a {
+		color: color(black,4);
+		border-bottom: 1px dashed color(black,4);
+
+
+		&:hover {
+			border-color:color(black,5);
+			color:color(black,5);
+		}
+	}
+}

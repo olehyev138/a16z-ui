@@ -1,0 +1,82 @@
+// ---------------------------------------------------------===
+// highlighted-list styles
+// ---------------------------------------------------------===
+
+.alumni-section {
+	padding: 62px 0 35px;
+	overflow: hidden;
+
+	@include media('<tablet') {
+		padding: 35px 0 19px;
+	}
+}
+
+.highlighted-list {
+	@extend %listreset;
+	font-size: 14px;
+	line-height: 1.4286;
+	font-weight: 500;
+	color: $grey-07;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 33px 28px;
+	margin-bottom: 39px;
+
+	@include media('<tablet') {
+		font-size: 14px;
+		line-height: 1.4;
+		padding-top: 32px;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 13px;
+		margin-bottom: 13px;
+	}
+
+	h6 {
+		font-weight: 400;
+		text-transform: capitalize;
+		margin-bottom: 4px;
+		font-size: 24px;
+
+		@include media('<tablet') {
+			margin-bottom: 0;
+		}
+	}
+
+	li {
+		@extend %borderwide;
+
+		&:after {
+			width: 999999px;
+		}
+	}
+}
+
+.highlight {
+	background: $grey-light;
+	display: inline-block;
+	vertical-align: top;
+	padding: 3px 0;
+
+	&:hover {
+		background: $grey-mid;
+		color: color(black,7);
+	}
+} 
+
+.info-text {
+	font-size: 16px;
+	line-height: 1.4;
+
+	@include media('<tablet') {
+		font-size: 14px;
+		line-height: 1.4286;
+	}
+
+	a {
+		border-bottom: 1px dotted $grey-dark;
+
+		&:hover {
+			border-color: $grey-mid;
+		}
+	}
+}
