@@ -1,0 +1,26 @@
+.sub-headline {
+  padding: 54px 0;
+
+  @include media('<tablet') {
+    padding: 28px 0;
+  }
+
+  + * {
+    padding-top: 0 !important;
+  }
+
+  h6:last-child {
+    margin-bottom: 0;
+  }
+
+  h6 {
+
+    @include media('<tablet') {
+      font-size: 18px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -9,6 +9,10 @@
 	@include media('<tablet') {
 		padding: 26px 0 17px;
 	}
+
+	&.bg-grey {
+		background: $grey-01;
+	}
 }
 
 .faq-list {

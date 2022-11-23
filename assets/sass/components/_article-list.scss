@@ -4,7 +4,7 @@
 
 .article {
   position: relative;
-  padding: 6px 0 24px;
+  padding: 6px 0 32px;
   position: relative;
   @include borderwide();
   
@@ -48,7 +48,6 @@
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 10px;
 
     @include media('<tablet') {
       display: block;
@@ -129,7 +128,6 @@
   }
   
   .tags {
-    margin-bottom: 14px;
     
     @include media('<tablet') {
       display: none;
@@ -228,11 +226,7 @@
   .category-row {
     
     + .category-row {
-      margin-top: 18px;
-      
-      @include media('<tablet') {
-        margin-top: 15px;
-      }
+      margin-top: 7px;
     }
   }
   

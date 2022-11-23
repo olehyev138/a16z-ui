@@ -28,7 +28,14 @@
   &,
   &:after {
     @include animate(background-color);
-    clip-path: polygon(0% 14px, 4px 14px, 4px 9px, 7px 9px, 7px 5px, 12px 5px, 12px 0%, calc(100% - 12px) 0%, calc(100% - 12px) 5px, calc(100% - 7px) 5px, calc(100% - 7px) 9px, calc(100% - 4px) 9px, calc(100% - 4px) 14px, 100% 14px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 14px), calc(100% - 4px) calc(100% - 9px), calc(100% - 7px) calc(100% - 9px), calc(100% - 7px) calc(100% - 5px), calc(100% - 12px) calc(100% - 5px), calc(100% - 12px) 100%, 14px 100%, 14px calc(100% - 4px), 9px calc(100% - 4px), 9px calc(100% - 7px), 4px calc(100% - 7px), 4px calc(100% - 12px), 0 calc(100% - 12px));
+    
+    @include media('>=tablet') {
+      clip-path: polygon(0% 14px, 4px 14px, 4px 9px, 7px 9px, 7px 5px, 12px 5px, 12px 0%, calc(100% - 12px) 0%, calc(100% - 12px) 5px, calc(100% - 7px) 5px, calc(100% - 7px) 9px, calc(100% - 4px) 9px, calc(100% - 4px) 14px, 100% 14px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 14px), calc(100% - 4px) calc(100% - 9px), calc(100% - 7px) calc(100% - 9px), calc(100% - 7px) calc(100% - 5px), calc(100% - 12px) calc(100% - 5px), calc(100% - 12px) 100%, 14px 100%, 14px calc(100% - 4px), 9px calc(100% - 4px), 9px calc(100% - 7px), 4px calc(100% - 7px), 4px calc(100% - 12px), 0 calc(100% - 12px));
+    }
+
+    @include media('<tablet') {
+      clip-path: polygon(0% 8px, 3px 8px, 3px 5px, 6px 5px, 6px 2px, 9px 2px, 9px 0%, calc(100% - 10px) 0%, calc(100% - 10px) 2px, calc(100% - 6px) 2px, calc(100% - 6px) 5px, calc(100% - 3px) 5px, calc(100% - 3px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 3px) calc(100% - 8px), calc(100% - 3px) calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), calc(100% - 5px) calc(100% - 1px), calc(100% - 8px) calc(100% - 1px), calc(100% - 8px) 100%, 10px 100%, 10px calc(100% - 1px), 6px calc(100% - 1px), 6px calc(100% - 4px), 3px calc(100% - 4px), 3px calc(100% - 7px), 0 calc(100% - 7px));
+    }
   }
 
   &:after {
@@ -47,7 +54,14 @@
 
   &:hover,
   &:hover:after {
-    clip-path: polygon(0% 14px, 4px 14px, 4px 9px, 7px 9px, 7px 5px, 12px 5px, 12px 0%, calc(100% - 40px) 0, calc(100% - 40px) 2px, calc(100% - 30px) 2px, calc(100% - 30px) 4px, calc(100% - 12px) 4px, calc(100% - 12px) 8px, calc(100% - 7px) 8px, calc(100% - 7px) 12px, calc(100% - 4px) 12px, calc(100% - 4px) 16px, 100% 16px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 14px), calc(100% - 4px) calc(100% - 9px), calc(100% - 7px) calc(100% - 9px), calc(100% - 7px) calc(100% - 5px), calc(100% - 12px) calc(100% - 5px), calc(100% - 12px) 100%, 35px 100%, 35px calc(100% - 2px), 25px calc(100% - 2px), 25px calc(100% - 5px), 14px calc(100% - 5px), 14px calc(100% - 7px), 9px calc(100% - 7px), 9px calc(100% - 11px), 5px calc(100% - 11px), 5px calc(100% - 16px), 0 calc(100% - 16px));
+
+    @include media('>=tablet') {
+      clip-path: polygon(0% 14px, 4px 14px, 4px 9px, 7px 9px, 7px 5px, 12px 5px, 12px 0%, calc(100% - 40px) 0, calc(100% - 40px) 2px, calc(100% - 30px) 2px, calc(100% - 30px) 4px, calc(100% - 12px) 4px, calc(100% - 12px) 8px, calc(100% - 7px) 8px, calc(100% - 7px) 12px, calc(100% - 4px) 12px, calc(100% - 4px) 16px, 100% 16px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 14px), calc(100% - 4px) calc(100% - 9px), calc(100% - 7px) calc(100% - 9px), calc(100% - 7px) calc(100% - 5px), calc(100% - 12px) calc(100% - 5px), calc(100% - 12px) 100%, 35px 100%, 35px calc(100% - 2px), 25px calc(100% - 2px), 25px calc(100% - 5px), 14px calc(100% - 5px), 14px calc(100% - 7px), 9px calc(100% - 7px), 9px calc(100% - 11px), 5px calc(100% - 11px), 5px calc(100% - 16px), 0 calc(100% - 16px));
+    }
+
+    @include media('<tablet') {
+      clip-path: polygon(0% 8px, 3px 8px, 3px 5px, 6px 5px, 6px 2px, 9px 2px, 9px 0%, calc(100% - 25px) 0%, calc(100% - 25px) 1px, calc(100% - 17px) 1px, calc(100% - 17px) 3px, calc(100% - 7px) 3px, calc(100% - 7px) 7px, calc(100% - 3px) 7px, calc(100% - 3px) 11px, 100% 11px, 100% calc(100% - 8px), calc(100% - 3px) calc(100% - 8px), calc(100% - 3px) calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), calc(100% - 5px) calc(100% - 1px), calc(100% - 8px) calc(100% - 1px), calc(100% - 8px) 100%, 10px 100%, 10px calc(100% - 1px), 6px calc(100% - 1px), 6px calc(100% - 4px), 3px calc(100% - 4px), 3px calc(100% - 7px), 0 calc(100% - 7px));
+    }
   }
 
   &:disabled,
@@ -62,15 +76,32 @@
 
   i {
     font-size: 11px;
-    margin-top: -4px;
   }
 }
 
 .btn--sm {
+  min-width: 74px;
   height: 32px;
   font-size: 12px;
   line-height: 1.2;
   padding: 4px 14px 2px;
+
+  &,
+  &:after {
+    clip-path: polygon(0% 8px, 3px 8px, 3px 5px, 6px 5px, 6px 2px, 9px 2px, 9px 0%, calc(100% - 10px) 0%, calc(100% - 10px) 2px, calc(100% - 6px) 2px, calc(100% - 6px) 5px, calc(100% - 3px) 5px, calc(100% - 3px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 3px) calc(100% - 8px), calc(100% - 3px) calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), calc(100% - 5px) calc(100% - 1px), calc(100% - 8px) calc(100% - 1px), calc(100% - 8px) 100%, 10px 100%, 10px calc(100% - 1px), 6px calc(100% - 1px), 6px calc(100% - 4px), 3px calc(100% - 4px), 3px calc(100% - 7px), 0 calc(100% - 7px));
+  }
+
+  &:after {
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+  }
+
+  &:hover,
+  &:hover:after {
+    clip-path: polygon(0% 8px, 3px 8px, 3px 5px, 6px 5px, 6px 2px, 9px 2px, 9px 0%, calc(100% - 25px) 0%, calc(100% - 25px) 1px, calc(100% - 17px) 1px, calc(100% - 17px) 3px, calc(100% - 7px) 3px, calc(100% - 7px) 7px, calc(100% - 3px) 7px, calc(100% - 3px) 11px, 100% 11px, 100% calc(100% - 8px), calc(100% - 3px) calc(100% - 8px), calc(100% - 3px) calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), calc(100% - 5px) calc(100% - 1px), calc(100% - 8px) calc(100% - 1px), calc(100% - 8px) 100%, 10px 100%, 10px calc(100% - 1px), 6px calc(100% - 1px), 6px calc(100% - 4px), 3px calc(100% - 4px), 3px calc(100% - 7px), 0 calc(100% - 7px));
+  }
 }
 
 .btn--white {
@@ -97,18 +128,19 @@
   }
 }
 
-.btn--outline-white {
+.btn--outline-white,
+.btn--outline-white-azure {
   background-color: $white;
   color: $white;
 
   &:after {
     content: '';
-    background-color: $azure;
+    background-color: $grey-dark;
   }
 
   &:hover {
     background-color: $white;
-    color: $azure;
+    color: $grey-dark;
 
     &:after {
       background-color: $white;
@@ -116,8 +148,19 @@
   }
 }
 
+.btn--outline-white-azure {
+  &:after {
+    background-color: $azure;
+  }
+
+  &:hover {
+    color: $azure
+  }
+}
+
 .btn-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font: 14px/1 $abcfavorit-mono;
   color: $grey-dark;
   position: relative;
@@ -147,6 +190,7 @@
     width: 0;
   }
 
+  &:focus,
   &:hover {
     color: $grey-mid;
 
@@ -175,8 +219,19 @@
       width: 100%;
     }
 
+    &:focus:after,
     &:hover:after {
       width: 60%;
     }
+
+    &:focus:after,
+    &:hover:after {
+      background: $grey-mid;
+    }
+  }
+
+  .icon-arrow-right {
+    font-size: 11px;
+    margin-left: 3px;
   }
 }

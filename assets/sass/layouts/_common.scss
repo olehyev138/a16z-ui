@@ -238,11 +238,7 @@
 .editorial {
 
   .select {
-    margin-top: -1px;
-
-    @include media('<tablet') {
-      margin-top: 24px;
-    }
+    margin-top: 24px;
   }
 }
 

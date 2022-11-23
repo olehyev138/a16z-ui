@@ -90,7 +90,7 @@
   padding: 64px 0;
   
   @include media('<tablet') {
-    padding: 36px 0;
+    padding: 36px 0 14px;
   }
   
   &.bg-grey {
@@ -130,7 +130,7 @@
   }
   
   h6 {
-    margin-bottom: 16px;
+    margin-bottom: 7px;
     
     @include media('<tablet') {
       margin-bottom: 8px;

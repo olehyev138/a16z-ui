@@ -58,8 +58,33 @@
 
       &:hover {
 
-        .name {
-          padding-left: 0;
+        .avatar {
+
+          img {
+            filter: grayscale(1);
+          }
+        }
+      }
+    }
+  }
+
+  &.style--2 {
+
+    @include media('<tablet') {
+      padding-left: 0;
+    }
+
+    > li:after {
+        content: none;
+    }
+
+    .card-people {
+      max-width: 283px;
+
+      .avatar {
+
+        img {
+          filter: none;
         }
       }
     }
@@ -68,18 +93,28 @@
   > li {
     @extend %borderwide;
     position: relative;
-    padding-top: 1px;
+    padding-top: 3px;
 
     @include media('<tablet') {
       margin-bottom: 27px;
     }
 
     &:after {
-      right: -9999px;
 
-      .portfolio & {
-        top: -2px;
+      @include media('<tablet') {
+        right: -9999px;
       }
+
+      // .portfolio & {
+      //   top: -2px;
+      // }
+    }
+  }
+
+  &.has-divider {
+
+    > li:after {
+      right: -9999px;
     }
   }
 
@@ -243,7 +278,7 @@
 
   h3.caption-1 {
     position: absolute;
-    top: -83px;
+    top: -72px;
 
     @include media('<tablet') {
       top: -54px;
@@ -313,4 +348,8 @@
   &:before {
     display: none;
   }
+}
+
+.highlight-list-container {
+  overflow: hidden;
 }

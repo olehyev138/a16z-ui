@@ -38,7 +38,7 @@
   gap: 17px;
   
   @include media('>=tablet') {
-    max-width: 200px;
+    // max-width: 200px;
     display: block;
   }
   
@@ -64,6 +64,65 @@
       filter: grayscale(1);
       @include animate(filter);
     }
+
+    &[class*="decor--"]:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: $white;
+      height: 8px;
+
+      @include media('<tablet') {
+        content: none;
+      }
+    }
+
+    &.decor--1:after {
+      width: 16.60%;
+    }
+
+    &.decor--2:after {
+      width: 34.21%;
+    }
+
+    &.decor--3:after {
+      width: 64.66%;
+    }
+
+    &.decor--4:after {
+      width: 69.84%;
+      left: auto;
+      right: 0;
+    }
+
+    &.decor--5:after {
+      width: 25.44%;
+      left: auto;
+      right: 0;
+    }
+
+    &.decor--6:after {
+      width: 34.27%;
+    }
+
+    &.decor--7:after {
+      width: 47.34%;
+      left: auto;
+      right: 0;
+    }
+
+    &.decor--8:after {
+      width: 47.34%;
+      left: auto;
+      right: 0;
+    }
+
+    &.decor--9:after {
+      width: 68.89%;
+      left: auto;
+      right: 0;
+    }
   }
   
   .name {
@@ -77,7 +136,10 @@
       position: relative;
       display: block;
       padding-top: 16px;
-      margin: -8px 28px 0 0;
+    }
+
+    @include media('>=desktop') {
+      font-size: 24px;
     }
     
     @include media('<tablet') {
@@ -93,12 +155,17 @@
   }
   
   .post {
-    font: 12px/1 $abcfavorit-mono;
+    font: 12px/1.2 $abcfavorit-mono;
     letter-spacing: 0.1em;
     color: #636363;
     text-transform: uppercase;
     display: block;
     margin-top: 8px;
+
+    @include media('<tablet') {
+      font-size: 10px;
+      margin-top: 3px;
+    }
   }
   
   &:hover {
@@ -108,11 +175,6 @@
       img {
         filter: none;
       }
-    }
-    
-    .name {
-      padding-left: 4px;
-      white-space: nowrap;
     }
   }
 }

@@ -6,7 +6,7 @@
     width: 264px;
 
     @include media('<desktop') {
-      width: 220px;
+      width: 180px;
     }
 
     @include media('<tablet') {

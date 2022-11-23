@@ -1,0 +1,63 @@
+.principles {
+  padding: 80px 0;
+
+  @include media('<tablet') {
+    padding: 24px 0;
+  }
+
+  .icon-wrap {
+    width: 24px;
+    margin-bottom: 16px;
+  }
+
+  .principle-boxes {
+    font-size: 16px;
+    line-height: 1.4;
+    color: $grey-08;
+
+    &.row {
+      margin-top: -24px;
+      margin-bottom: -24px;
+
+      @include media('<tablet') {
+        margin-top: -12px;
+        margin-bottom: -12px;
+      }
+
+      [class*="col-"] {
+        padding-top: 24px;
+        padding-bottom: 24px;
+
+        @include media('<tablet') {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+      }
+    }
+
+    .inner {
+      max-width: 600px;
+
+      @include media('<tablet') {
+        font-size: 14px;
+      }
+
+      h6 {
+        margin-bottom: 16px;
+
+        @include media('<tablet') {
+          font-size: 18px;
+          margin-bottom: 9px;
+        } 
+      }
+
+      p {
+        margin:  0;
+
+        + p {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

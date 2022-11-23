@@ -14,24 +14,43 @@
   padding-bottom: 86px;
   overflow: hidden;
 
-  @include media('<tablet') {
+  @include media('<desktop') {
     padding-bottom: 65px;
   }
 
+  @include media('<tablet') {
+    padding-bottom: 10px;
+  }
+
+  &.bg-grey {
+    background: $grey-01;
+
+    .card-people {
+      background: $grey-01;
+
+      .name,
+      .avatar[class*="decor--"]:after {
+        background: $grey-01;
+      }
+    }
+
+    + .banner {
+      margin-top: -10px;
+    }
+  }
+
   .highlight-list {
-    max-width: 1190px;
-    margin: 0 auto;
-    
+
     @include media('>=tablet', '<desktop') {
       grid-template-columns: repeat(3, 1fr);
     }
 
     @include media('>=tablet') {
-      gap: 47px 61px;
+      gap: 40px;
     }
 
     @include media('>=widescreen') {
-      column-gap: 130px;
+      gap: 40px 62px;
     }
 
     > li {
@@ -51,15 +70,48 @@
       }
     }
 
+    &.has-four-items {
+
+      @include media('>=tablet', '<desktop') {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @include media('>=widescreen') {
+        column-gap: 62px;
+      }
+    }
+
     &.style--1 {
 
       > li {
         @include media('<tablet') {
           &:not(.has-alphabet) {
-            margin-bottom: 22px;
+            margin-bottom: 14px;
           }
         }
       }
+    }
+
+    &.style--2 {
+
+      > li:after {
+        content: none;
+      }
+
+      .card-people {
+        max-width: 283px;
+
+        .avatar {
+
+          img {
+            filter: none;
+          }
+        }
+      }
+    }
+
+    &.full {
+      max-width: none;
     }
   }
 }

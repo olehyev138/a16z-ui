@@ -15,6 +15,10 @@
       padding-bottom: 79px;
     }
   }
+
+  + .text-block {
+    padding-top: 0;
+  }
   
   .bg {
     position: absolute;
@@ -234,6 +238,18 @@
     @include media('<tablet') {
       right: -140px;
       top: 0;
+    }
+  }
+}
+
+.hero--policy {
+
+  .bg {
+    text-align: left;
+    left: -40px;
+
+    @include media('<tablet') {
+      left: 0;
     }
   }
 }
