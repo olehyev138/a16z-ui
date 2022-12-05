@@ -23,7 +23,11 @@ export default {
 
   css: ["@assets/sass/app.scss"],
 
-  plugins: [{ src: "~/plugins/custom.js", mode: "client", ssr: true }],
+  plugins: [
+    { src: "~/plugins/custom.js", mode: "client", ssr: true },
+    { src: "~/plugins/axios" },
+    { src: "@/plugins/api.js" },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [

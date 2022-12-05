@@ -744,14 +744,14 @@ export default {
       apiData: [],
     };
   },
+  methods: {
+    async getFeaturedList() {
+      const response = await this.$api.homepage.getFeaturedList();
+      console.log(response);
+    },
+  },
   mounted() {
-    this.$axios
-      .get("http://wpheadless.test/wp-json/wp/v2/posts?_embed")
-      .then((res) => {
-        this.apiData = res.data;
-        console.log(this.apiData);
-      });
-    //this.$nuxt.error({ statusCode: 500, message: "Post not found" });
+    this.getFeaturedList();
   },
 };
 </script>
