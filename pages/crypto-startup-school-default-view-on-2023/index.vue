@@ -20,19 +20,27 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>
-              Build your product alongside fellow founders and experienced
-              entrepreneurs.
+              {{
+                acf
+                  ? acf.intro_subtitle
+                  : "Build your product alongside fellow founders and experienced entrepreneurs."
+              }}
             </h4>
           </div>
           <div class="col-sm-6">
             <div class="desc">
-              <p>
+              <p
+                v-if="acf && acf.intro_description"
+                v-html="$util.showHtml(acf.intro_description)"
+              ></p>
+              <p v-else>
                 Work with industry experts as you navigate the startup terrain.
                 Leverage the a16z network to help take your product mainstream.
                 <a href="#">Crypto Startup School (CSS23)</a> will take place in
-                Los Angeles, CA from March 6 - May 26, 2023
+                Los Angeles, CA from March 6 - May 26, 2023 <br />
+                Sign up to stay in the loop on CSS news and updates:
               </p>
-              <p>Sign up to stay in the loop on CSS news and updates:</p>
+
               <form class="subscribe-form" action="#">
                 <div class="form-group">
                   <div class="input">
@@ -75,52 +83,14 @@
             office hours, and founder talks:
           </h6>
         </div>
-        <ul class="curriculums-list">
-          <li>
-            <span class="count">01 /</span>
-            <h6><a href="#">web3 big picture</a></h6>
-          </li>
-          <li>
-            <span class="count">02 /</span>
-            <h6><a href="#">protocol development</a></h6>
-          </li>
-          <li>
-            <span class="count">03 /</span>
-            <h6><a href="#">cryptographic and mechanism design tools</a></h6>
-          </li>
-          <li>
-            <span class="count">04 /</span>
-            <h6><a href="#">web3 go-to-market</a></h6>
-          </li>
-          <li>
-            <span class="count">05 /</span>
-            <h6><a href="#">state of crypto regulation</a></h6>
-          </li>
-          <li>
-            <span class="count">06 /</span>
-            <h6><a href="#">legal design & the role of decentralization</a></h6>
-          </li>
-          <li>
-            <span class="count">07 /</span>
-            <h6><a href="#">company building in web3</a></h6>
-          </li>
-          <li>
-            <span class="count">08 /</span>
+        <ul class="curriculums-list" v-if="curriculumsList.length > 0">
+          <li v-for="(lecture, i) in curriculumsList" :key="i">
+            <span class="count">{{ $util.padDigits(i + 1) }} /</span>
             <h6>
-              <a href="#">community building & decentralized organizations</a>
+              <a :href="lecture.link ? lecture.link : 'javascript:void(0)'">{{
+                lecture.title
+              }}</a>
             </h6>
-          </li>
-          <li>
-            <span class="count">09 /</span>
-            <h6><a href="#">smart contract & custody security</a></h6>
-          </li>
-          <li>
-            <span class="count">10 /</span>
-            <h6><a href="#">branding & design</a></h6>
-          </li>
-          <li>
-            <span class="count">11 /</span>
-            <h6><a href="#">fundraising best practices</a></h6>
           </li>
         </ul>
         <div class="curriculums-footer">
@@ -188,69 +158,21 @@
     </div>
     <section class="faq">
       <div class="container">
-        <ul class="faq-list">
-          <li><a href="#" class="opener">What is Crypto Startup School?</a></li>
-          <li>
-            <a href="#" class="opener">Does the program include funding?</a>
-          </li>
-          <li><a href="#" class="opener">What are the other benefits?</a></li>
-          <li>
-            <a href="#" class="opener"
-              >When and where does the program take place? Can I participate
-              remotely?</a
+        <ul class="faq-list" v-if="faqList.length > 0">
+          <li v-for="(faq, i) in faqList" :key="i">
+            <a
+              href="javascript:void(0)"
+              class="opener"
+              @click="faq.visible = !faq.visible"
+              :class="faq.visible ? 'active' : ''"
+              >{{ faq.question }}</a
             >
-          </li>
-          <li>
-            <a href="#" class="opener">Who should apply for the program? </a>
-          </li>
-          <li>
-            <a href="#" class="opener">How many companies will be accepted? </a>
-          </li>
-          <li>
-            <a href="#" class="opener">How many companies will be accepted? </a>
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Are teams required to have a live product or company before
-              applying?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Are teams required to have a live product or company before
-              applying?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Can companies participate if they have already raised funding?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener">What is the weekly time commitment?</a>
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >What is the application and review process?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >What happens at the end of the program?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Will you provide dedicated space for the teams to work out of in
-              Los Angeles, CA?</a
-            >
+
+            <span class="curriculums-footer" v-if="faq.visible">{{
+              faq.answer
+            }}</span>
           </li>
           <!-- add [active] class on opener to show active state  -->
-          <li>
-            <a href="#" class="opener"
-              >Do participants have to be US citizens?</a
-            >
-          </li>
         </ul>
         <div class="faq-footer">
           <p>
@@ -273,6 +195,32 @@ export default {
     return {
       title: "Crypto Startup School Default ViewOn 2023",
     };
+  },
+  data() {
+    return {
+      acf: null,
+      curriculumsList: [],
+      faqList: [],
+    };
+  },
+  methods: {
+    async cryptoStartupSchoolDefault() {
+      const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
+      console.log(response);
+      this.acf = response;
+      if (response && response.lectures.length > 0) {
+        this.curriculumsList = response.lectures;
+      }
+      if (response && response.faq_list.length > 0) {
+        let list = response.faq_list;
+        list.forEach((element) => {
+          this.faqList.push({ ...element, visible: false });
+        });
+      }
+    },
+  },
+  mounted() {
+    this.cryptoStartupSchoolDefault();
   },
 };
 </script>

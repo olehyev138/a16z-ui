@@ -27,6 +27,7 @@ export default {
     { src: "~/plugins/custom.js", mode: "client", ssr: true },
     { src: "~/plugins/axios" },
     { src: "@/plugins/api.js" },
+    { src: "@/plugins/helper.js" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
