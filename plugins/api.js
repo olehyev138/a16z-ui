@@ -1,13 +1,14 @@
 // plugins/api.js
 
-import Homepage from "@/api/homepage.js";
-// import Blog from "@/api/blog";
+import HomePage from "@/api/homepage.js";
+import AboutPage from "@/api/aboutpage.js";
 // import Settings from "@/api/settings";
 
 export default (context, inject) => {
   // Initialize API factories
   const factories = {
-    homepage: Homepage(context.$axios),
+    homepage: HomePage(context.$axios),
+    aboutpage: AboutPage(context.$axios),
   };
 
   // Inject $api

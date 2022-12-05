@@ -18,7 +18,7 @@
 
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">Thesis</span>
+        <span class="block-title">{{ thesis_section_title }}</span>
       </div>
     </div>
 
@@ -64,18 +64,13 @@
     <section class="highlight-list-wrap">
       <div class="container">
         <ul class="highlight-list three-cols">
-          <li><a href="#" class="item">research organization</a></li>
-          <li><a href="#" class="item">engineering and security teams</a></li>
-          <li><a href="#" class="item">legal and regulatory teams</a></li>
-          <li><a href="#" class="item">go-to-market networks</a></li>
-          <li><a href="#" class="item">recruiting services</a></li>
-          <li><a href="#" class="item">governance and infrastructure</a></li>
-          <li>
-            <a href="#" class="item"
-              >educational content and media properties</a
+          <li v-for="(link, keys) in thesis_links" :key="keys">
+            <a
+              :href="link.thesis_link ? link.thesis_link : 'javascript:void(0)'"
+              class="item"
+              >{{ link.thesis_title }}</a
             >
           </li>
-          <li><a href="#" class="item">Crypto Startup School</a></li>
         </ul>
       </div>
     </section>
@@ -91,14 +86,14 @@
       </picture>
       <div class="container">
         <div class="highlight-display">
-          <h3 class="h1">Jobs</h3>
+          <h3 class="h1">{{ jobs_cta_title }}</h3>
         </div>
         <div class="btn-wrap">
-          <a href="#" class="btn btn--white"
-            >a16z crypto jobs <i class="icon-arrow-right"></i
+          <a :href="left_btn_link" class="btn btn--white"
+            >{{ left_btn_title }} <i class="icon-arrow-right"></i
           ></a>
-          <a href="#" class="btn btn--outline-white"
-            >a16z portfolio jobs <i class="icon-arrow-right"></i
+          <a :href="right_btn_link" class="btn btn--outline-white"
+            >{{ right_btn_title }} <i class="icon-arrow-right"></i
           ></a>
         </div>
       </div>
@@ -106,7 +101,7 @@
 
     <section class="highlight-list-wrap">
       <div class="container">
-        <h3 class="caption-1">Offices</h3>
+        <h3 class="caption-1">{{ offices_section_title }}</h3>
         <ul class="highlight-list three-cols">
           <li>
             <a href="#" class="item">Menlo Park</a>
@@ -158,6 +153,51 @@ export default {
     return {
       title: "About",
     };
+  },
+  data() {
+    return {
+      thesis_section_title: "Thesis",
+      jobs_cta_title: "Jobs",
+      left_btn_title: "a16z crypto jobs",
+      right_btn_title: "a16z portfolio jobs",
+      left_btn_link: "javascript:void(0)",
+      right_btn_link: "javascript:void(0)",
+      offices_section_title: "Offices",
+      thesis_links: [],
+    };
+  },
+  methods: {
+    async getThesis() {
+      const response = await this.$api.aboutpage.getThesis();
+      // console.log(response);
+      if (response.thesis_section_title) {
+        this.thesis_section_title = response.thesis_section_title;
+      }
+      if (response.jobs_cta_title) {
+        this.jobs_cta_title = response.jobs_cta_title;
+      }
+      if (response.left_btn_title) {
+        this.left_btn_title = response.left_btn_title;
+      }
+      if (response.left_btn_link) {
+        this.left_btn_link = response.left_btn_link;
+      }
+      if (response.right_btn_title) {
+        this.right_btn_title = response.right_btn_title;
+      }
+      if (response.right_btn_link) {
+        this.right_btn_link = response.right_btn_link;
+      }
+      if (response.offices_section_title) {
+        this.offices_section_title = response.offices_section_title;
+      }
+      if (response.links.length > 0) {
+        this.thesis_links = response.links;
+      }
+    },
+  },
+  mounted() {
+    this.getThesis();
   },
 };
 </script>

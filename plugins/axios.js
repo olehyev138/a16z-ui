@@ -16,12 +16,12 @@ export default function ({ $axios, redirect, error: nuxtError }) {
   //       this.$nuxt.error({ statusCode: 500, message: error.response });
   //     }
   //   });
-  $axios.onError((error) => {
-    nuxtError({
-      statusCode: error.response.status,
-      message: error.message,
-    });
-    return Promise.resolve(false);
-  });
+  // $axios.onError((error) => {
+  //   nuxtError({
+  //     statusCode: error.response.status,
+  //     message: error.message,
+  //   });
+  //   return Promise.resolve(false);
+  // });
   $axios.setBaseURL("http://a16z-crypto2-wp.approvemyviews.com/wp-json/wp/v2");
 }
