@@ -47,37 +47,26 @@
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!this.$util.isEmpty(our_focus_items)">
       <div class="container">
         <span class="block-title">our focus:</span>
       </div>
     </div>
 
-    <section class="profile-featured">
+    <section
+      class="profile-featured"
+      v-if="!this.$util.isEmpty(our_focus_items)"
+    >
       <div class="container">
         <div class="row">
-          <div class="col-sm-4">
+          <div
+            class="col-sm-4"
+            v-for="(our_focus_item, i) in our_focus_items"
+            :key="i"
+          >
             <div class="box">
               <p>
-                Collaborating with academics, developers, and entrepreneurs to
-                produce original research and advance web3 technology
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <p>
-                Helping our portfolio companies address and solve hard technical
-                problems
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <p>
-                Helping shape crypto and web3 as a formal area of study across
-                various fields relevant to the space, and sharing results via
-                open source, education, or other public contributions
+                {{ our_focus_item.our_focus_text }}
               </p>
             </div>
           </div>
@@ -390,11 +379,31 @@
 
 <script>
 export default {
+  name: "ResearchPage",
   head() {
     return {
       title: "Research",
     };
   },
-  name: "ResearchPage",
+
+  data() {
+    return {
+      general_content: null,
+      our_focus_items: [],
+    };
+  },
+  methods: {
+    async getResearchContent() {
+      const response = await this.$api.researchpage.get();
+      console.log(response);
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+        this.our_focus_items = response.our_focus_items;
+      }
+    },
+  },
+  mounted() {
+    this.getResearchContent();
+  },
 };
 </script>
