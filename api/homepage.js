@@ -1,7 +1,7 @@
 export default (axios) => ({
   getFeaturedList() {
     // return axios
-    //   .get("/pages/7")
+    //   .get("wp/v2/pages/7")
     //   .then((response) => {
     //     return response.data;
     //   })
@@ -10,7 +10,7 @@ export default (axios) => ({
     //   });
     return new Promise(function (resolve, reject) {
       axios
-        .get("/pages/7")
+        .get("wp/v2/pages/7")
         .then(function (response) {
           resolve(response.data);
         })

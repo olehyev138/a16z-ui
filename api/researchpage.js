@@ -2,7 +2,7 @@ export default (axios) => ({
   get() {
     return new Promise(function (resolve, reject) {
       axios
-        .get("/pages/107")
+        .get("wp/v2/pages/107")
         .then(function (response) {
           resolve(response.data.acf);
         })

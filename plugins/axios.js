@@ -23,5 +23,5 @@ export default function ({ $axios, redirect, error: nuxtError }) {
   //   });
   //   return Promise.resolve(false);
   // });
-  $axios.setBaseURL("http://a16z-crypto2-wp.approvemyviews.com/wp-json/wp/v2");
+  $axios.setBaseURL("http://a16z-crypto2-wp.approvemyviews.com/wp-json/");
 }

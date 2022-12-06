@@ -4,16 +4,18 @@ import HomePage from "@/api/homepage";
 import AboutPage from "@/api/aboutpage";
 import PolicyPage from "@/api/policypage";
 import Researchpage from "@/api/researchpage";
-import cryptoStartupSchoolDefault from "@/api/cryptoStartupSchoolDefault";
+import CryptoStartupSchoolDefault from "@/api/cryptoStartupSchoolDefault";
+import Footer from "@/api/footer";
 
 export default (context, inject) => {
   // Initialize API factories
   const factories = {
     homepage: HomePage(context.$axios),
     aboutpage: AboutPage(context.$axios),
-    cryptoStartupSchoolDefaultPage: cryptoStartupSchoolDefault(context.$axios),
+    cryptoStartupSchoolDefaultPage: CryptoStartupSchoolDefault(context.$axios),
     policyPage: PolicyPage(context.$axios),
     researchpage: Researchpage(context.$axios),
+    footer: Footer(context.$axios),
   };
 
   // Inject $api

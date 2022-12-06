@@ -8,10 +8,19 @@
             <div class="col-md-6">
               <form class="subscribe-form" action="#">
                 <div class="heading">
-                  <h6><span>newsletter: web3 weekly</span></h6>
+                  <h6>
+                    <span>{{
+                      general_content
+                        ? general_content.newsletter_title
+                        : "newsletter: web3 weekly"
+                    }}</span>
+                  </h6>
                   <p>
-                    A newsletter from a16z crypto, and your go-to guide to the
-                    next internet
+                    {{
+                      general_content
+                        ? general_content.newsletter_subtitle
+                        : "A newsletter from a16z crypto, and your go-to guide to the next internet"
+                    }}
                   </p>
                 </div>
                 <div class="form-group">
@@ -26,9 +35,21 @@
             <div class="col-md-6">
               <div class="podcast-box">
                 <div class="heading">
-                  <h6><span>podcast: web3 with a16z</span></h6>
+                  <h6>
+                    <span>
+                      {{
+                        general_content
+                          ? general_content.podcast_title
+                          : "podcast: web3 with a16z"
+                      }}</span
+                    >
+                  </h6>
                   <p>
-                    A show about building the next internet, from a16z crypto
+                    {{
+                      general_content
+                        ? general_content.podcast_subtitle
+                        : "A show about building the next internet, from a16z crypto"
+                    }}
                   </p>
                 </div>
 
@@ -94,26 +115,10 @@
             </div>
             <div class="col-md-8">
               <ul class="follow-us">
-                <li>
-                  <a href="#"><span class="icon-twitter"></span></a>
-                </li>
-                <li>
-                  <a href="#"><span class="icon-youtube"></span></a>
-                </li>
-                <li>
-                  <a href="#"><span class="icon-github"></span></a>
-                </li>
-                <li>
-                  <a href="#"><span class="icon-linkedin"></span></a>
-                </li>
-                <li>
-                  <a href="#"><span class="icon-tiktok"></span></a>
-                </li>
-                <li>
-                  <a href="#"><span class="icon-discord"></span></a>
-                </li>
-                <li>
-                  <a href="#"><span class="icon-farcaster"></span></a>
+                <li v-for="(social, i) in socials" :key="i">
+                  <a :href="social.link"
+                    ><span :class="social.icon_class"></span
+                  ></a>
                 </li>
               </ul>
             </div>
@@ -131,11 +136,9 @@
             </div>
             <div class="col-md-8">
               <ul class="footer-nav">
-                <li><a href="#">Research</a></li>
-                <li><a href="#">Policy</a></li>
-                <li><a href="#">Crypto Startup School</a></li>
-                <li><a href="#">Legal</a></li>
-                <li><a href="#">a16z.com</a></li>
+                <li v-for="(menu, i) in footer_menu" :key="i">
+                  <a :href="menu.link">{{ menu.title }}</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -144,27 +147,19 @@
     </div>
     <div class="footer-b">
       <div class="container">
-        <p>
-          Any investments or portfolio companies mentioned, referred to, or
-          described on this page are not representative of all investments in
-          vehicles managed by a16z and there can be no assurance that the
-          investments will be profitable or that other investments made in the
-          future will have similar characteristics or results. Exits include
-          current and former a16z portfolio companies which have been acquired
-          as well as companies which have undergone an initial public offering
-          or direct public offering of shares. Certain publicly traded companies
-          on this list may still be held in Andreessen Horowitz funds. A list of
-          investments made by funds managed by a16z is available here:
-          https://a16z.com/investments/. Excluded from this list are investments
-          for which the issuer has not provided permission for a16z to disclose
-          publicly as well as unannounced investments in publicly traded digital
-          assets. Further, the list of investments is updated monthly and as
-          such may not reflect most recent a16z investments. Past results of
-          Andreessen Horowitz’s investments, pooled investment vehicles, or
-          investment strategies are not necessarily indicative of future
-          results.
+        <p v-if="general_content">
+          {{ general_content.disclaimer }}
         </p>
-        <p><span class="copyright">&copy; 2022 Andreessen Horowitz</span></p>
+        <p>
+          <span
+            class="copyright"
+            v-html="
+              general_content
+                ? general_content.copyright
+                : '&copy; 2022 Andreessen Horowitz'
+            "
+          ></span>
+        </p>
       </div>
     </div>
   </footer>
@@ -173,5 +168,158 @@
 <script>
 export default {
   name: "Footer",
+  data() {
+    return {
+      general_content: null,
+      footer_menu: [
+        {
+          title: "Crypto Startup School",
+          link: "#",
+        },
+        {
+          title: "Research",
+          link: "#",
+        },
+        {
+          title: "Policy",
+          link: "#",
+        },
+        {
+          title: "Legal",
+          link: "#",
+        },
+        {
+          title: "a16z.com",
+          link: "#",
+        },
+      ],
+      socials: [
+        {
+          title: "Twitter",
+          link: "#",
+          icon_class: "icon-twitter",
+        },
+        {
+          title: "YouTube",
+          link: "#",
+          icon_class: "icon-youtube",
+        },
+        {
+          title: "GitHub",
+          link: "#",
+          icon_class: "icon-github",
+        },
+        {
+          title: "LinkedIn",
+          link: "#",
+          icon_class: "icon-linkedin",
+        },
+        {
+          title: "TikTok",
+          link: "#",
+          icon_class: "icon-tiktok",
+        },
+        {
+          title: "Discord",
+          link: "#",
+          icon_class: "icon-discord",
+        },
+        {
+          title: "Farcaster",
+          link: "#",
+          icon_class: "icon-farcaster",
+        },
+        {
+          title: "Instagram",
+          link: "#",
+          icon_class: "icon-instagram",
+        },
+      ],
+      streaming: [
+        {
+          title: "Apple Music",
+          link: "",
+        },
+        {
+          title: "Overcast",
+          link: "",
+        },
+        {
+          title: "Spotify",
+          link: "",
+        },
+        {
+          title: "Google Podcast",
+          link: "",
+        },
+        {
+          title: "Stitcher",
+          link: "",
+        },
+        {
+          title: "IHeartRadio",
+          link: "",
+        },
+        {
+          title: "Apple Music",
+          link: "",
+        },
+      ],
+    };
+  },
+  methods: {
+    async getFooterContent() {
+      const response = await this.$api.footer.get();
+      console.log(response);
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+        if (!this.$util.isEmpty(response.footer_menu)) {
+          this.footer_menu = response.footer_menu;
+        }
+        if (!this.$util.isEmpty(response.socials)) {
+          let list = response.socials;
+          this.socials = [];
+          list.forEach((element) => {
+            let iconClass = "";
+            switch (element.title) {
+              case "Twitter":
+                iconClass = "icon-twitter";
+                break;
+              case "YouTube":
+                iconClass = "icon-youtube";
+                break;
+              case "GitHub":
+                iconClass = "icon-github";
+                break;
+              case "LinkedIn":
+                iconClass = "icon-linkedin";
+                break;
+              case "TikTok":
+                iconClass = "icon-tiktok";
+                break;
+              case "Discord":
+                iconClass = "icon-discord";
+                break;
+              case "Farcaster":
+                iconClass = "icon-farcaster";
+                break;
+              case "Instagram":
+                iconClass = "icon-instagram";
+                break;
+              default:
+                break;
+            }
+            this.socials.push({ ...element, icon_class: iconClass });
+          });
+        }
+        if (!this.$util.isEmpty(response.streaming)) {
+          this.streaming = response.streaming;
+        }
+      }
+    },
+  },
+  mounted() {
+    this.getFooterContent();
+  },
 };
 </script>
