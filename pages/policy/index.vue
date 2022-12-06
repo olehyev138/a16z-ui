@@ -58,69 +58,23 @@
       </div>
     </div>
 
-    <section class="principles">
+    <section class="principles" v-if="!this.$util.isEmpty(principles_list)">
       <div class="container">
         <div class="row principle-boxes">
-          <div class="col-sm-6">
+          <div
+            class="col-sm-6"
+            v-for="(principle, i) in principles_list"
+            :key="i"
+          >
             <div class="inner">
               <div class="icon-wrap">
                 <img src="@/assets/images/icon01.svg" width="24" alt="" />
               </div>
               <h6>
-                Public policy that advances technology for the next generation
-                of the internet
+                {{ principle.title }}
               </h6>
               <p>
-                Innovation creates jobs, keeps the U.S. competitive and a world
-                leader and, and secures the future for all. Crypto and web3 are
-                critical to this next phase of the internet and industry, and so
-                we will always take a pro-innovation stance.
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="inner">
-              <div class="icon-wrap">
-                <img src="@/assets/images/icon02.svg" width="24" alt="" />
-              </div>
-              <h6>
-                Non-partisan or bipartisan, and cross-agency, collaboration
-              </h6>
-              <p>
-                Web3 is one of the rare policy conversations that can bridge the
-                political spectrum. This growing industry and technology
-                includes a host of activities and opportunities that demand
-                different expertise in a variety of domains that cut across
-                agencies. To effectively legislate, all perspectives should be
-                considered across various agencies working together for an
-                enduring long-term set of solutions.
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="inner">
-              <div class="icon-wrap">
-                <img src="@/assets/images/icon03.svg" width="24" alt="" />
-              </div>
-              <h6>Responsible regulation of businesses, not software</h6>
-              <p>
-                Fundamentally we believe that all legislation and regulation
-                should focus on businesses and not the protocols or technology
-                itself. This has a long standing precedent, but has become
-                increasingly important with new web3 use cases.
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="inner">
-              <div class="icon-wrap">
-                <img src="@/assets/images/icon04.svg" width="24" alt="" />
-              </div>
-              <h6>Transparent rule making</h6>
-              <p>
-                We believe transparent policymaking is the most effective and
-                long-lasting way to provide clear “rules of the road” for the
-                web3 community and consumers.
+                {{ principle.description }}
               </p>
             </div>
           </div>
@@ -503,11 +457,30 @@
 
 <script>
 export default {
+  name: "Policy",
   head() {
     return {
       title: "Policy",
     };
   },
-  name: "Policy",
+  data() {
+    return {
+      general_content: null,
+      principles_list: [],
+    };
+  },
+  methods: {
+    async getPolicyContent() {
+      const response = await this.$api.policyPage.get();
+      console.log(response);
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+        this.principles_list = response.principles_list;
+      }
+    },
+  },
+  mounted() {
+    this.getPolicyContent();
+  },
 };
 </script>
