@@ -270,7 +270,7 @@ export default {
   methods: {
     async getFooterContent() {
       const response = await this.$api.footer.get();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
         if (!this.$util.isEmpty(response.footer_menu)) {

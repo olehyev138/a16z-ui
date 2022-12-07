@@ -18,7 +18,11 @@
 
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">newsletter</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.newsletter_section_title)
+            ? general_content.newsletter_section_title
+            : "newsletter"
+        }}</span>
       </div>
     </div>
 
@@ -26,20 +30,42 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-7">
-            <h4>newsletter: web3 weekly</h4>
+            <h4>
+              {{
+                !$util.isEmpty(general_content.newsletter_title)
+                  ? general_content.newsletter_title
+                  : "newsletter: web3 weekly"
+              }}
+            </h4>
           </div>
           <div class="col-sm-5">
             <div class="desc">
               <p>
-                A newsletter from a16z crypto, and your go-to guide to the next
-                internet
+                {{
+                  !$util.isEmpty(general_content.newsletter_desc)
+                    ? general_content.newsletter_desc
+                    : "A newsletter from a16z crypto, and your go-to guide to the next internet"
+                }}
               </p>
             </div>
             <form class="subscribe-form" action="#">
               <div class="form-group">
                 <div class="input">
-                  <input type="email" placeholder="Enter email address" />
-                  <button type="submit" value="subscribe">subscribe</button>
+                  <input
+                    type="email"
+                    :placeholder="
+                      !$util.isEmpty(general_content.input_placeholder)
+                        ? general_content.input_placeholder
+                        : 'Enter email address'
+                    "
+                  />
+                  <button type="submit" value="subscribe">
+                    {{
+                      !$util.isEmpty(general_content.button_title)
+                        ? general_content.button_title
+                        : "subscribe"
+                    }}
+                  </button>
                 </div>
               </div>
             </form>
@@ -202,6 +228,23 @@ export default {
     return {
       title: "Follow us",
     };
+  },
+  data() {
+    return {
+      general_content: [],
+    };
+  },
+  methods: {
+    async getFollowUsContent() {
+      const response = await this.$api.followuspage.get();
+      console.log(response);
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+      }
+    },
+  },
+  mounted() {
+    this.getFollowUsContent();
   },
 };
 </script>
