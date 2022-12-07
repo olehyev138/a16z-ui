@@ -68,7 +68,7 @@
           >
             <div class="inner">
               <div class="icon-wrap">
-                <img src="@/assets/images/icon01.svg" width="24" alt="" />
+                <img :src="principle.icon.url" width="24" alt="" />
               </div>
               <h6>
                 {{ principle.title }}
