@@ -310,6 +310,7 @@ export default {
                 break;
             }
             this.socials.push({ ...element, icon_class: iconClass });
+            this.$store.dispatch("common/storeSocialLinks", this.socials);
           });
         }
         if (!this.$util.isEmpty(response.streaming)) {

@@ -148,75 +148,22 @@
     <div class="content-body">
       <div class="container">
         <h4>in the cloud</h4>
-        <div class="row social-blocks">
-          <div class="col-sm-6 col-md-3">
+        <div class="row social-blocks" v-if="!$util.isEmpty(getSocialLinks)">
+          <div
+            class="col-sm-6 col-md-3"
+            v-for="(social, i) in getSocialLinks"
+            :key="i"
+          >
             <a href="#">
               <span class="icon-wrap">
-                <i class="icon-twitter"></i>
+                <i :class="social.icon_class"></i>
               </span>
-              Twitter
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-github"></i>
-              </span>
-              Github
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-discord"></i>
-              </span>
-              Discord
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-youtube"></i>
-              </span>
-              Youtube
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-podcasts"></i>
-              </span>
-              Farcaster
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-tiktok"></i>
-              </span>
-              Tiktok
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-instagram"></i>
-              </span>
-              Instagram
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <a href="#">
-              <span class="icon-wrap">
-                <i class="icon-linkedin"></i>
-              </span>
-              LinkedIn
+              {{ social.title }}
             </a>
           </div>
         </div>
       </div>
     </div>
-
     <Footer></Footer>
   </div>
 </template>
@@ -234,10 +181,15 @@ export default {
       general_content: [],
     };
   },
+  computed: {
+    getSocialLinks() {
+      return this.$store.getters["common/getSocialLinks"];
+    },
+  },
   methods: {
     async getFollowUsContent() {
       const response = await this.$api.followuspage.get();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
       }
