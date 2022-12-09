@@ -14,96 +14,42 @@
         <div class="row">
           <div class="col-md-8">
             <div class="highlight-display">
-              <h2>we back bold entrepreneurs building the next internet</h2>
+              <h2>
+                {{
+                  !$util.isEmpty(general_content.hero_title)
+                    ? general_content.hero_title
+                    : "we back bold entrepreneurs building the next internet"
+                }}
+              </h2>
             </div>
             <div class="desc">
               <h6>
-                a16z crypto is a venture capital fund that invests in crypto and
-                web3 startups.
+                {{
+                  !$util.isEmpty(general_content.hero_subtitle)
+                    ? general_content.hero_subtitle
+                    : "a16z crypto is a venture capital fund that invests in crypto and web3 startups."
+                }}
               </h6>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(featured_posts)">
       <div class="container">
-        <span class="block-title">Featured</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.featured_section_title)
+            ? general_content.featured_section_title
+            : "Featured"
+        }}</span>
       </div>
     </div>
     <section class="featured">
-      <div class="container">
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h5>
-                <a href="#"
-                  >toppling the internet’s accidental monarchs: how to design
-                  web3 platform governance</a
-                >
-              </h5>
-              <span class="posted-by">
-                <a href="#">Porter Smith</a> and
-                <a href="#">Andrew Hall</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">Crypto & Web3</a></li>
-                <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                <li><a class="tag small-tag" href="#">NFTs</a></li>
-                <li><a class="tag small-tag" href="#">WEB3</a></li>
-                <li><a class="tag small-tag" href="#">Metaverse</a></li>
-                <li><a class="tag small-tag" href="#">Blockchain</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">podcast /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h5>
-                <a href="#"
-                  >crypto content: the metaverse, crypto, virtual society</a
-                >
-              </h5>
-              <span class="posted-by"
-                ><a href="#">Herman Nerula</a>, <a href="#">Elena Burger</a>,
-                and <a href="#">Sonal Chokshi</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">Crypto & Web3</a></li>
-                <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                <li><a class="tag small-tag" href="#">NFTs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h5>
-                <a href="#">Crypto Startup School: relaunched and expanded</a>
-              </h5>
-              <span class="posted-by"
-                ><a href="#">Chris Dixon</a> and
-                <a href="#">Jeff Amico</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">Crypto & Web3</a></li>
-                <li><a class="tag small-tag" href="#">Tech Trends</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Featured
+        v-for="(post, i) in featured_posts"
+        :featuredPostData="post"
+        :key="i"
+      ></Featured>
     </section>
     <section class="newsletter">
       <div class="container">
@@ -111,25 +57,43 @@
           <div class="row">
             <div class="col-sm-6">
               <h3>
-                <span class="inline-bg-black"
-                  >web3 weekly: your guide to the next internet</span
-                >
+                <span class="inline-bg-black">{{
+                  !$util.isEmpty(general_content.newsletter_title)
+                    ? general_content.newsletter_title
+                    : "web3 weekly: your guide to the next internet"
+                }}</span>
               </h3>
             </div>
             <div class="col-sm-5 col-sm-offset-1">
               <div class="txt">
                 <p class="p1">
-                  <span class="inline-bg-white"
-                    >A weekly newsletter on the latest web3 research, writing,
-                    and code</span
-                  >
+                  <span class="inline-bg-white">{{
+                    !$util.isEmpty(general_content.newsletter_subtitle)
+                      ? general_content.newsletter_subtitle
+                      : "A weekly newsletter on the latest web3 research, writing, and code"
+                  }}</span>
                 </p>
               </div>
               <form class="subscribe-form style-1" action="#">
                 <div class="form-group">
                   <div class="input">
-                    <input type="email" placeholder="Enter email address" />
-                    <button type="submit" value="Subscribe">Subscribe</button>
+                    <input
+                      type="email"
+                      :placeholder="
+                        !$util.isEmpty(
+                          general_content.newsletter_input_placeholder
+                        )
+                          ? general_content.newsletter_input_placeholder
+                          : 'Enter email address'
+                      "
+                    />
+                    <button type="submit" value="Subscribe">
+                      {{
+                        !$util.isEmpty(general_content.newsletter_button_text)
+                          ? general_content.newsletter_button_text
+                          : "Subscribe"
+                      }}
+                    </button>
                   </div>
                 </div>
               </form>
@@ -142,67 +106,24 @@
     <section class="announcement bg-grey">
       <div class="container">
         <div class="group-header has-dotted-border">
-          <h6>announcements</h6>
-          <a href="#" class="cta-w-arrow">see all</a>
+          <h6>
+            {{
+              !$util.isEmpty(general_content.announcements_title)
+                ? general_content.announcements_title
+                : "announcements"
+            }}
+          </h6>
+          <a href="#" class="cta-w-arrow">{{
+            !$util.isEmpty(general_content.announcements_cta_text)
+              ? general_content.announcements_cta_text
+              : "see all"
+          }}</a>
         </div>
-        <div class="announcement-cards">
-          <a href="#" class="card-news decor-style-1">
-            <div class="content-t">
-              <h5>
-                <span>Crypto Startup </span>
-                <span>School: relaunched </span>
-                <span>and expanded</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-2">
-            <div class="content-t">
-              <h5>
-                <span>Richard </span>
-                <span>Rosenblatt</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-3">
-            <div class="content-t">
-              <h5>
-                <span>investing in</span>
-                <span>PROOF</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-4">
-            <div class="content-t">
-              <div class="head">
-                <span class="name">Jason Milionis</span>
-                <span class="twiter-id">@handlehere</span>
-              </div>
-              <h5 class="sub-title">
-                <span>We proudly contributed to the</span>
-                <span>$165M Series B financing round</span>
-                <span>that @uniswap Labs announced </span>
-                <span>today...</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-              <span class="icon-twitter"></span>
-            </div>
-          </a>
-        </div>
+        <Announcements></Announcements>
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(categories)">
       <div class="container">
         <span class="block-title">Catagories</span>
       </div>
@@ -210,45 +131,18 @@
 
     <section class="categories">
       <div class="container">
-        <div class="category-row">
+        <div class="category-row" v-for="(category, i) in categories" :key="i">
           <div class="group-header bg-grey">
-            <h6>law & policy</h6>
+            <h6 v-html="category.name"></h6>
             <a href="#" class="cta-w-arrow">see all</a>
           </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6>
-                  <a href="#">zkDocs: zero-knowledge information sharing</a>
-                </h6>
-                <span class="posted-by"> <a href="#">Anthony Albanese</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">podcast /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6>
-                  <a href="#"
-                    >lightspeed democracy: what web3 organizations can learn
-                    from the history of governance</a
-                  >
-                </h6>
-                <span class="posted-by">
-                  <a href="#">Joseph Bonneau</a> and
-                  <a href="#">Valeria Nikolaenko</a></span
-                >
-              </div>
-            </div>
-          </div>
+          <CategoryWisePosts
+            :categorySlug="category.slug"
+            callFrom="homePage"
+          ></CategoryWisePosts>
         </div>
-        <div class="category-row">
+
+        <!-- <div class="category-row">
           <div class="group-header bg-grey">
             <h6>company building</h6>
             <a href="#" class="cta-w-arrow">see all</a>
@@ -400,13 +294,17 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">Themes</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.themes_section_title)
+            ? general_content.themes_section_title
+            : "Themes"
+        }}</span>
       </div>
     </div>
 
@@ -741,17 +639,27 @@ export default {
   },
   data() {
     return {
-      apiData: [],
+      general_content: [],
+      featured_posts: [],
+      categories: [],
+      themes: [],
+      announcements: [1],
     };
   },
   methods: {
-    async getFeaturedList() {
-      const response = await this.$api.homepage.getFeaturedList();
-      console.log(response);
+    async getAllContent() {
+      const response = await this.$api.homepage.get();
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+        this.featured_posts = response.featured_posts;
+        this.categories = response.focus_areas;
+        this.themes = response.themes;
+      }
+      // console.log(response);
     },
   },
   mounted() {
-    this.getFeaturedList();
+    this.getAllContent();
   },
 };
 </script>

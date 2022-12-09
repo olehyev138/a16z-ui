@@ -14,11 +14,15 @@ export default (context, inject) => {
       return value == null || Object.keys(value).length === 0;
     else return !value;
   };
+  const stringToArray = (str = "", separator = " ") => {
+    return str.split(separator);
+  };
 
   const factories = {
     showHtml: showHtmlFunc,
     padDigits: padDigitsFunc,
     isEmpty: isEmpty,
+    stringToArray: stringToArray,
   };
 
   // Inject $api

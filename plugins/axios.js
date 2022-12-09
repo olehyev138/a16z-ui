@@ -5,7 +5,7 @@ export default function ({ $axios, redirect, error: nuxtError }) {
       Accept: "application/json",
       //Authorization: store.state.auth.tokenlocal, // refers to nuxt.config.js->auth.token
     };
-    console.log("Making request to " + config.url);
+    // console.log("Making request to " + config.url);
   });
 
   //   $axios.onError((error) => {

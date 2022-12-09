@@ -1,5 +1,5 @@
 export default (axios) => ({
-  getFeaturedList() {
+  get() {
     // return axios
     //   .get("wp/v2/pages/7")
     //   .then((response) => {
@@ -12,7 +12,7 @@ export default (axios) => ({
       axios
         .get("wp/v2/pages/7")
         .then(function (response) {
-          resolve(response.data);
+          resolve(response.data.acf);
         })
         .catch(function (error) {
           console.log("Show error notification! ", error);

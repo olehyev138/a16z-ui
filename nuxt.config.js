@@ -39,9 +39,14 @@ export default {
       extensions: ["vue"],
       pathPrefix: false,
     },
+    {
+      path: "~/components/homepage",
+      extensions: ["vue"],
+      pathPrefix: false,
+    },
   ],
 
-  buildModules: ["@nuxtjs/style-resources"],
+  buildModules: ["@nuxtjs/style-resources", "@nuxtjs/moment"],
 
   styleResources: {
     scss: ["~assets/sass/app.scss"],
