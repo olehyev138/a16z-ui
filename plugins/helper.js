@@ -18,8 +18,13 @@ export default (context, inject) => {
     return str.split(separator);
   };
 
+  const addressFormat = (str) => {
+    return str.replace(/[,]/g, "<br />");
+  };
+
   const factories = {
     showHtml: showHtmlFunc,
+    addressFormat: addressFormat,
     padDigits: padDigitsFunc,
     isEmpty: isEmpty,
     stringToArray: stringToArray,

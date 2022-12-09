@@ -18,7 +18,11 @@
 
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">{{ thesis_section_title }}</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_data.thesis_section_title)
+            ? general_data.thesis_section_title
+            : "Thesis"
+        }}</span>
       </div>
     </div>
 
@@ -27,35 +31,22 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>
-              a16z crypto is a venture capital fund that invests in crypto and
-              web3 startups.
+              {{
+                !$util.isEmpty(general_data.thesis_title)
+                  ? general_data.thesis_title
+                  : "a16z crypto is a venture capital fund that invests in crypto and web3 startups."
+              }}
             </h4>
           </div>
           <div class="col-sm-6">
-            <div class="desc">
-              <p>
-                We have over $7.6 billion assets under management across four
-                funds, and have been investing in web3 – across all stages –
-                since 2013, under the direction of founding general partner
-                Chris Dixon, as part of <a href="#">Andreessen Horowitz</a>.
-              </p>
-              <p>
-                The first era of the modern internet [~1990-2005] was about open
-                protocols that were decentralized and community-governed. Most
-                of the value accrued to the edges of the network: users and
-                builders. The second era of the internet [~2005-2020] favored
-                siloed, centralized services. Most of the value accrued to a
-                handful of large tech companies. We are now beginning the third
-                era of the internet – what many call web3 – which combines the
-                decentralized, community-governed ethos of the first era with
-                the advanced, modern functionality of the second era. This
-                unlocks a new wave of creativity and entrepreneurship.
-              </p>
-              <p>
-                a16z crypto supports our portfolio and the growth of web3
-                through the following operations:
-              </p>
-            </div>
+            <div
+              class="desc"
+              v-html="
+                !$util.isEmpty(general_data.thesis_paragraph)
+                  ? $util.showHtml(general_data.thesis_paragraph)
+                  : ''
+              "
+            ></div>
           </div>
         </div>
       </div>
@@ -86,57 +77,67 @@
       </picture>
       <div class="container">
         <div class="highlight-display">
-          <h3 class="h1">{{ jobs_cta_title }}</h3>
+          <h3 class="h1">
+            {{
+              !$util.isEmpty(general_data.jobs_cta_title)
+                ? general_data.jobs_cta_title
+                : "Jobs"
+            }}
+          </h3>
         </div>
         <div class="btn-wrap">
-          <a :href="left_btn_link" class="btn btn--white"
-            >{{ left_btn_title }} <i class="icon-arrow-right"></i
+          <a
+            :href="
+              !$util.isEmpty(general_data.left_btn_link)
+                ? general_data.left_btn_link
+                : 'javascript:void(0)'
+            "
+            class="btn btn--white"
+            >{{
+              !$util.isEmpty(general_data.left_btn_title)
+                ? general_data.left_btn_title
+                : "a16z crypto jobs"
+            }}
+            <i class="icon-arrow-right"></i
           ></a>
-          <a :href="right_btn_link" class="btn btn--outline-white"
-            >{{ right_btn_title }} <i class="icon-arrow-right"></i
+          <a
+            :href="
+              !$util.isEmpty(general_data.right_btn_link)
+                ? general_data.right_btn_link
+                : 'javascript:void(0)'
+            "
+            class="btn btn--outline-white"
+            >{{
+              !$util.isEmpty(general_data.right_btn_title)
+                ? general_data.right_btn_title
+                : "a16z portfolio jobs"
+            }}<i class="icon-arrow-right"></i
           ></a>
         </div>
       </div>
     </aside>
 
-    <section class="highlight-list-wrap">
+    <section class="highlight-list-wrap" v-if="!$util.isEmpty(offices_list)">
       <div class="container">
-        <h3 class="caption-1">{{ offices_section_title }}</h3>
+        <h3 class="caption-1">
+          {{
+            !$util.isEmpty(general_data.offices_section_title)
+              ? general_data.offices_section_title
+              : "Offices"
+          }}
+        </h3>
         <ul class="highlight-list three-cols">
-          <li>
-            <a href="#" class="item">Menlo Park</a>
-            <address>
-              2865 Sand Hill Road, <br />
-              Suite 101 Menlo <br />
-              CA 94025.
-            </address>
-          </li>
-          <li>
-            <a href="#" class="item">San Francisco</a>
-            <address>
-              180 Townsend St San <br />
-              Francisco, CA 94107.
-            </address>
-          </li>
-          <li>
-            <a href="#" class="item">New York</a>
-            <address>
-              525 Broadway, <br />
-              6th Floor New <br />
-              York, NY, 10012.
-            </address>
-          </li>
-          <li>
-            <a href="#" class="item">Miami</a>
-            <address>(awaiting content)</address>
-          </li>
-          <li>
-            <a href="#" class="item">Los Angeles</a>
-            <address>
-              3000 Olympic <br />
-              Boulevard Santa <br />
-              Monica, CA 90404
-            </address>
+          <li v-for="(office, i) in offices_list" :key="i">
+            <a href="javascript:void(0)" class="item">{{
+              office.office_location
+            }}</a>
+            <address
+              v-html="
+                !$util.isEmpty(office.office_address)
+                  ? $util.addressFormat(office.office_address)
+                  : 'address not found!'
+              "
+            ></address>
           </li>
         </ul>
       </div>
@@ -156,13 +157,8 @@ export default {
   },
   data() {
     return {
-      thesis_section_title: "Thesis",
-      jobs_cta_title: "Jobs",
-      left_btn_title: "a16z crypto jobs",
-      right_btn_title: "a16z portfolio jobs",
-      left_btn_link: "javascript:void(0)",
-      right_btn_link: "javascript:void(0)",
-      offices_section_title: "Offices",
+      general_data: {},
+      offices_list: [],
       thesis_links: [],
     };
   },
@@ -170,29 +166,14 @@ export default {
     async getThesis() {
       const response = await this.$api.aboutpage.getThesis();
       // console.log(response);
-      if (response.thesis_section_title) {
-        this.thesis_section_title = response.thesis_section_title;
-      }
-      if (response.jobs_cta_title) {
-        this.jobs_cta_title = response.jobs_cta_title;
-      }
-      if (response.left_btn_title) {
-        this.left_btn_title = response.left_btn_title;
-      }
-      if (response.left_btn_link) {
-        this.left_btn_link = response.left_btn_link;
-      }
-      if (response.right_btn_title) {
-        this.right_btn_title = response.right_btn_title;
-      }
-      if (response.right_btn_link) {
-        this.right_btn_link = response.right_btn_link;
-      }
-      if (response.offices_section_title) {
-        this.offices_section_title = response.offices_section_title;
-      }
-      if (response.links.length > 0) {
-        this.thesis_links = response.links;
+      if (!this.$util.isEmpty(response)) {
+        this.general_data = response;
+        if (!this.$util.isEmpty(response.links)) {
+          this.thesis_links = response.links;
+        }
+        if (!this.$util.isEmpty(response.offices_list)) {
+          this.offices_list = response.offices_list;
+        }
       }
     },
   },
