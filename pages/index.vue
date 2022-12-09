@@ -171,62 +171,37 @@
       </div>
     </section>
 
-    <section class="tags-banner">
+    <section class="tags-banner" v-if="!$util.isEmpty(tags)">
       <div class="container">
         <div class="tags-banner-box">
           <span class="block-title">popular tags</span>
           <ul class="tags">
-            <li>
-              <a href="#" class="tag white-tag">Crypto & Web3</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Code releases</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Fintech</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Currency</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Crypto & web3</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Currency</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Currency</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Technology</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">A16Z crypto</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Blockchain</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Design</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">NFTS</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">NFTS</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Blockchain</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Code releases</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Technology</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">...</a>
-            </li>
+            <template v-if="tags.length > showTagsLimiter">
+              <li v-for="(tag, i) in displayedTags" :key="i">
+                <a
+                  href="javscript:void(0)"
+                  class="tag white-tag"
+                  v-html="tag.name"
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  @click="showAllTags = !showAllTags"
+                  class="tag white-tag"
+                  >...</a
+                >
+              </li>
+            </template>
+            <template v-else>
+              <li v-for="(tag, i) in displayedTags" :key="i">
+                <a
+                  href="javscript:void(0)"
+                  class="tag white-tag"
+                  v-html="tag.name"
+                ></a>
+              </li>
+            </template>
           </ul>
         </div>
       </div>
@@ -249,8 +224,24 @@ export default {
       featured_posts: [],
       categories: [],
       themes: [],
-      announcements: [1],
+      announcements: [],
+      showAllTags: false,
+      showTagsLimiter: 15,
+      tags: [],
     };
+  },
+  computed: {
+    displayedTags() {
+      if (this.tags.length > this.showTagsLimiter) {
+        if (!this.showAllTags) {
+          return this.tags.slice(0, this.showTagsLimiter);
+        } else {
+          return this.tags;
+        }
+      } else {
+        return this.tags;
+      }
+    },
   },
   methods: {
     async getAllContent() {
@@ -263,9 +254,18 @@ export default {
       }
       // console.log(response);
     },
+    async getPopularTags() {
+      const response = await this.$api.homepage.getPopularTags();
+      if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.tags)) {
+        if (!this.$util.isEmpty(response.tags.data)) {
+          this.tags = response.tags.data;
+        }
+      }
+    },
   },
   mounted() {
     this.getAllContent();
+    this.getPopularTags();
   },
 };
 </script>

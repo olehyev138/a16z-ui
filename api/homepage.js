@@ -20,4 +20,18 @@ export default (axios) => ({
         });
     });
   },
+
+  getPopularTags() {
+    return new Promise(function (resolve, reject) {
+      axios
+        .get("/api/v1/fetch-tags")
+        .then(function (response) {
+          resolve(response.data);
+        })
+        .catch(function (error) {
+          console.log("Show error notification! ", error);
+          reject(error);
+        });
+    });
+  },
 });
