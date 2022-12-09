@@ -145,7 +145,7 @@
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(themes)">
       <div class="container">
         <span class="block-title">{{
           !$util.isEmpty(general_content.themes_section_title)
@@ -157,12 +157,17 @@
 
     <section class="card-group-rail">
       <div class="container">
-        <div class="rail-row">
+        <div class="rail-row" v-for="(theme, i) in themes" :key="i">
           <div class="group-header has-dotted-border">
-            <h6>all things zero knowledge</h6>
-            <a href="#" class="cta-w-arrow">see all</a>
+            <h6>{{ theme.name }}</h6>
+            <a href="#" class="cta-w-arrow">{{
+              !$util.isEmpty(general_content.themes_cta_text)
+                ? general_content.themes_cta_text
+                : "see all"
+            }}</a>
           </div>
-          <div class="rail-slider">
+          <ThemePosts :terms="theme.slug"></ThemePosts>
+          <!-- <div class="rail-slider">
             <div class="card-wrap">
               <span class="category-title">article /</span>
               <div class="card">
@@ -243,9 +248,9 @@
                 >
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="rail-row">
+        <!-- <div class="rail-row">
           <div class="group-header has-dotted-border">
             <h6>web3: what you should already know</h6>
             <a href="#" class="cta-w-arrow">see all</a>
@@ -408,7 +413,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
