@@ -48,6 +48,11 @@ export default {
       required: true,
       default: "",
     },
+    taxonomy: {
+      type: String,
+      required: true,
+      default: "focus-areas",
+    },
   },
   data() {
     return {
@@ -56,12 +61,12 @@ export default {
     };
   },
   methods: {
-    async getCategoryWisepost(categorySlug) {
+    async getCategoryWisepost(categorySlug, taxonomy) {
       let payload = {
-        post_type: ["any"],
+        post_type: "any",
         posts_per_page: "2",
         tax_query: {
-          taxonomy: "focus-areas",
+          taxonomy: taxonomy,
           field: "slug",
           terms: categorySlug,
         },
@@ -93,7 +98,7 @@ export default {
     },
   },
   mounted() {
-    this.getCategoryWisepost(this.categorySlug);
+    this.getCategoryWisepost(this.categorySlug, this.taxonomy);
   },
 };
 </script>
