@@ -5,6 +5,7 @@ import AboutPage from "@/api/aboutpage";
 import PolicyPage from "@/api/policypage";
 import Researchpage from "@/api/researchpage";
 import FollowusPage from "@/api/followus";
+import PortfolioPage from "@/api/portfoliopage";
 import Common from "@/api/common";
 import CryptoStartupSchoolDefault from "@/api/cryptoStartupSchoolDefault";
 import Footer from "@/api/footer";
@@ -20,6 +21,7 @@ export default (context, inject) => {
     footer: Footer(context.$axios),
     followuspage: FollowusPage(context.$axios),
     common: Common(context.$axios),
+    portfolio: PortfolioPage(context.$axios),
   };
 
   // Inject $api
