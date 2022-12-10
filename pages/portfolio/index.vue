@@ -98,9 +98,26 @@ export default {
     },
   },
   methods: {
+    arrGroupAlphabeticalOrder(rawData) {
+      let data = rawData.reduce((r, e) => {
+        // get first letter of name of current element
+        let group = e.post_title[0].toUpperCase();
+        // if there is no property in accumulator with this letter create it
+        if (!r[group]) r[group] = { group, children: [e] };
+        // if there is push current element to children array for that letter
+        else r[group].children.push(e);
+        // return accumulator
+        return r;
+      }, {});
+
+      // since data at this point is an object, to get array of values
+      // we use Object.values method
+      let result = Object.values(data);
+      return result;
+    },
     async getJobs() {
       const response = await this.$api.portfolio.getJobs();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_data = response;
       }
@@ -116,9 +133,7 @@ export default {
         !this.$util.isEmpty(response.posts)
       ) {
         if (!this.$util.isEmpty(response.posts.data)) {
-          this.companies = this.$util.arrGroupAlphabeticalOrder(
-            response.posts.data
-          );
+          this.companies = this.arrGroupAlphabeticalOrder(response.posts.data);
           // console.log(this.companies);
         }
       }
