@@ -176,10 +176,14 @@ export default {
         return response.source_url;
       }
     },
-
+    alphabeticalOrder(arr) {
+      return arr.sort((a, b) =>
+        a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0
+      );
+    },
     arrGroupAlphabeticalOrder(rawData) {
-      // let arr = this.alphabeticalOrder(rawData);
-      let data = rawData.reduce((r, e) => {
+      let sortedArr = this.alphabeticalOrder(rawData);
+      let data = sortedArr.reduce((r, e) => {
         // get first letter of name of current element
         let group = e.name[0].toUpperCase();
         // if there is no property in accumulator with this letter create it

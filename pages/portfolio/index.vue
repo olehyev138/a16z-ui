@@ -98,8 +98,18 @@ export default {
     },
   },
   methods: {
+    alphabeticalOrder(arr) {
+      return arr.sort((a, b) =>
+        a.post_title !== b.post_title
+          ? a.post_title < b.post_title
+            ? -1
+            : 1
+          : 0
+      );
+    },
     arrGroupAlphabeticalOrder(rawData) {
-      let data = rawData.reduce((r, e) => {
+      let sortedArr = this.alphabeticalOrder(rawData);
+      let data = sortedArr.reduce((r, e) => {
         // get first letter of name of current element
         let group = e.post_title[0].toUpperCase();
         // if there is no property in accumulator with this letter create it
