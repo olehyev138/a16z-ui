@@ -1,6 +1,7 @@
 <template>
   <div id="wrapper">
     <Header></Header>
+
     <section class="hero">
       <div class="container">
         <picture class="bg">
@@ -44,6 +45,7 @@
         }}</span>
       </div>
     </div>
+
     <section class="featured">
       <Featured
         v-for="(post, i) in featured_posts"
@@ -51,6 +53,7 @@
         :key="i"
       ></Featured>
     </section>
+
     <section class="newsletter">
       <div class="container">
         <div class="inner">
@@ -118,6 +121,60 @@
               ? general_content.announcements_cta_text
               : "see all"
           }}</a>
+        </div>
+        <div class="cards-slider">
+          <a href="#" class="card-news decor-style-1">
+            <div class="content-t">
+              <h5>
+                <span>Crypto Startup </span>
+                <span>School: relaunched </span>
+                <span>and expanded</span>
+              </h5>
+            </div>
+            <div class="content-b">
+              <time datetime="2022-11-12">12.11.22</time>
+            </div>
+          </a>
+          <a href="#" class="card-news decor-style-2 purple">
+            <div class="content-t">
+              <h5>
+                <span>Richard </span>
+                <span>Rosenblatt</span>
+              </h5>
+            </div>
+            <div class="content-b">
+              <time datetime="2022-11-12">12.11.22</time>
+            </div>
+          </a>
+          <a href="#" class="card-news decor-style-3 maroon">
+            <div class="content-t">
+              <h5>
+                <span>investing in</span>
+                <span>PROOF</span>
+              </h5>
+            </div>
+            <div class="content-b">
+              <time datetime="2022-11-12">12.11.22</time>
+            </div>
+          </a>
+          <a href="#" class="card-news decor-style-4 teal">
+            <div class="content-t">
+              <div class="head">
+                <span class="name">Jason Milionis</span>
+                <span class="twiter-id">@handlehere</span>
+              </div>
+              <h5 class="sub-title">
+                <span>We proudly contributed to the</span>
+                <span>$165M Series B financing round</span>
+                <span>that @uniswap Labs announced </span>
+                <span>today...</span>
+              </h5>
+            </div>
+            <div class="content-b">
+              <time datetime="2022-11-12">12.11.22</time>
+              <span class="icon-twitter"></span>
+            </div>
+          </a>
         </div>
         <Announcements></Announcements>
       </div>
@@ -206,6 +263,7 @@
         </div>
       </div>
     </section>
+
     <Footer></Footer>
   </div>
 </template>

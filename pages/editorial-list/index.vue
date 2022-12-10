@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <section class="hero-heading">
       <div class="container">
         <div class="highlight-display hld--pacific">
@@ -21,7 +23,7 @@
           <div class="col-sm-3">
             <div class="select">
               <select>
-                <option>Content/ All</option>
+                <option>Format/ All</option>
                 <option>Option 1</option>
                 <option>Option 2</option>
                 <option>Option 3</option>

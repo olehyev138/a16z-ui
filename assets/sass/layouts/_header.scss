@@ -78,6 +78,14 @@
   }
 }
 
+.menu-slide,
+.search-slide {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  @include animate(opacity visibility transform);
+}
+
 .menu-slide {
   width: 396px;
   height: 100vh;
@@ -87,6 +95,7 @@
   right: 0;
   background: $grey-dark;
   padding-left: 24px;
+  z-index: 10;
   
   @include media('<desktop') {
     width: 324px;
@@ -96,7 +105,13 @@
   @include media('<tablet') {
     width: 100%;
   }
-  
+
+  .nav-active & {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0)
+  }
+
   .inner {
     border-top: 1px solid $grey-mid;
     height: calc(100vh - 55px);
@@ -369,25 +384,49 @@
 }
 
 .drop-menu {
-  position: absolute;
-  top: 0;
-  right: 100%;
-  width: 536px;
-  bottom: 0;
-  background: $grey-08;
-  padding: 55px 0 0 24px;
-  overflow-y: auto;
-  
-  @include media('<desktop') {
-    width: 440px;
-    padding-left: 20px;
-  }
-  
   @include media('<tablet') {
     width: 100%;
-    position: static;
-    padding: 3px 0 23px 16px;
     margin-top: 16px;
+  }
+
+  @include media('>=tablet') {
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    padding: 0 !important;
+    height: auto !important;
+    display: block !important;
+    opacity: 0;
+    visibility: hidden;
+    @include animate(opacity visibility);
+
+    .active + & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .i1 {
+    padding: 3px 0 23px 16px;
+    background: $grey-08;
+
+    @include media('>=tablet') {
+      width: 440px;
+      padding: 55px 0 0 20px;
+      transform: translateX(100%);
+      @include animate(transform);
+
+      .active + & {
+        transform: translateX(0);
+      }
+    }
+
+     @include media('>=desktop') {
+       width: 536px;
+       padding-left: 24px;
+     }
   }
   
   .inner {
@@ -495,6 +534,12 @@
     width: 100%;
     right: 0;
     z-index: 102;
+  }
+
+  .search-active & {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0)
   }
   
   .menu-title {

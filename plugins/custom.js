@@ -10,10 +10,17 @@ function MobileNav() {
   var navopener = $(".nav-opener"),
     navwrap = $(".nav"),
     links = navwrap.find("a"),
-    navactive = "nav-active";
+    navactive = "nav-active",
+    searchOpener = $('.search-opener');
 
   navopener.click(function () {
+    $("body").removeClass('search-active');
     $("body").toggleClass(navactive);
+  });
+
+  searchOpener.click(function (e) {
+    e.preventDefault();
+    $("body").toggleClass('search-active');
   });
 
   $(".nav li").each(function () {
@@ -31,13 +38,6 @@ function MobileNav() {
 
   links.click(function () {
     $(this).hasClass("hasdrop-a") ? false : $("body").removeClass(navactive);
-  });
-
-  $("html").on("click touchstart pointerdown MSPointerDown", function (e) {
-    var target = $(e.target);
-    if (!target.closest(navopener).length && !target.closest(navwrap).length) {
-      $("body").removeClass(navactive);
-    }
   });
 }
 

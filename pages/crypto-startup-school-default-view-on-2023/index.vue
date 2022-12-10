@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <header class="hero hero--sm hero--startup">
       <div class="container">
         <picture class="bg">

@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <header class="hero hero--sm hero--about">
       <div class="container">
         <picture class="bg">
@@ -54,7 +56,7 @@
 
     <section class="highlight-list-wrap">
       <div class="container">
-        <ul class="highlight-list three-cols">
+        <ul class="highlight-list three-cols has-divider">
           <li v-for="(link, keys) in thesis_links" :key="keys">
             <a
               :href="link.thesis_link ? link.thesis_link : 'javascript:void(0)'"

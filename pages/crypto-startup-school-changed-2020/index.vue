@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <header class="hero hero--sm hero--startup">
       <div class="container">
         <picture class="bg">
@@ -49,6 +51,16 @@
     <div class="section-divider">
       <div class="container">
         <span class="block-title">Course videos</span>
+      </div>
+    </div>
+
+    <div class="sub-headline">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h6>Course videos for 2023 will be posted after the program concludes in May. View videos for 2020 below.</h6>
+          </div>
+        </div>
       </div>
     </div>
 

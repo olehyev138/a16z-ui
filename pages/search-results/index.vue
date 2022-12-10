@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <main id="main">
       <div class="navigation-bar">
         <div class="container">

@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <section class="portfolio">
       <header class="hero hero--sm">
         <div class="container">
@@ -18,7 +20,7 @@
       </header>
 
       <div class="container">
-        <ul class="highlight-list">
+        <ul class="highlight-list has-divider">
           <li class="has-alphabet open"><a href="#" class="alphabet">A</a></li>
           <li><a href="#" class="item">Adim</a></li>
           <li><a href="#" class="item">Alchemy</a></li>

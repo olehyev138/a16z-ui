@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <section class="article-single container">
       <header class="head">
         <div class="highlight-display hld--lemonchiffon">

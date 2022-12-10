@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <section class="hero-heading">
       <div class="container">
         <div class="highlight-display hld--lime">

@@ -446,5 +446,6 @@ select::-ms-expand {
     @include box-align(vc);
     font: 6px/1 "icomoon";
     right: 19px;
+    pointer-events: none;
   }
 }

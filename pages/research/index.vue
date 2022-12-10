@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <header class="hero hero--sm hero--research">
       <div class="container">
         <picture class="bg">
@@ -275,77 +277,62 @@
     <section class="team">
       <div class="container">
         <ul class="highlight-list style--1">
-          <li>
+            <li>
+              <a href="#" class="card-people">
+                <div class="avatar decor--1">
+                  <img alt="Tim Roughgarden" src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg">
+                </div>
+                <div class="r-col">
+                  <div class="name">Tim Roughgarden</div>
+                  <span class="post">Head of research</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="card-people">
+                <div class="avatar decor--2">
+                  <img alt="Dan Boneh" src="https://a16zcrypto.com/wp-content/uploads/2022/04/Dan-Boneh-headshot-203x300.jpeg">
+                </div>
+                <div class="r-col">
+                  <div class="name">Dan Boneh</div>
+                  <span class="post">Senior Research Advisor</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="card-people">
+                <div class="avatar decor--3">
+                  <img alt="Valeria Nikolaenko" src="https://a16zcrypto.com/wp-content/uploads/2022/05/Valeria-Nikolaenko-1-300x300.png">
+                </div>
+                <div class="r-col">
+                  <div class="name">Valeria Nikolaenko</div>
+                  <span class="post">Research</span>
+                </div>
+              </a>
+            </li>
+            <li>
             <a href="#" class="card-people">
-              <div class="avatar">
-                <img
-                  alt="Tim Roughgarden"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Tim Roughgarden</div>
-                <span class="post">Head of research</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar">
-                <img
-                  alt="Dan Boneh"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/04/Dan-Boneh-headshot-203x300.jpeg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Dan Boneh</div>
-                <span class="post">Senior Research Advisor</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar">
-                <img
-                  alt="Valeria Nikolaenko"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Valeria-Nikolaenko-1-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Valeria Nikolaenko</div>
-                <span class="post">Research</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar">
-                <img
-                  alt="Joseph Bonneau"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/07/Joseph-Bonneau-400x400-1-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Joseph Bonneau</div>
-                <span class="post">Research</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar">
-                <img
-                  alt="Scott Kominers"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/scottkominers_pfp-1-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Scott Kominers</div>
-                <span class="post">Research</span>
-              </div>
-            </a>
-          </li>
-        </ul>
+                <div class="avatar decor--4">
+                  <img alt="Joseph Bonneau" src="https://a16zcrypto.com/wp-content/uploads/2022/07/Joseph-Bonneau-400x400-1-300x300.png">
+                </div>
+                <div class="r-col">
+                  <div class="name">Joseph Bonneau</div>
+                  <span class="post">Research</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="card-people">
+                <div class="avatar decor--5">
+                  <img alt="Scott Kominers" src="https://a16zcrypto.com/wp-content/uploads/2022/05/scottkominers_pfp-1-300x300.png">
+                </div>
+                <div class="r-col">
+                  <div class="name">Scott Kominers</div>
+                  <span class="post">Research</span>
+                </div>
+              </a>
+            </li>
+          </ul>
       </div>
     </section>
 

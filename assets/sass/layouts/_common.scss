@@ -18,8 +18,8 @@
     visibility: hidden;
   }
 
-  .nav-active & {
-
+  .nav-active &,
+  .search-active & {
     &:before {
       opacity: 1;
       visibility: visible;

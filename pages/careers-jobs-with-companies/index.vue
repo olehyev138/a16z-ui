@@ -1,5 +1,7 @@
 <template>
   <div id="wrapper">
+    <Header></Header>
+
     <header class="hero hero--sm hero--jobs">
       <div class="container">
         <picture class="bg">
@@ -68,7 +70,7 @@
     <div class="tab-content">
       <div id="tab2">
         <div class="container">
-          <ul class="highlight-list three-items">
+          <ul class="highlight-list three-items has-divider">
             <li class="has-alphabet open">
               <a href="#" class="alphabet">C</a>
             </li>
