@@ -165,6 +165,7 @@ export default {
           teamMembers[index].photo = photo;
         });
         this.teamMembers = this.arrGroupAlphabeticalOrder(teamMembers);
+        this.$store.dispatch("teamMembers/storeTeamMembers", teamMembers);
       }
       // console.log(this.teamMembers);
     },

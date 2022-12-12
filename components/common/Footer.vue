@@ -273,6 +273,10 @@ export default {
       // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
+        this.$store.dispatch(
+          "common/storeCookieTxt",
+          response.cookie_banner_text
+        );
         if (!this.$util.isEmpty(response.footer_menu)) {
           this.footer_menu = response.footer_menu;
         }

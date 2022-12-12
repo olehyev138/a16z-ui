@@ -28,6 +28,7 @@ export default {
     { src: "~/plugins/axios" },
     { src: "@/plugins/api.js" },
     { src: "@/plugins/helper.js" },
+    { src: "@/plugins/persistedState.client.js" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

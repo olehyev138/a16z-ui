@@ -1,11 +1,10 @@
 <template>
   <div id="wrapper">
     <Header></Header>
-
-    <section class="hero-heading">
+    <section class="hero-heading" v-if="!$util.isEmpty(getTeamMember)">
       <div class="container">
         <div class="highlight-display hld--lime">
-          <h1>Chris <span class="nxt-line">Dixon</span></h1>
+          <h1 v-html="fullName(getTeamMember.name)"></h1>
         </div>
       </div>
     </section>
@@ -19,7 +18,12 @@
           <div class="row">
             <div class="col-sm-6 col-md-4">
               <div class="img">
-                <img src="@/assets/images/img-chris-dixon.png" alt="" />
+                <img
+                  v-if="!$util.isEmpty(getTeamMember)"
+                  :src="getTeamMember.photo"
+                  alt=""
+                />
+                <img v-else src="@/assets/images/img-chris-dixon.png" alt="" />
               </div>
               <span class="des">ENS / cdixon.eth</span>
               <ul class="social-networks">
@@ -278,8 +282,46 @@ export default {
       title: "Team profile",
     };
   },
+  data() {
+    return {
+      general_content: [],
+    };
+  },
+  computed: {
+    getTeamMember() {
+      let storeData = this.$store.getters["teamMembers/getTeamMembers"];
+      let memberId = this.$route.params.id;
+      let member = storeData.find((member) => member.id == memberId);
+      return member;
+    },
+  },
+  methods: {
+    fullName(name) {
+      if (!this.$util.isEmpty(name)) {
+        var fullName = name.split(" ");
+        console.log(fullName.length);
+        if (fullName.length == 1) {
+          return fullName[0];
+        } else {
+          let lastName = fullName.slice(-1);
+          return name.replace(
+            lastName[0],
+            `<span class="nxt-line">${lastName[0]}</span>`
+          );
+        }
+      }
+    },
+    async getTeamMemberContent(id) {
+      const response = await this.$api.teampage.getTeamMember(id);
+      console.log("response = ", response);
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+      }
+    },
+  },
   mounted() {
-    console.log(this.$route.params.id);
+    // console.log(this.$route.params.id);
+    this.getTeamMemberContent(this.$route.params.id);
   },
 };
 </script>

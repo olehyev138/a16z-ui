@@ -1,10 +1,12 @@
 <template>
-  <div class="cookies" v-if="cookiesShow == true">
+  <div
+    class="cookies"
+    v-if="cookiesShow == true && !$util.isEmpty(cookieBannerText)"
+  >
     <div class="container">
       <div class="txt-wrap">
         <p>
-          we use third party cookies in order to personalise your site
-          experience
+          {{ cookieBannerText }}
         </p>
       </div>
       <ul class="btns-wrap">
@@ -33,6 +35,11 @@ export default {
     return {
       cookiesShow: false,
     };
+  },
+  computed: {
+    cookieBannerText() {
+      return this.$store.getters["common/getCookieTxt"];
+    },
   },
   methods: {
     acceptCookies() {
