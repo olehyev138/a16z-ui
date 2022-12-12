@@ -394,63 +394,11 @@
       </div>
     </section>
 
-    <section class="tags-banner">
+    <section class="tags-banner" v-if="!$util.isEmpty(tags)">
       <div class="container">
         <div class="tags-banner-box">
           <span class="block-title">popular tags</span>
-          <ul class="tags">
-            <li>
-              <a href="#" class="tag white-tag">Crypto & Web3</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Code releases</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Fintech</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Currency</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Crypto & web3</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Currency</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Currency</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Technology</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">A16Z crypto</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Blockchain</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Design</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">NFTS</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">NFTS</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Blockchain</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Code releases</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">Technology</a>
-            </li>
-            <li>
-              <a href="#" class="tag white-tag">...</a>
-            </li>
-          </ul>
+          <PopularTags :tags="tags" key="editorialPage"></PopularTags>
         </div>
       </div>
     </section>
@@ -581,6 +529,62 @@ export default {
     return {
       title: "Editorial list",
     };
+  },
+  data() {
+    return {
+      posts: [],
+      tags: [],
+    };
+  },
+  methods: {
+    async fetchPosts() {
+      let payload = {
+        post_type: "any",
+        posts_per_page: -1,
+        tax_query: {
+          taxonomy: "focus-areas",
+          field: "slug",
+          terms: "law-policy",
+        },
+      };
+      const response = await this.$api.common.fetchPosts(payload);
+      console.log("editorial page response = ", response);
+      // if (
+      //   !this.$util.isEmpty(response) &&
+      //   !this.$util.isEmpty(response.posts)
+      // ) {
+      //   if (!this.$util.isEmpty(response.posts.data)) {
+      //     let posts = response.posts.data;
+      //     posts.forEach(async (val, index) => {
+      //       posts[index].authorList = [];
+      //       let authorArr = await this.getSinglePost(val.ID);
+      //       posts[index].authorList = authorArr;
+      //     });
+      //     this.posts = posts;
+      //   }
+      // }
+    },
+    async getSinglePost(postId) {
+      const response = await this.$api.common.getSinglePost(postId);
+      if (!this.$util.isEmpty(response)) {
+        if (!this.$util.isEmpty(response.acf)) {
+          let authors = response.acf.authors ? response.acf.authors : "";
+          return this.$util.stringToArray(authors, "and");
+        }
+      }
+    },
+    async getPopularTags() {
+      const response = await this.$api.homepage.getPopularTags();
+      if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.tags)) {
+        if (!this.$util.isEmpty(response.tags.data)) {
+          this.tags = response.tags.data;
+        }
+      }
+    },
+  },
+  mounted() {
+    this.fetchPosts();
+    this.getPopularTags();
   },
 };
 </script>

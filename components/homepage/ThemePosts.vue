@@ -61,7 +61,7 @@ export default {
           terms: terms,
         },
       };
-      const response = await this.$api.common.getCategoryWisepost(payload);
+      const response = await this.$api.common.fetchPosts(payload);
       if (
         !this.$util.isEmpty(response) &&
         !this.$util.isEmpty(response.posts)

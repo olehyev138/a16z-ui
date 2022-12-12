@@ -28,7 +28,7 @@ export default (axios) => ({
         });
     });
   },
-  getCategoryWisepost(payload) {
+  fetchPosts(payload) {
     return new Promise(function (resolve, reject) {
       const config = {
         params: payload,

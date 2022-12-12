@@ -232,34 +232,7 @@
       <div class="container">
         <div class="tags-banner-box">
           <span class="block-title">popular tags</span>
-          <ul class="tags">
-            <template v-if="tags.length > showTagsLimiter">
-              <li v-for="(tag, i) in displayedTags" :key="i">
-                <a
-                  href="javscript:void(0)"
-                  class="tag white-tag"
-                  v-html="tag.name"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="javascript:void(0)"
-                  @click="showAllTags = !showAllTags"
-                  class="tag white-tag"
-                  >...</a
-                >
-              </li>
-            </template>
-            <template v-else>
-              <li v-for="(tag, i) in displayedTags" :key="i">
-                <a
-                  href="javscript:void(0)"
-                  class="tag white-tag"
-                  v-html="tag.name"
-                ></a>
-              </li>
-            </template>
-          </ul>
+          <PopularTags :tags="tags" key="homePage"></PopularTags>
         </div>
       </div>
     </section>
@@ -288,19 +261,7 @@ export default {
       tags: [],
     };
   },
-  computed: {
-    displayedTags() {
-      if (this.tags.length > this.showTagsLimiter) {
-        if (!this.showAllTags) {
-          return this.tags.slice(0, this.showTagsLimiter);
-        } else {
-          return this.tags;
-        }
-      } else {
-        return this.tags;
-      }
-    },
-  },
+  computed: {},
   methods: {
     async getAllContent() {
       const response = await this.$api.homepage.get();
