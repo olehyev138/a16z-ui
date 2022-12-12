@@ -12,7 +12,11 @@
     <section class="profile-detail">
       <div class="container">
         <div class="group-header has-dotted-border">
-          <h6>Founder, a16z crypto</h6>
+          <h6>
+            {{
+              !$util.isEmpty(general_content.role) ? general_content.role : ""
+            }}
+          </h6>
         </div>
         <div class="profile-body">
           <div class="row">
@@ -25,57 +29,47 @@
                 />
                 <img v-else src="@/assets/images/img-chris-dixon.png" alt="" />
               </div>
-              <span class="des">ENS / cdixon.eth</span>
-              <ul class="social-networks">
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">Forecaster</a></li>
+              <span class="des" v-if="!$util.isEmpty(general_content.ens)"
+                >ENS / {{ general_content.ens }}</span
+              >
+              <ul
+                class="social-networks"
+                v-if="!$util.isEmpty(general_content.socials)"
+              >
+                <li v-for="(social, i) in general_content.socials" :key="i">
+                  <a :href="social.social_link">{{ social.social_title }}</a>
+                </li>
               </ul>
             </div>
-            <div class="col-md-offset-1 col-sm-6">
-              <p>
-                Chris Dixon is a general partner and has been at Andreessen
-                Horowitz since 2012. He founded and leads a16z Crypto, which
-                invests in web3 technologies through three dedicated funds with
-                more than $3 billion under management.Previously, Chris was the
-                cofounder and CEO of two startups, SiteAdvisor and Hunch.
-                SiteAdvisor was an internet security company that warned web
-                users of security threats. The company was acquired by McAfee in
-                2006. Hunch was a recommendation technology company that was
-                acquired by eBay in 2011.
-              </p>
-
-              <p>
-                Chris has been a prolific seed investor, cofounding Founder
-                Collective, a seed venture fund, and making a number of personal
-                angel investments in various technology companies.
-              </p>
-
-              <p>
-                Chris started programming as a kid, and was a professional
-                programmer after college at the high-speed options trading firm,
-                Arbitrade. He has a BA and MA in Philosophy from Columbia and an
-                MBA from Harvard. He has written about his theories and
-                experiences as an entrepreneur and investor on Medium, and
-                before that at cdixon.org; his a16z Podcast appearances can be
-                found here.
-              </p>
-            </div>
+            <div
+              class="col-md-offset-1 col-sm-6"
+              v-html="
+                !$util.isEmpty(general_content.about)
+                  ? $util.showHtml(general_content.about)
+                  : ''
+              "
+            ></div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider bg-grey">
+    <div class="section-divider bg-grey" v-if="!$util.isEmpty(featured_posts)">
       <div class="container">
         <span class="block-title">Featured</span>
       </div>
     </div>
 
-    <section class="profile-featured bg-grey">
+    <section
+      class="profile-featured bg-grey"
+      v-if="!$util.isEmpty(featured_posts)"
+    >
       <div class="container">
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-4" v-for="(post, i) in featured_posts" :key="i">
+            <PostThreeCol :postData="post"></PostThreeCol>
+          </div>
+          <!-- <div class="col-sm-4">
             <div class="box">
               <span class="category-title">podcast /</span>
               <h6><a href="#">the creator economy — NFTs and beyond</a></h6>
@@ -133,7 +127,7 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -285,6 +279,7 @@ export default {
   data() {
     return {
       general_content: [],
+      featured_posts: [],
     };
   },
   computed: {
@@ -313,9 +308,12 @@ export default {
     },
     async getTeamMemberContent(id) {
       const response = await this.$api.teampage.getTeamMember(id);
-      console.log("response = ", response);
-      if (!this.$util.isEmpty(response)) {
-        this.general_content = response;
+
+      if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.acf)) {
+        this.general_content = response.acf;
+
+        console.log("response = ", response);
+        this.featured_posts = response.acf.featured_posts;
       }
     },
   },
