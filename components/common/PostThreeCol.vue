@@ -61,7 +61,7 @@ export default {
   },
   mounted() {
     // this.getSinglePost(this.postData.ID);
-    console.log(this.postData.ID, this.callFrom);
+    // console.log(this.postData.ID, this.callFrom);
   },
 };
 </script>
