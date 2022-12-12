@@ -22,27 +22,23 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h5>
-              a16z crypto research is a
-              <a href="#" class="link-w-dotted-line">new</a> kind of
-              multidisciplinary lab that bridges the worlds of academic theory
-              and industry practice to advance the science and technology of the
-              next generation of the internet.
-            </h5>
+            <h5
+              v-html="
+                !$util.isEmpty(general_content.subtitle)
+                  ? $util.showHtml(general_content.subtitle)
+                  : ''
+              "
+            ></h5>
           </div>
           <div class="col-sm-6">
             <div class="desc">
-              <p>
-                We work closely with builders and researchers in our portfolio
-                companies, and with other industry experts, to address the most
-                important challenges in crypto. Some of these include how
-                decentralized computational infrastructure will scale and
-                evolve; how token incentives in protocols should be structured
-                to align all participants; how to translate cutting-edge
-                cryptographic and privacy-preserving tools into practice; and
-                how to best build token economies across games, social networks,
-                and other applications.
-              </p>
+              <p
+                v-html="
+                  !$util.isEmpty(general_content.intro_text)
+                    ? $util.showHtml(general_content.intro_text)
+                    : ''
+                "
+              ></p>
             </div>
           </div>
         </div>
@@ -139,136 +135,44 @@
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(resources_posts)">
       <div class="container">
-        <span class="block-title">Resources</span>
+        <span class="block-title">
+          {{
+            !$util.isEmpty(general_content.resources_title)
+              ? general_content.resources_title
+              : "Resources"
+          }}</span
+        >
       </div>
     </div>
 
     <section class="featured">
-      <div class="container">
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-7">
-              <h5><a href="#">survey of proof-of-stake blockchains</a></h5>
-              <span class="posted-by"> <a href="#">Valeria Nikolaenko</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web3</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article has-img">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-7">
-              <h5><a href="#">auction design for web3</a></h5>
-              <span class="posted-by">
-                <a href="#">Scott Kominers</a> and
-                <a href="#">Tim Roughgarden</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web3</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-3 col-md-2 col-md-offset-1">
-              <div class="img">
-                <a href="#">
-                  <img src="@/assets/images/card-img-06.png" alt="" />
-                  <span class="icon-play"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-7">
-              <h5>
-                <a href="#"
-                  >NFT Sales: clearing the market, avoiding gas wars</a
-                >
-              </h5>
-              <span class="posted-by">
-                <a href="#">Scott Duke Kominers</a> and
-                <a href="#">Tim Roughgarden</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web3</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-7">
-              <h5>
-                <a href="#">why blockchain performance is hard to measure</a>
-              </h5>
-              <span class="posted-by"> <a href="#">Joseph Bonneau</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web3</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-7">
-              <h5><a href="#">on-chain trusted setup ceremony</a></h5>
-              <span class="posted-by">
-                <a href="#">Valeria Nikolaenko</a> and
-                <a href="#">Sam Ragsdale</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web3</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ResourchPosts
+        v-for="(post, i) in resources_posts"
+        :postData="post"
+        :key="i"
+      ></ResourchPosts>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(team_members)">
       <div class="container">
-        <span class="block-title">Team</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.team_section_title)
+            ? general_content.team_section_title
+            : "Team"
+        }}</span>
       </div>
     </div>
 
-    <section class="text-block-subheadline">
+    <section
+      class="text-block-subheadline"
+      v-if="!$util.isEmpty(general_content.team_section_description)"
+    >
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p class="p2">
-              Each member of the a16z crypto research team is a leader in their
-              field, with a track record of outstanding research in web3 and
-              experience deploying their contributions in real-world
-              applications
-            </p>
+            <p class="p2">{{ general_content.team_section_description }}</p>
           </div>
         </div>
       </div>
@@ -277,62 +181,77 @@
     <section class="team">
       <div class="container">
         <ul class="highlight-list style--1">
-            <li>
-              <a href="#" class="card-people">
-                <div class="avatar decor--1">
-                  <img alt="Tim Roughgarden" src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg">
-                </div>
-                <div class="r-col">
-                  <div class="name">Tim Roughgarden</div>
-                  <span class="post">Head of research</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="card-people">
-                <div class="avatar decor--2">
-                  <img alt="Dan Boneh" src="https://a16zcrypto.com/wp-content/uploads/2022/04/Dan-Boneh-headshot-203x300.jpeg">
-                </div>
-                <div class="r-col">
-                  <div class="name">Dan Boneh</div>
-                  <span class="post">Senior Research Advisor</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="card-people">
-                <div class="avatar decor--3">
-                  <img alt="Valeria Nikolaenko" src="https://a16zcrypto.com/wp-content/uploads/2022/05/Valeria-Nikolaenko-1-300x300.png">
-                </div>
-                <div class="r-col">
-                  <div class="name">Valeria Nikolaenko</div>
-                  <span class="post">Research</span>
-                </div>
-              </a>
-            </li>
-            <li>
+          <li>
             <a href="#" class="card-people">
-                <div class="avatar decor--4">
-                  <img alt="Joseph Bonneau" src="https://a16zcrypto.com/wp-content/uploads/2022/07/Joseph-Bonneau-400x400-1-300x300.png">
-                </div>
-                <div class="r-col">
-                  <div class="name">Joseph Bonneau</div>
-                  <span class="post">Research</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="card-people">
-                <div class="avatar decor--5">
-                  <img alt="Scott Kominers" src="https://a16zcrypto.com/wp-content/uploads/2022/05/scottkominers_pfp-1-300x300.png">
-                </div>
-                <div class="r-col">
-                  <div class="name">Scott Kominers</div>
-                  <span class="post">Research</span>
-                </div>
-              </a>
-            </li>
-          </ul>
+              <div class="avatar decor--1">
+                <img
+                  alt="Tim Roughgarden"
+                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg"
+                />
+              </div>
+              <div class="r-col">
+                <div class="name">Tim Roughgarden</div>
+                <span class="post">Head of research</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="card-people">
+              <div class="avatar decor--2">
+                <img
+                  alt="Dan Boneh"
+                  src="https://a16zcrypto.com/wp-content/uploads/2022/04/Dan-Boneh-headshot-203x300.jpeg"
+                />
+              </div>
+              <div class="r-col">
+                <div class="name">Dan Boneh</div>
+                <span class="post">Senior Research Advisor</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="card-people">
+              <div class="avatar decor--3">
+                <img
+                  alt="Valeria Nikolaenko"
+                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Valeria-Nikolaenko-1-300x300.png"
+                />
+              </div>
+              <div class="r-col">
+                <div class="name">Valeria Nikolaenko</div>
+                <span class="post">Research</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="card-people">
+              <div class="avatar decor--4">
+                <img
+                  alt="Joseph Bonneau"
+                  src="https://a16zcrypto.com/wp-content/uploads/2022/07/Joseph-Bonneau-400x400-1-300x300.png"
+                />
+              </div>
+              <div class="r-col">
+                <div class="name">Joseph Bonneau</div>
+                <span class="post">Research</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="card-people">
+              <div class="avatar decor--5">
+                <img
+                  alt="Scott Kominers"
+                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/scottkominers_pfp-1-300x300.png"
+                />
+              </div>
+              <div class="r-col">
+                <div class="name">Scott Kominers</div>
+                <span class="post">Research</span>
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -375,8 +294,11 @@ export default {
 
   data() {
     return {
-      general_content: null,
+      general_content: {},
       our_focus_items: [],
+      resources_posts: [],
+      team_members: [],
+      featured_posts: [],
     };
   },
   methods: {
@@ -386,6 +308,9 @@ export default {
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
         this.our_focus_items = response.our_focus_items;
+        this.featured_posts = response.featured_posts;
+        this.resources_posts = response.resources;
+        this.team_members = response.team_members;
       }
     },
   },

@@ -59,7 +59,7 @@
               <a href="#" class="alphabet" :key="i">{{ val.group }}</a>
             </li>
 
-            <li v-for="(teamMember, i) in val.children" :key="val.group + i">
+            <!-- <li v-for="(teamMember, i) in val.children" :key="val.group + i">
               <NuxtLink
                 :to="`/team/profile/${teamMember.id}`"
                 class="card-people"
@@ -78,7 +78,12 @@
                 </div>
                 <div class="name">{{ teamMember.name }}</div>
               </NuxtLink>
-            </li>
+            </li> -->
+            <TeamMember
+              v-for="(member, i) in val.children"
+              :key="i"
+              :teamMember="member"
+            ></TeamMember>
           </template>
         </ul>
       </div>
@@ -161,6 +166,7 @@ export default {
             ? ""
             : val.title.rendered;
           teamMembers[index].photo = "";
+
           let photo = await this.getTeamMemberPhoto(val.featured_media);
           teamMembers[index].photo = photo;
         });

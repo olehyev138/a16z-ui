@@ -25,6 +25,19 @@ export default (axios) => ({
         });
     });
   },
+  getTeamMemberPhoto(featured_media_id = 0) {
+    return new Promise(function (resolve, reject) {
+      axios
+        .get(`/wp/v2/media/${featured_media_id}`)
+        .then(function (response) {
+          resolve(response.data);
+        })
+        .catch(function (error) {
+          // console.log("Show error notification! ", error);
+          reject(error);
+        });
+    });
+  },
   getTeamMember(id = 0) {
     return new Promise(function (resolve, reject) {
       axios
