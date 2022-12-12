@@ -221,10 +221,12 @@ export default {
           var teamMembers = response.team_members;
           for (var index = 0; index < teamMembers.length; index++) {
             teamMembers[index].name = teamMembers[index].post_title;
-            let teamData = await this.getTeamMember(teamMembers[index].ID);
+            try {
+              let teamData = await this.getTeamMember(teamMembers[index].ID);
 
-            teamMembers[index].photo = teamData.photoLink;
-            teamMembers[index].role = teamData.roleName;
+              teamMembers[index].photo = teamData.photoLink;
+              teamMembers[index].role = teamData.roleName;
+            } catch (error) {}
           }
           console.log(teamMembers);
           this.team_members = teamMembers;

@@ -154,10 +154,12 @@ export default {
             : teamMembers[index].title.rendered;
           teamMembers[index].photo = "";
 
-          let photo = await this.getTeamMemberPhoto(
-            teamMembers[index].featured_media
-          );
-          teamMembers[index].photo = photo;
+          try {
+            let photo = await this.getTeamMemberPhoto(
+              teamMembers[index].featured_media
+            );
+            teamMembers[index].photo = photo;
+          } catch (error) {}
         }
         this.teamMembers = this.arrGroupAlphabeticalOrder(teamMembers);
         this.$store.dispatch("teamMembers/storeTeamMembers", teamMembers);

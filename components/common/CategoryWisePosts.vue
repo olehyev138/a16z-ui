@@ -77,11 +77,13 @@ export default {
       ) {
         if (!this.$util.isEmpty(response.posts.data)) {
           let posts = response.posts.data;
-          posts.forEach(async (val, index) => {
+          for (var index = 0; index < posts.length; index++) {
             posts[index].authorList = [];
-            let authorArr = await this.getSinglePost(val.ID);
-            posts[index].authorList = authorArr;
-          });
+            try {
+              let authorArr = await this.getSinglePost(posts[index].ID);
+              posts[index].authorList = authorArr;
+            } catch (error) {}
+          }
           this.posts = posts;
         }
       }

@@ -22,11 +22,17 @@
           </div>
           <div class="col-sm-3">
             <div class="select">
-              <select>
-                <option>Format/ All</option>
-                <option>Option 1</option>
+              <select @change="filterPost()" v-model="postType">
+                <option
+                  v-for="(posttype, i) in postTypes"
+                  :key="i + 'filter'"
+                  :value="posttype == 'Format/ All' ? 'all' : posttype"
+                >
+                  {{ posttype }}
+                </option>
+                <!-- <option>Option 1</option>
                 <option>Option 2</option>
-                <option>Option 3</option>
+                <option>Option 3</option> -->
               </select>
             </div>
           </div>
@@ -528,12 +534,16 @@ export default {
   head() {
     return {
       title: "Editorial list",
+      postType: "",
     };
   },
   data() {
     return {
+      filteredPosts: [],
       posts: [],
       tags: [],
+      postTypes: ["Format/ All"],
+      postType: "all",
     };
   },
   methods: {
@@ -548,21 +558,28 @@ export default {
         },
       };
       const response = await this.$api.common.fetchPosts(payload);
-      console.log("editorial page response = ", response);
-      // if (
-      //   !this.$util.isEmpty(response) &&
-      //   !this.$util.isEmpty(response.posts)
-      // ) {
-      //   if (!this.$util.isEmpty(response.posts.data)) {
-      //     let posts = response.posts.data;
-      //     posts.forEach(async (val, index) => {
-      //       posts[index].authorList = [];
-      //       let authorArr = await this.getSinglePost(val.ID);
-      //       posts[index].authorList = authorArr;
-      //     });
-      //     this.posts = posts;
-      //   }
-      // }
+
+      if (
+        !this.$util.isEmpty(response) &&
+        !this.$util.isEmpty(response.posts)
+      ) {
+        if (!this.$util.isEmpty(response.posts.data)) {
+          let posts = response.posts.data;
+          for (var index = 0; index < posts.length; index++) {
+            posts[index].authorList = [];
+            try {
+              if (this.postTypes.indexOf(posts[index].post_type) === -1) {
+                this.postTypes.push(posts[index].post_type);
+              }
+              // let authorArr = await this.getSinglePost(posts[index].ID);
+              // posts[index].authorList = authorArr;
+            } catch (error) {}
+          }
+          this.posts = posts;
+          this.filterPost();
+          // console.log("editorial page response = ", posts);
+        }
+      }
     },
     async getSinglePost(postId) {
       const response = await this.$api.common.getSinglePost(postId);
@@ -580,6 +597,17 @@ export default {
           this.tags = response.tags.data;
         }
       }
+    },
+    filterPost() {
+      if (this.postType !== "all") {
+        let data = this.posts.filter((type) => {
+          return type.post_type == this.postType;
+        });
+        this.filteredPosts = data;
+      } else {
+        this.filteredPosts = this.posts;
+      }
+      console.log("filter post = ", this.postType, this.filteredPosts.length);
     },
   },
   mounted() {
