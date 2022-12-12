@@ -52,36 +52,15 @@
         <ul class="highlight-list">
           <template v-for="(val, i) in teamMembers">
             <li
-              :key="i + 'group'"
+              :key="`${i + 2}-group`"
               class="has-alphabet"
               :class="i == 0 ? 'open' : i == 1 ? 'close' : ''"
             >
-              <a href="#" class="alphabet" :key="i">{{ val.group }}</a>
+              <a href="#" class="alphabet">{{ val.group }}</a>
             </li>
-
-            <!-- <li v-for="(teamMember, i) in val.children" :key="val.group + i">
-              <NuxtLink
-                :to="`/team/profile/${teamMember.id}`"
-                class="card-people"
-              >
-                <div class="avatar decor--1">
-                  <img
-                    v-if="!$util.isEmpty(teamMember.photo)"
-                    alt="Adina Fischer"
-                    :src="teamMember.photo"
-                  />
-                  <img
-                    v-else
-                    alt="Adina Fischer"
-                    src="https://a16zcrypto.com/wp-content/uploads/2022/05/Adina-Fischer-300x300.png"
-                  />
-                </div>
-                <div class="name">{{ teamMember.name }}</div>
-              </NuxtLink>
-            </li> -->
             <TeamMember
-              v-for="(member, i) in val.children"
-              :key="i"
+              v-for="(member, index) in val.children"
+              :key="`${index}-${member.name}`"
               :teamMember="member"
             ></TeamMember>
           </template>
