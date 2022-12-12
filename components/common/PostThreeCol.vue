@@ -33,7 +33,6 @@ export default {
     callFrom: {
       type: String,
       required: false,
-      default: "teamProfilePAge",
     },
     postData: {
       type: Object,
@@ -61,7 +60,8 @@ export default {
     },
   },
   mounted() {
-    this.getSinglePost(this.postData.ID);
+    // this.getSinglePost(this.postData.ID);
+    console.log(this.postData.ID, this.callFrom);
   },
 };
 </script>

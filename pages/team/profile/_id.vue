@@ -1,10 +1,14 @@
 <template>
   <div id="wrapper">
     <Header></Header>
-    <section class="hero-heading" v-if="!$util.isEmpty(getTeamMember)">
+    <section class="hero-heading">
       <div class="container">
         <div class="highlight-display hld--lime">
-          <h1 v-html="fullName(getTeamMember.name)"></h1>
+          <h1
+            v-html="
+              fullName(!$util.isEmpty(getTeamMember) ? getTeamMember.name : '')
+            "
+          ></h1>
         </div>
       </div>
     </section>
@@ -67,7 +71,10 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-4" v-for="(post, i) in featured_posts" :key="i">
-            <PostThreeCol :postData="post"></PostThreeCol>
+            <PostThreeCol
+              :postData="post"
+              callFrom="teamProfilePage"
+            ></PostThreeCol>
           </div>
         </div>
       </div>
@@ -252,13 +259,12 @@ export default {
       if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.acf)) {
         this.general_content = response.acf;
 
-        console.log("response = ", response);
+        // console.log("team profile response = ", response);
         this.featured_posts = response.acf.featured_posts;
       }
     },
   },
   mounted() {
-    // console.log(this.$route.params.id);
     this.getTeamMemberContent(this.$route.params.id);
   },
 };

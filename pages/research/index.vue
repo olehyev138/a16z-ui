@@ -84,7 +84,7 @@
           <div class="col-sm-4" v-for="(post, i) in featured_posts" :key="i">
             <PostThreeCol
               :postData="post"
-              :callFrom="'researchpage'"
+              callFrom="researchpage"
             ></PostThreeCol>
           </div>
         </div>
