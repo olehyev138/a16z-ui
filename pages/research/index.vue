@@ -72,7 +72,7 @@
       </div>
     </section>
 
-    <div class="section-divider bg-grey">
+    <div class="section-divider bg-grey" v-if="!$util.isEmpty(featured_posts)">
       <div class="container">
         <span class="block-title">Featured</span>
       </div>
@@ -81,55 +81,11 @@
     <section class="profile-featured bg-grey">
       <div class="container">
         <div class="row">
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">article /</span>
-              <h6><a href="#">on-chain trusted setup ceremony</a></h6>
-              <div class="authors">
-                <a href="#">Joseph Bonneau</a> and
-                <a href="#">Valeria Nikolaenko</a>
-              </div>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">article /</span>
-              <h6>
-                <a href="#"
-                  >a call to the SEC: treat crypto assets as if clients
-                  matter</a
-                >
-              </h6>
-              <div class="authors">
-                <a href="#">Justin Thaler</a>
-              </div>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">article /</span>
-              <h6>
-                <a href="#">‘proof-of-merge’ NFT to commemorate ethereum</a>
-              </h6>
-              <div class="authors">
-                <a href="#">Alex Immerman</a>
-              </div>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
+          <div class="col-sm-4" v-for="(post, i) in featured_posts" :key="i">
+            <PostThreeCol
+              :postData="post"
+              :callFrom="'researchpage'"
+            ></PostThreeCol>
           </div>
         </div>
       </div>

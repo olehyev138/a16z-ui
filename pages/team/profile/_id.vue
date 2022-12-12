@@ -69,65 +69,6 @@
           <div class="col-sm-4" v-for="(post, i) in featured_posts" :key="i">
             <PostThreeCol :postData="post"></PostThreeCol>
           </div>
-          <!-- <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">podcast /</span>
-              <h6><a href="#">the creator economy — NFTs and beyond</a></h6>
-              <div class="authors">
-                <a href="#">Kevin Chou</a>, <a href="#">Jesse Walden</a>, and
-                <a href="#">Chris Dixon</a>
-              </div>
-              <ul class="tags">
-                <li>
-                  <a href="#" class="tag small-tag white-tag"
-                    >Gaminig, Social + New Media</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="tag small-tag white-tag">Marketplace</a>
-                </li>
-                <li><a href="#" class="tag small-tag white-tag">NFTS</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">article /</span>
-              <h6><a href="#">doubling down on dapper labs</a></h6>
-              <div class="authors">
-                <a href="#">Kevin Chou</a>, <a href="#">Chris Dixon</a>, and
-                <a href="#">David Georges</a>
-              </div>
-              <ul class="tags">
-                <li>
-                  <a href="#" class="tag small-tag white-tag">Marketplaces</a>
-                </li>
-                <li>
-                  <a href="#" class="tag small-tag white-tag">Consumer</a>
-                </li>
-                <li><a href="#" class="tag small-tag white-tag">Growth</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">article /</span>
-              <h6><a href="#">NFTs and a tousand true fans</a></h6>
-              <div class="authors">
-                <a href="#">Chris Dixon</a>
-              </div>
-              <ul class="tags">
-                <li>
-                  <a href="#" class="tag small-tag white-tag">Crypto & Web3</a>
-                </li>
-                <li>
-                  <a href="#" class="tag small-tag white-tag"
-                    >Online Communities</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div> -->
         </div>
       </div>
     </section>

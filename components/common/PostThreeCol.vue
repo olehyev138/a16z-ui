@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "featuredPost",
+  name: "postThreeCol",
   props: {
     callFrom: {
       type: String,
