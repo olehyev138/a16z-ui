@@ -150,34 +150,6 @@
               :key="`${index}-researchpage`"
             ></team-member>
           </li>
-          <!-- <li v-for="(member, i) in team_members" :key="i">
-            <a href="#" class="card-people">
-              <div class="avatar decor--1">
-                <img
-                  alt="Tim Roughgarden"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">{{ member.post_title }}</div>
-                <span class="post">{{ member.role }}</span>
-              </div>
-            </a>
-          </li> -->
-          <!-- <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--1">
-                <img
-                  alt="Tim Roughgarden"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Tim Roughgarden</div>
-                <span class="post">Head of research</span>
-              </div>
-            </a>
-          </li> -->
         </ul>
       </div>
     </section>
