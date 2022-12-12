@@ -235,7 +235,6 @@ export default {
     fullName(name) {
       if (!this.$util.isEmpty(name)) {
         var fullName = name.split(" ");
-        console.log(fullName.length);
         if (fullName.length == 1) {
           return fullName[0];
         } else {

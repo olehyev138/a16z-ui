@@ -50,7 +50,7 @@ export default {
   methods: {
     async getSinglePost(postId = 0) {
       const response = await this.$api.common.getSinglePost(postId);
-      console.log("getSinglePost = ", response);
+      // console.log("getSinglePost = ", response);
       if (!this.$util.isEmpty(response)) {
         this.tags = response.tags;
         if (!this.$util.isEmpty(response.acf)) {

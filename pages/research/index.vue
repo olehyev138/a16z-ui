@@ -123,7 +123,10 @@
 
     <section
       class="text-block-subheadline"
-      v-if="!$util.isEmpty(general_content.team_section_description)"
+      v-if="
+        !$util.isEmpty(general_content.team_section_description) &&
+        !$util.isEmpty(team_members)
+      "
     >
       <div class="container">
         <div class="row">
@@ -137,7 +140,17 @@
     <section class="team" v-if="!$util.isEmpty(team_members)">
       <div class="container">
         <ul class="highlight-list style--1">
-          <li v-for="(member, i) in team_members" :key="i">
+          <li
+            v-for="(team, index) in team_members"
+            :key="`${index}-researchpage`"
+          >
+            <team-member
+              :teamMember="team"
+              callFrom="researchpage"
+              :key="`${index}-researchpage`"
+            ></team-member>
+          </li>
+          <!-- <li v-for="(member, i) in team_members" :key="i">
             <a href="#" class="card-people">
               <div class="avatar decor--1">
                 <img
@@ -147,10 +160,10 @@
               </div>
               <div class="r-col">
                 <div class="name">{{ member.post_title }}</div>
-                <span class="post">Head of research</span>
+                <span class="post">{{ member.role }}</span>
               </div>
             </a>
-          </li>
+          </li> -->
           <!-- <li>
             <a href="#" class="card-people">
               <div class="avatar decor--1">
@@ -162,62 +175,6 @@
               <div class="r-col">
                 <div class="name">Tim Roughgarden</div>
                 <span class="post">Head of research</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--2">
-                <img
-                  alt="Dan Boneh"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/04/Dan-Boneh-headshot-203x300.jpeg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Dan Boneh</div>
-                <span class="post">Senior Research Advisor</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--3">
-                <img
-                  alt="Valeria Nikolaenko"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Valeria-Nikolaenko-1-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Valeria Nikolaenko</div>
-                <span class="post">Research</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--4">
-                <img
-                  alt="Joseph Bonneau"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/07/Joseph-Bonneau-400x400-1-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Joseph Bonneau</div>
-                <span class="post">Research</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--5">
-                <img
-                  alt="Scott Kominers"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/scottkominers_pfp-1-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Scott Kominers</div>
-                <span class="post">Research</span>
               </div>
             </a>
           </li> -->
@@ -281,13 +238,47 @@ export default {
     },
     async getResearchContent() {
       const response = await this.$api.researchpage.get();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
         this.our_focus_items = response.our_focus_items;
         this.featured_posts = response.featured_posts;
         this.resources_posts = response.resources;
-        this.team_members = response.team_members;
+
+        if (!this.$util.isEmpty(response.team_members)) {
+          var teamMembers = response.team_members;
+          for (var index = 0; index < teamMembers.length; index++) {
+            teamMembers[index].name = teamMembers[index].post_title;
+            let teamData = await this.getTeamMember(teamMembers[index].ID);
+
+            teamMembers[index].photo = teamData.photoLink;
+            teamMembers[index].role = teamData.roleName;
+          }
+          console.log(teamMembers);
+          this.team_members = teamMembers;
+        }
+      }
+    },
+    async getTeamMember(id) {
+      const response = await this.$api.teampage.getTeamMember(id);
+
+      if (!this.$util.isEmpty(response)) {
+        var role = "";
+        if (!this.$util.isEmpty(response.acf)) {
+          role = response.acf.role;
+        }
+        let featured_media_id = response.featured_media;
+        let photo = await this.getTeamMemberPhoto(featured_media_id);
+        // console.log("response getTeamMember photoLink = ", photoLink);
+        return { photoLink: photo, roleName: role };
+      }
+    },
+    async getTeamMemberPhoto(featured_media_id) {
+      const response = await this.$api.teampage.getTeamMemberPhoto(
+        featured_media_id
+      );
+      if (!this.$util.isEmpty(response)) {
+        return response.source_url;
       }
     },
   },

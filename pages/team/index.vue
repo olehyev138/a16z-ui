@@ -58,11 +58,16 @@
             >
               <a href="#" class="alphabet">{{ val.group }}</a>
             </li>
-            <TeamMember
+            <li
               v-for="(member, index) in val.children"
-              :key="`${index}-${member.name}`"
-              :teamMember="member"
-            ></TeamMember>
+              :key="`${index}-teamPage`"
+            >
+              <TeamMember
+                :teamMember="member"
+                :key="`${index}-teamPageC`"
+                callFrom="teamPage"
+              />
+            </li>
           </template>
         </ul>
       </div>
@@ -140,15 +145,20 @@ export default {
       const response = await this.$api.teampage.getTeamMembers();
       if (!this.$util.isEmpty(response)) {
         let teamMembers = response;
-        teamMembers.forEach(async (val, index) => {
-          teamMembers[index].name = this.$util.isEmpty(val.title.rendered)
+
+        for (var index = 0; index < teamMembers.length; index++) {
+          teamMembers[index].name = this.$util.isEmpty(
+            teamMembers[index].title.rendered
+          )
             ? ""
-            : val.title.rendered;
+            : teamMembers[index].title.rendered;
           teamMembers[index].photo = "";
 
-          let photo = await this.getTeamMemberPhoto(val.featured_media);
+          let photo = await this.getTeamMemberPhoto(
+            teamMembers[index].featured_media
+          );
           teamMembers[index].photo = photo;
-        });
+        }
         this.teamMembers = this.arrGroupAlphabeticalOrder(teamMembers);
         this.$store.dispatch("teamMembers/storeTeamMembers", teamMembers);
       }
