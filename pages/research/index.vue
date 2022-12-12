@@ -178,10 +178,24 @@
       </div>
     </section>
 
-    <section class="team">
+    <section class="team" v-if="!$util.isEmpty(team_members)">
       <div class="container">
         <ul class="highlight-list style--1">
-          <li>
+          <li v-for="(member, i) in team_members" :key="i">
+            <a href="#" class="card-people">
+              <div class="avatar decor--1">
+                <img
+                  alt="Tim Roughgarden"
+                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Tim-Roughgarden-scaled-230x300.jpeg"
+                />
+              </div>
+              <div class="r-col">
+                <div class="name">{{ member.post_title }}</div>
+                <span class="post">Head of research</span>
+              </div>
+            </a>
+          </li>
+          <!-- <li>
             <a href="#" class="card-people">
               <div class="avatar decor--1">
                 <img
@@ -250,7 +264,7 @@
                 <span class="post">Research</span>
               </div>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </section>
@@ -264,12 +278,9 @@
         <source srcset="@/assets/images/bg-banner-research-sm.jpg" />
         <img src="@/assets/images/bg-banner-research.jpg" alt="" />
       </picture>
-      <div class="container">
+      <div class="container" v-if="!$util.isEmpty(general_content)">
         <div class="highlight-display">
-          <h3 class="h1">
-            A16z crypto <br />
-            <span>Jobs</span>
-          </h3>
+          <h3 class="h1" v-html="jobTitle(general_content.jobs_cta_title)"></h3>
         </div>
         <div class="btn-wrap">
           <a href="#" class="btn btn--white"
@@ -301,7 +312,17 @@ export default {
       featured_posts: [],
     };
   },
+  computed: {},
   methods: {
+    jobTitle(title) {
+      if (!this.$util.isEmpty(title)) {
+        let str = title;
+
+        return str.replace("jobs", "<br>Jobs");
+      } else {
+        return `a16z crypto <br>Jobs`;
+      }
+    },
     async getResearchContent() {
       const response = await this.$api.researchpage.get();
       console.log(response);
