@@ -53,47 +53,33 @@
                   </p>
                 </div>
 
-                <ul class="podcast-list">
-                  <li>
+                <ul class="podcast-list" v-if="!$util.isEmpty(streamings)">
+                  <li
+                    v-for="(streaming, i) in streamings.slice(0, 3)"
+                    :key="i + 'streaming'"
+                  >
                     <a href="#">
-                      <span class="text">Apple music</span>
-                      <span class="icon-apple-music"></span>
+                      <span class="text">{{ streaming.title }}</span>
+                      <span :class="streaming.icon_class"></span>
                     </a>
                   </li>
-                  <li>
-                    <a href="#">
-                      <span class="text">Spotify</span>
-                      <span class="icon-spotify"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span class="text">Google podcast</span>
-                      <span class="icon-podcasts"></span>
-                    </a>
-                  </li>
+
                   <li>
                     <a class="more" data-more data-outside href="#">
                       <span class="text">More</span>
                     </a>
                     <div class="slide">
                       <ul class="podcast-list">
-                        <li>
+                        <li
+                          v-for="(streaming, i) in streamings.slice(
+                            3,
+                            streamings.length
+                          )"
+                          :key="i + 'streaming-more'"
+                        >
                           <a href="#">
-                            <span class="text">Apple music</span>
-                            <span class="icon-apple-music"></span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <span class="text">Spotify</span>
-                            <span class="icon-spotify"></span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <span class="text">Google podcasts</span>
-                            <span class="icon-podcasts"></span>
+                            <span class="text">{{ streaming.title }}</span>
+                            <span :class="streaming.icon_class"></span>
                           </a>
                         </li>
                       </ul>
@@ -235,34 +221,41 @@ export default {
           icon_class: "icon-instagram",
         },
       ],
-      streaming: [
+      streamings: [
         {
           title: "Apple Music",
           link: "",
+          iconClass: "icon-apple-music",
         },
         {
           title: "Overcast",
           link: "",
+          iconClass: "icon-overcast",
         },
         {
           title: "Spotify",
           link: "",
+          iconClass: "icon-spotify",
         },
         {
           title: "Google Podcast",
           link: "",
+          iconClass: "icon-podcasts",
         },
         {
           title: "Stitcher",
           link: "",
+          iconClass: "icon-stitcher",
         },
         {
           title: "IHeartRadio",
           link: "",
+          iconClass: "icon-iheart",
         },
         {
           title: "Apple Music",
           link: "",
+          iconClass: "icon-music",
         },
       ],
     };
@@ -318,7 +311,39 @@ export default {
           });
         }
         if (!this.$util.isEmpty(response.streaming)) {
-          this.streaming = response.streaming;
+          // this.streaming = response.streaming;
+          let list = response.streaming;
+          this.streamings = [];
+          list.forEach((element) => {
+            let iconClass = "";
+            switch (element.title) {
+              case "Apple Music":
+                iconClass = "icon-apple-music";
+                break;
+              case "Overcast":
+                iconClass = "icon-overcast";
+                break;
+              case "Spotify":
+                iconClass = "icon-spotify";
+                break;
+              case "Google Podcast":
+                iconClass = "icon-podcasts";
+                break;
+              case "Stitcher":
+                iconClass = "icon-stitcher";
+                break;
+              case "IHeartRadio":
+                iconClass = "icon-iheart";
+                break;
+              case "Apple Music":
+                iconClass = "icon-music";
+                break;
+              default:
+                break;
+            }
+            this.streamings.push({ ...element, icon_class: iconClass });
+          });
+          this.$store.dispatch("common/storeStreaming", this.streamings);
         }
       }
     },
