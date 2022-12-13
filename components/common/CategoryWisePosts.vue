@@ -20,8 +20,19 @@
           >
             <span v-for="(author, i) in post.authorList" :key="i">
               <a href="#">{{ author }}</a>
-              <template v-if="i !== post.authorList.length - 1"
+
+              <template
+                v-if="
+                  i !== post.authorList.length - 1 &&
+                  post.authorList.length == 2
+                "
                 >&nbsp;and&nbsp;</template
+              >
+              <template
+                v-if="
+                  i !== post.authorList.length - 1 && post.authorList.length > 2
+                "
+                >&nbsp;,&nbsp;</template
               >
             </span>
           </span>
@@ -93,7 +104,7 @@ export default {
       if (!this.$util.isEmpty(response)) {
         if (!this.$util.isEmpty(response.acf)) {
           let authors = response.acf.authors ? response.acf.authors : "";
-          return this.$util.stringToArray(authors, "and");
+          return this.$util.stringToArray(authors.replace(/,/g, "and"), "and");
         }
       }
     },

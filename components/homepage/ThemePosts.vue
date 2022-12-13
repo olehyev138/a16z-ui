@@ -22,8 +22,18 @@
         >
           <span v-for="(author, i) in post.authorList" :key="i">
             <a href="#">{{ author }}&nbsp;</a>
-            <template v-if="i !== post.authorList.length - 1"
-              >& &nbsp;</template
+
+            <template
+              v-if="
+                i !== post.authorList.length - 1 && post.authorList.length == 2
+              "
+              >&nbsp;and&nbsp;</template
+            >
+            <template
+              v-if="
+                i !== post.authorList.length - 1 && post.authorList.length > 2
+              "
+              >&nbsp;,&nbsp;</template
             >
           </span>
         </span>
@@ -73,7 +83,10 @@ export default {
             posts[index].thumb = "";
             let singlePost = await this.getSinglePost(val.ID);
             let authors = singlePost.authors ? singlePost.authors : "";
-            posts[index].authorList = this.$util.stringToArray(authors, "and");
+            posts[index].authorList = this.$util.stringToArray(
+              authors.replace(/,/g, "and"),
+              "and"
+            );
             if (!this.$util.isEmpty(response.acf)) {
             }
           });

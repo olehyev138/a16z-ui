@@ -47,11 +47,13 @@
     </div>
 
     <section class="featured">
-      <Featured
-        v-for="(post, i) in featured_posts"
-        :featuredPostData="post"
-        :key="i"
-      ></Featured>
+      <div class="container">
+        <PostOneCol
+          v-for="(post, i) in featured_posts"
+          :featuredPostData="post"
+          :key="i"
+        ></PostOneCol>
+      </div>
     </section>
 
     <section class="newsletter">

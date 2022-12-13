@@ -12,7 +12,13 @@
     <div class="authors" v-if="!$util.isEmpty(authors) && authors.length > 1">
       <span v-for="(author, i) in authors" :key="i">
         <a href="#">{{ author }}</a>
-        <template v-if="i !== authors.length - 1">&nbsp;and&nbsp;</template>
+
+        <template v-if="i !== authors.length - 1 && authors.length == 2"
+          >&nbsp;and&nbsp;</template
+        >
+        <template v-if="i !== authors.length - 1 && authors.length > 2"
+          >&nbsp;,&nbsp;</template
+        >
       </span>
     </div>
     <div v-else>
@@ -54,13 +60,16 @@ export default {
         this.tags = response.tags;
         if (!this.$util.isEmpty(response.acf)) {
           let authors = response.acf.authors ? response.acf.authors : "";
-          this.authors = this.$util.stringToArray(authors, "and");
+          this.authors = this.$util.stringToArray(
+            authors.replace(/,/g, "and"),
+            "and"
+          );
         }
       }
     },
   },
   mounted() {
-    // this.getSinglePost(this.postData.ID);
+    this.getSinglePost(this.postData.ID);
     // console.log(this.postData.ID, this.callFrom);
   },
 };
