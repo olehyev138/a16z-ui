@@ -6,7 +6,7 @@
         :key="i"
         href="#"
         class="card-news"
-        :class="`decor-style-${i + 1}`"
+        :class="[`decor-style-${i + 1}`, announcements_colors[i]]"
       >
         <div class="content-t">
           <h5 style="display: inline-block; white-space: pre-wrap">
@@ -44,31 +44,23 @@
 <script>
 export default {
   name: "featuredPost",
+  props: {
+    announcements: {
+      type: Array,
+      required: true,
+      default: [],
+    },
+  },
   data() {
     return {
-      announcements: [],
+      announcements_colors: ["", "purple", "maroon", "teal"],
     };
   },
   methods: {
-    async getAnnouncements() {
-      let payload = {
-        post_type: ["announcement"],
-        posts_per_page: "4",
-      };
-      const response = await this.$api.common.getAnnouncements(payload);
-      if (
-        !this.$util.isEmpty(response.posts) &&
-        !this.$util.isEmpty(response.posts.data)
-      ) {
-        this.announcements = response.posts.data;
-      }
-    },
     formatDate(date) {
       return this.$moment(date).format("YYYY.M.D");
     },
   },
-  mounted() {
-    this.getAnnouncements();
-  },
+  mounted() {},
 };
 </script>

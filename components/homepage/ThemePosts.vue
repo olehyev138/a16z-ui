@@ -87,8 +87,6 @@ export default {
               authors.replace(/,/g, "and"),
               "and"
             );
-            if (!this.$util.isEmpty(response.acf)) {
-            }
           });
           this.posts = posts;
         }

@@ -50,6 +50,11 @@ export default {
       extensions: ["vue"],
       pathPrefix: false,
     },
+    {
+      path: "~/components/news",
+      extensions: ["vue"],
+      pathPrefix: false,
+    },
   ],
 
   buildModules: ["@nuxtjs/style-resources", "@nuxtjs/moment"],

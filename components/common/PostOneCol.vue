@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "featuredPost",
+  name: "postOneCol",
   props: {
     callFrom: {
       type: String,

@@ -108,7 +108,7 @@
       </div>
     </section>
 
-    <section class="announcement bg-grey">
+    <section class="announcement bg-grey" v-if="!$util.isEmpty(announcements)">
       <div class="container">
         <div class="group-header has-dotted-border">
           <h6>
@@ -124,61 +124,10 @@
               : "see all"
           }}</a>
         </div>
-        <div class="cards-slider">
-          <a href="#" class="card-news decor-style-1">
-            <div class="content-t">
-              <h5>
-                <span>Crypto Startup </span>
-                <span>School: relaunched </span>
-                <span>and expanded</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-2 purple">
-            <div class="content-t">
-              <h5>
-                <span>Richard </span>
-                <span>Rosenblatt</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-3 maroon">
-            <div class="content-t">
-              <h5>
-                <span>investing in</span>
-                <span>PROOF</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-4 teal">
-            <div class="content-t">
-              <div class="head">
-                <span class="name">Jason Milionis</span>
-                <span class="twiter-id">@handlehere</span>
-              </div>
-              <h5 class="sub-title">
-                <span>We proudly contributed to the</span>
-                <span>$165M Series B financing round</span>
-                <span>that @uniswap Labs announced </span>
-                <span>today...</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-              <span class="icon-twitter"></span>
-            </div>
-          </a>
-        </div>
-        <Announcements></Announcements>
+        <Announcements
+          :announcements="announcements"
+          key="announcement"
+        ></Announcements>
       </div>
     </section>
 
@@ -283,9 +232,23 @@ export default {
         }
       }
     },
+    async getAnnouncements() {
+      let payload = {
+        post_type: ["announcement"],
+        posts_per_page: "4",
+      };
+      const response = await this.$api.common.getAnnouncements(payload);
+      if (
+        !this.$util.isEmpty(response.posts) &&
+        !this.$util.isEmpty(response.posts.data)
+      ) {
+        this.announcements = response.posts.data;
+      }
+    },
   },
   mounted() {
     this.getAllContent();
+    this.getAnnouncements();
     this.getPopularTags();
   },
 };
