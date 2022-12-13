@@ -78,7 +78,11 @@
 
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">podcast</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.podcast_section_title)
+            ? general_content.podcast_section_title
+            : "podcast"
+        }}</span>
       </div>
     </div>
 
@@ -86,53 +90,38 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-7">
-            <h4>podcast: web3 with a16z</h4>
+            <h4>
+              {{
+                !$util.isEmpty(general_content.podcast_title)
+                  ? general_content.podcast_title
+                  : "podcast: web3 with a16z"
+              }}
+            </h4>
             <div class="desc">
-              <p>A show about building the next internet, from a16z crypto</p>
+              <p>
+                {{
+                  !$util.isEmpty(general_content.podcast_desc)
+                    ? general_content.podcast_desc
+                    : "A show about building the next internet, from a16z crypto"
+                }}
+              </p>
             </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-5" v-if="!$util.isEmpty(getStreamings)">
             <ul class="social-networks">
-              <li>
-                <a href="#">
-                  <span class="title">Apple Music</span>
-                  <i class="icon-apple-music"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="title">Overcast</span>
-                  <i class="icon-overcast"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="title">Spotify</span>
-                  <i class="icon-spotify"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="title">Google Podcast</span>
-                  <i class="icon-podcasts"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="title">Stitcher</span>
-                  <i class="icon-stitcher"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="title">Iheartradio</span>
-                  <i class="icon-iheart"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="title">Apple Music</span>
-                  <i class="icon-music"></i>
+              <li
+                v-for="(streaming, i) in getStreamings"
+                :key="i + 'streaming'"
+              >
+                <a
+                  :href="
+                    !$util.isEmpty(streaming.link)
+                      ? streaming.link
+                      : 'javascript:void(0)'
+                  "
+                >
+                  <span class="title">{{ streaming.title }}</span>
+                  <i :class="streaming.icon_class"></i>
                 </a>
               </li>
             </ul>
@@ -143,13 +132,23 @@
 
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">social</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.social_section_title)
+            ? general_content.social_section_title
+            : "social"
+        }}</span>
       </div>
     </div>
 
     <div class="content-body">
       <div class="container">
-        <h4>in the cloud</h4>
+        <h4>
+          {{
+            !$util.isEmpty(general_content.social_title)
+              ? general_content.social_title
+              : "in the cloud"
+          }}
+        </h4>
         <div class="row social-blocks" v-if="!$util.isEmpty(getSocialLinks)">
           <div
             class="col-sm-6 col-md-3"
@@ -186,6 +185,9 @@ export default {
   computed: {
     getSocialLinks() {
       return this.$store.getters["common/getSocialLinks"];
+    },
+    getStreamings() {
+      return this.$store.getters["common/getStreaming"];
     },
   },
   methods: {

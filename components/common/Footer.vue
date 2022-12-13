@@ -58,7 +58,13 @@
                     v-for="(streaming, i) in streamings.slice(0, 3)"
                     :key="i + 'streaming'"
                   >
-                    <a href="#">
+                    <a
+                      :href="
+                        !$util.isEmpty(streaming.link)
+                          ? streaming.link
+                          : 'javascript:void(0)'
+                      "
+                    >
                       <span class="text">{{ streaming.title }}</span>
                       <span :class="streaming.icon_class"></span>
                     </a>
@@ -77,7 +83,13 @@
                           )"
                           :key="i + 'streaming-more'"
                         >
-                          <a href="#">
+                          <a
+                            :href="
+                              !$util.isEmpty(streaming.link)
+                                ? streaming.link
+                                : 'javascript:void(0)'
+                            "
+                          >
                             <span class="text">{{ streaming.title }}</span>
                             <span :class="streaming.icon_class"></span>
                           </a>
