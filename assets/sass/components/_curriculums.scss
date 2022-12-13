@@ -9,6 +9,10 @@
 		padding: 35px 0 31px;
 	}
 
+	&.bg-grey {
+		background: $grey-01;
+	}
+
 	.intro {
 		max-width: 665px;
 		margin-bottom: 52px;

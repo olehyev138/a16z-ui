@@ -20,44 +20,16 @@
       </header>
 
       <div class="container">
-        <ul class="alphabets">
-          <li class="active"><a href="#" class="alphabet">a</a></li>
-          <li><a href="#" class="alphabet">b</a></li>
-          <li><a href="#" class="alphabet">c</a></li>
-          <li><a href="#" class="alphabet">d</a></li>
-          <li><a href="#" class="alphabet">e</a></li>
-          <li><a href="#" class="alphabet">f</a></li>
-          <li><a href="#" class="alphabet">g</a></li>
-          <li><a href="#" class="alphabet">h</a></li>
-          <li><a href="#" class="alphabet">i</a></li>
-          <li><a href="#" class="alphabet">j</a></li>
-          <li><a href="#" class="alphabet">k</a></li>
-          <li><a href="#" class="alphabet">l</a></li>
-          <li><a href="#" class="alphabet">m</a></li>
-          <li><a href="#" class="alphabet">n</a></li>
-          <li><a href="#" class="alphabet">o</a></li>
-          <li><a href="#" class="alphabet">p</a></li>
-          <li><a href="#" class="alphabet">q</a></li>
-          <li><a href="#" class="alphabet">r</a></li>
-          <li><a href="#" class="alphabet">s</a></li>
-          <li><a href="#" class="alphabet">t</a></li>
-          <li><a href="#" class="alphabet">u</a></li>
-          <li><a href="#" class="alphabet">v</a></li>
-          <li><a href="#" class="alphabet">w</a></li>
-          <li><a href="#" class="alphabet">x</a></li>
-          <li><a href="#" class="alphabet">y</a></li>
-          <li><a href="#" class="alphabet">z</a></li>
-        </ul>
-
         <ul class="highlight-list">
           <template v-for="(val, i) in teamMembers">
-            <li
+            <!-- @Oleh The Alphabets have been removed from recent update. Can you please take a look here.-->
+            <!-- <li
               :key="i + 'group'"
               class="has-alphabet"
               :class="i == 0 ? 'open' : i == 1 ? 'close' : ''"
             >
               <a href="#" class="alphabet" :key="i">{{ val.group }}</a>
-            </li>
+            </li> -->
 
             <li v-for="(teamMember, i) in val.children" :key="val.group + i">
               <NuxtLink
@@ -88,10 +60,10 @@
       <picture class="bg">
         <source
           media="(min-width: 768px)"
-          srcset="@/assets/images/bg-banner-jobs.jpg"
+          srcset="@/assets/images/bg-banner-jobs.png"
         />
-        <source srcset="@/assets/images/bg-banner-jobs-sm.jpg" />
-        <img src="@/assets/images/bg-banner-jobs.jpg" alt="" />
+        <source srcset="@/assets/images/bg-banner-jobs-sm.png" />
+        <img src="@/assets/images/bg-banner-jobs.png" alt="" />
       </picture>
       <div class="container">
         <div class="highlight-display">

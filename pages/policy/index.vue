@@ -95,17 +95,6 @@
         <ul class="highlight-list style--1">
           <li>
             <a href="#" class="card-people">
-              <div class="avatar decor--2">
-                <img alt="Ben Horowitz" src="@/assets/images/avatar-ben.png" />
-              </div>
-              <div class="r-col">
-                <div class="name">Ben Horowitz</div>
-                <span class="post">Cofounder & General partner</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
               <div class="avatar decor--1">
                 <img
                   alt="Anthony Albanese"

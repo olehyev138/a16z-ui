@@ -249,3 +249,303 @@
 #main {
   padding-top: 64px;
 }
+
+.portfolio {
+  overflow: hidden;
+  padding-bottom: 86px;
+
+  @include media('<tablet') {
+    padding-bottom: 65px;
+  }
+}
+
+.team {
+  padding-bottom: 86px;
+  overflow: hidden;
+
+  @include media('<desktop') {
+    padding-bottom: 65px;
+  }
+
+  @include media('<tablet') {
+    padding-bottom: 10px;
+  }
+
+  &.bg-grey {
+    background: $grey-01;
+
+    .card-people {
+      background: $grey-01;
+
+      .name,
+      .avatar[class*="decor--"]:after {
+        background: $grey-01;
+      }
+    }
+
+    + .banner {
+      margin-top: -10px;
+    }
+  }
+
+  .highlight-list {
+    padding-left: 0;
+
+    @include media('>=tablet', '<desktop') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media('>=tablet') {
+      gap: 40px;
+    }
+
+    @include media('>=widescreen') {
+      gap: 40px 62px;
+    }
+
+    > li {
+      @include media('<tablet') {
+        &:not(.has-alphabet) {
+          margin-bottom: 15px;
+        }
+
+        &:after {
+          top: -8px;
+        }
+
+        &:first-child:after,
+        &.has-alphabet:first-child + li:after {
+          content: none;
+        }
+      }
+    }
+
+    &.has-four-items {
+
+      @include media('>=tablet', '<desktop') {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @include media('>=widescreen') {
+        column-gap: 62px;
+      }
+    }
+
+    &.style--1 {
+
+      > li {
+        @include media('<tablet') {
+          &:not(.has-alphabet) {
+            margin-bottom: 14px;
+          }
+        }
+      }
+    }
+
+    &.style--2 {
+
+      > li:after {
+        content: none;
+      }
+
+      .card-people {
+        max-width: 283px;
+
+        .avatar {
+
+          img {
+            filter: none;
+          }
+        }
+      }
+    }
+
+    &.full {
+      max-width: none;
+    }
+  }
+}
+
+.article-single {
+  padding-bottom: 80px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media('<tablet') {
+    padding-top: 56px;
+    padding-bottom: 30px;
+  }
+
+  .head {
+    padding: 128px 0 65px;
+    max-width: 732px;
+
+    @include media('<tablet') {
+      padding: 34px 0;
+      font-size: 14px;
+    }
+
+    .highlight-display {
+      margin-bottom: 27px;
+    }
+
+    a:not(.tag) {
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+
+      &:hover {
+        color: $grey-dark;
+        font-weight: bold;
+      }
+    }
+
+    p {
+      margin-bottom: 22px;
+    }
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 5px;
+    margin-bottom: 56px;
+    max-width: 1193px;
+    width: 100%;
+    @include borderwide();
+
+    @include media('<tablet') {
+      margin-bottom: 24px;
+    }
+
+    .caption-2 {
+      padding-top: 5px;
+    }
+  }
+
+  .article-right {
+    width: 100%;
+
+    @include media('>=tablet') {
+      width: 74.5%;
+    }
+    
+    @include media('>=desktop') {
+      padding-right: 4%;
+    }
+    
+    @include media('>=widescreen') {
+      padding-right: 16%;
+    }
+  }
+
+  .article-right {
+    >h5 {
+      margin-bottom: 50px;
+
+      @include media('<tablet') {
+        font-size: 20px;
+        line-height: 1.2;
+        margin-bottom: 27px;
+      }
+    }
+
+    >h6 {
+      margin-bottom: 27px;
+
+      @include media('<tablet') {
+        font-size: 18px;
+        line-height: 1.37;
+        box-shadow: 0 ;
+        margin-bottom: 17px;
+      }
+    }
+  }
+
+  mark {
+    background: $lemonchiffon;
+  }
+
+  .wp-caption {
+    font: 400 12px/1.09 $abcfavorit-mono;
+    margin: 46px 0;
+
+    @include media('<tablet') {
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
+    @include media('<tablet') {
+      margin: 32px 0;
+    }
+
+    p {
+      max-width: 580px;
+      margin: 9px 0 0;
+    }
+  }
+
+  .aligncenter {
+    text-align: center;
+    
+    &,
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .alignleft,
+  .alignright {
+    max-width: 40%;
+  }
+
+  .alignleft {
+    float: left;
+    margin-right: 30px;
+  }
+
+  .alignright {
+   float: right;
+   margin-left: 30px;
+  }
+
+  .code {
+    margin: 48px 0;
+
+    @include media('<tablet') {
+      margin: 32px 0;
+    }
+  }
+}
+
+
+.points-list {
+  @extend %listreset;
+  margin-top: 18px;
+
+  li {
+    padding-left: 37px;
+    position: relative;
+
+    @include media('<tablet') {
+      padding-left: 24px;
+    }
+
+    + li {
+      margin-top: 12px;
+    }
+
+    &:before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: #d9d9d9;
+      position: absolute;
+      left: 0;
+      top: 6px;
+    }
+  }
+}

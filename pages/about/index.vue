@@ -72,10 +72,10 @@
       <picture class="bg">
         <source
           media="(min-width: 768px)"
-          srcset="@/assets/images/bg-banner-about.jpg"
+          srcset="@/assets/images/bg-banner-about.png"
         />
-        <source srcset="@/assets/images/bg-banner-about-sm.jpg" />
-        <img src="@/assets/images/bg-banner-about.jpg" alt="" />
+        <source srcset="@/assets/images/bg-banner-about-sm.png" />
+        <img src="@/assets/images/bg-banner-about.png" alt="" />
       </picture>
       <div class="container">
         <div class="highlight-display">
@@ -108,7 +108,7 @@
                 ? general_data.right_btn_link
                 : 'javascript:void(0)'
             "
-            class="btn btn--outline-white"
+            class="btn btn--outline-white-azure"
             >{{
               !$util.isEmpty(general_data.right_btn_title)
                 ? general_data.right_btn_title
@@ -128,7 +128,7 @@
               : "Offices"
           }}
         </h3>
-        <ul class="highlight-list three-cols">
+        <ul class="highlight-list three-cols has-divider">
           <li v-for="(office, i) in offices_list" :key="i">
             <a href="javascript:void(0)" class="item">{{
               office.office_location

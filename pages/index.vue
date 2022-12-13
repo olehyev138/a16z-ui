@@ -2,15 +2,15 @@
   <div id="wrapper">
     <Header></Header>
 
-    <section class="hero">
+    <section class="hero hero-home">
       <div class="container">
         <picture class="bg">
           <source
             media="(min-width: 768px)"
             srcset="@/assets/images/bg-hero-home.svg"
           />
-          <source srcset="@/assets/images/bg-hero-home-sm.svg" />
-          <img src="@/assets/images/bg-hero-home.svg" alt="" />
+          <source srcset="@/assets/images/bg-hero-home-mob.svg" width="375" />
+          <img src="@/assets/images/bg-banner-tags.svg" width="1142" alt="" />
         </picture>
         <div class="row">
           <div class="col-md-8">

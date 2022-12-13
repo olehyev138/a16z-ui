@@ -153,12 +153,12 @@
         </div>
       </div>
     </section>
-    <div class="section-divider">
+    <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title">FAQ</span>
       </div>
     </div>
-    <section class="faq">
+    <section class="faq bg-grey">
       <div class="container">
         <ul class="faq-list" v-if="faqList.length > 0">
           <li v-for="(faq, i) in faqList" :key="i">

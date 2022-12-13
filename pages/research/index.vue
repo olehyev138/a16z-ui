@@ -18,6 +18,8 @@
       </div>
     </header>
 
+    <section class="divider"></section>
+
     <section class="text-block text-block--research">
       <div class="container">
         <div class="row">
@@ -43,19 +45,27 @@
                 how to best build token economies across games, social networks,
                 and other applications.
               </p>
+              <div class="points">
+                <span>We focus on:</span>
+                <ul class="points-list">
+                  <li>Collaborating with academics, developers, and entrepreneurs to produce original research and advance web3 technology</li>
+                  <li>Helping our portfolio companies address and solve hard technical problems</li>
+                  <li>Helping shape crypto and web3 as a formal area of study across various fields relevant to the space, and sharing results via open source, education, or other public contributions</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider" v-if="!this.$util.isEmpty(our_focus_items)">
+    <!-- <div class="section-divider" v-if="!this.$util.isEmpty(our_focus_items)">
       <div class="container">
         <span class="block-title">our focus:</span>
       </div>
-    </div>
+    </div> -->
 
-    <section
+    <!-- <section
       class="profile-featured"
       v-if="!this.$util.isEmpty(our_focus_items)"
     >
@@ -74,7 +84,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <div class="section-divider bg-grey">
       <div class="container">
@@ -94,9 +104,9 @@
                 <a href="#">Valeria Nikolaenko</a>
               </div>
               <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
+                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
+                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
+                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
               </ul>
             </div>
           </div>
@@ -113,9 +123,9 @@
                 <a href="#">Justin Thaler</a>
               </div>
               <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
+                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
+                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
+                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
               </ul>
             </div>
           </div>
@@ -129,9 +139,9 @@
                 <a href="#">Alex Immerman</a>
               </div>
               <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
+                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
+                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
+                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
               </ul>
             </div>
           </div>

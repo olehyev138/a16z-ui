@@ -22,7 +22,7 @@
                 <img src="@/assets/images/img-chris-dixon.png" alt="" />
               </div>
               <span class="des">ENS / cdixon.eth</span>
-              <ul class="social-networks">
+              <ul class="social">
                 <li><a href="#">Twitter</a></li>
                 <li><a href="#">LinkedIn</a></li>
                 <li><a href="#">Forecaster</a></li>
@@ -88,7 +88,6 @@
                 <li>
                   <a href="#" class="tag small-tag white-tag">Marketplace</a>
                 </li>
-                <li><a href="#" class="tag small-tag white-tag">NFTS</a></li>
               </ul>
             </div>
           </div>
@@ -123,9 +122,7 @@
                   <a href="#" class="tag small-tag white-tag">Crypto & Web3</a>
                 </li>
                 <li>
-                  <a href="#" class="tag small-tag white-tag"
-                    >Online Communities</a
-                  >
+                  <a href="#" class="tag small-tag white-tag">Online Communities</a>
                 </li>
               </ul>
             </div>
@@ -145,7 +142,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -163,7 +160,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">Richard Rosenblatt</a></h6>
@@ -177,7 +174,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">the can’t be evil NFT licenses</a></h6>
@@ -198,7 +195,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -221,7 +218,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -248,7 +245,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">investing in lightspark</a></h6>

@@ -16,7 +16,7 @@
   @include media('<tablet') {
     order: -99;
     position: sticky;
-    top: 56px;
+    top: 66px;
     margin: 0 -20px;
     z-index: 2;
   }
@@ -39,7 +39,7 @@
     @include media('>=tablet') {
       max-width: 224px;
       position: sticky;
-      top: 10px;
+      top: 80px;
     }
 
     @include media('<tablet') {

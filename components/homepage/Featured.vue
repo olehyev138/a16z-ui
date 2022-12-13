@@ -3,7 +3,7 @@
     <div class="article">
       <div class="row">
         <div class="col-sm-2">
-          <span class="category-title">{{ featuredPostData.post_type }} /</span>
+          <span class="category-title">11.16.22 / {{ featuredPostData.post_type }}</span>
         </div>
         <div class="col-sm-10 col-md-8">
           <h5>

@@ -39,7 +39,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -63,7 +63,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -87,7 +87,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">SNARK security and performance</a></h6>
@@ -106,7 +106,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -126,7 +126,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">podcast /</span>
+              <span class="category-title">10.04.22 / podcast</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -147,7 +147,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">public randomness and randomness beacons</a></h6>
@@ -166,7 +166,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -200,22 +200,22 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="box">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
               <h6><a href="#">on-chain trusted setup ceremony</a></h6>
               <div class="authors">
                 <a href="#">Joseph Bonneau</a> and
                 <a href="#">Valeria Nikolaenko</a>
               </div>
               <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
+                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
+                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
+                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
               </ul>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="box">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
               <h6>
                 <a href="#"
                   >a call to the SEC: treat crypto assets as if clients
@@ -226,15 +226,15 @@
                 <a href="#">Justin Thaler</a>
               </div>
               <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
+                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
+                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
+                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
               </ul>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="box">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
               <h6>
                 <a href="#">‘proof-of-merge’ NFT to commemorate ethereum</a>
               </h6>
@@ -242,9 +242,9 @@
                 <a href="#">Alex Immerman</a>
               </div>
               <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
+                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
+                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
+                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
               </ul>
             </div>
           </div>
@@ -257,7 +257,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -279,7 +279,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -299,7 +299,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">on-chain trusted setup ceremony</a></h6>
@@ -317,7 +317,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6><a href="#">the can’t be evil NFT licenses</a></h6>
@@ -333,7 +333,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -353,7 +353,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -373,7 +373,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -460,7 +460,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -481,7 +481,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -499,7 +499,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -523,7 +523,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
@@ -547,7 +547,7 @@
         <div class="article">
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">10.04.22 / article</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
