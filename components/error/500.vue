@@ -1,6 +1,9 @@
 <template>
   <div id="wrapper">
     <div class="page-not-found">
+      <div class="bg-img">
+        <img src="@/assets/images/bg-not-found.svg" alt="">
+      </div>
       <div class="inner">
         <strong><span>500</span></strong>
         <h5>

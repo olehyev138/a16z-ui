@@ -20,7 +20,7 @@
       </header>
 
       <div class="container" v-if="!$util.isEmpty(companies)">
-        <ul class="highlight-list has-divider">
+        <ul class="highlight-list has-alphabets has-divider">
           <template v-for="(val, i) in companies">
             <li
               :key="i + 'group'"
@@ -157,6 +157,6 @@ export default {
 </script>
 <style scoped>
 .container {
-  overflow: hidden !important;
+/*  overflow: hidden !important;*/
 }
 </style>

@@ -6,13 +6,13 @@
       <div class="container">
         <picture class="bg">
           <source
-            media="(min-width: 768px)"
-            srcset="@/assets/images/bg-hero-jobs.png"
+          media="(min-width: 768px)"
+          srcset="@/assets/images/bg-hero-jobs.png"
           />
           <source srcset="@/assets/images/bg-hero-jobs-sm.png" />
           <img src="@/assets/images/bg-hero-jobs.png" alt="" />
         </picture>
-        <div class="highlight-display hld--lavender">
+        <div class="highlight-display hld--teal">
           <h1>Jobs</h1>
         </div>
       </div>
@@ -81,12 +81,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Associate, Business Development.</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -99,12 +102,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Business Development Lead.</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -117,12 +123,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Business Operations Manager.</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -135,12 +144,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Executive Talent Partner.</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -153,12 +165,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Public Policy Lead.</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -176,12 +191,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Community Manager</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -194,12 +212,15 @@
                   <div class="col-sm-8 col-md-9">
                     <h5><a href="#">Principal Product Designer</a></h5>
                     <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
+                    >On-site / Menlo Park, California, United States.</span
                     >
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -218,152 +239,173 @@
                     <h5><a href="#">Community Manager</a></h5>
                     <span class="place">
                       Partner, Consumer Growth Marketing</span
-                    >
-                  </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
+                      >
+                    </div>
+                    <div class="col-sm-2 col-md-1">
+                      <span class="cta-wrap">
+                        <a href="#" class="btn-link underlined">
+                          Button
+                          <span class="icon-arrow-right"></span>
+                        </a>
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="article">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <span class="category-title">consumer /</span>
-                  </div>
-                  <div class="col-sm-8 col-md-9">
-                    <h5>
-                      <a href="#">Partner, Consumer Growth Marketing, SEO</a>
-                    </h5>
-                    <span class="place"
+                <div class="article">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <span class="category-title">consumer /</span>
+                    </div>
+                    <div class="col-sm-8 col-md-9">
+                      <h5>
+                        <a href="#">Partner, Consumer Growth Marketing, SEO</a>
+                      </h5>
+                      <span class="place"
                       >On-site / Menlo Park, California, United States.</span
-                    >
-                  </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="category-row">
-              <div class="group-header bg-grey">
-                <h6>Crypto</h6>
-              </div>
-              <div class="article">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <span class="category-title">crypto /</span>
-                  </div>
-                  <div class="col-sm-8 col-md-9">
-                    <h5><a href="#">a16z Crypto Research Summer Intern</a></h5>
-                    <span class="place">
-                      Partner, Consumer Growth Marketing</span
-                    >
-                  </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
+                      >
+                    </div>
+                    <div class="col-sm-2 col-md-1">
+                      <span class="cta-wrap">
+                        <a href="#" class="btn-link underlined">
+                          Button
+                          <span class="icon-arrow-right"></span>
+                        </a>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="article">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <span class="category-title">crypto /</span>
+              <div class="category-row">
+                <div class="group-header bg-grey">
+                  <h6>Crypto</h6>
+                </div>
+                <div class="article">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <span class="category-title">crypto /</span>
+                    </div>
+                    <div class="col-sm-8 col-md-9">
+                      <h5><a href="#">a16z Crypto Research Summer Intern</a></h5>
+                      <span class="place">
+                        Partner, Consumer Growth Marketing</span
+                        >
+                      </div>
+                      <div class="col-sm-2 col-md-1">
+                        <span class="cta-wrap">
+                          <a href="#" class="btn-link underlined">
+                            Button
+                            <span class="icon-arrow-right"></span>
+                          </a>
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-sm-8 col-md-9">
-                    <h5><a href="#">Member of Technical Staff</a></h5>
-                    <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
-                    >
+                  <div class="article">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <span class="category-title">crypto /</span>
+                      </div>
+                      <div class="col-sm-8 col-md-9">
+                        <h5><a href="#">Member of Technical Staff</a></h5>
+                        <span class="place"
+                        >On-site / Menlo Park, California, United States.</span
+                        >
+                      </div>
+                      <div class="col-sm-2 col-md-1">
+                        <span class="cta-wrap">
+                          <a href="#" class="btn-link underlined">
+                            Button
+                            <span class="icon-arrow-right"></span>
+                          </a>
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
+                  <div class="article">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <span class="category-title">crypto /</span>
+                      </div>
+                      <div class="col-sm-8 col-md-9">
+                        <h5><a href="#">Senior Operations Manager</a></h5>
+                        <span class="place"
+                        >On-site / Menlo Park, California, United States.</span
+                        >
+                      </div>
+                      <div class="col-sm-2 col-md-1">
+                        <span class="cta-wrap">
+                          <a href="#" class="btn-link underlined">
+                            Button
+                            <span class="icon-arrow-right"></span>
+                          </a>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="article">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <span class="category-title">crypto /</span>
+                <div class="category-row">
+                  <div class="group-header bg-grey">
+                    <h6>Games</h6>
                   </div>
-                  <div class="col-sm-8 col-md-9">
-                    <h5><a href="#">Senior Operations Manager</a></h5>
-                    <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
-                    >
-                  </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="category-row">
-              <div class="group-header bg-grey">
-                <h6>Games</h6>
-              </div>
-              <div class="article">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <span class="category-title">american Dynamism /</span>
-                  </div>
-                  <div class="col-sm-8 col-md-9">
-                    <h5><a href="#">Analyst, Games Investing Team.</a></h5>
-                    <span class="place">
-                      Partner, Consumer Growth Marketing</span
-                    >
-                  </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="article">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <span class="category-title">games /</span>
-                  </div>
-                  <div class="col-sm-8 col-md-9">
-                    <h5><a href="#">Business Development Partner.</a></h5>
-                    <span class="place"
-                      >On-site / Menlo Park, California, United States.</span
-                    >
-                  </div>
-                  <div class="col-sm-2 col-md-1">
-                    <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
-                    </span>
+                  <div class="article">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <span class="category-title">american Dynamism /</span>
+                      </div>
+                      <div class="col-sm-8 col-md-9">
+                        <h5><a href="#">Analyst, Games Investing Team.</a></h5>
+                        <span class="place">
+                          Partner, Consumer Growth Marketing</span
+                          >
+                        </div>
+                        <div class="col-sm-2 col-md-1">
+                          <span class="cta-wrap">
+                            <a href="#" class="btn-link underlined">
+                              Button
+                              <span class="icon-arrow-right"></span>
+                            </a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="article">
+                      <div class="row">
+                        <div class="col-sm-2">
+                          <span class="category-title">games /</span>
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+                          <h5><a href="#">Business Development Partner.</a></h5>
+                          <span class="place"
+                          >On-site / Menlo Park, California, United States.</span
+                          >
+                        </div>
+                        <div class="col-sm-2 col-md-1">
+                          <span class="cta-wrap">
+                            <a href="#" class="btn-link underlined">
+                              Button
+                              <span class="icon-arrow-right"></span>
+                            </a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
           </div>
-        </section>
-      </div>
-    </div>
 
-    <Footer></Footer>
-  </div>
-</template>
+          <Footer></Footer>
+        </div>
+      </template>
 
-<script>
-export default {
-  name: "CareesrJobWithUs",
-  head() {
-    return {
-      title: "Careers jobs with us",
-    };
-  },
-};
-</script>
+      <script>
+        export default {
+          name: "CareesrJobWithUs",
+          head() {
+            return {
+              title: "Careers jobs with us",
+            };
+          },
+        };
+      </script>

@@ -77,10 +77,10 @@
       <picture class="bg">
         <source
           media="(min-width: 768px)"
-          srcset="@/assets/images/bg-banner-jobs.jpg"
+          srcset="@/assets/images/bg-banner-jobs.png"
         />
-        <source srcset="@/assets/images/bg-banner-jobs-sm.jpg" />
-        <img src="@/assets/images/bg-banner-jobs.jpg" alt="" />
+        <source srcset="@/assets/images/bg-banner-jobs-sm.png" />
+        <img src="@/assets/images/bg-banner-jobs.png" alt="" />
       </picture>
       <div class="container">
         <div class="highlight-display">

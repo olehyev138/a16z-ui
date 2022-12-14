@@ -108,11 +108,11 @@
     max-width: 530px;
     margin-left: auto;
     text-align: left;
-    color: $azure;
+    color: $white;
 
     &:before,
     > * {
-      background-color: $lime;
+      // background-color: $lime;
     }
 
     > * {

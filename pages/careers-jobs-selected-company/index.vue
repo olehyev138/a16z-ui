@@ -12,7 +12,7 @@
           <source srcset="@/assets/images/bg-hero-jobs-sm.png" />
           <img src="@/assets/images/bg-hero-jobs.png" alt="" />
         </picture>
-        <div class="highlight-display hld--lavender">
+        <div class="highlight-display hld--teal">
           <h1>Jobs</h1>
         </div>
       </div>
@@ -121,7 +121,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -139,7 +142,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -157,7 +163,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -175,7 +184,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -193,7 +205,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -216,7 +231,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -234,7 +252,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -257,7 +278,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -277,7 +301,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -300,7 +327,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -318,7 +348,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -336,7 +369,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -359,7 +395,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -377,7 +416,10 @@
                   </div>
                   <div class="col-sm-2 col-md-1">
                     <span class="cta-wrap">
-                      <a href="#" class="cta-w-arrow underlined">Button</a>
+                      <a href="#" class="btn-link underlined">
+                        Button
+                        <span class="icon-arrow-right"></span>
+                      </a>
                     </span>
                   </div>
                 </div>

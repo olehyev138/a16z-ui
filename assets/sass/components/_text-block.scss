@@ -64,10 +64,10 @@
   }
 
   &.text-block--research {
-    padding: 0 0 46px;
+    padding: 64px 0 46px;
 
     @include media('<tablet') {
-      padding: 23px 0 0;
+      padding: 24px 0;
     }
 
     h5 {
@@ -75,17 +75,6 @@
       @include media('<tablet') {
         font-size: 24px;
         line-height: 1.2;
-      }
-    }
-
-    .desc {
-
-      p {
-        text-indent: 27px;
-
-        @include media('<tablet') {
-          text-indent: 60px;
-        }
       }
     }
   }
@@ -123,6 +112,10 @@
           }
         }
       }
+    }
+
+    .subscribe-form {
+      max-width: 424px;
     }
 
     input[type=email] {

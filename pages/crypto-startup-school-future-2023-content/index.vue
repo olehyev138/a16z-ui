@@ -242,12 +242,12 @@
         </ul>
       </div>
     </div>
-    <div class="section-divider">
+    <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title">Curriculum </span>
       </div>
     </div>
-    <section class="curriculums">
+    <section class="curriculums bg-grey">
       <div class="container">
         <div class="intro">
           <h6>
@@ -533,12 +533,12 @@
         </div>
       </div>
     </div>
-    <div class="section-divider">
+    <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title">FAQ</span>
       </div>
     </div>
-    <section class="faq">
+    <section class="faq bg-grey">
       <div class="container">
         <ul class="faq-list">
           <li><a href="#" class="opener">What is Crypto Startup School?</a></li>

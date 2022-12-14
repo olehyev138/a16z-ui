@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-2">
           <template v-if="callFrom == 'homePage'">
-            <span class="category-title">{{ post.post_type }} /</span>
+            <span class="category-title">09.02.22 / {{ post.post_type }}</span>
           </template>
           <template v-if="callFrom == 'policyPage'">
             <span class="category-title">09.02.22 / article</span>
