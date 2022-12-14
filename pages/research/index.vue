@@ -40,6 +40,7 @@
                     : ''
                 "
               ></p>
+
               <div class="points">
                 <span>We focus on:</span>
                 <ul class="points-list">
