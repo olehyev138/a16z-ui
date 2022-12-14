@@ -69,6 +69,14 @@
           :postData="post"
           :key="i + 'latest-post-news'"
         ></LatestPosts>
+        <client-only>
+          <infinite-loading @infinite="infiniteHandler">
+            <!-- <div slot="spinner">
+            </div>  -->
+            <div slot="no-more"></div>
+            <div slot="no-results"></div>
+          </infinite-loading>
+        </client-only>
       </div>
     </section>
 
@@ -88,7 +96,11 @@ export default {
     return {
       general_content: [],
       featured_announcements: [],
+
+      latestPostAll: [],
       latestPost: [],
+      page: 1,
+      per_page: 3,
     };
   },
   computed: {},
@@ -113,10 +125,32 @@ export default {
       ) {
         if (!this.$util.isEmpty(response.posts.data)) {
           let latestPost = response.posts.data;
-          this.latestPost = latestPost;
+          // this.latestPost = latestPost;
           // console.log("latestPost == ", latestPost);
+          return latestPost;
         }
       }
+    },
+    async infiniteHandler($state) {
+      let allPost = await this.getLatestPost();
+      let spliceData = this.paginate(allPost);
+      if (!this.$util.isEmpty(spliceData)) {
+        this.page += 1;
+        this.latestPost.push(...spliceData);
+        setTimeout(() => {
+          $state.loaded();
+        }, 500);
+      } else {
+        setTimeout(() => {
+          $state.complete();
+        }, 500);
+      }
+    },
+    paginate(arrayData = []) {
+      return arrayData.slice(
+        (this.page - 1) * this.per_page,
+        this.page * this.per_page
+      );
     },
   },
   mounted() {

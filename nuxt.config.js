@@ -26,6 +26,7 @@ export default {
   plugins: [
     { src: "~/plugins/custom.js", mode: "client", ssr: true },
     { src: "~/plugins/prism", mode: "client" },
+    { src: "~/plugins/infiniteloading", ssr: false },
     { src: "~/plugins/axios" },
     { src: "@/plugins/api.js" },
     { src: "@/plugins/helper.js" },
