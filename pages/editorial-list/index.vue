@@ -124,17 +124,26 @@
       </div>
     </section>
 
-    <section
-      class="featured"
-      v-if="!$util.isEmpty(posts) && !$util.isEmpty(filteredPostsThree)"
-    >
+    <section class="featured" v-if="!$util.isEmpty(posts)">
       <div class="container">
         <PostOneCol
-          v-for="(post, i) in filteredPostsThree"
+          v-for="(post, i) in lastSectionPost"
           :featuredPostData="post"
           :key="i + 'sec-3'"
           callFrom="lawPage"
         ></PostOneCol>
+
+        <client-only>
+          <infinite-loading
+            :identifier="infiniteId"
+            @infinite="infiniteHandler"
+          >
+            <!-- <div slot="spinner">
+            </div>  -->
+            <div slot="no-more"></div>
+            <div slot="no-results"></div>
+          </infinite-loading>
+        </client-only>
       </div>
     </section>
 
@@ -157,10 +166,15 @@ export default {
       filteredPostsOne: [],
       filteredPostsTwo: [],
       filteredPostsThree: [],
+      lastSectionPost: [],
       posts: [],
       tags: [],
       postTypes: ["Format/ All"],
       postType: "all",
+
+      page: 1,
+      per_page: 5,
+      infiniteId: +new Date(),
     };
   },
   methods: {
@@ -195,8 +209,6 @@ export default {
               if (this.postTypes.indexOf(posts[index].post_type) === -1) {
                 this.postTypes.push(posts[index].post_type);
               }
-              // let authorArr = await this.getSinglePost(posts[index].ID);
-              // posts[index].authorList = authorArr;
             } catch (error) {}
           }
           this.posts = posts;
@@ -231,33 +243,96 @@ export default {
         result.push(copy.splice(0, sizes[i % sizes.length]));
         i++;
       }
-      console.log(result);
+      // console.log(result);
       return result;
     },
     filterPost() {
+      this.lastSectionPost = [];
+      this.page = 1;
+      this.infiniteId += 1 + this.postType;
       if (this.postType !== "all") {
         let dataArr = this.posts.filter((type) => {
           return type.post_type == this.postType;
         });
         if (dataArr.length <= 9) {
           let chunkArr = this.postsSliceIntoChunks(dataArr, [2, 2, 1000]);
-          this.filteredPostsOne = chunkArr[0];
-          this.filteredPostsTwo = chunkArr[1];
-          this.filteredPostsThree = chunkArr[2];
+          this.filteredPostsOne = !this.$util.isEmpty(chunkArr[0])
+            ? chunkArr[0]
+            : [];
+          this.filteredPostsTwo = !this.$util.isEmpty(chunkArr[1])
+            ? chunkArr[1]
+            : [];
         } else if (dataArr.length >= 10) {
           let chunkArr = this.postsSliceIntoChunks(dataArr, [3, 4, 1000]);
-          this.filteredPostsOne = chunkArr[0];
-          this.filteredPostsTwo = chunkArr[1];
-          this.filteredPostsThree = chunkArr[2];
+          this.filteredPostsOne = !this.$util.isEmpty(chunkArr[0])
+            ? chunkArr[0]
+            : [];
+          this.filteredPostsTwo = !this.$util.isEmpty(chunkArr[1])
+            ? chunkArr[1]
+            : [];
         }
-        console.log("filter post = ", this.postType, dataArr.length);
       } else {
         let chunkArr = this.postsSliceIntoChunks(this.posts, [3, 4, 1000]);
-        this.filteredPostsOne = chunkArr[0];
-        this.filteredPostsTwo = chunkArr[1];
-        this.filteredPostsThree = chunkArr[2];
-        console.log("filter post = ", this.postType, this.posts.length);
+        this.filteredPostsOne = !this.$util.isEmpty(chunkArr[0])
+          ? chunkArr[0]
+          : [];
+        this.filteredPostsTwo = !this.$util.isEmpty(chunkArr[1])
+          ? chunkArr[1]
+          : [];
       }
+    },
+
+    async getLastSectionPosts() {
+      if (this.postType !== "all") {
+        let dataArr = this.posts.filter((type) => {
+          return type.post_type == this.postType;
+        });
+        if (dataArr.length <= 9) {
+          let chunkArr = await this.postsSliceIntoChunks(dataArr, [2, 2, 1000]);
+          return !this.$util.isEmpty(chunkArr[2]) ? chunkArr[2] : [];
+        } else if (dataArr.length >= 10) {
+          let chunkArr = await this.postsSliceIntoChunks(dataArr, [3, 4, 1000]);
+          return !this.$util.isEmpty(chunkArr[2]) ? chunkArr[2] : [];
+        }
+      } else {
+        let chunkArr = await this.postsSliceIntoChunks(
+          this.posts,
+          [3, 4, 1000]
+        );
+        return !this.$util.isEmpty(chunkArr[2]) ? chunkArr[2] : [];
+      }
+    },
+
+    async infiniteHandler($state) {
+      var spliceData = [];
+      let allPost = await this.getLastSectionPosts();
+
+      if (allPost.length > this.per_page) {
+        spliceData = this.paginate(allPost);
+      } else {
+        this.lastSectionPost.push(...allPost);
+        setTimeout(() => {
+          $state.complete();
+        }, 500);
+      }
+
+      if (!this.$util.isEmpty(spliceData)) {
+        this.page += 1;
+        this.lastSectionPost.push(...spliceData);
+        setTimeout(() => {
+          $state.loaded();
+        }, 500);
+      } else {
+        setTimeout(() => {
+          $state.complete();
+        }, 500);
+      }
+    },
+    paginate(arrayData = []) {
+      return arrayData.slice(
+        (this.page - 1) * this.per_page,
+        this.page * this.per_page
+      );
     },
   },
   mounted() {

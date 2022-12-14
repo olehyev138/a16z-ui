@@ -97,7 +97,6 @@ export default {
       general_content: [],
       featured_announcements: [],
 
-      latestPostAll: [],
       latestPost: [],
       page: 1,
       per_page: 9,
