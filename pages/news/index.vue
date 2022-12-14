@@ -100,7 +100,7 @@ export default {
       latestPostAll: [],
       latestPost: [],
       page: 1,
-      per_page: 3,
+      per_page: 9,
     };
   },
   computed: {},
