@@ -17,6 +17,7 @@
         </div>
       </div>
     </header>
+    <section class="divider"></section>
 
     <section class="text-block text-block--research">
       <div class="container">
@@ -39,6 +40,25 @@
                     : ''
                 "
               ></p>
+              <div class="points">
+                <span>We focus on:</span>
+                <ul class="points-list">
+                  <li>
+                    Collaborating with academics, developers, and entrepreneurs
+                    to produce original research and advance web3 technology
+                  </li>
+                  <li>
+                    Helping our portfolio companies address and solve hard
+                    technical problems
+                  </li>
+                  <li>
+                    Helping shape crypto and web3 as a formal area of study
+                    across various fields relevant to the space, and sharing
+                    results via open source, education, or other public
+                    contributions
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
