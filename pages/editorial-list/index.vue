@@ -15,13 +15,15 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-2 col-sm-2">
-            <span class="block-title">(147)</span>
+            <span class="block-title"
+              >({{ !$util.isEmpty(posts) ? posts.length : 0 }})</span
+            >
           </div>
           <div class="col-xs-10 col-sm-7">
             <span class="block-title">Results</span>
           </div>
           <div class="col-sm-3">
-            <div class="select">
+            <div class="select" v-if="!$util.isEmpty(posts)">
               <select @change="filterPost()" v-model="postType">
                 <option
                   v-for="(posttype, i) in postTypes"
@@ -30,9 +32,6 @@
                 >
                   {{ posttype }}
                 </option>
-                <!-- <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option> -->
               </select>
             </div>
           </div>
@@ -40,136 +39,18 @@
       </div>
     </section>
 
-    <section class="featured">
+    <section
+      class="featured"
+      v-if="!$util.isEmpty(posts) && !$util.isEmpty(filteredPostsOne)"
+    >
       <div class="container">
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >toppling the internet’s accidental monarchs: how to design
-                  web3 platform governance</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Porter Smith</a> and
-                <a href="#">Andrew Hall</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >titan’s clayton gardner on how the fintech market is
-                  changing</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Anish Acharya</a>, <a href="#">Alex Immerman</a>,
-                and <a href="#">Clayton Gardner</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">SNARK security and performance</a></h6>
-              <span class="posted-by">
-                <a href="#">Anish Acharya</a>, <a href="#">Alex Immerman</a>,
-                and <a href="#">Clayton Gardner</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#">crypto startup school: relaunched and expanded</a>
-              </h6>
-              <span class="posted-by">
-                <a href="#">Chris Dixon</a> and <a href="#">Jeff Amico</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / podcast</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#">zkDocs: zero-knowledge information sharing</a>
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">public randomness and randomness beacons</a></h6>
-              <span class="posted-by">
-                <a href="#">Joseph Bonneau</a> and
-                <a href="#">Valeria Nikolaenko</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
+        <PostOneCol
+          v-for="(post, i) in filteredPostsOne"
+          :featuredPostData="post"
+          :key="i + 'sec-1'"
+          callFrom="lawPage"
+        ></PostOneCol>
+        <!-- <div class="article">
           <div class="row">
             <div class="col-sm-2">
               <span class="category-title">10.04.22 / article</span>
@@ -191,212 +72,46 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
-    <div class="section-divider bg-grey">
-      <div class="container">
-        <span class="block-title">Featured</span>
-      </div>
-    </div>
-
-    <section class="profile-featured bg-grey">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">10.04.22 / article</span>
-              <h6><a href="#">on-chain trusted setup ceremony</a></h6>
-              <div class="authors">
-                <a href="#">Joseph Bonneau</a> and
-                <a href="#">Valeria Nikolaenko</a>
-              </div>
-              <ul class="tags">
-                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">10.04.22 / article</span>
-              <h6>
-                <a href="#"
-                  >a call to the SEC: treat crypto assets as if clients
-                  matter</a
-                >
-              </h6>
-              <div class="authors">
-                <a href="#">Justin Thaler</a>
-              </div>
-              <ul class="tags">
-                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">10.04.22 / article</span>
-              <h6>
-                <a href="#">‘proof-of-merge’ NFT to commemorate ethereum</a>
-              </h6>
-              <div class="authors">
-                <a href="#">Alex Immerman</a>
-              </div>
-              <ul class="tags">
-                <li><a class="tag small-tag white-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag white-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag white-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
+    <template>
+      <div class="section-divider bg-grey">
+        <div class="container">
+          <span class="block-title">Featured</span>
         </div>
       </div>
-    </section>
 
-    <section class="featured">
+      <section class="profile-featured bg-grey">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-sm-4"
+              v-for="(post, i) in featured_posts"
+              :key="i + 'featured'"
+            >
+              <PostThreeCol
+                :postData="post"
+                callFrom="policypage"
+              ></PostThreeCol>
+            </div>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <section
+      class="featured"
+      v-if="!$util.isEmpty(posts) && !$util.isEmpty(filteredPostsTwo)"
+    >
       <div class="container">
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >SBC 22: field notes from science of blockchain 2022</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Chris Dixon</a> and <a href="#">Jeff Amico</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >NFT sales: clearing the market, avoiding gas wars</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">Alex Immerman</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">on-chain trusted setup ceremony</a></h6>
-              <span class="posted-by">
-                <a href="#">Chris Dixon</a> and <a href="#">Jeff Amico</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">the can’t be evil NFT licenses</a></h6>
-              <span class="posted-by"> <a href="#">Jeff Amico</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >treasury management: a guide to navigating downturns</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">Chris Dixon</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#">why blockchain performance is hard to measure</a>
-              </h6>
-              <span class="posted-by">
-                <a href="#">Chris Dixon</a> and <a href="#">Jeff Amico</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#">status traps: learning from web2 social networks</a>
-              </h6>
-              <span class="posted-by">
-                <a href="#">Porter Smith</a> and
-                <a href="#">Andrew Hall</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <PostOneCol
+          v-for="(post, i) in filteredPostsTwo"
+          :featuredPostData="post"
+          :key="i + 'sec-2'"
+          callFrom="lawPage"
+        ></PostOneCol>
       </div>
     </section>
 
@@ -409,118 +124,17 @@
       </div>
     </section>
 
-    <section class="featured">
+    <section
+      class="featured"
+      v-if="!$util.isEmpty(posts) && !$util.isEmpty(filteredPostsThree)"
+    >
       <div class="container">
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >measuring SNARK performance: frontends, backends, and the
-                  future</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">Porter Smith</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#">DAO governance attacks, and how to avoid them</a>
-              </h6>
-              <span class="posted-by"> <a href="#">Jeff Amico</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >smart contract security: a simple checklist for Web3
-                  development</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >introducing ‘web3 weekly’, a newsletter from a16z crypto that
-                  curates & shares resources</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.04.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >metaverse land: what makes digital real estate valuable</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">nfts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <PostOneCol
+          v-for="(post, i) in filteredPostsThree"
+          :featuredPostData="post"
+          :key="i + 'sec-3'"
+          callFrom="lawPage"
+        ></PostOneCol>
       </div>
     </section>
 
@@ -539,7 +153,10 @@ export default {
   },
   data() {
     return {
-      filteredPosts: [],
+      featured_posts: [],
+      filteredPostsOne: [],
+      filteredPostsTwo: [],
+      filteredPostsThree: [],
       posts: [],
       tags: [],
       postTypes: ["Format/ All"],
@@ -547,6 +164,13 @@ export default {
     };
   },
   methods: {
+    async getFeaturePosts() {
+      const response = await this.$api.lawAndPolicyPage.get();
+      // console.log(response);
+      if (!this.$util.isEmpty(response)) {
+        this.featured_posts = response.featured_resources;
+      }
+    },
     async fetchPosts() {
       let payload = {
         post_type: "any",
@@ -590,6 +214,7 @@ export default {
         }
       }
     },
+
     async getPopularTags() {
       const response = await this.$api.homepage.getPopularTags();
       if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.tags)) {
@@ -598,20 +223,46 @@ export default {
         }
       }
     },
+    postsSliceIntoChunks(arr, sizes = [3, 3, 1000]) {
+      const copy = [...arr];
+      const result = [];
+      let i = 0;
+      while (i <= arr.length && copy.length) {
+        result.push(copy.splice(0, sizes[i % sizes.length]));
+        i++;
+      }
+      console.log(result);
+      return result;
+    },
     filterPost() {
       if (this.postType !== "all") {
-        let data = this.posts.filter((type) => {
+        let dataArr = this.posts.filter((type) => {
           return type.post_type == this.postType;
         });
-        this.filteredPosts = data;
+        if (dataArr.length <= 9) {
+          let chunkArr = this.postsSliceIntoChunks(dataArr, [2, 2, 1000]);
+          this.filteredPostsOne = chunkArr[0];
+          this.filteredPostsTwo = chunkArr[1];
+          this.filteredPostsThree = chunkArr[2];
+        } else if (dataArr.length >= 10) {
+          let chunkArr = this.postsSliceIntoChunks(dataArr, [3, 4, 1000]);
+          this.filteredPostsOne = chunkArr[0];
+          this.filteredPostsTwo = chunkArr[1];
+          this.filteredPostsThree = chunkArr[2];
+        }
+        console.log("filter post = ", this.postType, dataArr.length);
       } else {
-        this.filteredPosts = this.posts;
+        let chunkArr = this.postsSliceIntoChunks(this.posts, [3, 4, 1000]);
+        this.filteredPostsOne = chunkArr[0];
+        this.filteredPostsTwo = chunkArr[1];
+        this.filteredPostsThree = chunkArr[2];
+        console.log("filter post = ", this.postType, this.posts.length);
       }
-      console.log("filter post = ", this.postType, this.filteredPosts.length);
     },
   },
   mounted() {
     this.fetchPosts();
+    this.getFeaturePosts();
     this.getPopularTags();
   },
 };
