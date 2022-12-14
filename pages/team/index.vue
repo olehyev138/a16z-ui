@@ -21,7 +21,7 @@
 
       <div class="container">
         <ul class="highlight-list">
-          <template v-for="val in teamMembers">
+          <template v-for="(val, i) in teamMembers">
             <!-- @Oleh The Alphabets have been removed from recent update. Can you please take a look here.-->
             <!-- <li
               :key="`${i + 2}-group`"
@@ -32,11 +32,11 @@
             </li> -->
             <li
               v-for="(member, index) in val.children"
-              :key="`${index}-teamPage`"
+              :key="`${index}-teamPage-${val.group}`"
             >
               <TeamMember
                 :teamMember="member"
-                :key="`${index}-teamPageC`"
+                :key="`${index}-group-${val}`"
                 callFrom="teamPage"
               />
             </li>
