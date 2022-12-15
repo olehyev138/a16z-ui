@@ -308,7 +308,13 @@
     </section>
     <div class="section-divider bg-grey">
       <div class="container">
-        <span class="block-title">Curriculum </span>
+        <span class="block-title"
+          >{{
+            !$util.isEmpty(curriculum_content.curriculum_section_title)
+              ? curriculum_content.curriculum_section_title
+              : "Curriculum"
+          }}
+        </span>
       </div>
     </div>
     <section class="curriculums bg-grey">
@@ -635,6 +641,7 @@ export default {
   data() {
     return {
       general_content: [],
+      curriculum_content: [],
       curriculumsList: [],
       faqList: [],
       alumni_list: [],
@@ -646,10 +653,12 @@ export default {
       console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
-
-        if (!this.$util.isEmpty(response.lectures)) {
-          this.curriculumsList = response.lectures;
+        // curriculum content tab 2022
+        if (!this.$util.isEmpty(response.curriculum_content)) {
+          this.curriculum_content = response.curriculum_content;
+          this.curriculumsList = response.curriculum_content.lectures;
         }
+
         if (!this.$util.isEmpty(response.faq_list)) {
           let list = response.faq_list;
           list.forEach((element) => {
