@@ -57,6 +57,11 @@ export default {
       extensions: ["vue"],
       pathPrefix: false,
     },
+    {
+      path: "~/components/startupSchool",
+      extensions: ["vue"],
+      pathPrefix: false,
+    },
   ],
 
   buildModules: ["@nuxtjs/style-resources", "@nuxtjs/moment"],

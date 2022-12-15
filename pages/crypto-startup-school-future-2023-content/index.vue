@@ -483,40 +483,15 @@
         }}</span>
       </div>
     </div>
-    <div class="alumni-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <h6>
-              {{
-                !$util.isEmpty(general_content.alumni_section_subtitle)
-                  ? general_content.alumni_section_subtitle
-                  : "Participants in our 2020 cohort have gone on to raise over $300M and have founded some of the industry's leading companies, including:"
-              }}
-            </h6>
-          </div>
-          <div class="col-sm-6">
-            <ul class="highlighted-list" v-if="!$util.isEmpty(alumni_list)">
-              <li v-for="(alumni, i) in alumni_list" :key="i + 'alumni_list'">
-                <h6>
-                  <a class="highlight" :href="alumni.link">{{
-                    alumni.title
-                  }}</a>
-                </h6>
-                <p>{{ alumni.description }}</p>
-              </li>
-            </ul>
-            <div
-              class="info-text"
-              v-if="!$util.isEmpty(general_content.alumni_bottom_text)"
-            >
-              <p
-                v-html="$util.showHtml(general_content.alumni_bottom_text)"
-              ></p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div
+      class="alumni-section"
+      v-if="!$util.isEmpty(general_content.alumni_list)"
+    >
+      <Alumni
+        :alumniList="alumni_list"
+        :alumniSectionSubtitle="general_content.alumni_section_subtitle"
+        :alumniBottomText="general_content.alumni_bottom_text"
+      ></Alumni>
     </div>
     <div class="section-divider bg-grey">
       <div class="container">
@@ -527,39 +502,11 @@
         }}</span>
       </div>
     </div>
-    <section class="faq bg-grey">
-      <div class="container">
-        <ul class="faq-list" v-if="!$util.isEmpty(faqList)">
-          <li v-for="(faq, i) in faqList" :key="i">
-            <a
-              href="javascript:void(0)"
-              class="opener"
-              @click="faq.visible = !faq.visible"
-              :class="faq.visible ? 'active' : ''"
-              >{{ faq.question }}</a
-            >
-
-            <span class="curriculums-footer" v-if="faq.visible">{{
-              faq.answer
-            }}</span>
-          </li>
-          <!-- add [active] class on opener to show active state  -->
-        </ul>
-        <div class="faq-footer">
-          <template
-            v-if="!$util.isEmpty(general_content.faq_bottom_text)"
-            v-html="!$util.showHtml(general_content.faq_bottom_text)"
-          ></template>
-          <template>
-            <p>
-              Questions? Please email us at
-              <a href="mailto:crypto-startup-school@a16z.com"
-                >crypto-startup-school@a16z.com</a
-              >
-            </p>
-          </template>
-        </div>
-      </div>
+    <section class="faq bg-grey" v-if="!$util.isEmpty(faqList)">
+      <Faq
+        :faqLists="faqList"
+        :faqBottomText="general_content.faq_bottom_text"
+      ></Faq>
     </section>
     <Footer></Footer>
   </div>
