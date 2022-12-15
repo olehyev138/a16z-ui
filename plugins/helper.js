@@ -15,7 +15,15 @@ export default (context, inject) => {
     else return !value;
   };
   const stringToArray = (str = "", separator = " ") => {
-    return str.split(separator);
+    let arr = str.split(separator);
+    let noEmptyStringInThisArray = [];
+
+    arr.map((elem) => {
+      if (!isEmpty(elem)) {
+        noEmptyStringInThisArray.push(elem);
+      }
+    });
+    return noEmptyStringInThisArray;
   };
 
   const addressFormat = (str) => {

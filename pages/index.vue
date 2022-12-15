@@ -47,11 +47,13 @@
     </div>
 
     <section class="featured">
-      <Featured
-        v-for="(post, i) in featured_posts"
-        :featuredPostData="post"
-        :key="i"
-      ></Featured>
+      <div class="container">
+        <PostOneCol
+          v-for="(post, i) in featured_posts"
+          :featuredPostData="post"
+          :key="i"
+        ></PostOneCol>
+      </div>
     </section>
 
     <section class="newsletter">
@@ -106,7 +108,7 @@
       </div>
     </section>
 
-    <section class="announcement bg-grey">
+    <section class="announcement bg-grey" v-if="!$util.isEmpty(announcements)">
       <div class="container">
         <div class="group-header has-dotted-border">
           <h6>
@@ -122,61 +124,10 @@
               : "see all"
           }}</a>
         </div>
-        <div class="cards-slider">
-          <a href="#" class="card-news decor-style-1">
-            <div class="content-t">
-              <h5>
-                <span>Crypto Startup </span>
-                <span>School: relaunched </span>
-                <span>and expanded</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-2 purple">
-            <div class="content-t">
-              <h5>
-                <span>Richard </span>
-                <span>Rosenblatt</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-3 maroon">
-            <div class="content-t">
-              <h5>
-                <span>investing in</span>
-                <span>PROOF</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news decor-style-4 teal">
-            <div class="content-t">
-              <div class="head">
-                <span class="name">Jason Milionis</span>
-                <span class="twiter-id">@handlehere</span>
-              </div>
-              <h5 class="sub-title">
-                <span>We proudly contributed to the</span>
-                <span>$165M Series B financing round</span>
-                <span>that @uniswap Labs announced </span>
-                <span>today...</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-              <span class="icon-twitter"></span>
-            </div>
-          </a>
-        </div>
-        <Announcements></Announcements>
+        <Announcements
+          :announcements="announcements"
+          key="announcement"
+        ></Announcements>
       </div>
     </section>
 
@@ -232,34 +183,7 @@
       <div class="container">
         <div class="tags-banner-box">
           <span class="block-title">popular tags</span>
-          <ul class="tags">
-            <template v-if="tags.length > showTagsLimiter">
-              <li v-for="(tag, i) in displayedTags" :key="i">
-                <a
-                  href="javscript:void(0)"
-                  class="tag white-tag"
-                  v-html="tag.name"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="javascript:void(0)"
-                  @click="showAllTags = !showAllTags"
-                  class="tag white-tag"
-                  >...</a
-                >
-              </li>
-            </template>
-            <template v-else>
-              <li v-for="(tag, i) in displayedTags" :key="i">
-                <a
-                  href="javscript:void(0)"
-                  class="tag white-tag"
-                  v-html="tag.name"
-                ></a>
-              </li>
-            </template>
-          </ul>
+          <PopularTags :tags="tags" key="homePage"></PopularTags>
         </div>
       </div>
     </section>
@@ -288,19 +212,7 @@ export default {
       tags: [],
     };
   },
-  computed: {
-    displayedTags() {
-      if (this.tags.length > this.showTagsLimiter) {
-        if (!this.showAllTags) {
-          return this.tags.slice(0, this.showTagsLimiter);
-        } else {
-          return this.tags;
-        }
-      } else {
-        return this.tags;
-      }
-    },
-  },
+  computed: {},
   methods: {
     async getAllContent() {
       const response = await this.$api.homepage.get();
@@ -320,9 +232,23 @@ export default {
         }
       }
     },
+    async getAnnouncements() {
+      let payload = {
+        post_type: ["announcement"],
+        posts_per_page: "4",
+      };
+      const response = await this.$api.common.getAnnouncements(payload);
+      if (
+        !this.$util.isEmpty(response.posts) &&
+        !this.$util.isEmpty(response.posts.data)
+      ) {
+        this.announcements = response.posts.data;
+      }
+    },
   },
   mounted() {
     this.getAllContent();
+    this.getAnnouncements();
     this.getPopularTags();
   },
 };

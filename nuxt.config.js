@@ -25,9 +25,12 @@ export default {
 
   plugins: [
     { src: "~/plugins/custom.js", mode: "client", ssr: true },
+    { src: "~/plugins/prism", mode: "client" },
+    { src: "~/plugins/infiniteloading", ssr: false },
     { src: "~/plugins/axios" },
     { src: "@/plugins/api.js" },
     { src: "@/plugins/helper.js" },
+    { src: "@/plugins/persistedState.client.js" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,6 +44,16 @@ export default {
     },
     {
       path: "~/components/homepage",
+      extensions: ["vue"],
+      pathPrefix: false,
+    },
+    {
+      path: "~/components/research",
+      extensions: ["vue"],
+      pathPrefix: false,
+    },
+    {
+      path: "~/components/news",
       extensions: ["vue"],
       pathPrefix: false,
     },

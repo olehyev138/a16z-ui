@@ -20,8 +20,19 @@
           >
             <span v-for="(author, i) in post.authorList" :key="i">
               <a href="#">{{ author }}</a>
-              <template v-if="i !== post.authorList.length - 1"
+
+              <template
+                v-if="
+                  i !== post.authorList.length - 1 &&
+                  post.authorList.length == 2
+                "
                 >&nbsp;and&nbsp;</template
+              >
+              <template
+                v-if="
+                  i !== post.authorList.length - 1 && post.authorList.length > 2
+                "
+                >&nbsp;,&nbsp;</template
               >
             </span>
           </span>
@@ -70,18 +81,20 @@ export default {
           terms: categorySlug,
         },
       };
-      const response = await this.$api.common.getCategoryWisepost(payload);
+      const response = await this.$api.common.fetchPosts(payload);
       if (
         !this.$util.isEmpty(response) &&
         !this.$util.isEmpty(response.posts)
       ) {
         if (!this.$util.isEmpty(response.posts.data)) {
           let posts = response.posts.data;
-          posts.forEach(async (val, index) => {
+          for (var index = 0; index < posts.length; index++) {
             posts[index].authorList = [];
-            let authorArr = await this.getSinglePost(val.ID);
-            posts[index].authorList = authorArr;
-          });
+            try {
+              let authorArr = await this.getSinglePost(posts[index].ID);
+              posts[index].authorList = authorArr;
+            } catch (error) {}
+          }
           this.posts = posts;
         }
       }
@@ -91,7 +104,7 @@ export default {
       if (!this.$util.isEmpty(response)) {
         if (!this.$util.isEmpty(response.acf)) {
           let authors = response.acf.authors ? response.acf.authors : "";
-          return this.$util.stringToArray(authors, "and");
+          return this.$util.stringToArray(authors.replace(/,/g, "and"), "and");
         }
       }
     },

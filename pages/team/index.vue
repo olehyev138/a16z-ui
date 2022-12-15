@@ -24,32 +24,21 @@
           <template v-for="(val, i) in teamMembers">
             <!-- @Oleh The Alphabets have been removed from recent update. Can you please take a look here.-->
             <!-- <li
-              :key="i + 'group'"
+              :key="`${i + 2}-group`"
               class="has-alphabet"
               :class="i == 0 ? 'open' : i == 1 ? 'close' : ''"
             >
-              <a href="#" class="alphabet" :key="i">{{ val.group }}</a>
+              <a href="#" class="alphabet">{{ val.group }}</a>
             </li> -->
-
-            <li v-for="(teamMember, i) in val.children" :key="val.group + i">
-              <NuxtLink
-                :to="`/team/profile/${teamMember.id}`"
-                class="card-people"
-              >
-                <div class="avatar decor--1">
-                  <img
-                    v-if="!$util.isEmpty(teamMember.photo)"
-                    alt="Adina Fischer"
-                    :src="teamMember.photo"
-                  />
-                  <img
-                    v-else
-                    alt="Adina Fischer"
-                    src="https://a16zcrypto.com/wp-content/uploads/2022/05/Adina-Fischer-300x300.png"
-                  />
-                </div>
-                <div class="name">{{ teamMember.name }}</div>
-              </NuxtLink>
+            <li
+              v-for="(member, index) in val.children"
+              :key="`${index}-teamPage-${val.group}`"
+            >
+              <TeamMember
+                :teamMember="member"
+                :key="`${index}-group-${val}`"
+                callFrom="teamPage"
+              />
             </li>
           </template>
         </ul>
@@ -128,15 +117,24 @@ export default {
       const response = await this.$api.teampage.getTeamMembers();
       if (!this.$util.isEmpty(response)) {
         let teamMembers = response;
-        teamMembers.forEach(async (val, index) => {
-          teamMembers[index].name = this.$util.isEmpty(val.title.rendered)
+
+        for (var index = 0; index < teamMembers.length; index++) {
+          teamMembers[index].name = this.$util.isEmpty(
+            teamMembers[index].title.rendered
+          )
             ? ""
-            : val.title.rendered;
+            : teamMembers[index].title.rendered;
           teamMembers[index].photo = "";
-          let photo = await this.getTeamMemberPhoto(val.featured_media);
-          teamMembers[index].photo = photo;
-        });
+
+          try {
+            let photo = await this.getTeamMemberPhoto(
+              teamMembers[index].featured_media
+            );
+            teamMembers[index].photo = photo;
+          } catch (error) {}
+        }
         this.teamMembers = this.arrGroupAlphabeticalOrder(teamMembers);
+        this.$store.dispatch("teamMembers/storeTeamMembers", teamMembers);
       }
       // console.log(this.teamMembers);
     },

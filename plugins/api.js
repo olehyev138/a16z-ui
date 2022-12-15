@@ -7,6 +7,8 @@ import Researchpage from "@/api/researchpage";
 import FollowusPage from "@/api/followus";
 import PortfolioPage from "@/api/portfoliopage";
 import TeamPage from "@/api/teampage";
+import NewsPage from "@/api/newspage";
+import LawAndPolicyPage from "@/api/lawAndPolicyPage";
 import Common from "@/api/common";
 import CryptoStartupSchoolDefault from "@/api/cryptoStartupSchoolDefault";
 import Footer from "@/api/footer";
@@ -26,6 +28,8 @@ export default (context, inject) => {
     common: Common(context.$axios),
     portfolio: PortfolioPage(context.$axios),
     teampage: TeamPage(context.$axios),
+    newspage: NewsPage(context.$axios),
+    lawAndPolicyPage: LawAndPolicyPage(context.$axios),
   };
 
   // Inject $api

@@ -18,49 +18,22 @@
       </div>
     </header>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(featured_announcements)">
       <div class="container">
         <span class="block-title">Featured</span>
       </div>
     </div>
 
-    <section class="featured-cards-announcement">
+    <section
+      class="featured-cards-announcement"
+      v-if="!$util.isEmpty(featured_announcements)"
+    >
       <div class="container">
-        <div class="cards-slider">
-          <a href="#" class="card-news decor-style-1">
-            <div class="content-t">
-              <h5>
-                <span>Crypto Startup </span>
-                <span>School: relaunched</span>
-                <span>and expanded</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news purple decor-style-2">
-            <div class="content-t">
-              <h5>
-                <span>Richard </span>
-                <span>Rosenblatt</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
-          <a href="#" class="card-news maroon decor-style-3">
-            <div class="content-t">
-              <h5>
-                <span>investing in</span>
-                <span>PROOF</span>
-              </h5>
-            </div>
-            <div class="content-b">
-              <time datetime="2022-11-12">12.11.22</time>
-            </div>
-          </a>
+        <Announcements
+          :announcements="featured_announcements"
+          key="featured_announcements"
+        ></Announcements>
+        <!-- <div class="cards-slider">
           <a href="#" class="card-news teal decor-style-4">
             <div class="content-t">
               <div class="head">
@@ -79,7 +52,7 @@
               <span class="icon-twitter"></span>
             </div>
           </a>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -91,225 +64,19 @@
 
     <section class="featured">
       <div class="container">
-        <div class="article has-img">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / twitter</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >“Co-CEO at @titanvest, @virtualclay, and a16z's @illscience &
-                  @aleximm dive into how the fintech market is changing. They
-                  tal...”</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">@handlename</a></span>
-            </div>
-            <div class="col-sm-3 col-md-2 col-md-offset-1">
-              <div class="img">
-                <a href="#"
-                  ><img src="@/assets/images/card-img-01.png" alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / blog</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >building partnerships with NFT projects and communities</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & immerman</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article has-img">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / blog</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#">virtual society, blockchains, and the metaverse</a>
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & immerman</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-3 col-md-2 col-md-offset-1">
-              <div class="img">
-                <a href="#"
-                  ><img src="@/assets/images/card-img-02.png" alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article has-img">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / twitter</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >“today, @soundxyz_ is launching the sound protocol 👀 it's an
-                  upgraded and permissionless”</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-            </div>
-            <div class="col-sm-3 col-md-2 col-md-offset-1">
-              <div class="img">
-                <a href="#"
-                  ><img src="@/assets/images/card-img-03.png" alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / blog</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >SBC 22: field notes from science of blockchain 2022</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & immerman</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / twitter</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >“at first glance, many think of @sardine as another "point
-                  solution in a sea of other KYC solutions" (fortunately
-                  @astrange fixed this....”</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">@handlename</a></span>
-            </div>
-          </div>
-        </div>
-        <div class="article has-img">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / blog</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >foundations for successful fintech infrastructure (and
-                  several tradeoffs to consider).</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & immerman</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-3 col-md-2 col-md-offset-1">
-              <div class="img">
-                <a href="#"
-                  ><img src="@/assets/images/card-img-04.png" alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article has-img">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / twitter</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >“yet another reason we are proud to work with @kimberlywtan
-                  https://t.co/IrJtKAGHq9”</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">@handlename</a></span>
-            </div>
-            <div class="col-sm-3 col-md-2 col-md-offset-1">
-              <div class="img">
-                <a href="#"
-                  ><img src="@/assets/images/card-img-05.png" alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">12.10.22 / blog</span>
-            </div>
-            <div class="col-sm-7">
-              <h6>
-                <a href="#"
-                  >on paper to on-chain: how auction theory informs smart
-                  contract implementations</a
-                >
-              </h6>
-              <span class="posted-by">
-                <a href="#">Alex Immerman</a> &
-                <a href="#">Justin Thaler</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & immerman</a></li>
-                <li><a class="tag small-tag" href="#">blockchain</a></li>
-                <li><a class="tag small-tag" href="#">ntfs</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <LatestPosts
+          v-for="(post, i) in latestPost"
+          :postData="post"
+          :key="i + 'latest-post-news'"
+        ></LatestPosts>
+        <client-only>
+          <infinite-loading @infinite="infiniteHandler">
+            <!-- <div slot="spinner">
+            </div>  -->
+            <div slot="no-more"></div>
+            <div slot="no-results"></div>
+          </infinite-loading>
+        </client-only>
       </div>
     </section>
 
@@ -325,5 +92,69 @@ export default {
     };
   },
   name: "NewsPage",
+  data() {
+    return {
+      general_content: [],
+      featured_announcements: [],
+
+      latestPost: [],
+      page: 1,
+      per_page: 9,
+    };
+  },
+  computed: {},
+  methods: {
+    async getAnnouncements() {
+      const response = await this.$api.newspage.getAnnouncements();
+      // console.log(response);
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response.acf;
+        this.featured_announcements = response.featured_announcements;
+      }
+    },
+    async getLatestPost() {
+      let payload = {
+        post_type: ["announcement"],
+        posts_per_page: -1,
+      };
+      const response = await this.$api.common.fetchPosts(payload);
+      if (
+        !this.$util.isEmpty(response) &&
+        !this.$util.isEmpty(response.posts)
+      ) {
+        if (!this.$util.isEmpty(response.posts.data)) {
+          let latestPost = response.posts.data;
+          // this.latestPost = latestPost;
+          // console.log("latestPost == ", latestPost);
+          return latestPost;
+        }
+      }
+    },
+    async infiniteHandler($state) {
+      let allPost = await this.getLatestPost();
+      let spliceData = this.paginate(allPost);
+      if (!this.$util.isEmpty(spliceData)) {
+        this.page += 1;
+        this.latestPost.push(...spliceData);
+        setTimeout(() => {
+          $state.loaded();
+        }, 500);
+      } else {
+        setTimeout(() => {
+          $state.complete();
+        }, 500);
+      }
+    },
+    paginate(arrayData = []) {
+      return arrayData.slice(
+        (this.page - 1) * this.per_page,
+        this.page * this.per_page
+      );
+    },
+  },
+  mounted() {
+    this.getAnnouncements();
+    this.getLatestPost();
+  },
 };
 </script>

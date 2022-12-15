@@ -22,18 +22,17 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h5>
-              The a16z crypto policy team focuses on working with founders,
-              lawmakers, and regulators around the globe to help shape the
-              legislation that will govern the future of web3.
+            <h5 v-if="!$util.isEmpty(general_content.intro_subtitle)">
+              {{ general_content.intro_subtitle }}
             </h5>
           </div>
           <div class="col-sm-6">
-            <div class="desc">
+            <div
+              class="desc"
+              v-if="!$util.isEmpty(general_content.intro_description)"
+            >
               <p>
-                At a16z crypto, we support clear, thoughtful, and responsible
-                regulation of web3. We believe in crypto's transparent ethos and
-                are dedicated to making policy open and understandable for all.
+                {{ general_content.intro_description }}
               </p>
             </div>
           </div>
@@ -41,20 +40,21 @@
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!this.$util.isEmpty(principles_list)">
       <div class="container">
         <span class="block-title">Principles</span>
       </div>
     </div>
 
-    <div class="sub-headline">
+    <div class="sub-headline" v-if="!this.$util.isEmpty(principles_list)">
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h6>
+            <h6 v-if="$util.isEmpty(general_content.principles_description)">
               To unlock the full potential of web3, we support the following
               core principles while working with lawmakers around the globe:
             </h6>
+            <h6 v-else>{{ general_content.principles_description }}</h6>
           </div>
         </div>
       </div>
@@ -84,173 +84,42 @@
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(team_members)">
       <div class="container">
-        <span class="block-title">Team</span>
+        <span class="block-title"
+          >{{
+            !this.$util.isEmpty(general_content.team_section_title)
+              ? general_content.team_section_title
+              : "Team"
+          }}
+        </span>
       </div>
     </div>
 
-    <section class="team">
+    <section class="team" v-if="!$util.isEmpty(team_members)">
       <div class="container">
         <ul class="highlight-list style--1">
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--1">
-                <img
-                  alt="Anthony Albanese"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/AnthonyAlbanese-Photo-300x300.jpg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Anthony Albanese</div>
-                <span class="post">Cheif operating officer</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--3">
-                <img
-                  alt="Miles Jenningse"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/05/Miles-Jennings-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Miles Jenningse</div>
-                <span class="post">crypto general counsel</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--4">
-                <img
-                  alt="Michele Korver"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/08/Michele-Korver-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Michele Korver</div>
-                <span class="post">Head of regulatory</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--5">
-                <img
-                  alt="Jai Ramaswamy"
-                  src="@/assets/images/avatar-jai-ramaswamy.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Jai Ramaswamy</div>
-                <span class="post">Cheif Legal Officer</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--6">
-                <img
-                  alt="Scott Walker"
-                  src="@/assets/images/avatar-scott.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Scott Walker</div>
-                <span class="post">Chief Compliance Officer</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--7">
-                <img
-                  alt="Collin McCune"
-                  src="@/assets/images/avatar-collin.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Collin McCune</div>
-                <span class="post">head of government affairs</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--7">
-                <img alt="Bill Hinman" src="@/assets/images/avatar-bill.png" />
-              </div>
-              <div class="r-col">
-                <div class="name">Bill Hinman</div>
-                <span class="post">advisory partner </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--1">
-                <img
-                  alt="Bill Hinman"
-                  src="@/assets/images/avatar-brian-q.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Brian Quintenz</div>
-                <span class="post">advisory partner </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--2">
-                <img
-                  alt="Caroline Friedman"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/11/Approved-10-240x300.jpg"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Caroline Friedman</div>
-                <span class="post">operations</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--1">
-                <img
-                  alt="Caroline Friedman"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/06/David-Sverdlov-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">David Sverdlov</div>
-                <span class="post">regulatory counsel</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="card-people">
-              <div class="avatar decor--3">
-                <img
-                  alt="Caroline Friedman"
-                  src="https://a16zcrypto.com/wp-content/uploads/2022/06/Paul-Cafiero-300x300.png"
-                />
-              </div>
-              <div class="r-col">
-                <div class="name">Paul Cafiero</div>
-                <span class="post">Communications partner</span>
-              </div>
-            </a>
+          <li
+            v-for="(team, index) in team_members"
+            :key="`${index}-researchpage`"
+          >
+            <team-member
+              :teamMember="team"
+              callFrom="researchpage"
+              :key="`${index}-researchpage`"
+            ></team-member>
           </li>
         </ul>
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(resource_list)">
       <div class="container">
-        <span class="block-title">Resources</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.resources_section_title)
+            ? general_content.resources_section_title
+            : "Resources"
+        }}</span>
         <a href="#" class="btn-link underlined">
           see all
           <span class="icon-arrow-right"></span>
@@ -258,99 +127,55 @@
       </div>
     </div>
 
-    <section class="categories">
+    <section class="categories" v-if="!$util.isEmpty(resource_list)">
       <div class="container">
-        <div class="category-row">
+        <div
+          class="category-row"
+          v-for="(resource, i) in resource_list"
+          :key="i"
+        >
           <div class="group-header bg-grey">
-            <h6>for everyone</h6>
+            <h6>{{ resource.title }}</h6>
           </div>
-          <div class="article">
+          <div
+            class="article"
+            v-for="(post, index) in resource.postData"
+            :key="index + '-post'"
+          >
             <div class="row">
               <div class="col-sm-2">
-                <span class="category-title">09.02.22 / article</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">why web3 matters</a></h6>
-                <span class="posted-by"> <a href="#">Chris Dixon</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">09.29.22 / report</span>
+                <span class="category-title"
+                  >{{ formatDate(post.date) }} / {{ post.type }}</span
+                >
               </div>
               <div class="col-sm-10 col-md-8">
                 <h6>
-                  <a href="#">introducing the 2022 state of crypto report</a>
+                  <a href="#">{{ post.post_title }}</a>
                 </h6>
-                <span class="posted-by">
-                  <a href="#">Daren Matsuoka</a>, <a href="#">Eddy Lazzarin</a>,
-                  <a href="#">Chris Dixon</a> and
-                  <a href="#">Robert Hackett</a></span
+                <span
+                  class="posted-by"
+                  v-if="!$util.isEmpty(post.authors) && post.authors.length > 1"
                 >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">09.29.22 / paper</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">the web3 landscape</a></h6>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="category-row">
-          <div class="group-header bg-grey">
-            <h6>for lawmakers</h6>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">12.04.22 / article </span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">legal frameworks for DAOs series</a></h6>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="category-row">
-          <div class="group-header bg-grey">
-            <h6>for builders</h6>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">11.12.21 / article</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">the can’t be evil NFT licenses</a></h6>
-                <span class="posted-by">
-                  <a href="#">Miles Jennings</a> and
-                  <a href="#">Chris Dixon</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">08.08.22 / article</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6>
-                  <a href="#"
-                    >decentralization for web3 builders: principles, models,
-                    how</a
-                  >
-                </h6>
-                <span class="posted-by"> <a href="#">Miles Jennings</a></span>
+                  <span v-for="(author, i) in post.authors" :key="i">
+                    <a href="#">{{ author }}</a>
+                    <template
+                      v-if="
+                        i !== post.authors.length - 1 &&
+                        post.authors.length == 2
+                      "
+                      >&nbsp;and&nbsp;</template
+                    >
+                    <template
+                      v-if="
+                        i !== post.authors.length - 1 && post.authors.length > 2
+                      "
+                      >&nbsp;,&nbsp;</template
+                    >
+                  </span>
+                </span>
+                <span v-else>
+                  <a href="#">{{ post.authors[0] }}</a>
+                </span>
               </div>
             </div>
           </div>
@@ -358,87 +183,57 @@
       </div>
     </section>
 
-    <div class="section-divider bg-grey">
+    <div class="section-divider bg-grey" v-if="!$util.isEmpty(positions_items)">
       <div class="container">
-        <span class="block-title">Positions</span>
+        <span class="block-title">
+          {{
+            !$util.isEmpty(general_content.positions_section_title)
+              ? general_content.positions_section_title
+              : "Positions"
+          }}</span
+        >
       </div>
     </div>
 
-    <section class="profile-featured bg-grey">
+    <section
+      class="profile-featured bg-grey"
+      v-if="!$util.isEmpty(positions_items)"
+    >
       <div class="container">
         <div class="row">
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">op-eds /</span>
-              <h6><a href="#">in defense of stablecoins</a></h6>
-              <div class="authors">
-                <a href="#">Miles Jennings</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">comment letter /</span>
-              <h6>
-                <a href="#"
-                  >“as a part of a regular business” in the definition of dealer
-                  and government securities dealer</a
-                >
-              </h6>
-              <div class="authors">
-                <a href="#">Ms. Vanessa A. Countryman</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="box">
-              <span class="category-title">paper /</span>
-              <h6><a href="#">proposed-amicus-brief</a></h6>
-            </div>
+          <div class="col-sm-4" v-for="(post, i) in positions_items" :key="i">
+            <PostThreeCol :postData="post" callFrom="policypage"></PostThreeCol>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(announcements)">
       <div class="container">
-        <span class="block-title">announcements</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.announcements_section_title)
+            ? general_content.announcements_section_title
+            : "announcements"
+        }}</span>
         <a href="#" class="btn-link underlined">
-          see all
+          {{
+            !$util.isEmpty(general_content.announcements_cta_text)
+              ? general_content.announcements_cta_text
+              : "see all"
+          }}
           <span class="icon-arrow-right"></span>
         </a>
       </div>
     </div>
 
-    <section class="featured">
+    <section class="featured" v-if="!$util.isEmpty(announcements)">
       <div class="container">
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.20.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">Collin McCune</a></h6>
-              <span class="posted-by"> <a href="#">Anthony Albanese</a></span>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">10.20.22 / article</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >On Crypto and Its Implications for American Technology
-                  Innovation</a
-                >
-              </h6>
-              <span class="posted-by"> <a href="#">Scott Kupor</a></span>
-            </div>
-          </div>
-        </div>
+        <PostOneCol
+          v-for="(post, i) in announcements"
+          :featuredPostData="post"
+          :key="i"
+          callFrom="policyPage"
+        ></PostOneCol>
       </div>
     </section>
 
@@ -456,22 +251,125 @@ export default {
   },
   data() {
     return {
-      general_content: null,
+      general_content: {},
       principles_list: [],
+      team_members: [],
+      positions_items: [],
+      announcements: [],
+      resource_list: [],
     };
   },
   methods: {
     async getPolicyContent() {
       const response = await this.$api.policyPage.get();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
         this.principles_list = response.principles_list;
+        this.positions_items = response.positions_items;
+
+        if (!this.$util.isEmpty(response.team_members)) {
+          var teamMembers = response.team_members;
+          for (var index = 0; index < teamMembers.length; index++) {
+            try {
+              teamMembers[index].name = teamMembers[index].post_title;
+              let teamData = await this.getTeamMember(teamMembers[index].ID);
+
+              teamMembers[index].photo = teamData.photoLink;
+              teamMembers[index].role = teamData.roleName;
+            } catch (error) {}
+          }
+          // console.log(teamMembers);
+          this.team_members = teamMembers;
+        }
+
+        if (!this.$util.isEmpty(response.resources)) {
+          let resourcesPosts = response.resources;
+          for (var index = 0; index < resourcesPosts.length; index++) {
+            try {
+              let resourceIds = resourcesPosts[index].resources;
+              resourcesPosts[index].postData = [];
+              if (!this.$util.isEmpty(resourceIds)) {
+                for (var i = 0; i < resourceIds.length; i++) {
+                  let authorArr = await this.getSinglePost(resourceIds[i]);
+                  resourcesPosts[index].postData = [
+                    ...resourcesPosts[index].postData,
+                    authorArr,
+                  ];
+                }
+              }
+            } catch (error) {}
+          }
+          this.resource_list = resourcesPosts;
+          console.log(resourcesPosts);
+        }
       }
+    },
+    async getAnnouncements() {
+      let payload = {
+        post_type: ["announcement"],
+        posts_per_page: "2",
+        tax_query: {
+          taxonomy: "focus-areas",
+          field: "slug",
+          terms: "policy",
+        },
+      };
+      const response = await this.$api.common.getAnnouncements(payload);
+      if (
+        !this.$util.isEmpty(response.posts) &&
+        !this.$util.isEmpty(response.posts.data)
+      ) {
+        this.announcements = response.posts.data;
+      }
+    },
+    async getTeamMember(id) {
+      const response = await this.$api.teampage.getTeamMember(id);
+
+      if (!this.$util.isEmpty(response)) {
+        var role = "";
+        if (!this.$util.isEmpty(response.acf)) {
+          role = response.acf.role;
+        }
+        let featured_media_id = response.featured_media;
+        let photo = await this.getTeamMemberPhoto(featured_media_id);
+        return { photoLink: photo, roleName: role };
+      }
+    },
+    async getTeamMemberPhoto(featured_media_id) {
+      const response = await this.$api.teampage.getTeamMemberPhoto(
+        featured_media_id
+      );
+      if (!this.$util.isEmpty(response)) {
+        return response.source_url;
+      }
+    },
+    async getSinglePost(postId) {
+      const response = await this.$api.common.getSinglePost(postId);
+      if (!this.$util.isEmpty(response)) {
+        let postData = response;
+        postData.post_title = "";
+        postData.authors = [];
+        if (!this.$util.isEmpty(response.title)) {
+          postData.post_title = response.title.rendered;
+        }
+        if (!this.$util.isEmpty(response.acf)) {
+          let authors = response.acf.authors ? response.acf.authors : "";
+          postData.authors = this.$util.stringToArray(
+            authors.replace(/,/g, "and"),
+            "and"
+          );
+        }
+        return postData;
+      }
+    },
+    formatDate(date) {
+      return this.$moment(date).format("YYYY.M.D");
     },
   },
   mounted() {
     this.getPolicyContent();
+    this.getAnnouncements();
   },
 };
 </script>
