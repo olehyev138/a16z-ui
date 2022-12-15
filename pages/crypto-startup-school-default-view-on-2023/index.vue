@@ -46,8 +46,21 @@
               <form class="subscribe-form" action="#">
                 <div class="form-group">
                   <div class="input">
-                    <input type="email" placeholder="Enter email address" />
-                    <button type="submit" value="subscribe">subscribe</button>
+                    <input
+                      type="email"
+                      :placeholder="
+                        !$util.isEmpty(general_content.intro_input_placeholder)
+                          ? general_content.intro_input_placeholder
+                          : 'Enter email address'
+                      "
+                    />
+                    <button type="submit" value="subscribe">
+                      {{
+                        !$util.isEmpty(general_content.intro_input_button_text)
+                          ? general_content.intro_input_button_text
+                          : "subscribe"
+                      }}
+                    </button>
                   </div>
                 </div>
               </form>

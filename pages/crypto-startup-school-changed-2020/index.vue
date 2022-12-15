@@ -22,24 +22,45 @@
         <div class="row">
           <div class="col-sm-6">
             <h5>
-              Build your product alongside fellow founders and experienced
-              entrepreneurs.
+              {{
+                !$util.isEmpty(general_content.intro_subtitle)
+                  ? general_content.intro_subtitle
+                  : "Build your product alongside fellow founders and experienced entrepreneurs."
+              }}
             </h5>
           </div>
           <div class="col-sm-6">
             <div class="desc">
-              <p>
+              <p
+                v-if="!$util.isEmpty(general_content.intro_description)"
+                v-html="$util.showHtml(general_content.intro_description)"
+              ></p>
+              <p v-else>
                 Work with industry experts as you navigate the startup terrain.
                 Leverage the a16z network to help take your product mainstream.
                 <a href="#">Crypto Startup School</a> (CSS23) will take place in
-                Los Angeles, CA from March 6 - May 26, 2023
+                Los Angeles, CA from March 6 - May 26, 2023<br />
+                Sign up to stay in the loop on CSS news and updates:
               </p>
-              <p>Sign up to stay in the loop on CSS news and updates:</p>
+
               <form class="subscribe-form" action="#">
                 <div class="form-group">
                   <div class="input">
-                    <input type="email" placeholder="Enter email address" />
-                    <button type="submit" value="subscribe">subscribe</button>
+                    <input
+                      type="email"
+                      :placeholder="
+                        !$util.isEmpty(general_content.intro_input_placeholder)
+                          ? general_content.intro_input_placeholder
+                          : 'Enter email address'
+                      "
+                    />
+                    <button type="submit" value="subscribe">
+                      {{
+                        !$util.isEmpty(general_content.intro_input_button_text)
+                          ? general_content.intro_input_button_text
+                          : "subscribe"
+                      }}
+                    </button>
                   </div>
                 </div>
               </form>
