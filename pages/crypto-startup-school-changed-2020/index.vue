@@ -355,7 +355,11 @@
     </section>
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">Instructors & Advisors</span>
+        <span class="block-title">{{
+          !$util.isEmpty(curriculum_content.instructors_section_title)
+            ? curriculum_content.instructors_section_title
+            : "Instructors & Advisors"
+        }}</span>
       </div>
     </div>
     <template v-if="!$util.isEmpty(instructors_list)">
@@ -365,7 +369,13 @@
       ></Instructors>
     </template>
 
-    <Advisors></Advisors>
+    <template v-if="!$util.isEmpty(advisors_list)">
+      <Advisors
+        key="advisor_list--2020"
+        :advisorsArr="advisors_list"
+      ></Advisors>
+    </template>
+
     <div class="section-divider">
       <div class="container">
         <span class="block-title">Course reader</span>
