@@ -154,39 +154,11 @@
         }}</span>
       </div>
     </div>
-    <section class="faq bg-grey">
-      <div class="container">
-        <ul class="faq-list" v-if="!$util.isEmpty(faqList)">
-          <li v-for="(faq, i) in faqList" :key="i">
-            <a
-              href="javascript:void(0)"
-              class="opener"
-              @click="faq.visible = !faq.visible"
-              :class="faq.visible ? 'active' : ''"
-              >{{ faq.question }}</a
-            >
-
-            <span class="curriculums-footer" v-if="faq.visible">{{
-              faq.answer
-            }}</span>
-          </li>
-          <!-- add [active] class on opener to show active state  -->
-        </ul>
-        <div class="faq-footer">
-          <template
-            v-if="!$util.isEmpty(general_content.faq_bottom_text)"
-            v-html="!$util.showHtml(general_content.faq_bottom_text)"
-          ></template>
-          <template>
-            <p>
-              Questions? Please email us at
-              <a href="mailto:crypto-startup-school@a16z.com"
-                >crypto-startup-school@a16z.com</a
-              >
-            </p>
-          </template>
-        </div>
-      </div>
+    <section class="faq bg-grey" v-if="!$util.isEmpty(faqList)">
+      <Faq
+        :faqLists="faqList"
+        :faqBottomText="general_content.faq_bottom_text"
+      ></Faq>
     </section>
     <Footer></Footer>
   </div>
