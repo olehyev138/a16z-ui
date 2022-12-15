@@ -23,8 +23,8 @@
           <div class="col-sm-6">
             <h4>
               {{
-                acf
-                  ? acf.intro_subtitle
+                !$util.isEmpty(general_content.intro_subtitle)
+                  ? general_content.intro_subtitle
                   : "Build your product alongside fellow founders and experienced entrepreneurs."
               }}
             </h4>
@@ -32,8 +32,8 @@
           <div class="col-sm-6">
             <div class="desc">
               <p
-                v-if="acf && acf.intro_description"
-                v-html="$util.showHtml(acf.intro_description)"
+                v-if="!$util.isEmpty(general_content.intro_description)"
+                v-html="$util.showHtml(general_content.intro_description)"
               ></p>
               <p v-else>
                 Work with industry experts as you navigate the startup terrain.
@@ -112,18 +112,29 @@
       <div class="container">
         <div class="text">
           <h6>
-            The full list of 2023 CSS instructors and advisors is coming soon.
+            {{
+              !$util.isEmpty(general_content.curriculum_subtitle)
+                ? general_content.curriculum_subtitle
+                : "The full list of 2023 CSS instructors and advisors is coming soon."
+            }}
           </h6>
           <p>
-            In the meantime, we will be sharing program updates on our social
-            channels. View 2020 instructors and advisors.
+            {{
+              !$util.isEmpty(general_content.curriculum_description)
+                ? general_content.curriculum_description
+                : "In the meantime, we will be sharing program updates on our social channels. View 2020 instructors and advisors."
+            }}
           </p>
         </div>
       </div>
     </section>
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">Course reader</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.instructors_section_title)
+            ? general_content.instructors_section_title
+            : "Course reader"
+        }}</span>
       </div>
     </div>
     <section class="course">
@@ -139,7 +150,11 @@
     </section>
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">Alumni</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.alumni_section_title)
+            ? general_content.alumni_section_title
+            : "Alumni"
+        }}</span>
       </div>
     </div>
     <section class="course">
@@ -155,12 +170,16 @@
     </section>
     <div class="section-divider bg-grey">
       <div class="container">
-        <span class="block-title">FAQ</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.faq_section_title)
+            ? general_content.faq_section_title
+            : "FAQ"
+        }}</span>
       </div>
     </div>
     <section class="faq bg-grey">
       <div class="container">
-        <ul class="faq-list" v-if="faqList.length > 0">
+        <ul class="faq-list" v-if="!$util.isEmpty(faqList)">
           <li v-for="(faq, i) in faqList" :key="i">
             <a
               href="javascript:void(0)"
@@ -177,12 +196,18 @@
           <!-- add [active] class on opener to show active state  -->
         </ul>
         <div class="faq-footer">
-          <p>
-            Questions? Please email us at
-            <a href="mailto:crypto-startup-school@a16z.com"
-              >crypto-startup-school@a16z.com</a
-            >
-          </p>
+          <template
+            v-if="!$util.isEmpty(general_content.faq_bottom_text)"
+            v-html="!$util.showHtml(general_content.faq_bottom_text)"
+          ></template>
+          <template>
+            <p>
+              Questions? Please email us at
+              <a href="mailto:crypto-startup-school@a16z.com"
+                >crypto-startup-school@a16z.com</a
+              >
+            </p>
+          </template>
         </div>
       </div>
     </section>
@@ -200,7 +225,7 @@ export default {
   },
   data() {
     return {
-      acf: null,
+      general_content: [],
       curriculumsList: [],
       faqList: [],
     };
@@ -209,7 +234,7 @@ export default {
     async cryptoStartupSchoolDefault() {
       const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
       console.log(response);
-      this.acf = response;
+      this.general_content = response;
       if (response && response.lectures.length > 0) {
         this.curriculumsList = response.lectures;
       }

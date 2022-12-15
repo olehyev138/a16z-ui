@@ -535,82 +535,44 @@
     </div>
     <div class="section-divider bg-grey">
       <div class="container">
-        <span class="block-title">FAQ</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.faq_section_title)
+            ? general_content.faq_section_title
+            : "FAQ"
+        }}</span>
       </div>
     </div>
     <section class="faq bg-grey">
       <div class="container">
-        <ul class="faq-list">
-          <li><a href="#" class="opener">What is Crypto Startup School?</a></li>
-          <li>
-            <a href="#" class="opener">Does the program include funding?</a>
-          </li>
-          <li><a href="#" class="opener">What are the other benefits?</a></li>
-          <li>
-            <a href="#" class="opener"
-              >When and where does the program take place? Can I participate
-              remotely?</a
+        <ul class="faq-list" v-if="!$util.isEmpty(faqList)">
+          <li v-for="(faq, i) in faqList" :key="i">
+            <a
+              href="javascript:void(0)"
+              class="opener"
+              @click="faq.visible = !faq.visible"
+              :class="faq.visible ? 'active' : ''"
+              >{{ faq.question }}</a
             >
-          </li>
-          <li>
-            <a href="#" class="opener">Who should apply for the program? </a>
-          </li>
-          <li>
-            <a href="#" class="opener">How many companies will be accepted? </a>
-          </li>
-          <li>
-            <a href="#" class="opener">How many companies will be accepted? </a>
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Are teams required to have a live product or company before
-              applying?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Are teams required to have a live product or company before
-              applying?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Can companies participate if they have already raised funding?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener">What is the weekly time commitment?</a>
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >What is the application and review process?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >What happens at the end of the program?</a
-            >
-          </li>
-          <li>
-            <a href="#" class="opener"
-              >Will you provide dedicated space for the teams to work out of in
-              Los Angeles, CA?</a
-            >
+
+            <span class="curriculums-footer" v-if="faq.visible">{{
+              faq.answer
+            }}</span>
           </li>
           <!-- add [active] class on opener to show active state  -->
-          <li>
-            <a href="#" class="opener"
-              >Do participants have to be US citizens?</a
-            >
-          </li>
         </ul>
         <div class="faq-footer">
-          <p>
-            Questions? Please email us at
-            <a href="mailto:crypto-startup-school@a16z.com"
-              >crypto-startup-school@a16z.com</a
-            >
-          </p>
+          <template
+            v-if="!$util.isEmpty(general_content.faq_bottom_text)"
+            v-html="!$util.showHtml(general_content.faq_bottom_text)"
+          ></template>
+          <template>
+            <p>
+              Questions? Please email us at
+              <a href="mailto:crypto-startup-school@a16z.com"
+                >crypto-startup-school@a16z.com</a
+              >
+            </p>
+          </template>
         </div>
       </div>
     </section>
@@ -625,6 +587,32 @@ export default {
     return {
       title: "Crypto Startup School Future 2023 Content",
     };
+  },
+  data() {
+    return {
+      general_content: [],
+      curriculumsList: [],
+      faqList: [],
+    };
+  },
+  methods: {
+    async cryptoStartupSchoolDefault() {
+      const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
+      console.log(response);
+      this.general_content = response;
+      if (response && response.lectures.length > 0) {
+        this.curriculumsList = response.lectures;
+      }
+      if (response && response.faq_list.length > 0) {
+        let list = response.faq_list;
+        list.forEach((element) => {
+          this.faqList.push({ ...element, visible: false });
+        });
+      }
+    },
+  },
+  mounted() {
+    this.cryptoStartupSchoolDefault();
   },
 };
 </script>

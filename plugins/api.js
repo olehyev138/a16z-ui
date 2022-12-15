@@ -16,7 +16,9 @@ export default (context, inject) => {
   const factories = {
     homepage: HomePage(context.$axios),
     aboutpage: AboutPage(context.$axios),
+    cryptoStartupSchoolChangedPage: CryptoStartupSchoolDefault(context.$axios),
     cryptoStartupSchoolDefaultPage: CryptoStartupSchoolDefault(context.$axios),
+    cryptoStartupSchoolFuturePage: CryptoStartupSchoolDefault(context.$axios),
     policyPage: PolicyPage(context.$axios),
     researchpage: Researchpage(context.$axios),
     footer: Footer(context.$axios),
