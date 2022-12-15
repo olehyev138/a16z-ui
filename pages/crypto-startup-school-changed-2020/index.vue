@@ -555,50 +555,23 @@
             </h6>
           </div>
           <div class="col-sm-6">
-            <ul class="highlighted-list">
-              <li>
-                <h6><a class="highlight" href="#">Phantom</a></h6>
-                <p>web3 wallet for safe and easy transaction</p>
-              </li>
-              <li>
-                <h6><a class="highlight" href="#">Flashbots</a></h6>
-                <p>R&D organization for mitigating MEV</p>
-              </li>
-              <li>
-                <h6><a class="highlight" href="#">Goldfinch</a></h6>
-                <p>credit protocol for emerging market loans</p>
-              </li>
-              <li>
-                <h6><a class="highlight" href="#">Notional Finance</a></h6>
-                <p>credit protocol for fixed rate loans</p>
-              </li>
-              <li>
-                <h6><a class="highlight" href="#">Afriex</a></h6>
-                <p>transfer app for cross-border payments</p>
-              </li>
-              <li>
-                <h6><a class="highlight" href="#">Teller</a></h6>
-                <p>credit protocol for B2B loans</p>
-              </li>
-              <li>
-                <h6><a class="highlight" href="#">FanCraze</a></h6>
-                <p>NFT marketplace for cricket fans</p>
+            <ul class="highlighted-list" v-if="!$util.isEmpty(alumni_list)">
+              <li v-for="(alumni, i) in alumni_list" :key="i + 'alumni_list'">
+                <h6>
+                  <a class="highlight" :href="alumni.link">{{
+                    alumni.title
+                  }}</a>
+                </h6>
+                <p>{{ alumni.description }}</p>
               </li>
             </ul>
-            <div class="info-text">
-              <p>
-                Participants have also landed in senior roles at companies
-                including <a href="#">Uniswap</a>, <a href="#">Optimism</a>,
-                <a href="#">FTX</a>, <a href="#">Variant</a>,
-                <a href="#">a16z crypto</a>, <a href="#">Polygon</a>,
-                <a href="#">Foundation</a>, <a href="#">Zora</a>,
-                <a href="#">she256</a> and more.
-              </p>
-              <p>
-                Members of the Spring 2023 cohort will join this growing alumni
-                network and have access to a variety of ongoing resources and
-                support.
-              </p>
+            <div
+              class="info-text"
+              v-if="!$util.isEmpty(general_content.alumni_bottom_text)"
+            >
+              <p
+                v-html="$util.showHtml(general_content.alumni_bottom_text)"
+              ></p>
             </div>
           </div>
         </div>
@@ -664,21 +637,28 @@ export default {
       general_content: [],
       curriculumsList: [],
       faqList: [],
+      alumni_list: [],
     };
   },
   methods: {
     async cryptoStartupSchoolDefault() {
       const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
       console.log(response);
-      this.general_content = response;
-      if (response && response.lectures.length > 0) {
-        this.curriculumsList = response.lectures;
-      }
-      if (response && response.faq_list.length > 0) {
-        let list = response.faq_list;
-        list.forEach((element) => {
-          this.faqList.push({ ...element, visible: false });
-        });
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+
+        if (!this.$util.isEmpty(response.lectures)) {
+          this.curriculumsList = response.lectures;
+        }
+        if (!this.$util.isEmpty(response.faq_list)) {
+          let list = response.faq_list;
+          list.forEach((element) => {
+            this.faqList.push({ ...element, visible: false });
+          });
+        }
+        if (!this.$util.isEmpty(response.alumni_list)) {
+          this.alumni_list = response.alumni_list;
+        }
       }
     },
   },

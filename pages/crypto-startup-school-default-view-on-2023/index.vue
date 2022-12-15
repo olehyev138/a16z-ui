@@ -228,21 +228,28 @@ export default {
       general_content: [],
       curriculumsList: [],
       faqList: [],
+      alumni_list: [],
     };
   },
   methods: {
     async cryptoStartupSchoolDefault() {
       const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
       console.log(response);
-      this.general_content = response;
-      if (response && response.lectures.length > 0) {
-        this.curriculumsList = response.lectures;
-      }
-      if (response && response.faq_list.length > 0) {
-        let list = response.faq_list;
-        list.forEach((element) => {
-          this.faqList.push({ ...element, visible: false });
-        });
+      if (!this.$util.isEmpty(response)) {
+        this.general_content = response;
+
+        if (!this.$util.isEmpty(response.lectures)) {
+          this.curriculumsList = response.lectures;
+        }
+        if (!this.$util.isEmpty(response.faq_list)) {
+          let list = response.faq_list;
+          list.forEach((element) => {
+            this.faqList.push({ ...element, visible: false });
+          });
+        }
+        if (!this.$util.isEmpty(response.alumni_list)) {
+          this.alumni_list = response.alumni_list;
+        }
       }
     },
   },
