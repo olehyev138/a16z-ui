@@ -593,6 +593,7 @@ export default {
       general_content: [],
       curriculumsList: [],
       faqList: [],
+      alumni_list: [],
     };
   },
   methods: {
