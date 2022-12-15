@@ -548,10 +548,7 @@
         }}</span>
       </div>
     </div>
-    <div
-      class="alumni-section"
-      v-if="!$util.isEmpty(general_content.alumni_list)"
-    >
+    <div class="alumni-section" v-if="!$util.isEmpty(alumni_list)">
       <Alumni
         :alumniList="alumni_list"
         :alumniSectionSubtitle="general_content.alumni_section_subtitle"
