@@ -254,68 +254,19 @@
       </div>
     </div>
     <section class="curriculums bg-grey">
-      <div class="container">
-        <div class="intro">
-          <h6>
-            We plan to cover the following topics through lectures, mentor
-            office hours, and founder talks:
-          </h6>
-        </div>
-        <ul class="curriculums-list">
-          <li>
-            <span class="count">01 /</span>
-            <h6><a href="#">web3 big picture</a></h6>
-          </li>
-          <li>
-            <span class="count">02 /</span>
-            <h6><a href="#">protocol development</a></h6>
-          </li>
-          <li>
-            <span class="count">03 /</span>
-            <h6><a href="#">cryptographic and mechanism design tools</a></h6>
-          </li>
-          <li>
-            <span class="count">04 /</span>
-            <h6><a href="#">web3 go-to-market</a></h6>
-          </li>
-          <li>
-            <span class="count">05 /</span>
-            <h6><a href="#">state of crypto regulation</a></h6>
-          </li>
-          <li>
-            <span class="count">06 /</span>
-            <h6><a href="#">legal design & the role of decentralization</a></h6>
-          </li>
-          <li>
-            <span class="count">07 /</span>
-            <h6><a href="#">company building in web3</a></h6>
-          </li>
-          <li>
-            <span class="count">08 /</span>
-            <h6>
-              <a href="#">community building & decentralized organizations</a>
-            </h6>
-          </li>
-          <li>
-            <span class="count">09 /</span>
-            <h6><a href="#">smart contract & custody security</a></h6>
-          </li>
-          <li>
-            <span class="count">10 /</span>
-            <h6><a href="#">branding & design</a></h6>
-          </li>
-          <li>
-            <span class="count">11 /</span>
-            <h6><a href="#">fundraising best practices</a></h6>
-          </li>
-        </ul>
-        <div class="curriculums-footer">
-          <p>
-            *The final curriculum and instructor list are coming soon. In the
-            meantime, we will be sharing program updates on our social channels.
-          </p>
-        </div>
-      </div>
+      <CurriculumsList
+        :curriculumsLists="curriculumsList"
+        :curriculumsIntro="
+          !$util.isEmpty(curriculum_content.curriculum_subtitle)
+            ? curriculum_content.curriculum_subtitle
+            : ''
+        "
+        :curriculumsFooter="
+          !$util.isEmpty(curriculum_content.curriculum_disclaimer)
+            ? curriculum_content.curriculum_disclaimer
+            : ''
+        "
+      ></CurriculumsList>
     </section>
     <div class="section-divider">
       <div class="container">
@@ -536,10 +487,14 @@ export default {
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
 
-        // curriculum content tab 2022
-        if (!this.$util.isEmpty(response.curriculum_content)) {
-          this.curriculum_content = response.curriculum_content;
-          this.curriculumsList = response.curriculum_content.lectures;
+        // curriculum content tab 2023
+        if (
+          !this.$util.isEmpty(response["2023_group"]) &&
+          !this.$util.isEmpty(response["2023_group"].curriculum_content)
+        ) {
+          this.curriculum_content = response["2023_group"].curriculum_content;
+          this.curriculumsList =
+            response["2023_group"].curriculum_content.lectures;
         }
 
         if (!this.$util.isEmpty(response.faq_list)) {

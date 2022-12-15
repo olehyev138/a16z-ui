@@ -78,30 +78,7 @@
       </div>
     </div>
     <section class="curriculums bg-gray">
-      <div class="container">
-        <div class="intro">
-          <h6>
-            We plan to cover the following topics through lectures, mentor
-            office hours, and founder talks:
-          </h6>
-        </div>
-        <ul class="curriculums-list" v-if="curriculumsList.length > 0">
-          <li v-for="(lecture, i) in curriculumsList" :key="i">
-            <span class="count">{{ $util.padDigits(i + 1) }} /</span>
-            <h6>
-              <a :href="lecture.link ? lecture.link : 'javascript:void(0)'">{{
-                lecture.title
-              }}</a>
-            </h6>
-          </li>
-        </ul>
-        <div class="curriculums-footer">
-          <p>
-            *The final curriculum and instructor list are coming soon. In the
-            meantime, we will be sharing program updates on our social channels.
-          </p>
-        </div>
-      </div>
+      <CurriculumsList :curriculumsLists="curriculumsList"></CurriculumsList>
     </section>
     <div class="section-divider">
       <div class="container">
