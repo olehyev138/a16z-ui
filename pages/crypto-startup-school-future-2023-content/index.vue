@@ -293,7 +293,12 @@
         <span class="block-title">Instructors & Advisors</span>
       </div>
     </div>
-    <Instructors></Instructors>
+    <template v-if="!$util.isEmpty(instructors_list)">
+      <Instructors
+        key="instructors_list--2023"
+        :instructorArr="instructors_list"
+      ></Instructors>
+    </template>
     <Advisors></Advisors>
     <div class="section-divider">
       <div class="container">
@@ -496,6 +501,9 @@ export default {
       general_content: [],
       curriculum_content: [],
       curriculumsList: [],
+      videoList: [],
+      instructors_list: [],
+      advisors_list: [],
       faqList: [],
       alumni_list: [],
     };
@@ -515,6 +523,13 @@ export default {
           this.curriculum_content = response["2023_group"].curriculum_content;
           this.curriculumsList =
             response["2023_group"].curriculum_content.lectures;
+
+          this.videoList = response["2023_group"].curriculum_content.videos;
+
+          this.instructors_list =
+            response["2023_group"].curriculum_content.instructors_list;
+          this.advisors_list =
+            response["2023_group"].curriculum_content.advisors;
         }
 
         if (!this.$util.isEmpty(response.faq_list)) {

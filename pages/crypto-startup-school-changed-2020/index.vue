@@ -358,8 +358,13 @@
         <span class="block-title">Instructors & Advisors</span>
       </div>
     </div>
+    <template v-if="!$util.isEmpty(instructors_list)">
+      <Instructors
+        key="instructors_list--2020"
+        :instructorArr="instructors_list"
+      ></Instructors>
+    </template>
 
-    <Instructors></Instructors>
     <Advisors></Advisors>
     <div class="section-divider">
       <div class="container">
@@ -559,6 +564,9 @@ export default {
       general_content: [],
       curriculum_content: [],
       curriculumsList: [],
+      videoList: [],
+      instructors_list: [],
+      advisors_list: [],
       faqList: [],
       alumni_list: [],
     };
@@ -574,6 +582,9 @@ export default {
         if (!this.$util.isEmpty(response.curriculum_content)) {
           this.curriculum_content = response.curriculum_content;
           this.curriculumsList = response.curriculum_content.lectures;
+          this.videoList = response.curriculum_content.videos;
+          this.instructors_list = response.curriculum_content.instructors_list;
+          this.advisors_list = response.curriculum_content.advisors;
         }
 
         if (!this.$util.isEmpty(response.faq_list)) {
