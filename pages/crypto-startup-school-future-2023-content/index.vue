@@ -253,7 +253,7 @@
         </ul>
       </div>
     </section>
-    <div class="sticky-bar">
+    <div class="sticky-bar" v-if="showStickyDiv">
       <div class="container">
         <ul class="sticky-nav">
           <li class="title">curriculum by year</li>
@@ -509,6 +509,7 @@ export default {
   },
   data() {
     return {
+      showStickyDiv: false,
       general_content: [],
       curriculum_content: [],
       curriculumsList: [],
@@ -522,7 +523,7 @@ export default {
   methods: {
     async cryptoStartupSchoolDefault() {
       const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
 
@@ -554,9 +555,30 @@ export default {
         }
       }
     },
+    handleScroll() {
+      if (process.client) {
+        var currentScrollPosition = window.scrollY;
+        if (currentScrollPosition > 2000) {
+          this.showStickyDiv = true;
+        } else if (currentScrollPosition < 2000) {
+          this.showStickyDiv = false;
+        }
+      }
+    },
   },
   mounted() {
     this.cryptoStartupSchoolDefault();
   },
+  created() {
+    if (process.client) {
+      window.addEventListener("scroll", this.handleScroll);
+    }
+  },
+  destroyed() {
+    if (process.client) {
+      window.removeEventListener("scroll", this.handleScroll);
+    }
+  },
 };
 </script>
+<style scoped></style>
