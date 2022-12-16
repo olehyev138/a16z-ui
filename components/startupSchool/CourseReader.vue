@@ -30,6 +30,7 @@
             v-for="(post, i) in activeTabData"
             :featuredPostData="post"
             :key="i + activeTab"
+            :callFrom="'courseReaderCom' + activeTab"
           ></PostOneCol>
         </template>
         <template v-else> data not found </template>
@@ -72,7 +73,6 @@ export default {
   mounted() {
     this.activeTab = this.courseReaderContent[0].id;
     this.activeTabData = this.courseReaderContent[0].resources;
-    console.log("courseReader = ", this.courseReaderContent);
   },
 };
 </script>

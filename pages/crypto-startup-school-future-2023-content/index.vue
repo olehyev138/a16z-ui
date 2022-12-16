@@ -253,6 +253,8 @@
         </ul>
       </div>
     </section>
+
+    <!-- Curriculum section start -->
     <div class="sticky-bar" v-if="showStickyDiv">
       <div class="container">
         <ul class="sticky-nav">
@@ -300,6 +302,8 @@
         />
       </Keep-alive>
     </section>
+
+    <!-- Instructors & Advisors section start -->
     <div class="section-divider">
       <div class="container">
         <span class="block-title">{{
@@ -309,6 +313,7 @@
         }}</span>
       </div>
     </div>
+
     <template v-if="!$util.isEmpty(instructors_list)">
       <Instructors
         key="instructors_list--2023"
@@ -319,7 +324,7 @@
     <template v-if="!$util.isEmpty(advisors_list)">
       <Advisors key="advisor_list--2023" :advisorsArr="advisors_list" />
     </template>
-
+    <!-- Course reader section start -->
     <div class="section-divider" v-if="!$util.isEmpty(course_reader_content)">
       <div class="container">
         <span class="block-title">{{
@@ -335,7 +340,7 @@
         key="courseReaderContent2023"
       />
     </div>
-
+    <!-- Alumni section start -->
     <div class="section-divider">
       <div class="container">
         <span class="block-title">{{
@@ -355,6 +360,9 @@
         :alumniBottomText="general_content.alumni_bottom_text"
       ></Alumni>
     </div>
+
+    <!-- FAQ section start -->
+
     <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title">{{

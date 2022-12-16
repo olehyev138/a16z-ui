@@ -327,6 +327,8 @@
         </ul>
       </div>
     </section>
+
+    <!-- Curriculum section start -->
     <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title"
@@ -353,6 +355,8 @@
         "
       ></CurriculumsList>
     </section>
+
+    <!-- Instructors & Advisors section start -->
     <div class="section-divider">
       <div class="container">
         <span class="block-title">{{
@@ -376,6 +380,7 @@
       ></Advisors>
     </template>
 
+    <!-- Course reader section start -->
     <div class="section-divider" v-if="!$util.isEmpty(course_reader_content)">
       <div class="container">
         <span class="block-title">{{
@@ -392,6 +397,7 @@
       />
     </div>
 
+    <!-- Alumni section start -->
     <div class="section-divider">
       <div class="container">
         <span class="block-title">{{
@@ -408,6 +414,9 @@
         :alumniBottomText="general_content.alumni_bottom_text"
       ></Alumni>
     </div>
+
+    <!-- FAQ section start -->
+
     <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title">{{
