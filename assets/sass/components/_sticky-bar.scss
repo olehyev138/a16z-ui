@@ -3,32 +3,33 @@
 // ---------------------------------------------------------===
 
 .sticky-bar {
-	background: color(white,2);
-	border-bottom: 1px solid $grey-dark;
-	padding: 17px 0 15px;
-	margin-bottom: 50px;
-	top: 67px;
-	position: sticky;
-	z-index: 2;
+  background: color(white, 2);
+  border-bottom: 1px solid $grey-dark;
+  padding: 17px 0 15px;
+  margin-bottom: 50px;
+  top: 67px;
+  position: sticky;
+  z-index: 2;
 }
 
 .sticky-nav {
-	@extend %listreset;
-	display: flex;
-	font-size: 16px;
-	line-height: 1.2;
-	color: $grey-mid;
+  @extend %listreset;
+  display: flex;
+  font-size: 16px;
+  line-height: 1.2;
+  color: $grey-mid;
 
-	.title {
-		color: $grey-dark;
-	}
+  .title {
+    color: $grey-dark;
+  }
 
-	li {
-		margin-right: 9px;
-	}
+  li {
+    margin-right: 9px;
+    cursor: pointer;
+  }
 
-	.active {
-		color: $grey-dark;
-		border-bottom: 1px dashed $grey-dark;
-	}
+  .active {
+    color: $grey-dark;
+    border-bottom: 1px dashed $grey-dark;
+  }
 }

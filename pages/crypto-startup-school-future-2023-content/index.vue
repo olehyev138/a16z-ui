@@ -257,8 +257,18 @@
       <div class="container">
         <ul class="sticky-nav">
           <li class="title">curriculum by year</li>
-          <li>2020</li>
-          <li class="active">2023</li>
+          <li
+            @click="curriculumFilterByYear('2020')"
+            :class="[curriculumByYear == '2020' ? 'active' : '']"
+          >
+            2020
+          </li>
+          <li
+            @click="curriculumFilterByYear('2023')"
+            :class="[curriculumByYear == '2023' ? 'active' : '']"
+          >
+            2023
+          </li>
         </ul>
       </div>
     </div>
@@ -274,19 +284,21 @@
       </div>
     </div>
     <section class="curriculums bg-grey">
-      <CurriculumsList
-        :curriculumsLists="curriculumsList"
-        :curriculumsIntro="
-          !$util.isEmpty(curriculum_content.curriculum_subtitle)
-            ? curriculum_content.curriculum_subtitle
-            : ''
-        "
-        :curriculumsFooter="
-          !$util.isEmpty(curriculum_content.curriculum_disclaimer)
-            ? curriculum_content.curriculum_disclaimer
-            : ''
-        "
-      ></CurriculumsList>
+      <Keep-alive>
+        <CurriculumsList
+          :curriculumsLists="curriculumsListFilterWise"
+          :curriculumsIntro="
+            !$util.isEmpty(curriculum_content.curriculum_subtitle)
+              ? curriculum_content.curriculum_subtitle
+              : ''
+          "
+          :curriculumsFooter="
+            !$util.isEmpty(curriculum_content.curriculum_disclaimer)
+              ? curriculum_content.curriculum_disclaimer
+              : ''
+          "
+        />
+      </Keep-alive>
     </section>
     <div class="section-divider">
       <div class="container">
@@ -301,14 +313,11 @@
       <Instructors
         key="instructors_list--2023"
         :instructorArr="instructors_list"
-      ></Instructors>
+      />
     </template>
 
     <template v-if="!$util.isEmpty(advisors_list)">
-      <Advisors
-        key="advisor_list--2023"
-        :advisorsArr="advisors_list"
-      ></Advisors>
+      <Advisors key="advisor_list--2023" :advisorsArr="advisors_list" />
     </template>
 
     <div class="section-divider">
@@ -510,9 +519,12 @@ export default {
   data() {
     return {
       showStickyDiv: false,
+      curriculumByYear: 2023,
       general_content: [],
       curriculum_content: [],
+      curriculumsListFilterWise: [],
       curriculumsList: [],
+      curriculumsList2020: [],
       videoList: [],
       instructors_list: [],
       advisors_list: [],
@@ -520,6 +532,7 @@ export default {
       alumni_list: [],
     };
   },
+  computed: {},
   methods: {
     async cryptoStartupSchoolDefault() {
       const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
@@ -542,6 +555,12 @@ export default {
             response["2023_group"].curriculum_content.instructors_list;
           this.advisors_list =
             response["2023_group"].curriculum_content.advisors;
+          this.curriculumFilterByYear("2023");
+        }
+
+        // curriculum content tab 2022
+        if (!this.$util.isEmpty(response.curriculum_content)) {
+          this.curriculumsList2020 = response.curriculum_content.lectures;
         }
 
         if (!this.$util.isEmpty(response.faq_list)) {
@@ -555,6 +574,15 @@ export default {
         }
       }
     },
+    curriculumFilterByYear(year = "2023") {
+      this.curriculumByYear = year;
+      if (year == 2023) {
+        this.curriculumsListFilterWise = this.curriculumsList;
+      } else {
+        this.curriculumsListFilterWise = this.curriculumsList2020;
+      }
+    },
+
     handleScroll() {
       if (process.client) {
         var currentScrollPosition = window.scrollY;
