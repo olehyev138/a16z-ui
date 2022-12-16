@@ -6,25 +6,24 @@
   @extend %listreset;
   @extend .h5;
 
-  @include media('>=tablet') {
+  @include media(">=tablet") {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 39px 10px;
   }
-  
-  @include media('>=desktop') {
+
+  @include media(">=desktop") {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 59px 15px;
   }
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     font-size: 24px;
     line-height: 1.2;
   }
 
   &.three-cols {
-
-    @include media('>=desktop') {
+    @include media(">=desktop") {
       grid-template-columns: repeat(3, 1fr);
     }
 
@@ -34,8 +33,7 @@
   }
 
   &.three-items {
-
-    @include media('>=desktop') {
+    @include media(">=desktop") {
       grid-template-columns: repeat(3, 1fr);
     }
 
@@ -45,31 +43,25 @@
   }
 
   &.has-alphabets {
-
-    @include media('<tablet') {
+    @include media("<tablet") {
       padding-left: 44px;
     }
   }
 
   &.style--1 {
-
-    @include media('<tablet') {
+    @include media("<tablet") {
       padding-left: 0;
     }
 
     .card-people {
-
       .avatar {
-
         img {
           filter: none;
         }
       }
 
       &:hover {
-
         .avatar {
-
           img {
             filter: grayscale(1);
           }
@@ -79,20 +71,18 @@
   }
 
   &.style--2 {
-
-    @include media('<tablet') {
+    @include media("<tablet") {
       padding-left: 0;
     }
 
     > li:after {
-        content: none;
+      content: none;
     }
 
     .card-people {
       max-width: 283px;
 
       .avatar {
-
         img {
           filter: none;
         }
@@ -105,13 +95,12 @@
     position: relative;
     padding-top: 3px;
 
-    @include media('<tablet') {
+    @include media("<tablet") {
       margin-bottom: 27px;
     }
 
     &:after {
-
-      @include media('<tablet') {
+      @include media("<tablet") {
         right: -9999px;
       }
 
@@ -122,7 +111,6 @@
   }
 
   &.has-divider {
-
     > li:after {
       right: -9999px;
     }
@@ -134,7 +122,7 @@
 
   .has-alphabet {
     margin-bottom: 0;
-    @include media('>=tablet') {
+    @include media(">=tablet") {
       display: none;
     }
 
@@ -145,13 +133,13 @@
         color: $white;
 
         &:after {
-          content: '\e916';
+          content: "\e916";
         }
       }
     }
 
     &.close > a:after {
-      content: '\e90e';
+      content: "\e90e";
     }
 
     &:after {
@@ -165,7 +153,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
 
-    @include media('<tablet') {
+    @include media("<tablet") {
       font-size: 10px;
       margin-top: 6px;
     }
@@ -177,7 +165,7 @@
     font-size: 40px;
     line-height: 1;
 
-    @include media('<tablet') {
+    @include media("<tablet") {
       font-size: 24px;
       line-height: 1.2;
     }
@@ -189,7 +177,7 @@
   position: relative;
   z-index: 1;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     margin-bottom: 1px;
   }
 
@@ -202,7 +190,7 @@
     left: -9999px;
     background: $aquamarine;
 
-    @include media('<tablet') {
+    @include media("<tablet") {
       top: -4px;
       bottom: -5px;
     }
@@ -225,7 +213,7 @@
     display: inline-block;
 
     span {
-      @include media('<tablet') {
+      @include media("<tablet") {
         padding-right: 30px;
       }
     }
@@ -278,7 +266,7 @@
   padding: 74px 0 65px;
   overflow: hidden;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     padding: 58px 0 48px;
   }
 
@@ -290,14 +278,13 @@
     position: absolute;
     top: -72px;
 
-    @include media('<tablet') {
+    @include media("<tablet") {
       top: -54px;
     }
   }
 }
 
 .hld--pacific-custom {
-
   h1 {
     display: inline-flex;
     flex-direction: column;
@@ -332,11 +319,11 @@
     &:nth-child(2) {
       margin-left: 261px;
 
-      @include media('<tablet') {
+      @include media("<tablet") {
         margin-left: 71px;
       }
 
-      @include media('<sm-phone') {
+      @include media("<sm-phone") {
         margin-left: 30px;
       }
     }
@@ -344,15 +331,14 @@
     &:nth-child(3) {
       margin-left: 127px;
 
-      @include media('<tablet') {
+      @include media("<tablet") {
         margin-left: 35px;
       }
 
-      @include media('<sm-phone') {
+      @include media("<sm-phone") {
         margin-left: 10px;
       }
     }
-
   }
 
   &:before {
@@ -360,6 +346,118 @@
   }
 }
 
+.hld--pacific-custom-new-hero {
+  h1 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include media(">widescreen") {
+      margin-left: 200px;
+    }
+    @include media("<tablet") {
+      margin-left: 30px;
+    }
+
+    @include media("<sm-phone") {
+      margin-left: 0px;
+    }
+    span {
+      padding-right: 0;
+    }
+  }
+
+  > * {
+    background: none;
+  }
+
+  span {
+    background: $pacific;
+
+    &:first-child {
+      position: relative;
+
+      &:before {
+        width: 9999px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        content: "";
+      }
+    }
+
+    &:nth-child(2) {
+      margin-left: 261px;
+
+      @include media("<tablet") {
+        margin-left: 71px;
+      }
+
+      @include media("<sm-phone") {
+        margin-left: 30px;
+      }
+    }
+
+    &:nth-child(3) {
+      margin-left: 127px;
+
+      @include media("<tablet") {
+        margin-left: 35px;
+      }
+
+      @include media("<sm-phone") {
+        margin-left: 10px;
+      }
+    }
+    &:nth-child(4) {
+      margin-left: 127px;
+      background: #000000 !important;
+      color: #ffffff !important;
+      font-size: 28px;
+
+      @include media("<tablet") {
+        margin-left: 35px;
+      }
+
+      @include media("<sm-phone") {
+        margin-left: 10px;
+      }
+    }
+    &:nth-child(5) {
+      margin-left: 70px;
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-size: 28px;
+
+      @include media("<tablet") {
+        margin-left: 0px;
+      }
+
+      @include media("<sm-phone") {
+        margin-left: 0px;
+      }
+    }
+    &:nth-child(6) {
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-size: 28px;
+      margin-left: 257px;
+
+      @include media("<tablet") {
+        margin-left: 50px;
+      }
+
+      @include media("<sm-phone") {
+        margin-left: 25px;
+      }
+    }
+  }
+
+  &:before {
+    display: none;
+  }
+}
 .highlight-list-container {
   overflow: hidden;
 }

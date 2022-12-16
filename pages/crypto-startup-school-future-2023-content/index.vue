@@ -2,7 +2,51 @@
   <div id="wrapper">
     <Header></Header>
 
-    <header class="hero hero--sm hero--startup">
+    <header
+      class="hero hero--sm hero--startup"
+      v-if="
+        !$util.isEmpty(general_content.enable_new_hero) &&
+        general_content.enable_new_hero == '1'
+      "
+    >
+      <div class="container">
+        <picture class="bg">
+          <source
+            media="(min-width: 768px)"
+            srcset="@/assets/images/bg-hero-about.svg"
+          />
+          <source srcset="@/assets/images/bg-hero-about-sm.svg" />
+          <img src="@/assets/images/bg-hero-about.svg" alt="" />
+        </picture>
+        <div class="highlight-display hld--pacific-custom-new-hero">
+          <h1>
+            <span>crypto</span><span>startup</span><span>school</span>
+            <span>
+              {{
+                !$util.isEmpty(general_content.new_hero_location)
+                  ? general_content.new_hero_location
+                  : ""
+              }}
+            </span>
+            <span
+              >{{
+                !$util.isEmpty(general_content.new_hero_start_date)
+                  ? general_content.new_hero_start_date + " - "
+                  : ""
+              }}
+            </span>
+            <span>
+              {{
+                !$util.isEmpty(general_content.end_date)
+                  ? general_content.end_date
+                  : ""
+              }}
+            </span>
+          </h1>
+        </div>
+      </div>
+    </header>
+    <header class="hero hero--sm hero--startup" v-else>
       <div class="container">
         <picture class="bg">
           <source
