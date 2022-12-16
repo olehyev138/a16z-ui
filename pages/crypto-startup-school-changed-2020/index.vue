@@ -376,156 +376,22 @@
       ></Advisors>
     </template>
 
-    <div class="section-divider">
+    <div class="section-divider" v-if="!$util.isEmpty(course_reader_content)">
       <div class="container">
-        <span class="block-title">Course reader</span>
+        <span class="block-title">{{
+          !$util.isEmpty(curriculum_content.course_reader_section_title)
+            ? curriculum_content.course_reader_section_title
+            : "Course reader"
+        }}</span>
       </div>
     </div>
-    <div class="course-reader">
-      <div class="container">
-        <div class="tab-navs-container">
-          <div class="hold">
-            <div class="tab-nav-hold">
-              <ul class="tab-nav style--01">
-                <li>
-                  <a class="active" href="#" data-tab="tab1">introduction</a>
-                </li>
-                <li>
-                  <a href="#" data-tab="tab2">Consensus & cryptographhy</a>
-                </li>
-                <li><a href="#" data-tab="tab3">Apps & developer docs</a></li>
-                <li><a href="#" data-tab="tab4">business models</a></li>
-                <li>
-                  <a href="#" data-tab="tab5">Decentralisation & secruity</a>
-                </li>
-                <li><a href="#" data-tab="tab6">REgulation</a></li>
-                <li><a href="#" data-tab="tab7">Fundraising</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-contents">
-        <div class="container">
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">why decentralization matters</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">the future of trust</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">what comes after open source</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6>
-                  <a href="#"
-                    >past, present, future: from co-ops to crypto networks</a
-                  >
-                </h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">crypto glossary</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">how bitcoin actually works</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">bitcoin white paper</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="article">
-            <div class="row">
-              <div class="col-sm-2">
-                <span class="category-title">article /</span>
-              </div>
-              <div class="col-sm-10 col-md-8">
-                <h6><a href="#">ethereum white paper</a></h6>
-                <span class="posted-by">
-                  <a href="#">Alex Immerman</a> &
-                  <a href="#">Justin Thaler</a></span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="course-reader" v-if="!$util.isEmpty(course_reader_content)">
+      <CourseReader
+        :courseReaderContent="course_reader_content"
+        key="courseReaderContent2020"
+      />
     </div>
+
     <div class="section-divider">
       <div class="container">
         <span class="block-title">{{
@@ -579,6 +445,7 @@ export default {
       advisors_list: [],
       faqList: [],
       alumni_list: [],
+      course_reader_content: [],
     };
   },
   methods: {
@@ -595,6 +462,17 @@ export default {
           this.videoList = response.curriculum_content.videos;
           this.instructors_list = response.curriculum_content.instructors_list;
           this.advisors_list = response.curriculum_content.advisors;
+
+          let course_reader_content =
+            response.curriculum_content.course_reader_content;
+          if (!this.$util.isEmpty(course_reader_content)) {
+            let couserTabData = [];
+            course_reader_content.forEach((element) => {
+              let genId = element.tab_title.replace(/\s/g, "-");
+              couserTabData.push({ ...element, id: genId });
+            });
+            this.course_reader_content = couserTabData;
+          }
         }
 
         if (!this.$util.isEmpty(response.faq_list)) {
