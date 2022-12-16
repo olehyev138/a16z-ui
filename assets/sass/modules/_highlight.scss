@@ -415,7 +415,7 @@
       background: #000000 !important;
       color: #ffffff !important;
       font-size: 28px;
-
+      padding: 2px;
       @include media("<tablet") {
         margin-left: 35px;
       }
@@ -429,7 +429,7 @@
       background: #ffffff !important;
       color: #000000 !important;
       font-size: 28px;
-
+      padding: 2px;
       @include media("<tablet") {
         margin-left: 0px;
       }
@@ -443,7 +443,7 @@
       color: #000000 !important;
       font-size: 28px;
       margin-left: 257px;
-
+      padding: 2px;
       @include media("<tablet") {
         margin-left: 50px;
       }
