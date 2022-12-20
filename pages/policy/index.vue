@@ -354,15 +354,19 @@ export default {
           postData.post_title = response.title.rendered;
         }
         if (!this.$util.isEmpty(response.acf)) {
-          let authors = response.acf.authors ? response.acf.authors : "";
-          postData.authors = this.$util.stringToArray(
-            authors.replace(/,/g, "and"),
-            "and"
-          );
+          if (!this.$util.isEmpty(response.acf.authors)) {
+            var authors = response.acf.authors;
+            var authorsArr = [];
+            for (var index = 0; index < authors.length; index++) {
+              authorsArr.push(authors[index].post_title);
+            }
+            postData.authors = authorsArr;
+          }
         }
         return postData;
       }
     },
+
     formatDate(date) {
       return this.$moment(date).format("YYYY.M.D");
     },

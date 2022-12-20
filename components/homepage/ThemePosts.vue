@@ -81,22 +81,25 @@ export default {
           posts.forEach(async (val, index) => {
             posts[index].authorList = [];
             posts[index].thumb = "";
-            let singlePost = await this.getSinglePost(val.ID);
-            let authors = singlePost.authors ? singlePost.authors : "";
-            posts[index].authorList = this.$util.stringToArray(
-              authors.replace(/,/g, "and"),
-              "and"
-            );
+            let authorArr = await this.getSinglePost(val.ID);
+            posts[index].authorList = authorArr;
           });
           this.posts = posts;
         }
       }
     },
-    async getSinglePost(postId) {
+    async getSinglePost(postId = 0) {
+      var authorsArr = [];
       const response = await this.$api.common.getSinglePost(postId);
       if (!this.$util.isEmpty(response)) {
         if (!this.$util.isEmpty(response.acf)) {
-          return response.acf;
+          if (!this.$util.isEmpty(response.acf.authors)) {
+            var authors = response.acf.authors;
+            for (var index = 0; index < authors.length; index++) {
+              authorsArr.push(authors[index].post_title);
+            }
+            return authorsArr;
+          }
         }
       }
     },

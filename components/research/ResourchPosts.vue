@@ -82,16 +82,20 @@ export default {
     };
   },
   methods: {
-    async getSinglePost(postId) {
+    async getSinglePost(postId = 0) {
+      this.authors = [];
       const response = await this.$api.common.getSinglePost(postId);
       if (!this.$util.isEmpty(response)) {
         this.tags = response.tags;
         if (!this.$util.isEmpty(response.acf)) {
-          let authors = response.acf.authors ? response.acf.authors : "";
-          this.authors = this.$util.stringToArray(
-            authors.replace(/,/g, "and"),
-            "and"
-          );
+          if (!this.$util.isEmpty(response.acf.authors)) {
+            var authors = response.acf.authors;
+            var authorsArr = [];
+            for (var index = 0; index < authors.length; index++) {
+              authorsArr.push(authors[index].post_title);
+            }
+            this.authors = authorsArr;
+          }
         }
       }
     },

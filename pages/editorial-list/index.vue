@@ -217,16 +217,23 @@ export default {
         }
       }
     },
-    async getSinglePost(postId) {
+
+    async getSinglePost(postId = 0) {
+      var authorsArr = [];
       const response = await this.$api.common.getSinglePost(postId);
       if (!this.$util.isEmpty(response)) {
         if (!this.$util.isEmpty(response.acf)) {
-          let authors = response.acf.authors ? response.acf.authors : "";
-          return this.$util.stringToArray(authors, "and");
+          if (!this.$util.isEmpty(response.acf.authors)) {
+            var authors = response.acf.authors;
+
+            for (var index = 0; index < authors.length; index++) {
+              authorsArr.push(authors[index].post_title);
+            }
+            return authorsArr;
+          }
         }
       }
     },
-
     async getPopularTags() {
       const response = await this.$api.homepage.getPopularTags();
       if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.tags)) {

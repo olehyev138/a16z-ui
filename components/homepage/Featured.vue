@@ -3,7 +3,9 @@
     <div class="article">
       <div class="row">
         <div class="col-sm-2">
-          <span class="category-title">11.16.22 / {{ featuredPostData.post_type }}</span>
+          <span class="category-title"
+            >11.16.22 / {{ featuredPostData.post_type }}</span
+          >
         </div>
         <div class="col-sm-10 col-md-8">
           <h5>
@@ -51,13 +53,20 @@ export default {
     };
   },
   methods: {
-    async getSinglePost(postId) {
+    async getSinglePost(postId = 0) {
+      this.authors = [];
       const response = await this.$api.common.getSinglePost(postId);
       if (!this.$util.isEmpty(response)) {
         this.tags = response.tags;
         if (!this.$util.isEmpty(response.acf)) {
-          let authors = response.acf.authors ? response.acf.authors : "";
-          this.authors = this.$util.stringToArray(authors, "and");
+          if (!this.$util.isEmpty(response.acf.authors)) {
+            var authors = response.acf.authors;
+            var authorsArr = [];
+            for (var index = 0; index < authors.length; index++) {
+              authorsArr.push(authors[index].post_title);
+            }
+            this.authors = authorsArr;
+          }
         }
       }
     },
