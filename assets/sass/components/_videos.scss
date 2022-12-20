@@ -3,202 +3,252 @@
 // ---------------------------------------------------------===
 
 .videos-section {
-	padding: 54px 0 80px;
-	overflow: hidden;
+  padding: 54px 0 80px;
+  overflow: hidden;
 
-	@include media('<tablet') {
-		padding: 33px 0 48px;
-	}
+  @include media("<tablet") {
+    padding: 33px 0 48px;
+  }
 }
 
 .videos {
-	@extend %listreset;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 32px 23px;
-	font-size: 16px;
-	line-height: 1.375;
+  @extend %listreset;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 23px;
+  font-size: 16px;
+  line-height: 1.375;
 
-	@include media('<desktop') {
-		grid-template-columns: repeat(2, 1fr);
-	}
+  @include media("<desktop") {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-	@include media('<tablet') {
-		font-size: 12px;
-		line-height: 1.4167;
-		grid-template-columns: repeat(1, 1fr);
-		gap: 32px;
-	}
+  @include media("<tablet") {
+    font-size: 12px;
+    line-height: 1.4167;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+  }
 
-	li {
-		@extend %borderwide;
-		@include media('<tablet') {
-			display: flex;
-			flex-direction: row-reverse;
-			align-items: flex-start;
-			padding-top: 8px;
-		}
+  li {
+    @extend %borderwide;
+    @include media("<tablet") {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      padding-top: 8px;
+    }
 
-		&:after {
-			width: 9999px;
+    &:after {
+      width: 9999px;
 
-			@include media('screen', '>=tablet') {
-				display: none;
-			}
-		}
-	}
+      @include media("screen", ">=tablet") {
+        display: none;
+      }
+    }
+  }
 
+  h6 {
+    margin-bottom: 8px;
 
-	h6 {
-		margin-bottom: 8px;
+    @include media("<tablet") {
+      line-height: 1.375;
+      margin-bottom: 5px;
+    }
+  }
 
-		@include media('<tablet') {
-			line-height: 1.375;
-			margin-bottom: 5px;
-		}
-	}
-
-	.desctiption {
-		flex: 1;
-	}
+  .desctiption {
+    flex: 1;
+  }
 }
 
 .video {
-	position: relative;
-	display: block;
-	margin-bottom: 16px;
-	padding-top: 55.6%;
+  position: relative;
+  display: block;
+  margin-bottom: 16px;
+  padding-top: 55.6%;
+  img {
+    position: absolute;
+    width: 200px;
+    left: 225px;
+    top: 0;
+    height: 210px;
+    object-fit: cover;
+  }
 
-	@include media('<widescreen') {
-		padding-top: 70%;
-	}
+  @include media("<widescreen") {
+    padding-top: 70%;
+  }
 
-	@include media('<tablet') {
-		max-width: 250px;
-		flex: 0 0 250px;
-		margin: 0 0 0 20px;
-		padding-top: 140px;
-	}
+  @include media("<tablet") {
+    max-width: 250px;
+    flex: 0 0 250px;
+    margin: 0 0 0 20px;
+    padding-top: 140px;
+  }
 
-	@include media('<phone') {
-		max-width: 118px;
-		flex: 0 0 118px;
-		padding-top: 65px;
-	}
+  @include media("<phone") {
+    max-width: 118px;
+    flex: 0 0 118px;
+    padding-top: 65px;
+  }
 
-	img {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+  @include media(">=desktop", "<=widescreen") {
+    img {
+      width: 189px;
+      left: 193px;
+      height: 240px;
+    }
+  }
+  @include media(">=tablet", "<=desktop") {
+    img {
+      width: 170px;
+      left: 183px;
+      height: 190px;
+    }
+  }
+  @include media(">=xs-phone", "<=phone") {
+    img {
+      width: 60px;
+      left: 58px;
+      height: 60px;
+    }
+  }
 
-	.btn-play {
-		@include box-align(vhc);
-		width: 64px;
-		height: 64px;
-		border-radius: 100px;
-		border: 1px solid color(white);
-		background: rgba(color(black), 0.15);
-		@include animate(background);
-		background: rgba(0, 0, 0, 0.15);
-		box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  .btn-play {
+    @include box-align(vhc);
+    width: 64px;
+    height: 64px;
+    border-radius: 100px;
+    border: 1px solid color(white);
+    background: rgba(color(black), 0.15);
+    @include animate(background);
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 
-		@include media('<tablet') {
-			width: 36px;
-			height: 36px;
-		}
+    @include media("<tablet") {
+      width: 36px;
+      height: 36px;
+    }
 
-		@include media('<phone') {
-			width: 20px;
-			height: 20px;
-			border-width: 1px;
-		}
+    @include media("<phone") {
+      width: 20px;
+      height: 20px;
+      border-width: 1px;
+    }
 
-		&:before {
-			border-style: solid;
-			border-width: 14px 0 14px 22px;
-			border-color: transparent transparent transparent color(white);
-			@include box-align(vhc);
-			content: "";
-			margin-left: 3px;
+    &:before {
+      border-style: solid;
+      border-width: 14px 0 14px 22px;
+      border-color: transparent transparent transparent color(white);
+      @include box-align(vhc);
+      content: "";
+      margin-left: 3px;
 
-			@include media('<tablet') {
-				border-width: 6.5px 0 6.5px 11px;
-			}
+      @include media("<tablet") {
+        border-width: 6.5px 0 6.5px 11px;
+      }
 
-			@include media('<phone') {
-				border-width: 3px 0 3px 5px;
-				margin-left: 1px;
-			}
-		}
-	}
+      @include media("<phone") {
+        border-width: 3px 0 3px 5px;
+        margin-left: 1px;
+      }
+    }
+  }
 
-	.video-info {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		padding: 23px 0;
-		color: #2C2222;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+  .video-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 23px 0;
+    color: #2c2222;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-		@include media('<widescreen') {
-			padding: 15px 0;
-		}
+    @include media("<widescreen") {
+      padding: 15px 0;
+    }
 
-		@include media('<tablet') {
-			padding: 5px 0;
-		}
+    @include media("<tablet") {
+      padding: 5px 0;
+    }
 
-		.instructor-name {
-			font-size: 16px;
-			line-height: 1.4;
-			background: #C4C4C4;
-			padding: 2px 2px 2px 7px;
+    .instructor-name {
+      font-size: 16px;
+      line-height: 1.4;
+      background: #c4c4c4;
+      padding: 2px 2px 2px 7px;
 
-			@include media('<widescreen') {
-				font-size: 14px;
-			}
+      @include media("<widescreen") {
+        font-size: 14px;
+      }
 
-			@include media('<tablet') {
-				font-size: 10px;
-			}
+      @include media("<tablet") {
+        font-size: 10px;
+      }
 
-			@include media('<phone') {
-				font-size: 6px;
-				padding: 0 5px;
-			}
-		}
+      @include media("<phone") {
+        font-size: 6px;
+        padding: 0 5px;
+      }
+    }
 
-		.title {
-			font-size: 32px;
-			line-height: 1.1294;
-			background: #EBEBEB;
-			padding: 3px 2px 4px  6px;
+    .title {
+      font-size: 32px;
+      line-height: 1.1294;
+      background: #ebebeb;
+      padding: 3px 2px 4px 6px;
 
-			@include media('<widescreen') {
-				font-size: 24px;
-			}
+      @include media("<widescreen") {
+        font-size: 24px;
+      }
 
-			@include media('<tablet') {
-				font-size: 16px;
-			}
+      @include media("<tablet") {
+        font-size: 16px;
+      }
 
-			@include media('<phone') {
-				font-size: 8px;
-				padding: 0 5px;
-			}
-		}
-	}
+      @include media("<phone") {
+        font-size: 8px;
+        padding: 0 5px;
+      }
+    }
+  }
 
-	&:hover {
-		.btn-play {
-			background-color: color(black);
-		}
-	}
+  &:hover {
+    .btn-play {
+      background-color: color(black);
+    }
+  }
+}
+.thumbnail {
+  &--anakiwa {
+    background-color: rgb(146, 224, 236);
+  }
+  &--orange {
+    background-color: #e79a30;
+  }
+  &--pompadour {
+    background-color: #711858;
+  }
+  &--cyprus {
+    background-color: #12345a;
+  }
+
+  &--goldenrod {
+    background-color: #c5dd6b;
+  }
+  &--greenhouse {
+    background-color: #3c572c;
+  }
+  &--shamrock {
+    background-color: #52d891;
+  }
+  &--loghtseagreen {
+    background-color: #23c5c8;
+  }
+  &--mauve {
+    background-color: #d0a1ff;
+  }
 }

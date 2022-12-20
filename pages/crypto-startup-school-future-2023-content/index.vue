@@ -123,177 +123,32 @@
     <section class="videos-section">
       <div class="container">
         <ul class="videos">
-          <li>
-            <a href="#" class="video">
+          <li v-for="(val, i) in videoList" :key="i">
+            <a href="#" class="video" :class="`thumbnail--${val.bg}`">
               <img
-                src="@/assets/images/video-placeholder16.jpg"
+                src="@/assets/images/avatar-balaji.png"
                 alt="image description"
               />
               <span class="btn-play"></span>
               <div class="video-info">
-                <span class="instructor-name">Brian Armstrong</span>
-                <span class="title">building crypto companies</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">setting up and scaling a crypto company</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Brian Armstrong</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder17.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Josh Williams</span>
-                <span class="title">blockchain fundamentals</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">Opportunities for Crypto in Gaming</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Josh Williams</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder18.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Chris Dixon</span>
-                <span class="title">the potential of crypto</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">crypto networks and why they matter</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Chris Dixon</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder19.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Balaji Srinivasan</span>
-                <span class="title">the future of apps</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">applications: today & 2025</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Balaji Srinivasan</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder20.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Josh Williams</span>
-                <span class="title">gaming crypto</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">opportunities for crypto in gaming</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Josh Williams</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder21.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Ali Yahya</span>
-                <span class="title">economic flywheels</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">business models and value capture</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Ali Yahya</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder22.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Sam Williams</span>
-                <span class="title">incentive engineering</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">cryptoeconomics 101</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Sam Williams</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder23.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name"
-                  >Tom Preston-Werner & Chris Dixon</span
+                <span
+                  class="instructor-name"
+                  v-if="!$util.isEmpty(val.instructor)"
+                  >{{ val.instructor }}</span
                 >
-                <span class="title">developer evangelism</span>
+                <span
+                  class="title"
+                  v-if="!$util.isEmpty(val.thumbnail_title)"
+                  >{{ val.thumbnail_title }}</span
+                >
               </div>
             </a>
             <div class="desctiption">
-              <h6><a href="#">developer community building</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Tom Preston-Werner</a> and
-                <a href="#">Chris Dixon</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder24.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-              <div class="video-info">
-                <span class="instructor-name">Nitya Subramanian</span>
-                <span class="title">protocols vs products</span>
-              </div>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">protocol to product</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Nitya Subramanian</a></span
+              <h6>
+                <a href="#">{{ val.post_title }}</a>
+              </h6>
+              <span class="instructor" v-if="!$util.isEmpty(val.instructor)"
+                >instructor: <a href="#">{{ val.instructor }}</a></span
               >
             </div>
           </li>
@@ -439,6 +294,17 @@ export default {
   },
   data() {
     return {
+      videoTumbColors: [
+        "anakiwa",
+        "orange",
+        "pompadour",
+        "cyprus",
+        "goldenrod",
+        "greenhouse",
+        "shamrock",
+        "loghtseagreen",
+        "mauve",
+      ],
       showStickyDiv: false,
       curriculumByYear: 2023,
       general_content: [],
@@ -471,7 +337,38 @@ export default {
           this.curriculumsList =
             response["2023_group"].curriculum_content.lectures;
 
-          this.videoList = response["2023_group"].curriculum_content.videos;
+          if (
+            !this.$util.isEmpty(
+              response["2023_group"].curriculum_content.videos
+            )
+          ) {
+            var videoColorCounter = 0;
+            var videoListData =
+              response["2023_group"].curriculum_content.videos;
+            for (var index = 0; index < videoListData.length; index++) {
+              try {
+                videoColorCounter++;
+                if (videoColorCounter == this.videoTumbColors.length) {
+                  videoColorCounter = 0;
+                }
+                let videoContent = await this.getVideoContent(
+                  videoListData[index].ID
+                );
+                // console.log(
+                //   "videoContent = ",
+                //   this.videoTumbColors[videoColorCounter]
+                // );
+                this.videoList.push({
+                  ...videoListData[index],
+                  bg: this.videoTumbColors[videoColorCounter],
+                  instructor: videoContent.instructor,
+                  thumb: videoContent.thumb,
+                  thumbnail_title: videoContent.thumbnail_title,
+                  video_file: videoContent.video_file,
+                });
+              } catch (error) {}
+            }
+          }
 
           this.instructors_list =
             response["2023_group"].curriculum_content.instructors_list;
@@ -505,6 +402,38 @@ export default {
         if (!this.$util.isEmpty(response.alumni_list)) {
           this.alumni_list = response.alumni_list;
         }
+      }
+    },
+    async getVideoContent(id = 0) {
+      const response = await this.$api.video.getVideoContent(id);
+      var res = {
+        instructor: "",
+        thumb: "",
+        thumbnail_title: "",
+        video_file: [],
+      };
+      if (!this.$util.isEmpty(response)) {
+        try {
+          res.thumbnail_title = response.acf.thumbnail_title;
+          if (!this.$util.isEmpty(response.acf.instructor)) {
+            res.instructor = response.acf.instructor[0].post_title;
+          }
+          let thumbnail = await this.getTeamMemberPhoto(
+            response.featured_media
+          );
+          res.thumb = thumbnail;
+          res.video_file = response.acf.video_file;
+        } catch (error) {}
+      }
+      return res;
+    },
+
+    async getTeamMemberPhoto(featured_media_id) {
+      const response = await this.$api.teampage.getTeamMemberPhoto(
+        featured_media_id
+      );
+      if (!this.$util.isEmpty(response)) {
+        return response.source_url;
       }
     },
     curriculumFilterByYear(year = "2023") {
