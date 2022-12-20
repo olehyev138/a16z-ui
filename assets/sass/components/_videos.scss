@@ -74,6 +74,8 @@
     top: 0;
     height: 210px;
     object-fit: cover;
+    filter: grayscale(1);
+    @include animate(filter);
   }
 
   @include media("<widescreen") {
@@ -219,6 +221,10 @@
   &:hover {
     .btn-play {
       background-color: color(black);
+    }
+
+    img {
+      filter: none;
     }
   }
 }

@@ -126,8 +126,9 @@
           <li v-for="(val, i) in videoList" :key="i">
             <a href="#" class="video" :class="`thumbnail--${val.bg}`">
               <img
-                src="@/assets/images/avatar-balaji.png"
-                alt="image description"
+                v-if="!$util.isEmpty(val.thumb)"
+                :src="val.thumb"
+                alt="image"
               />
               <span class="btn-play"></span>
               <div class="video-info">
