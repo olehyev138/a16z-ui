@@ -100,5 +100,6 @@ export default {
   mounted() {
     this.getInstractorContent(this.instructorArr);
   },
+  created() {},
 };
 </script>
