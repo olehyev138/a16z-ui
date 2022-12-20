@@ -101,10 +101,14 @@ export default {
     },
     async getSinglePost(postId) {
       const response = await this.$api.common.getSinglePost(postId);
+      var authorArr = [];
       if (!this.$util.isEmpty(response)) {
-        if (!this.$util.isEmpty(response.acf)) {
-          let authors = response.acf.authors ? response.acf.authors : "";
-          return this.$util.stringToArray(authors.replace(/,/g, "and"), "and");
+        if (!this.$util.isEmpty(response.acf.authors)) {
+          var authors = response.acf.authors;
+          for (var index = 0; index < authors.length; index++) {
+            authorsArr.push(authors[index].post_title);
+          }
+          return authorArr;
         }
       }
     },
