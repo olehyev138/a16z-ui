@@ -9,6 +9,7 @@ import PortfolioPage from "@/api/portfoliopage";
 import TeamPage from "@/api/teampage";
 import NewsPage from "@/api/newspage";
 import LawAndPolicyPage from "@/api/lawAndPolicyPage";
+import Video from "@/api/video";
 import Common from "@/api/common";
 import CryptoStartupSchoolDefault from "@/api/cryptoStartupSchoolDefault";
 import Footer from "@/api/footer";
@@ -30,6 +31,7 @@ export default (context, inject) => {
     teampage: TeamPage(context.$axios),
     newspage: NewsPage(context.$axios),
     lawAndPolicyPage: LawAndPolicyPage(context.$axios),
+    video: Video(context.$axios),
   };
 
   // Inject $api

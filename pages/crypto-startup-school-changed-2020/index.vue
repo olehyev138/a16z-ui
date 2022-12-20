@@ -71,7 +71,11 @@
     </div>
     <div class="section-divider">
       <div class="container">
-        <span class="block-title">Course videos</span>
+        <span class="block-title">{{
+          !$util.isEmpty(general_content.videos_section_title)
+            ? general_content.videos_section_title
+            : "Course videos"
+        }}</span>
       </div>
     </div>
 
@@ -80,8 +84,11 @@
         <div class="row">
           <div class="col-sm-6">
             <h6>
-              Course videos for 2023 will be posted after the program concludes
-              in May. View videos for 2020 below.
+              {{
+                !$util.isEmpty(general_content.videos_subtitle)
+                  ? general_content.videos_subtitle
+                  : "Course videos for 2023 will be posted after the program concludes in May. View videos for 2020 below."
+              }}
             </h6>
           </div>
         </div>
@@ -91,239 +98,11 @@
     <section class="videos-section">
       <div class="container">
         <ul class="videos">
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder01.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">crypto networks and why they matter</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Chris Dixon</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder02.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6>
-                <a href="#"
-                  >blockchain primitives: cryptography and consensus</a
-                >
-              </h6>
-              <span class="instructor"
-                >instructor: <a href="#">Dan Boneh</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder03.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">setting up and scaling a crypto company</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Brian Armstrong</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder04.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">applications: today & 2025</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Balaji Srinivasan</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder05.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">opportunities for crypto in gaming</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Josh Williams</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder06.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">business models and value capture</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Ali Yahya</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder07.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">cryptoeconomics 101</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Sam Williams</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder08.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6>
-                <a href="#"
-                  >deep dive: how and why to decentralize your roject</a
-                >
-              </h6>
-              <span class="instructor"
-                >instructor: <a href="#">Jesse Walden</a> and
-                <a href="#">Robert Leshner</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder09.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">developer community building</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Tom Preston-Werner</a> and
-                <a href="#">Chris Dixon</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder10.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">managing a distributed workforce</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Tina Ferguson</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder11.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">protocol to product</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Nitya Subramanian</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder12.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">secure smart contract development</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Jutta Steiner</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder13.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">crypto regulators and token securities</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Brian Brooks</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder14.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">fundraising</a></h6>
-              <span class="instructor"
-                >instructor: <a href="#">Jesse Walden</a></span
-              >
-            </div>
-          </li>
-          <li>
-            <a href="#" class="video">
-              <img
-                src="@/assets/images/video-placeholder15.jpg"
-                alt="image description"
-              />
-              <span class="btn-play"></span>
-            </a>
-            <div class="desctiption">
-              <h6><a href="#">Crypto Startup School documentary</a></h6>
-              <span class="instructor">instructor: n/a</span>
-            </div>
-          </li>
+          <CourseVideo
+            v-for="(val, i) in videoList"
+            :videoObj="val"
+            :key="i + 'videos'"
+          />
         </ul>
       </div>
     </section>
@@ -460,7 +239,7 @@ export default {
   methods: {
     async cryptoStartupSchoolDefault() {
       const response = await this.$api.cryptoStartupSchoolDefaultPage.get();
-      console.log(response);
+      // console.log(response);
       if (!this.$util.isEmpty(response)) {
         this.general_content = response;
 

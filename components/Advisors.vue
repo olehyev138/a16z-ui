@@ -63,8 +63,10 @@ export default {
             advisorList[index].role = teamData.roleName;
           } catch (error) {}
         }
-        console.log("getAuthorContent photo,role = ", advisorList);
+        // console.log("getAuthorContent photo,role = ", advisorList);
         this.advisorList = advisorList;
+      } else {
+        this.advisorList = this.advisorList;
       }
     },
     async getTeamMember(id) {

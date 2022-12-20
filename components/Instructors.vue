@@ -70,8 +70,10 @@ export default {
             instractorList[index].role = teamData.roleName;
           } catch (error) {}
         }
-        console.log("getInstractorContent photo,role = ", instractorList);
+        // console.log("getInstractorContent photo,role = ", instractorList);
         this.instractorList = instractorList;
+      } else {
+        this.instractorList = this.instructorArr;
       }
     },
     async getTeamMember(id) {
