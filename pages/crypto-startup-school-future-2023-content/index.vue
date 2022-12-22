@@ -2,7 +2,7 @@
   <div id="wrapper">
     <Header></Header>
 
-    <header
+    <!-- <header
       class="hero hero--sm hero--startup"
       style="height: 515px"
       v-if="
@@ -60,6 +60,13 @@
           <img src="@/assets/images/bg-banner-startup.svg" alt="" />
         </picture>
         <div class="highlight-display hld--pacific-custom">
+          <h1><span>crypto</span><span>startup</span><span>school</span></h1>
+        </div>
+      </div>
+    </header> -->
+    <header class="hero hero--sm hero--startup">
+      <div class="container">
+        <div class="highlight-display hld--style--1 hld--pacific-custom">
           <h1><span>crypto</span><span>startup</span><span>school</span></h1>
         </div>
       </div>

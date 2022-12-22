@@ -80,7 +80,7 @@
   }
 
   &.text-block--startup {
-    padding: 0 0 64px;
+    padding: 64px 0;
 
     @include media('<tablet') {
       padding: 23px 0 0;
@@ -114,15 +114,19 @@
       }
     }
 
-    .subscribe-form {
-      max-width: 424px;
-    }
+    // .subscribe-form {
+    //   max-width: 424px;
+    // }
 
     input[type=email] {
       @include media('<tablet') {
         height: 48px;
       }
     }
+  }
+
+  .btn-wrap {
+    margin-top: 24px;
   }
 }
 

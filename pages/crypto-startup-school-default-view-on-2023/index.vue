@@ -2,17 +2,16 @@
   <div id="wrapper">
     <Header></Header>
 
+    <!-- <header class="hero hero--sm hero--startup">
+      <div class="container">
+        <div class="highlight-display hld--style--1 hld--pacific-custom">
+          <h1><span>crypto</span><span>startup</span><span>school</span></h1>
+        </div>
+      </div>
+    </header> -->
     <header class="hero hero--sm hero--startup">
       <div class="container">
-        <picture class="bg">
-          <source
-            media="(min-width: 768px)"
-            srcset="@/assets/images/bg-banner-startup.svg"
-          />
-          <source srcset="@/assets/images/bg-banner-startup.svg" />
-          <img src="@/assets/images/bg-banner-startup.svg" alt="" />
-        </picture>
-        <div class="highlight-display hld--pacific-custom">
+        <div class="highlight-display hld--style--1 hld--pacific-custom">
           <h1><span>crypto</span><span>startup</span><span>school</span></h1>
         </div>
       </div>
@@ -138,7 +137,7 @@
         </div>
       </div>
     </section>
-    <div class="section-divider">
+    <!-- <div class="section-divider">
       <div class="container">
         <span class="block-title">{{
           !$util.isEmpty(general_content.alumni_section_title)
@@ -157,7 +156,7 @@
           <p>View <a href="#">2020</a> alumni.</p>
         </div>
       </div>
-    </section>
+    </section> -->
     <div class="section-divider bg-grey">
       <div class="container">
         <span class="block-title">{{

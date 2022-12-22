@@ -218,6 +218,13 @@
       }
     }
   }
+
+  &.hld--style--1 span:first-child:before {
+
+    @include media('>=tablet') {
+        content: none !important;
+    }
+  }
 }
 
 .hld--lime {
@@ -317,7 +324,7 @@
     }
 
     &:nth-child(2) {
-      margin-left: 261px;
+      margin-left: 208px;
 
       @include media("<tablet") {
         margin-left: 71px;
@@ -329,7 +336,7 @@
     }
 
     &:nth-child(3) {
-      margin-left: 127px;
+      margin-left: 100px;
 
       @include media("<tablet") {
         margin-left: 35px;

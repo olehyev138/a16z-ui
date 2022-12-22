@@ -242,12 +242,28 @@
 
 .hero--startup {
   overflow: hidden;
+  min-height: 691px;
+  background-color: $lime;
+  background-image: url('#{$image-path}/bg-startup-pattern.svg');
+  background-repeat: repeat-x;
+  background-position: -164px 60px;
+  display: flex;
+  align-items: center;
+
+  @include media('<tablet') {
+    background-image: url('#{$image-path}/bg-startup-pattern-mob.svg');
+    min-height: 295px;
+    background-position: -72px 25px;
+  }
 
   .container {
-    padding-bottom: 121px;
+    width: 100%;
+    padding-top: 121px;
+    padding-bottom: 80px;
+    max-width: 1168px;
 
     @include media('<tablet') {
-      padding-bottom: 67px;
+      padding-bottom: 73px;
     }
   }
 
@@ -255,14 +271,20 @@
     min-height: 305px;
   }
 
-  .bg {
-    left: -250px;
-    top: 0;
-    right: 34px;
+  h1 {
+    font-size: 127.604px;
+    line-height: 0.8;
+
+    @include media('<widescreen') {
+      font-size: 100px;
+    }
+
+    @include media('<desktop') {
+      font-size: 80px;
+    }
 
     @include media('<tablet') {
-      right: -140px;
-      top: 0;
+      font-size: 44px;
     }
   }
 }
