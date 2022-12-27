@@ -1,0 +1,139 @@
+// ---------------------------------------------------------===
+// Content overview styles
+// ---------------------------------------------------------===
+
+.content-overview {
+    padding: 70px 0;
+    border-top: 1px solid $black;
+
+    @include media('<tablet') {
+        padding: 25px 0;
+    }
+
+    .article-wrap {
+        padding-right: 40px;
+        border-right: 1px solid color(black, 8);
+
+        @include media('<widescreen') {
+            padding-right: 25px;
+        }
+
+        @include media('<tablet') {
+            border-right: none;
+            padding-right: 0;
+        }
+    }
+
+    h6 {
+        margin-bottom: 21px;
+
+        @include media('<tablet') {
+            font-size: 20px;
+        }
+    }
+}
+
+.xs-first {
+    @include media('<tablet') {
+        order: -1;
+    }
+}
+
+.explore-sidebar {
+    padding-left: 16px;
+
+    @include media('<widescreen') {
+        padding-left: 0;
+    }
+
+    @include media('<tablet') {
+        margin-bottom: 45px;
+    }
+
+    h6 {
+        @include media('<tablet') {
+            margin-bottom: 0;
+        }
+    }
+
+    .title {
+        display: block;
+        font: 400 14px/1 $abcfavorit-mono;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 20px;
+
+        @include media('<tablet') {
+            margin-bottom: 0;
+            cursor: pointer;
+            padding: 16px 40px 16px 0;
+            position: relative;
+            font-size: 12px;
+        }
+
+        @include media('>=tablet') {
+            pointer-events: none;
+        }
+
+		&:hover {
+            @include media('<tablet') {
+                color: color(black,7);
+            }
+		}
+
+		&:before {
+            @include media('<tablet') {
+                position: absolute;
+                top: 15px;
+                right: 0;
+                content: "\e919";
+                font-family: 'icomoon';
+                font-size: 12px;
+                color: $black;
+            }
+		}
+
+		&.active {
+			&:before {
+                @include media('<tablet') {
+                    content: "\e91a";
+                }
+			}
+		}
+    }
+
+    .link-block {
+        border-bottom: 1px solid $grey-mid;
+        margin-bottom: 23px;
+        padding-bottom: 16px;
+
+        @include media('<tablet') {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .link-list {
+        @extend %listreset;
+        font-weight: 350;
+        font-size: 16px;
+        line-height: 1.4;
+
+        @include media('<tablet') {
+            padding-bottom: 10px;
+            display: none;
+        }
+
+        @include media('>=tablet') {
+            display: block !important;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    }
+}
