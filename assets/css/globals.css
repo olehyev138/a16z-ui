@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "ABCFavoritMono";
+  src: url("~/assets/fonts/abcfavorit-mono/ABCFavoritMono-Regular.woff");
+}
+@font-face {
+  font-family: "Sixteen Mono";
+  src: url("~/assets/fonts/sixteen-mono/SixteenMono-Regular.woff");
+}
+
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("~/assets/fonts/abcfavorit/ABCFavorit-Regular.woff");
+}
+@font-face {
+  font-family: "ABC Favorit Mono";
+  src: url("~/assets/fonts/abcfavorit-mono/ABCFavoritMono-Regular.woff");
+}
+
+.customInpNum {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAAAqo0jMgAAAAlwSFlzAAAAYAAAAGAA8GtCzwAAAAd0SU1FB+YMHhMWAQwAB/oAAADRSURBVGje7ZdBCsIwFAWH6s4jibj2FF1JT6GC6EYvoW70Np5BseeIixZCrUUFfz7Km20KMwkhSUEIIYQQ4sfJyT31SwKBra/eLWFFIHBgTyCw9pn9iT4Zu/SrEPVA+oRKf6z1yRPa+qQJ83rr9VojWb0dZ7YBtw59TLjaBoyYduirhIKhbYAQ4v/offj9mAlnQsdoRsGAi2Vw+fIoLi3171xGC9uAx8dI1FfX8cZa/zwhqb6dkFzfTHDRg/uzPK6Cy+ybCW56cP85FUIIIYT4AnfsIWx4smlRzgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMi0xMi0zMFQxOToyMjowMSswMDowMIDxQJcAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjItMTItMzBUMTk6MjI6MDErMDA6MDDxrPgrAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIyLTEyLTMwVDE5OjIyOjAxKzAwOjAwprnZ9AAAAABJRU5ErkJggg==");
+  background-position: center right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  caret-color: transparent;
+}
+
+.customInpNum::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  border-width: 0px;
+  margin: 0;
+  height: 34px;
+  width: 23px;
+  cursor: pointer;
+}

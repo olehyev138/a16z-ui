@@ -1,0 +1,330 @@
+[
+  {
+    "month": "1/1/2016",
+    "Active Addresses": 10404
+  },
+  {
+    "month": "2/1/2016",
+    "Active Addresses": 22217
+  },
+  {
+    "month": "3/1/2016",
+    "Active Addresses": 49861
+  },
+  {
+    "month": "4/1/2016",
+    "Active Addresses": 36884
+  },
+  {
+    "month": "5/1/2016",
+    "Active Addresses": 90634
+  },
+  {
+    "month": "6/1/2016",
+    "Active Addresses": 82879
+  },
+  {
+    "month": "7/1/2016",
+    "Active Addresses": 116850
+  },
+  {
+    "month": "8/1/2016",
+    "Active Addresses": 90444
+  },
+  {
+    "month": "9/1/2016",
+    "Active Addresses": 86430
+  },
+  {
+    "month": "10/1/2016",
+    "Active Addresses": 85468
+  },
+  {
+    "month": "11/1/2016",
+    "Active Addresses": 127377
+  },
+  {
+    "month": "12/1/2016",
+    "Active Addresses": 92738
+  },
+  {
+    "month": "1/1/2017",
+    "Active Addresses": 91876
+  },
+  {
+    "month": "2/1/2017",
+    "Active Addresses": 93937
+  },
+  {
+    "month": "3/1/2017",
+    "Active Addresses": 301783
+  },
+  {
+    "month": "4/1/2017",
+    "Active Addresses": 299739
+  },
+  {
+    "month": "5/1/2017",
+    "Active Addresses": 614681
+  },
+  {
+    "month": "6/1/2017",
+    "Active Addresses": 1204816
+  },
+  {
+    "month": "7/1/2017",
+    "Active Addresses": 1140264
+  },
+  {
+    "month": "8/1/2017",
+    "Active Addresses": 1561593
+  },
+  {
+    "month": "9/1/2017",
+    "Active Addresses": 1629865
+  },
+  {
+    "month": "10/1/2017",
+    "Active Addresses": 1631922
+  },
+  {
+    "month": "11/1/2017",
+    "Active Addresses": 2294552
+  },
+  {
+    "month": "12/1/2017",
+    "Active Addresses": 5063446
+  },
+  {
+    "month": "1/1/2018",
+    "Active Addresses": 7272864
+  },
+  {
+    "month": "2/1/2018",
+    "Active Addresses": 3841658
+  },
+  {
+    "month": "3/1/2018",
+    "Active Addresses": 3479357
+  },
+  {
+    "month": "4/1/2018",
+    "Active Addresses": 3325951
+  },
+  {
+    "month": "5/1/2018",
+    "Active Addresses": 4339449
+  },
+  {
+    "month": "6/1/2018",
+    "Active Addresses": 3994411
+  },
+  {
+    "month": "7/1/2018",
+    "Active Addresses": 3211321
+  },
+  {
+    "month": "8/1/2018",
+    "Active Addresses": 3206490
+  },
+  {
+    "month": "9/1/2018",
+    "Active Addresses": 2606730
+  },
+  {
+    "month": "10/1/2018",
+    "Active Addresses": 2721194
+  },
+  {
+    "month": "11/1/2018",
+    "Active Addresses": 2508805
+  },
+  {
+    "month": "12/1/2018",
+    "Active Addresses": 2614241
+  },
+  {
+    "month": "1/1/2019",
+    "Active Addresses": 2502647
+  },
+  {
+    "month": "2/1/2019",
+    "Active Addresses": 1842279
+  },
+  {
+    "month": "3/1/2019",
+    "Active Addresses": 2639479
+  },
+  {
+    "month": "4/1/2019",
+    "Active Addresses": 3225386
+  },
+  {
+    "month": "5/1/2019",
+    "Active Addresses": 3772321
+  },
+  {
+    "month": "6/1/2019",
+    "Active Addresses": 4122307
+  },
+  {
+    "month": "7/1/2019",
+    "Active Addresses": 3423082
+  },
+  {
+    "month": "8/1/2019",
+    "Active Addresses": 3305108
+  },
+  {
+    "month": "9/1/2019",
+    "Active Addresses": 2777544
+  },
+  {
+    "month": "10/1/2019",
+    "Active Addresses": 2936579
+  },
+  {
+    "month": "11/1/2019",
+    "Active Addresses": 2797999
+  },
+  {
+    "month": "12/1/2019",
+    "Active Addresses": 2448435
+  },
+  {
+    "month": "1/1/2020",
+    "Active Addresses": 2459573
+  },
+  {
+    "month": "2/1/2020",
+    "Active Addresses": 3028602
+  },
+  {
+    "month": "3/1/2020",
+    "Active Addresses": 3721096
+  },
+  {
+    "month": "4/1/2020",
+    "Active Addresses": 3705617
+  },
+  {
+    "month": "5/1/2020",
+    "Active Addresses": 4037743
+  },
+  {
+    "month": "6/1/2020",
+    "Active Addresses": 4717661
+  },
+  {
+    "month": "7/1/2020",
+    "Active Addresses": 5080877
+  },
+  {
+    "month": "8/1/2020",
+    "Active Addresses": 5092319
+  },
+  {
+    "month": "9/1/2020",
+    "Active Addresses": 4331495
+  },
+  {
+    "month": "10/1/2020",
+    "Active Addresses": 5344237
+  },
+  {
+    "month": "11/1/2020",
+    "Active Addresses": 5807408
+  },
+  {
+    "month": "12/1/2020",
+    "Active Addresses": 5754909
+  },
+  {
+    "month": "1/1/2021",
+    "Active Addresses": 6335416
+  },
+  {
+    "month": "2/1/2021",
+    "Active Addresses": 5902519
+  },
+  {
+    "month": "3/1/2021",
+    "Active Addresses": 6623438
+  },
+  {
+    "month": "4/1/2021",
+    "Active Addresses": 8326980
+  },
+  {
+    "month": "5/1/2021",
+    "Active Addresses": 8996956
+  },
+  {
+    "month": "6/1/2021",
+    "Active Addresses": 7906169
+  },
+  {
+    "month": "7/1/2021",
+    "Active Addresses": 7301266
+  },
+  {
+    "month": "8/1/2021",
+    "Active Addresses": 7412397
+  },
+  {
+    "month": "9/1/2021",
+    "Active Addresses": 8745268
+  },
+  {
+    "month": "10/1/2021",
+    "Active Addresses": 10677474
+  },
+  {
+    "month": "11/1/2021",
+    "Active Addresses": 11733910
+  },
+  {
+    "month": "12/1/2021",
+    "Active Addresses": 11952820
+  },
+  {
+    "month": "1/1/2022",
+    "Active Addresses": 11791184
+  },
+  {
+    "month": "2/1/2022",
+    "Active Addresses": 10364865
+  },
+  {
+    "month": "3/1/2022",
+    "Active Addresses": 12845316
+  },
+  {
+    "month": "4/1/2022",
+    "Active Addresses": 11592433
+  },
+  {
+    "month": "5/1/2022",
+    "Active Addresses": 11977535
+  },
+  {
+    "month": "6/1/2022",
+    "Active Addresses": 10268065
+  },
+  {
+    "month": "7/1/2022",
+    "Active Addresses": 12219163
+  },
+  {
+    "month": "8/1/2022",
+    "Active Addresses": 11917294
+  },
+  {
+    "month": "9/1/2022",
+    "Active Addresses": 12010061
+  },
+  {
+    "month": "10/1/2022",
+    "Active Addresses": 14693420
+  }
+]

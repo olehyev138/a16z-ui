@@ -1,0 +1,330 @@
+[
+  {
+    "month": "1/1/2016",
+    "Search Interest": 2
+  },
+  {
+    "month": "2/1/2016",
+    "Search Interest": 0
+  },
+  {
+    "month": "3/1/2016",
+    "Search Interest": 1
+  },
+  {
+    "month": "4/1/2016",
+    "Search Interest": 2
+  },
+  {
+    "month": "5/1/2016",
+    "Search Interest": 4
+  },
+  {
+    "month": "6/1/2016",
+    "Search Interest": 1
+  },
+  {
+    "month": "7/1/2016",
+    "Search Interest": 2
+  },
+  {
+    "month": "8/1/2016",
+    "Search Interest": 2
+  },
+  {
+    "month": "9/1/2016",
+    "Search Interest": 1
+  },
+  {
+    "month": "10/1/2016",
+    "Search Interest": 1
+  },
+  {
+    "month": "11/1/2016",
+    "Search Interest": 2
+  },
+  {
+    "month": "12/1/2016",
+    "Search Interest": 1
+  },
+  {
+    "month": "1/1/2017",
+    "Search Interest": 2
+  },
+  {
+    "month": "2/1/2017",
+    "Search Interest": 3
+  },
+  {
+    "month": "3/1/2017",
+    "Search Interest": 1
+  },
+  {
+    "month": "4/1/2017",
+    "Search Interest": 2
+  },
+  {
+    "month": "5/1/2017",
+    "Search Interest": 6
+  },
+  {
+    "month": "6/1/2017",
+    "Search Interest": 8
+  },
+  {
+    "month": "7/1/2017",
+    "Search Interest": 9
+  },
+  {
+    "month": "8/1/2017",
+    "Search Interest": 15
+  },
+  {
+    "month": "9/1/2017",
+    "Search Interest": 23
+  },
+  {
+    "month": "10/1/2017",
+    "Search Interest": 15
+  },
+  {
+    "month": "11/1/2017",
+    "Search Interest": 19
+  },
+  {
+    "month": "12/1/2017",
+    "Search Interest": 48
+  },
+  {
+    "month": "1/1/2018",
+    "Search Interest": 69
+  },
+  {
+    "month": "2/1/2018",
+    "Search Interest": 37
+  },
+  {
+    "month": "3/1/2018",
+    "Search Interest": 32
+  },
+  {
+    "month": "4/1/2018",
+    "Search Interest": 35
+  },
+  {
+    "month": "5/1/2018",
+    "Search Interest": 25
+  },
+  {
+    "month": "6/1/2018",
+    "Search Interest": 30
+  },
+  {
+    "month": "7/1/2018",
+    "Search Interest": 26
+  },
+  {
+    "month": "8/1/2018",
+    "Search Interest": 24
+  },
+  {
+    "month": "9/1/2018",
+    "Search Interest": 21
+  },
+  {
+    "month": "10/1/2018",
+    "Search Interest": 23
+  },
+  {
+    "month": "11/1/2018",
+    "Search Interest": 20
+  },
+  {
+    "month": "12/1/2018",
+    "Search Interest": 20
+  },
+  {
+    "month": "1/1/2019",
+    "Search Interest": 17
+  },
+  {
+    "month": "2/1/2019",
+    "Search Interest": 15
+  },
+  {
+    "month": "3/1/2019",
+    "Search Interest": 13
+  },
+  {
+    "month": "4/1/2019",
+    "Search Interest": 17
+  },
+  {
+    "month": "5/1/2019",
+    "Search Interest": 18
+  },
+  {
+    "month": "6/1/2019",
+    "Search Interest": 19
+  },
+  {
+    "month": "7/1/2019",
+    "Search Interest": 19
+  },
+  {
+    "month": "8/1/2019",
+    "Search Interest": 17
+  },
+  {
+    "month": "9/1/2019",
+    "Search Interest": 18
+  },
+  {
+    "month": "10/1/2019",
+    "Search Interest": 19
+  },
+  {
+    "month": "11/1/2019",
+    "Search Interest": 15
+  },
+  {
+    "month": "12/1/2019",
+    "Search Interest": 12
+  },
+  {
+    "month": "1/1/2020",
+    "Search Interest": 15
+  },
+  {
+    "month": "2/1/2020",
+    "Search Interest": 18
+  },
+  {
+    "month": "3/1/2020",
+    "Search Interest": 15
+  },
+  {
+    "month": "4/1/2020",
+    "Search Interest": 15
+  },
+  {
+    "month": "5/1/2020",
+    "Search Interest": 21
+  },
+  {
+    "month": "6/1/2020",
+    "Search Interest": 17
+  },
+  {
+    "month": "7/1/2020",
+    "Search Interest": 21
+  },
+  {
+    "month": "8/1/2020",
+    "Search Interest": 16
+  },
+  {
+    "month": "9/1/2020",
+    "Search Interest": 22
+  },
+  {
+    "month": "10/1/2020",
+    "Search Interest": 17
+  },
+  {
+    "month": "11/1/2020",
+    "Search Interest": 16
+  },
+  {
+    "month": "12/1/2020",
+    "Search Interest": 27
+  },
+  {
+    "month": "1/1/2021",
+    "Search Interest": 40
+  },
+  {
+    "month": "2/1/2021",
+    "Search Interest": 51
+  },
+  {
+    "month": "3/1/2021",
+    "Search Interest": 44
+  },
+  {
+    "month": "4/1/2021",
+    "Search Interest": 73
+  },
+  {
+    "month": "5/1/2021",
+    "Search Interest": 100
+  },
+  {
+    "month": "6/1/2021",
+    "Search Interest": 68
+  },
+  {
+    "month": "7/1/2021",
+    "Search Interest": 57
+  },
+  {
+    "month": "8/1/2021",
+    "Search Interest": 71
+  },
+  {
+    "month": "9/1/2021",
+    "Search Interest": 72
+  },
+  {
+    "month": "10/1/2021",
+    "Search Interest": 85
+  },
+  {
+    "month": "11/1/2021",
+    "Search Interest": 119
+  },
+  {
+    "month": "12/1/2021",
+    "Search Interest": 103
+  },
+  {
+    "month": "1/1/2022",
+    "Search Interest": 142
+  },
+  {
+    "month": "2/1/2022",
+    "Search Interest": 136
+  },
+  {
+    "month": "3/1/2022",
+    "Search Interest": 125
+  },
+  {
+    "month": "4/1/2022",
+    "Search Interest": 125
+  },
+  {
+    "month": "5/1/2022",
+    "Search Interest": 122
+  },
+  {
+    "month": "6/1/2022",
+    "Search Interest": 109
+  },
+  {
+    "month": "7/1/2022",
+    "Search Interest": 92
+  },
+  {
+    "month": "8/1/2022",
+    "Search Interest": 101
+  },
+  {
+    "month": "9/1/2022",
+    "Search Interest": 87
+  },
+  {
+    "month": "10/1/2022",
+    "Search Interest": 86
+  }
+]

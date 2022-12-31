@@ -1,0 +1,330 @@
+[
+  {
+    "month": "1/1/2016",
+    "Transaction Fees Paid": 1572.830896
+  },
+  {
+    "month": "2/1/2016",
+    "Transaction Fees Paid": 5975.155998
+  },
+  {
+    "month": "3/1/2016",
+    "Transaction Fees Paid": 10523.39178
+  },
+  {
+    "month": "4/1/2016",
+    "Transaction Fees Paid": 6194.659845
+  },
+  {
+    "month": "5/1/2016",
+    "Transaction Fees Paid": 12136.03357
+  },
+  {
+    "month": "6/1/2016",
+    "Transaction Fees Paid": 21298.85982
+  },
+  {
+    "month": "7/1/2016",
+    "Transaction Fees Paid": 12971.31509
+  },
+  {
+    "month": "8/1/2016",
+    "Transaction Fees Paid": 11059.71503
+  },
+  {
+    "month": "9/1/2016",
+    "Transaction Fees Paid": 16948.38571
+  },
+  {
+    "month": "10/1/2016",
+    "Transaction Fees Paid": 21605.57746
+  },
+  {
+    "month": "11/1/2016",
+    "Transaction Fees Paid": 13023.72167
+  },
+  {
+    "month": "12/1/2016",
+    "Transaction Fees Paid": 14432.4685
+  },
+  {
+    "month": "1/1/2017",
+    "Transaction Fees Paid": 10803.24139
+  },
+  {
+    "month": "2/1/2017",
+    "Transaction Fees Paid": 15718.39451
+  },
+  {
+    "month": "3/1/2017",
+    "Transaction Fees Paid": 69118.86376
+  },
+  {
+    "month": "4/1/2017",
+    "Transaction Fees Paid": 108958.6534
+  },
+  {
+    "month": "5/1/2017",
+    "Transaction Fees Paid": 781548.163
+  },
+  {
+    "month": "6/1/2017",
+    "Transaction Fees Paid": 3663792.432
+  },
+  {
+    "month": "7/1/2017",
+    "Transaction Fees Paid": 2100238.52
+  },
+  {
+    "month": "8/1/2017",
+    "Transaction Fees Paid": 3805832.077
+  },
+  {
+    "month": "9/1/2017",
+    "Transaction Fees Paid": 4129749.579
+  },
+  {
+    "month": "10/1/2017",
+    "Transaction Fees Paid": 3426766.345
+  },
+  {
+    "month": "11/1/2017",
+    "Transaction Fees Paid": 3685044
+  },
+  {
+    "month": "12/1/2017",
+    "Transaction Fees Paid": 25671683.92
+  },
+  {
+    "month": "1/1/2018",
+    "Transaction Fees Paid": 68246966.28
+  },
+  {
+    "month": "2/1/2018",
+    "Transaction Fees Paid": 18185948.82
+  },
+  {
+    "month": "3/1/2018",
+    "Transaction Fees Paid": 8881466.956
+  },
+  {
+    "month": "4/1/2018",
+    "Transaction Fees Paid": 6168154.417
+  },
+  {
+    "month": "5/1/2018",
+    "Transaction Fees Paid": 13250207.03
+  },
+  {
+    "month": "6/1/2018",
+    "Transaction Fees Paid": 8885945.099
+  },
+  {
+    "month": "7/1/2018",
+    "Transaction Fees Paid": 20993721.22
+  },
+  {
+    "month": "8/1/2018",
+    "Transaction Fees Paid": 7634873.807
+  },
+  {
+    "month": "9/1/2018",
+    "Transaction Fees Paid": 3304932.297
+  },
+  {
+    "month": "10/1/2018",
+    "Transaction Fees Paid": 2750065.856
+  },
+  {
+    "month": "11/1/2018",
+    "Transaction Fees Paid": 2505636.441
+  },
+  {
+    "month": "12/1/2018",
+    "Transaction Fees Paid": 1493025.763
+  },
+  {
+    "month": "1/1/2019",
+    "Transaction Fees Paid": 1371931.468
+  },
+  {
+    "month": "2/1/2019",
+    "Transaction Fees Paid": 1952026.849
+  },
+  {
+    "month": "3/1/2019",
+    "Transaction Fees Paid": 1958323.249
+  },
+  {
+    "month": "4/1/2019",
+    "Transaction Fees Paid": 1960212.495
+  },
+  {
+    "month": "5/1/2019",
+    "Transaction Fees Paid": 3654115.363
+  },
+  {
+    "month": "6/1/2019",
+    "Transaction Fees Paid": 4531995.251
+  },
+  {
+    "month": "7/1/2019",
+    "Transaction Fees Paid": 3638740.353
+  },
+  {
+    "month": "8/1/2019",
+    "Transaction Fees Paid": 2724414.306
+  },
+  {
+    "month": "9/1/2019",
+    "Transaction Fees Paid": 5647002.803
+  },
+  {
+    "month": "10/1/2019",
+    "Transaction Fees Paid": 2725174.379
+  },
+  {
+    "month": "11/1/2019",
+    "Transaction Fees Paid": 2744929.294
+  },
+  {
+    "month": "12/1/2019",
+    "Transaction Fees Paid": 1714407.998
+  },
+  {
+    "month": "1/1/2020",
+    "Transaction Fees Paid": 1512968.81
+  },
+  {
+    "month": "2/1/2020",
+    "Transaction Fees Paid": 3133580.999
+  },
+  {
+    "month": "3/1/2020",
+    "Transaction Fees Paid": 3721094.769
+  },
+  {
+    "month": "4/1/2020",
+    "Transaction Fees Paid": 3094673.974
+  },
+  {
+    "month": "5/1/2020",
+    "Transaction Fees Paid": 10027310.83
+  },
+  {
+    "month": "6/1/2020",
+    "Transaction Fees Paid": 22054606.19
+  },
+  {
+    "month": "7/1/2020",
+    "Transaction Fees Paid": 34152800.95
+  },
+  {
+    "month": "8/1/2020",
+    "Transaction Fees Paid": 115336472.2
+  },
+  {
+    "month": "9/1/2020",
+    "Transaction Fees Paid": 171524655.4
+  },
+  {
+    "month": "10/1/2020",
+    "Transaction Fees Paid": 56887748.65
+  },
+  {
+    "month": "11/1/2020",
+    "Transaction Fees Paid": 64055728.6
+  },
+  {
+    "month": "12/1/2020",
+    "Transaction Fees Paid": 110511273.7
+  },
+  {
+    "month": "1/1/2021",
+    "Transaction Fees Paid": 321730515
+  },
+  {
+    "month": "2/1/2021",
+    "Transaction Fees Paid": 726342353.9
+  },
+  {
+    "month": "3/1/2021",
+    "Transaction Fees Paid": 648079645.3
+  },
+  {
+    "month": "4/1/2021",
+    "Transaction Fees Paid": 709832906.2
+  },
+  {
+    "month": "5/1/2021",
+    "Transaction Fees Paid": 1060712709
+  },
+  {
+    "month": "6/1/2021",
+    "Transaction Fees Paid": 168939768.3
+  },
+  {
+    "month": "7/1/2021",
+    "Transaction Fees Paid": 201547545.2
+  },
+  {
+    "month": "8/1/2021",
+    "Transaction Fees Paid": 688161715.8
+  },
+  {
+    "month": "9/1/2021",
+    "Transaction Fees Paid": 1091132875
+  },
+  {
+    "month": "10/1/2021",
+    "Transaction Fees Paid": 1364042879
+  },
+  {
+    "month": "11/1/2021",
+    "Transaction Fees Paid": 1859575322
+  },
+  {
+    "month": "12/1/2021",
+    "Transaction Fees Paid": 1192285585
+  },
+  {
+    "month": "1/1/2022",
+    "Transaction Fees Paid": 1391905246
+  },
+  {
+    "month": "2/1/2022",
+    "Transaction Fees Paid": 744122107.2
+  },
+  {
+    "month": "3/1/2022",
+    "Transaction Fees Paid": 456932485.8
+  },
+  {
+    "month": "4/1/2022",
+    "Transaction Fees Paid": 551837207.6
+  },
+  {
+    "month": "5/1/2022",
+    "Transaction Fees Paid": 583682986.5
+  },
+  {
+    "month": "6/1/2022",
+    "Transaction Fees Paid": 216809406.1
+  },
+  {
+    "month": "7/1/2022",
+    "Transaction Fees Paid": 111982731.1
+  },
+  {
+    "month": "8/1/2022",
+    "Transaction Fees Paid": 96987396.02
+  },
+  {
+    "month": "9/1/2022",
+    "Transaction Fees Paid": 78877956
+  },
+  {
+    "month": "10/1/2022",
+    "Transaction Fees Paid": 104927275
+  }
+]

@@ -21,7 +21,7 @@ export default {
     ],
   },
 
-  css: ["@assets/sass/app.scss"],
+  css: ["@assets/sass/app.scss", "@/assets/css/globals.css"],
 
   plugins: [
     { src: "~/plugins/custom.js", mode: "client", ssr: true },
@@ -31,6 +31,7 @@ export default {
     { src: "@/plugins/api.js" },
     { src: "@/plugins/helper.js" },
     { src: "@/plugins/persistedState.client.js" },
+    { src: "~/plugins/apex-chart.js", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -67,15 +68,35 @@ export default {
       extensions: ["vue"],
       pathPrefix: false,
     },
+    {
+      path: "~/components/chart",
+      extensions: ["vue"],
+      pathPrefix: false,
+    },
   ],
 
-  buildModules: ["@nuxtjs/style-resources", "@nuxtjs/moment"],
-
+  buildModules: [
+    "@nuxtjs/style-resources",
+    "@nuxtjs/moment",
+    "@nuxtjs/fontawesome",
+  ],
+  fontawesome: {
+    component: "fa",
+    icons: {
+      solid: true,
+      brands: true,
+    },
+  },
   styleResources: {
     scss: ["~assets/sass/app.scss"],
   },
 
-  modules: ["@nuxtjs/axios"],
+  modules: [
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/axios",
+    "@nuxtjs/fontawesome",
+    ["vue-scrollto/nuxt", { container: "body", offset: -200, duration: 300 }],
+  ],
   axios: {
     // extra config e.g
     // BaseURL: 'https://link-to-API'

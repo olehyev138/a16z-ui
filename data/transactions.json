@@ -1,0 +1,330 @@
+[
+  {
+    "month": "1/1/2016",
+    "Transactions": 404816
+  },
+  {
+    "month": "2/1/2016",
+    "Transactions": 520040
+  },
+  {
+    "month": "3/1/2016",
+    "Transactions": 917170
+  },
+  {
+    "month": "4/1/2016",
+    "Transactions": 1023096
+  },
+  {
+    "month": "5/1/2016",
+    "Transactions": 1346796
+  },
+  {
+    "month": "6/1/2016",
+    "Transactions": 1351536
+  },
+  {
+    "month": "7/1/2016",
+    "Transactions": 1356907
+  },
+  {
+    "month": "8/1/2016",
+    "Transactions": 1405743
+  },
+  {
+    "month": "9/1/2016",
+    "Transactions": 1387412
+  },
+  {
+    "month": "10/1/2016",
+    "Transactions": 1329847
+  },
+  {
+    "month": "11/1/2016",
+    "Transactions": 1301586
+  },
+  {
+    "month": "12/1/2016",
+    "Transactions": 1316131
+  },
+  {
+    "month": "1/1/2017",
+    "Transactions": 1409664
+  },
+  {
+    "month": "2/1/2017",
+    "Transactions": 1410048
+  },
+  {
+    "month": "3/1/2017",
+    "Transactions": 2426471
+  },
+  {
+    "month": "4/1/2017",
+    "Transactions": 2539966
+  },
+  {
+    "month": "5/1/2017",
+    "Transactions": 4245516
+  },
+  {
+    "month": "6/1/2017",
+    "Transactions": 7244657
+  },
+  {
+    "month": "7/1/2017",
+    "Transactions": 7835875
+  },
+  {
+    "month": "8/1/2017",
+    "Transactions": 10523178
+  },
+  {
+    "month": "9/1/2017",
+    "Transactions": 10679242
+  },
+  {
+    "month": "10/1/2017",
+    "Transactions": 12602063
+  },
+  {
+    "month": "11/1/2017",
+    "Transactions": 15292269
+  },
+  {
+    "month": "12/1/2017",
+    "Transactions": 26732085
+  },
+  {
+    "month": "1/1/2018",
+    "Transactions": 33504270
+  },
+  {
+    "month": "2/1/2018",
+    "Transactions": 22231978
+  },
+  {
+    "month": "3/1/2018",
+    "Transactions": 20261862
+  },
+  {
+    "month": "4/1/2018",
+    "Transactions": 20876642
+  },
+  {
+    "month": "5/1/2018",
+    "Transactions": 25105717
+  },
+  {
+    "month": "6/1/2018",
+    "Transactions": 22471788
+  },
+  {
+    "month": "7/1/2018",
+    "Transactions": 19937033
+  },
+  {
+    "month": "8/1/2018",
+    "Transactions": 19842059
+  },
+  {
+    "month": "9/1/2018",
+    "Transactions": 16056742
+  },
+  {
+    "month": "10/1/2018",
+    "Transactions": 17056926
+  },
+  {
+    "month": "11/1/2018",
+    "Transactions": 16713911
+  },
+  {
+    "month": "12/1/2018",
+    "Transactions": 17107601
+  },
+  {
+    "month": "1/1/2019",
+    "Transactions": 16569597
+  },
+  {
+    "month": "2/1/2019",
+    "Transactions": 13413899
+  },
+  {
+    "month": "3/1/2019",
+    "Transactions": 18029582
+  },
+  {
+    "month": "4/1/2019",
+    "Transactions": 19830158
+  },
+  {
+    "month": "5/1/2019",
+    "Transactions": 24332475
+  },
+  {
+    "month": "6/1/2019",
+    "Transactions": 25679653
+  },
+  {
+    "month": "7/1/2019",
+    "Transactions": 22892039
+  },
+  {
+    "month": "8/1/2019",
+    "Transactions": 22003889
+  },
+  {
+    "month": "9/1/2019",
+    "Transactions": 20465806
+  },
+  {
+    "month": "10/1/2019",
+    "Transactions": 20954629
+  },
+  {
+    "month": "11/1/2019",
+    "Transactions": 20388573
+  },
+  {
+    "month": "12/1/2019",
+    "Transactions": 18272944
+  },
+  {
+    "month": "1/1/2020",
+    "Transactions": 17709339
+  },
+  {
+    "month": "2/1/2020",
+    "Transactions": 19259565
+  },
+  {
+    "month": "3/1/2020",
+    "Transactions": 22758706
+  },
+  {
+    "month": "4/1/2020",
+    "Transactions": 23238442
+  },
+  {
+    "month": "5/1/2020",
+    "Transactions": 26687963
+  },
+  {
+    "month": "6/1/2020",
+    "Transactions": 28961635
+  },
+  {
+    "month": "7/1/2020",
+    "Transactions": 35962911
+  },
+  {
+    "month": "8/1/2020",
+    "Transactions": 63842288
+  },
+  {
+    "month": "9/1/2020",
+    "Transactions": 217832740
+  },
+  {
+    "month": "10/1/2020",
+    "Transactions": 226466606
+  },
+  {
+    "month": "11/1/2020",
+    "Transactions": 317919169
+  },
+  {
+    "month": "12/1/2020",
+    "Transactions": 637805833
+  },
+  {
+    "month": "1/1/2021",
+    "Transactions": 1159973733
+  },
+  {
+    "month": "2/1/2021",
+    "Transactions": 1327201631
+  },
+  {
+    "month": "3/1/2021",
+    "Transactions": 759080765
+  },
+  {
+    "month": "4/1/2021",
+    "Transactions": 606555208
+  },
+  {
+    "month": "5/1/2021",
+    "Transactions": 810195918
+  },
+  {
+    "month": "6/1/2021",
+    "Transactions": 620508779
+  },
+  {
+    "month": "7/1/2021",
+    "Transactions": 603789994
+  },
+  {
+    "month": "8/1/2021",
+    "Transactions": 746982855
+  },
+  {
+    "month": "9/1/2021",
+    "Transactions": 876068913
+  },
+  {
+    "month": "10/1/2021",
+    "Transactions": 824801504
+  },
+  {
+    "month": "11/1/2021",
+    "Transactions": 823371967
+  },
+  {
+    "month": "12/1/2021",
+    "Transactions": 834608692
+  },
+  {
+    "month": "1/1/2022",
+    "Transactions": 844988112
+  },
+  {
+    "month": "2/1/2022",
+    "Transactions": 926668602
+  },
+  {
+    "month": "3/1/2022",
+    "Transactions": 956481355
+  },
+  {
+    "month": "4/1/2022",
+    "Transactions": 802121567
+  },
+  {
+    "month": "5/1/2022",
+    "Transactions": 1025377959
+  },
+  {
+    "month": "6/1/2022",
+    "Transactions": 1233298992
+  },
+  {
+    "month": "7/1/2022",
+    "Transactions": 1276765018
+  },
+  {
+    "month": "8/1/2022",
+    "Transactions": 1184181422
+  },
+  {
+    "month": "9/1/2022",
+    "Transactions": 1077103112
+  },
+  {
+    "month": "10/1/2022",
+    "Transactions": 816570065
+  }
+]
