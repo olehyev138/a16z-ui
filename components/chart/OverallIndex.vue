@@ -21,52 +21,22 @@
             ></apexchart>
           </div>
           <div :class="mainDivChild" v-if="show">
-            <h3 class="chartTitle">
-              crypto innovation
-              <Tooltip
-                bgColor="989aa5"
-                iconColor="fff"
-                title="Composite score based on Active Addresses, Transactions, Mobile Wallet Users, DEX Volume, NFT
-                    Volume, Stablecoin Volume, and Transaction Fees Paid <br>-<br>See tooltips below for a description of each dimension."
-              />
-              (supply)
-            </h3>
-            <apexchart
-              type="area"
-              :height="chartHeight"
-              :options="chartOptions"
-              :series="series"
-            ></apexchart>
+            <InnovationIndex :height="chartHeight" />
           </div>
           <div :class="mainDivChild">
-            <h3 class="chartTitle">
-              crypto adoption
-              <Tooltip
-                bgColor="989aa5"
-                iconColor="fff"
-                title="Composite score based on Active Addresses, Transactions, Mobile Wallet Users, DEX Volume, NFT
-                    Volume, Stablecoin Volume, and Transaction Fees Paid <br>-<br>See tooltips below for a description of each dimension."
-              />
-              (demand)
-            </h3>
-            <apexchart
-              type="area"
-              :height="chartHeight"
-              :options="chartOptions"
-              :series="series"
-            ></apexchart>
+            <AdoptionIndex :height="chartHeight" />
           </div>
         </div>
       </div>
       <div class="col-3 p-0 indexParameter">
-        <div class="px-2 pt-3 pb-0">
+        <div class="px-3 pt-3 pb-0">
           <h3 class="titleInxPara">Index Parameters</h3>
 
           <hr />
         </div>
         <div class="content">
           <section class="innovationSec">
-            <div class="row m-0 mt-3 mb-4">
+            <div class="row m-0 px-3 mt-3 mb-4">
               <div class="col-6 ps-0 text-start">
                 <p class="m-0 titleInnovatio">Innovation</p>
               </div>
@@ -75,11 +45,16 @@
               </div>
             </div>
             <div v-for="(inno, i) in innovation_rows" :key="i + 'inno'">
-              <div class="row m-0 my-3">
+              <div
+                class="row m-0 px-3 py-2 my-1"
+                :class="[
+                  indexParameterInnoActive == i ? 'indexParameterActive' : '',
+                ]"
+              >
                 <div
                   class="col-6 ps-0 text-start dimensionTitle"
                   role="button"
-                  @click="showSpecifiqChart(inno)"
+                  @click="showSpecifiqChart(inno, i)"
                 >
                   {{ inno.dimension }}
                 </div>
@@ -112,17 +87,22 @@
             </div>
           </section>
           <section class="adaptionSec">
-            <div class="row m-0 my-5">
+            <div class="row px-3 m-0 my-4">
               <div class="col-12 p-0">
                 <p class="m-0 titleAdoption">Adoption</p>
               </div>
             </div>
             <div v-for="(adp, i) in adoption_rows" :key="i + 'adp'">
-              <div class="row m-0 my-3">
+              <div
+                class="row px-3 py-2 m-0 my-1"
+                :class="[
+                  indexParameterAdoActive == i ? 'indexParameterActive' : '',
+                ]"
+              >
                 <div
                   class="col-6 ps-0 text-start dimensionTitle"
                   role="button"
-                  @click="showSpecifiqChart(adp)"
+                  @click="showSpecifiqChart(adp, i)"
                 >
                   {{ adp.dimension }}
                 </div>
@@ -154,25 +134,28 @@
             </div>
           </section>
         </div>
-        <div class="row m-0">
-          <div class="col-6">
+        <div class="row px-3 m-0">
+          <div class="col-6 ps-0">
             <button class="btnC btnReset my-3">Reset</button>
           </div>
-          <div class="col-6">
+          <div class="col-6 pe-0">
             <button v-scroll-to="'#report'" class="btnC btnDownload my-3">
               Download
             </button>
           </div>
         </div>
       </div>
-      <div
-        :class="secondaryDivWidth"
-        class="showSpicifiqChart"
-        style="background: #ebebeb"
-      >
+      <div :class="secondaryDivWidth" class="showSpicifiqChart px-4">
         <div class="row py-3 m-0">
-          <div class="col-6"><p class="mb-0">Innovation</p></div>
-          <div class="col-6 text-end">
+          <div class="col-6 ps-0">
+            <p class="mb-0">
+              {{
+                !$util.isEmpty(showSpecifiqChartData.category) &&
+                showSpecifiqChartData.category + " /"
+              }}
+            </p>
+          </div>
+          <div class="col-6 pe-0 text-end">
             <fa
               role="button"
               @click="closeSpecifiqChart()"
@@ -180,28 +163,31 @@
             />
           </div>
         </div>
-        <h2>About This Index</h2>
-        <div>
-          <p>
-            web3 is a computing movement, not a financial one. People often
-            fixate on prices. We believe it's better to focus on the ideas,
-            activity, and innovation that interest generates. That's why a16z
-            crypto created the State of Crypto Index: an interactive tool for
-            tracking the innovation and adoption of the next internet. The
-            crypto market's apparently chaotic cycles have an underlying order,
-            driven by supply and demand. Download our 2023 State of Crypto
-            report to learn more. Don't just take our word for it. You can
-            adjust the State of Crypto Index's parameters to your liking below.
+        <h2>
+          {{
+            !$util.isEmpty(showSpecifiqChartData.dimension) &&
+            showSpecifiqChartData.dimension
+          }}
+        </h2>
+        <section>
+          <p class="description">
+            {{
+              !$util.isEmpty(showSpecifiqChartData.description) &&
+              showSpecifiqChartData.description
+            }}
           </p>
-          <div id="chart" v-if="show">
-            <apexchart
-              type="area"
-              height="260"
-              :options="chartOptions"
-              :series="series"
-            ></apexchart>
+          <keep-alive>
+            <component v-bind:is="currentSelectedChartComponent"></component>
+          </keep-alive>
+          <div class="mt-md-5">
+            <p class="mb-0 source">
+              {{
+                !$util.isEmpty(showSpecifiqChartData.source) &&
+                showSpecifiqChartData.source
+              }}
+            </p>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </section>
@@ -229,7 +215,11 @@ export default {
       value: 20,
       innovation_rows: [],
       adoption_rows: [],
-      chartHeight: 350,
+      showSpecifiqChartData: [],
+      indexParameterInnoActive: null,
+      indexParameterAdoActive: null,
+      currentSelectedChartComponent: "ActiveDevelopers",
+      chartHeight: "350",
       mainDivWidth: "col-9",
       mainDivChild: "col-12 col-md-6",
       secondaryDivWidth: "d-none",
@@ -325,21 +315,80 @@ export default {
   },
 
   methods: {
-    showSpecifiqChart(val) {
+    showSpecifiqChart(val, i) {
       console.log("showSpecifiqChart");
       this.mainDivWidth = "col-5";
       this.secondaryDivWidth = "col-4";
       this.mainDivChild = "col-12 col-md-12";
-      this.chartHeight = 230;
-      this.chartOptions.chart.height = 230;
+      this.chartHeight = "230";
+      this.chartOptions.chart.height = "230";
+
+      this.showSpecifiqChartData = val;
+      if (val.category.toLowerCase() == "innovation") {
+        this.indexParameterInnoActive = i;
+        this.indexParameterAdoActive = null;
+      } else {
+        this.indexParameterAdoActive = i;
+        this.indexParameterInnoActive = null;
+      }
+
+      switch (val.dimension) {
+        case "Active Developers":
+          this.currentSelectedChartComponent = "ActiveDevelopers";
+          break;
+        case "Interested Developers":
+          this.currentSelectedChartComponent = "InterestedDevelopers";
+          break;
+        case "Contract Deployers":
+          this.currentSelectedChartComponent = "ContractDeployers";
+          break;
+        case "Verified Smart Contracts":
+          this.currentSelectedChartComponent = "VerifiedSmartContracts";
+          break;
+        case "web3+ethers Downloads":
+          this.currentSelectedChartComponent = "Web3EthersDownloads";
+          break;
+        case "Academic Publications":
+          this.currentSelectedChartComponent = "AcademicPublications";
+          break;
+        case "Job Search Trends":
+          this.currentSelectedChartComponent = "JobsSearchTrends";
+          break;
+        case "Active Addresses":
+          this.currentSelectedChartComponent = "ActiveAddresses";
+          break;
+        case "Transactions":
+          this.currentSelectedChartComponent = "Transactions";
+          break;
+        case "Mobile Wallet Users":
+          this.currentSelectedChartComponent = "MobileWalletMaus";
+          break;
+        case "DEX Volume":
+          this.currentSelectedChartComponent = "DexVolume";
+          break;
+        case "NFT Volume":
+          this.currentSelectedChartComponent = "NftVolume";
+          break;
+        case "Stablecoin Volume":
+          this.currentSelectedChartComponent = "StablecoinVolume";
+          break;
+        case "Transaction Fees Paid":
+          this.currentSelectedChartComponent = "TransactionFeesPaid";
+          break;
+        default:
+          this.currentSelectedChartComponent = "ActiveDevelopers";
+          break;
+      }
     },
     closeSpecifiqChart() {
       console.log("closeSpecifiqChart");
       this.mainDivWidth = "col-9";
       this.secondaryDivWidth = "d-none";
       this.mainDivChild = "col-12 col-md-6";
-      this.chartHeight = 350;
-      this.chartOptions.chart.height = 350;
+      this.chartHeight = "350";
+      this.chartOptions.chart.height = "350";
+      this.indexParameterInnoActive = null;
+      this.indexParameterAdoActive = null;
     },
     getDimensionValues(dimension, value_name, dimension_weight, min_threshold) {
       // Get qualifying status
@@ -1173,35 +1222,36 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .overallIndex {
   overflow: hidden;
-  height: 830px;
+  height: 850px;
 }
 .showSpicifiqChart {
   overflow: hidden;
   padding: 15px;
+  background: $grey-light !important;
 }
 .chartTitle {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .indexParameter {
-  height: 830px;
+  height: 850px;
   overflow: hidden;
-  background: #f8f8f8;
+  background: $grey-01;
 }
 .indexParameter .content {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0px 15px 15px 15px;
-  height: 690px;
+  // padding: 0px 15px 15px 15px;
+  height: 710px;
 }
 /* width */
 .indexParameter .content::-webkit-scrollbar {
@@ -1210,7 +1260,7 @@ export default {
 
 /* Track */
 .indexParameter .content::-webkit-scrollbar-track {
-  background: #f8f8f8;
+  background: $grey-01;
 }
 
 /* Handle */
@@ -1225,8 +1275,11 @@ export default {
 .indexParameter .content::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.indexParameterActive {
+  background: $grey-light;
+}
 .btnC {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-size: 12px;
   padding: 6px 19px 4px;
@@ -1242,7 +1295,7 @@ export default {
   outline: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .btnC:focus {
   outline: none !important;
@@ -1269,26 +1322,26 @@ export default {
 
 /* section innovatio */
 .titleInxPara {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .titleInnovatio,
 .titleThreshold,
 .titleAdoption {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .titleInnovatio:before {
   content: "";
@@ -1296,7 +1349,7 @@ export default {
   width: 7px;
   height: 7px;
   margin-right: 10px;
-  background: #711858 !important;
+  background: $mulberry !important;
 }
 .titleAdoption:before {
   content: "";
@@ -1304,7 +1357,7 @@ export default {
   width: 7px;
   height: 7px;
   margin-right: 10px;
-  background: #12335a !important;
+  background: $azure !important;
 }
 .dimensionTitle {
   font-family: "ABC Favorit";
@@ -1313,24 +1366,59 @@ export default {
   font-size: 14px;
   line-height: 140%;
   text-transform: lowercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .customInpNum {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   text-align: right;
-  color: #2c2222;
+  color: $grey-dark;
+}
+
+.showSpicifiqChart p {
+  font-family: $abcfavorit-mono;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey-dark;
+}
+.showSpicifiqChart h2 {
+  font-family: $abcfavorit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  color: $grey-dark;
+}
+.showSpicifiqChart .description {
+  font-family: $abcfavorit !important;
+  font-style: normal;
+  font-weight: 350;
+  font-size: 16px;
+  line-height: 140%;
+  color: $grey-dark;
+}
+.showSpicifiqChart .source {
+  font-family: $abcfavorit !important;
+  font-style: normal;
+  font-weight: 350;
+  font-size: 12px;
+  line-height: 140%;
+  color: $grey-dark;
 }
 </style>
-<style>
+<style lang="scss">
 .vue-range-slider {
   padding: 0 !important;
 }
 
 .vue-range-slider .diy-tooltip {
-  font-family: "ABC Favorit Mono" !important;
+  font-family: $abcfavorit-mono !important;
   font-style: normal !important;
   font-weight: 400 !important;
   font-size: 12px !important;
@@ -1339,7 +1427,7 @@ export default {
   text-transform: uppercase;
 
   color: #ffffff !important;
-  background: #000000 !important;
+  background: $black !important;
   padding: 5px !important;
   text-align: center !important;
   min-width: 45px !important;
@@ -1359,7 +1447,7 @@ export default {
 
 .vue-range-slider .slider-dot {
   box-shadow: none !important;
-  border: 2px solid #000000 !important;
+  border: 2px solid $black !important;
   height: 10px !important;
   width: 10px !important;
   border-radius: 2px !important;
