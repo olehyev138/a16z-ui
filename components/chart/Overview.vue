@@ -1241,34 +1241,34 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .chartTitle {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono !important;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .aboutSec {
-  background: #f8f8f8;
+  background: $grey-01;
   padding: 15px 15px;
 }
 
 .aboutSec h3 {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono !important;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .aboutSec p {
-  font-family: "ABC Favorit";
+  font-family: $abcfavorit !important;
   font-style: normal;
   font-weight: 350;
   font-size: 14px;
@@ -1277,6 +1277,6 @@ export default {
   display: flex;
   align-items: flex-end;
 
-  color: #2c2222;
+  color: $grey-dark;
 }
 </style>

@@ -82,57 +82,57 @@ export default {
   mounted() {},
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .titile {
-  font-family: "Sixteen Mono";
+  font-family: $sixteen-mono-regular;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 100%;
-  color: #2c2222;
+  color: $grey-dark;
   margin-bottom: 0px;
 }
 .heading {
-  font-family: "ABC Favorit";
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 350;
   font-size: 18px;
   line-height: 140%;
-  color: #2c2222;
+  color: $grey-dark;
 }
 #titleNote {
   border-top: 1.5px solid;
   border-top-style: dashed;
   line-height: 30px;
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .secleft p {
-  font-family: "ABC Favorit";
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 350;
   font-size: 14px;
   line-height: 140%;
 
-  color: #2c2222;
+  color: $grey-dark;
 }
 
 .secrightlast {
   border-left: 2px solid #f1f1f1;
 }
 .secrightlast p {
-  font-family: "ABC Favorit";
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 350;
   font-size: 12px;
   line-height: 140%;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .discloserBtn {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   display: inline-flex;
   align-items: center;
@@ -158,10 +158,10 @@ export default {
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  color: #2c2222;
+  color: $grey-dark;
 }
 .discloserBtn .icon {
-  color: #2c2222;
+  color: $grey-dark;
 }
 .discloserBtn:hover {
   text-decoration: none;

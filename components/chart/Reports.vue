@@ -92,34 +92,34 @@ export default {
   mounted() {},
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .titile {
-  font-family: "Sixteen Mono";
+  font-family: $sixteen-mono-regular;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 100%;
-  color: #2c2222;
+  color: $grey-dark;
   margin-bottom: 0px;
 }
 .heading {
-  font-family: "ABC Favorit";
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 350;
   font-size: 18px;
   line-height: 140%;
-  color: #2c2222;
+  color: $grey-dark;
 }
 
 #titleNote {
   border-top: 1.5px solid;
   border-top-style: dashed;
   line-height: 30px;
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  color: #2c2222;
+  color: $grey-dark;
 }
 
 .card-news {
@@ -127,7 +127,7 @@ export default {
   padding: 17px 17px;
   display: flex;
   flex-direction: column;
-  background: #ebebeb;
+  background: $grey-light;
   margin: 8px 0 24px;
   position: relative;
 }
@@ -139,13 +139,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: #2c2222;
+  color: $grey-dark;
   transition: color 0.3s ease-in-out;
   line-height: 1.2188;
   font-size: 32px;
+  cursor: pointer;
 }
 .card-news h5 span {
-  font-family: "ABC Favorit";
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -154,28 +155,35 @@ export default {
   transition: background 0.3s ease-in-out;
   padding-left: 2px;
 }
+.card-news h5:hover {
+  color: color(white);
+
+  span {
+    background: color(black, 3);
+  }
+  transition: background 0.3s ease-in-out;
+}
 .card-news .content-b {
   flex-basis: 0;
   flex-shrink: 0;
-  font-family: "ABCFavoritMono", "Helvetica Neue", "Arial", "Helvetica",
-    sans-serif;
+  font-family: $abcfavorit-mono;
   font-size: 14px;
   display: flex;
   justify-content: space-between;
-  color: #2c2222;
+  color: $grey-dark;
 }
 
 .card-news .content-b p {
-  font-family: "ABC Favorit Mono";
+  font-family: $abcfavorit-mono;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   text-transform: uppercase;
-  color: #2c2222;
+  color: $grey-dark;
 }
 
 .card-news:before {
-  background: #ebebeb;
+  background: $grey-light;
 }
 .card-news:before {
   height: 8px;
