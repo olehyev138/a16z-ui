@@ -24,6 +24,7 @@
     "vue-range-component": "^1.0.3",
     "vue-scrollto": "^2.20.0",
     "vue-server-renderer": "^2.7.10",
+    "vue-slider-component": "^3.2.24",
     "vue-template-compiler": "^2.7.10",
     "vuex-persistedstate": "^4.1.0"
   },

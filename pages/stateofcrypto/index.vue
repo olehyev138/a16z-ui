@@ -1,6 +1,6 @@
 <template>
   <section>
-    <Header />
+    <Header></Header>
     <Hero />
     <!-- <b-nav class="scrollspyNavItems mb-4">
       <b-nav-item href="javascript:void(0)" v-scroll-to="'#overview'"
@@ -17,6 +17,11 @@
         >report</b-nav-item
       >
     </b-nav> -->
+    <div class="form-group">
+      <div class="input">
+        <input type="email" placeholder="Enter email address" />
+      </div>
+    </div>
     <div class="main">
       <section id="overview" class="my-4">
         <Overview />
@@ -31,37 +36,22 @@
         <Reports />
       </section>
     </div>
+    <Footer></Footer>
   </section>
 </template>
 
 <script>
 export default {
-  name: "stateofcryptoPage",
-  layout: "new",
+  name: "StateofcryptoPage",
   head() {
     return {
       title: "State of Crypto Index",
     };
   },
   data() {
-    return {
-      text: `
-          Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla
-          tempor. Laborum consequat non elit enim exercitation cillum aliqua
-          consequat id aliqua. Esse ex consectetur mollit voluptate est in duis
-          laboris ad sit ipsum anim Lorem. Incididunt veniam velit elit elit veniam
-          Lorem aliqua quis ullamco deserunt sit enim elit aliqua esse irure. Laborum
-          nisi sit est tempor laborum mollit labore officia laborum excepteur
-          commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur
-          ipsum commodo tempor sunt in proident.
-        `,
-    };
+    return {};
   },
-  methods: {
-    // Convenience method to scroll a heading into view.
-    // Not required for scrollspy to work
-    scrollIntoView(event) {},
-  },
+  methods: {},
 };
 </script>
 <style scoped>

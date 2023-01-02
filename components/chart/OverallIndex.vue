@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-9" v-if="show" style="min-height: 600px">
+  <div class="mt-5" v-if="show" style="mmin-height: 600px">
     <div class="row m-0 overallIndex">
       <div :class="mainDivWidth">
         <div class="row">
@@ -31,7 +31,6 @@
       <div class="col-3 p-0 indexParameter">
         <div class="px-3 pt-3 pb-0">
           <h3 class="titleInxPara">Index Parameters</h3>
-
           <hr />
         </div>
         <div class="content">
@@ -67,21 +66,25 @@
                   />
                 </div>
                 <div class="col-12 p-0">
-                  <vue-range-slider
+                  <vue-slider
                     :key="i + 'ics'"
-                    class="m-0"
                     :min="0"
                     :max="100"
-                    :step="1"
-                    v-model="inno.dimension_weight"
                     tooltip="hover"
-                    height="2"
+                    v-model="inno.dimension_weight"
                     @drag-end="updateWeights(inno)"
+                    :tooltip-formatter="'{value}%'"
+                    :rail-style="{ backgroundColor: '#dcdcdc' }"
+                    :process-style="{ backgroundColor: '#711858' }"
+                    :tooltip-style="{
+                      backgroundColor: 'black',
+                      borderColor: 'black',
+                    }"
                   >
-                    <template slot="tooltip" slot-scope="{ value }">
-                      <div class="diy-tooltip">{{ value }} %</div>
+                    <template v-slot:dot="{ focus }">
+                      <div :class="['custom-dot', { focus }]"></div>
                     </template>
-                  </vue-range-slider>
+                  </vue-slider>
                 </div>
               </div>
             </div>
@@ -115,20 +118,25 @@
                   />
                 </div>
                 <div class="col-12 p-0">
-                  <vue-range-slider
-                    :key="i + 'acs'"
-                    class="m-0"
+                  <vue-slider
+                    :key="i + 'ics'"
                     :min="0"
                     :max="100"
-                    :step="1"
-                    v-model="adp.dimension_weight"
                     tooltip="hover"
-                    @drag-end="updateWeights(adp)"
+                    v-model="adp.dimension_weight"
+                    @drag-end="updateWeights(inno)"
+                    :tooltip-formatter="'{value}%'"
+                    :rail-style="{ backgroundColor: '#dcdcdc' }"
+                    :process-style="{ backgroundColor: '#711858' }"
+                    :tooltip-style="{
+                      backgroundColor: 'black',
+                      borderColor: 'black',
+                    }"
                   >
-                    <template slot="tooltip" slot-scope="{ value }">
-                      <div class="diy-tooltip">{{ value }} %</div>
+                    <template v-slot:dot="{ focus }">
+                      <div :class="['custom-dot', { focus }]"></div>
                     </template>
-                  </vue-range-slider>
+                  </vue-slider>
                 </div>
               </div>
             </div>
@@ -190,7 +198,7 @@
         </section>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -1413,11 +1421,7 @@ export default {
 }
 </style>
 <style lang="scss">
-.vue-range-slider {
-  padding: 0 !important;
-}
-
-.vue-range-slider .diy-tooltip {
+.vue-slider-dot-tooltip-top {
   font-family: $abcfavorit-mono !important;
   font-style: normal !important;
   font-weight: 400 !important;
@@ -1430,31 +1434,21 @@ export default {
   background: $black !important;
   padding: 5px !important;
   text-align: center !important;
-  min-width: 45px !important;
-  z-index: 1000000 !important;
 }
 
-.vue-range-slider .slider {
-  height: 2px !important;
-  border-radius: 15px !important;
-  background: #821a1a !important;
-  margin: 10px 0px !important;
-}
-
-.vue-range-slider .slider::after {
-  background: #821a1a !important;
-}
-
-.vue-range-slider .slider-dot {
-  box-shadow: none !important;
+.custom-dot {
   border: 2px solid $black !important;
-  height: 10px !important;
-  width: 10px !important;
+  height: 8px !important;
+  width: 8px !important;
   border-radius: 2px !important;
   background: #ffffff;
   cursor: pointer !important;
-  -webkit-appearance: none !important;
-  margin-top: 3px !important;
-  top: -8px !important;
+  transition: all 0.3s;
+}
+.custom-dot:hover {
+  transform: rotateZ(45deg);
+}
+.custom-dot.focus {
+  border-radius: 50%;
 }
 </style>

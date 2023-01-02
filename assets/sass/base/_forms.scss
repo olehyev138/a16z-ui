@@ -9,16 +9,16 @@ fieldset {
   border-style: none;
 }
 
-input[type='text'],
-input[type='tel'],
-input[type='email'],
-input[type='search'],
-input[type='password'],
-input[type='url'],
-input[type='date'],
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="url"],
+input[type="date"],
 textarea {
   -webkit-appearance: none;
-  -webkit-border-radius: $form-border-radius;;
+  -webkit-border-radius: $form-border-radius;
   border-radius: $form-border-radius;
   box-sizing: border-box;
   border: 1px solid $form-element-border-color;
@@ -38,13 +38,13 @@ textarea {
     font-size: 14px;
   }
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     height: 40px;
   }
-  
+
   &:hover {
     border-color: $form-element-focus-border-color;
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,1) inset;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 1) inset;
 
     @include placeholder {
       color: $grey-dark;
@@ -59,7 +59,7 @@ textarea {
 }
 
 select {
-  -webkit-border-radius: $form-border-radius;;
+  -webkit-border-radius: $form-border-radius;
 }
 
 textarea {
@@ -68,12 +68,12 @@ textarea {
 }
 
 button,
-input[type='button'],
-input[type='reset'],
-input[type='file'],
-input[type='submit'] {
+input[type="button"],
+input[type="reset"],
+input[type="file"],
+input[type="submit"] {
   -webkit-appearance: none;
-  -webkit-border-radius: $form-border-radius;;
+  -webkit-border-radius: $form-border-radius;
   cursor: pointer;
 }
 
@@ -121,13 +121,13 @@ input[type='submit'] {
       @include box-align(vc);
       font-size: 8px;
     }
-    
+
     &.active,
     &:hover {
       color: $grey-dark;
 
       &:before {
-        box-shadow: 0px 0px 0px 1px rgba(0,0,0,1) inset;
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 1) inset;
       }
     }
   }
@@ -155,7 +155,7 @@ input[type='submit'] {
 
     .active a,
     a:hover {
-       background-color: $grey-mid;
+      background-color: $grey-mid;
       color: $grey-06;
     }
   }
@@ -182,7 +182,7 @@ input[type='submit'] {
       }
 
       &:checked + .nice-label:before {
-        content: '\e907';
+        content: "\e907";
         background-color: color(black);
         color: color(white);
       }
@@ -195,7 +195,7 @@ input[type='submit'] {
 
       &:checked + .nice-label:before {
         background-color: transparent;
-        content: '\e917';
+        content: "\e917";
         color: color(black);
         font-size: 12px;
         padding-left: 1px;
@@ -209,7 +209,7 @@ input[type='submit'] {
       position: relative;
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 1px;
@@ -236,7 +236,6 @@ input[type='submit'] {
 }
 
 .subscribe-form {
-
   .input {
     position: relative;
   }
@@ -266,7 +265,7 @@ input[type='submit'] {
       content: "\e914";
     }
   }
-  input[type=email] {
+  input[type="email"] {
     padding-right: 100px;
 
     &:hover {
@@ -298,15 +297,14 @@ input[type='submit'] {
   color: $aquamarine;
 
   &:before {
-   font-family: "icomoon";
-   content: "\e915";
-   margin-right: 7px;
-   font-size: 12px;
- }
+    font-family: "icomoon";
+    content: "\e915";
+    margin-right: 7px;
+    font-size: 12px;
+  }
 }
 
 .search-form {
-
   button {
     position: absolute;
     top: 50%;
@@ -359,7 +357,7 @@ select {
   text-transform: uppercase;
   width: 100%;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     padding: 12px 54px 12px 16px;
   }
 }
@@ -373,31 +371,28 @@ select::-ms-expand {
   position: relative;
   height: 48px;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     height: 40px;
   }
 
   + .select {
-
     &:before {
-
-      @include media('>=tablet') {
+      @include media(">=tablet") {
         border-left-color: transparent;
       }
 
-      @include media('<tablet') {
+      @include media("<tablet") {
         border-top-color: transparent;
       }
     }
 
     &:hover:before {
-
-      @include media('>=tablet') {
+      @include media(">=tablet") {
         border-left-color: $grey-dark;
         border-left-width: 1px;
       }
 
-      @include media('<tablet') {
+      @include media("<tablet") {
         border-top-color: $grey-dark;
         border-top-width: 1px;
       }
@@ -405,22 +400,20 @@ select::-ms-expand {
   }
 
   + .search-form {
-
-    @include media('>=tablet') {
-        margin-left: -1px;
+    @include media(">=tablet") {
+      margin-left: -1px;
     }
 
-    @include media('<tablet') {
+    @include media("<tablet") {
       margin-top: -1px;
     }
 
     input {
-
-      @include media('>=tablet') {
+      @include media(">=tablet") {
         border-left-color: transparent;
       }
 
-      @include media('<tablet') {
+      @include media("<tablet") {
         border-top-color: transparent;
       }
     }

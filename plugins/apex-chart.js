@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueApexCharts from "vue-apexcharts";
 
-import "vue-range-component/dist/vue-range-slider.css";
-import VueRangeSlider from "vue-range-component";
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
+
+Vue.component("VueSlider", VueSlider);
 
 Vue.component("apexchart", {
   extends: VueApexCharts,
 });
-
-Vue.component("VueRangeSlider", VueRangeSlider);
