@@ -1477,4 +1477,32 @@ export default {
 .custom-dot.focus {
   border-radius: 50%;
 }
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid $grey-dark !important;
+  background: rgba(255, 255, 255, 0.96);
+}
+.apexcharts-tooltip {
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 6px -4px #999;
+  font-family: $abcfavorit-mono !important;
+  font-style: normal !important;
+  font-weight: 350 !important;
+  font-size: 12px !important;
+  color: $grey-dark !important;
+}
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #ffffff !important;
+  border-bottom: none !important;
+  font-family: $abcfavorit-mono !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  line-height: 100% !important;
+
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+
+  color: $grey-dark !important;
+}
 </style>
