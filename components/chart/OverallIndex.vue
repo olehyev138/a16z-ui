@@ -33,6 +33,13 @@
           <h3 class="titleInxPara">Index Parameters</h3>
           <hr />
         </div>
+        <div class="px-2 pt-3 pb-0">
+          <div class="row m-0 mb-3 align-items-baseline">
+            <div class="col-2 text-left">2011</div>
+            <div class="col-8 p-0"><div class="rule"></div></div>
+            <div class="col-2 text-end">2022</div>
+          </div>
+        </div>
         <div class="content">
           <section class="innovationSec">
             <div class="row m-0 px-3 mt-3 mb-4">
@@ -62,7 +69,7 @@
                     type="number"
                     class="customInpNum"
                     v-model="inno.min_threshold_for_inclusion"
-                    @keyup="updateThresholds(inno)"
+                    @input="updateThresholds(inno)"
                   />
                 </div>
                 <div class="col-12 p-0">
@@ -114,7 +121,7 @@
                     type="number"
                     class="customInpNum"
                     v-model="adp.min_threshold_for_inclusion"
-                    @keyup="updateThresholds(adp)"
+                    @input="updateThresholds(adp)"
                   />
                 </div>
                 <div class="col-12 p-0">
@@ -1241,7 +1248,7 @@ export default {
   background: $grey-light !important;
 }
 .chartTitle {
-  font-family: $abcfavorit-mono;
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -1259,7 +1266,7 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
   // padding: 0px 15px 15px 15px;
-  height: 710px;
+  height: 660px;
 }
 /* width */
 .indexParameter .content::-webkit-scrollbar {
@@ -1419,6 +1426,24 @@ export default {
   line-height: 140%;
   color: $grey-dark;
 }
+.rule {
+  height: 2px;
+  background: #000;
+}
+
+.rule:before,
+.rule:after {
+  content: "";
+  float: left;
+  border: 2px solid $black !important;
+  height: 10px !important;
+  width: 10px !important;
+  background: #000;
+  margin-top: -4px;
+}
+.rule:after {
+  float: right;
+}
 </style>
 <style lang="scss">
 .vue-slider-dot-tooltip-top {
@@ -1447,6 +1472,7 @@ export default {
 }
 .custom-dot:hover {
   transform: rotateZ(45deg);
+  background: $black;
 }
 .custom-dot.focus {
   border-radius: 50%;

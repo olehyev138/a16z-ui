@@ -770,10 +770,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .chartTitle {
-  font-family: $abcfavorit-mono;
+  font-family: $abcfavorit;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: uppercase;

@@ -17,11 +17,6 @@
         >report</b-nav-item
       >
     </b-nav> -->
-    <div class="form-group">
-      <div class="input">
-        <input type="email" placeholder="Enter email address" />
-      </div>
-    </div>
     <div class="main">
       <section id="overview" class="my-4">
         <Overview />
