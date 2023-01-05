@@ -31,7 +31,7 @@
             <li>
               <a
                 :class="[activeTab == 'a16z' ? 'active' : '']"
-                @click="activeTab = 'a16z'"
+                @click="changeTab('a16z', getAllJobsRawData)"
                 href="#"
                 data-tab="tab1"
                 >A16z crypto</a
@@ -41,7 +41,7 @@
               <a
                 :class="[activeTab == 'ourcompanies' ? 'active' : '']"
                 href="#"
-                @click="activeTab = 'ourcompanies'"
+                @click="changeTab('ourcompanies', getAllJobsRawData)"
                 data-tab="tab2"
                 >our companies</a
               >
@@ -85,11 +85,11 @@
                 type="text"
                 placeholder="Search"
                 v-model="searchquery"
-                @input="debounceSearch(getAllJobsRawData)"
+                @input="debounceSearch(activeTab, getAllJobsRawData)"
               />
               <button>
                 <span
-                  @click="clearSearch(getAllJobsRawData)"
+                  @click="clearSearch(activeTab, getAllJobsRawData)"
                   class="icon-cross"
                   :style="
                     !$util.isEmpty(searchquery)
@@ -100,7 +100,6 @@
                 </span>
                 <span
                   class="icon-search"
-                  @click="filterLocationDepartmentJobPosts(getAllJobsRawData)"
                   :style="
                     $util.isEmpty(searchquery)
                       ? 'display:block'
@@ -134,7 +133,14 @@
         </section>
       </div>
       <div v-if="activeTab == 'ourcompanies'" id="tab2">
-        <Companies :Compaies="ourCompaies" />
+        <section class="categories" v-if="!$util.isEmpty(ourCompaies)">
+          <Companies :Compaies="ourCompaies" :key="Date.now()" />
+        </section>
+        <section class="categories" v-else>
+          <div class="container">
+            <div class="category-row">Company not found!</div>
+          </div>
+        </section>
       </div>
     </div>
 
@@ -166,13 +172,6 @@ export default {
     };
   },
   methods: {
-    async getCompanies() {
-      const response = await this.$api.jobs.getCompanies();
-
-      if (!this.$util.isEmpty(response)) {
-        this.ourCompaies = response;
-      }
-    },
     async getAllJobs() {
       var payload = {
         post_type: ["job"],
@@ -190,8 +189,7 @@ export default {
           for (var index = 0; index < allJobsPosts.length; index++) {
             // console.log("getAllJobs = ", allJobsPosts[index]);
             try {
-              // console.log("allJobsPostsTerms = ", allJobsPostsTerms[index]);
-              if (allJobsPosts[index].ID === allJobsPostsTerms[index].id) {
+              if (allJobsPosts[index].ID == allJobsPostsTerms[index].id) {
                 allFormatedJobsData.push({
                   ...allJobsPosts[index],
                   department_count:
@@ -205,6 +203,11 @@ export default {
                   location_count: allJobsPostsTerms[index].location[0].count,
                   location_name: allJobsPostsTerms[index].location[0].name,
                   location_details: allJobsPostsTerms[index].location_details,
+                  company_name: this.$util.isEmpty(
+                    allJobsPostsTerms[index].company
+                  )
+                    ? "not-define"
+                    : allJobsPostsTerms[index].company.post_title,
                 });
 
                 if (
@@ -236,10 +239,7 @@ export default {
       // console.log("location = ", this.locations);
       // console.log("department = ", this.departments);
 
-      var allDptFormatData = await this.departmentWiseJobPosts(
-        allFormatedJobsData
-      );
-      console.log("allDptFormatData = ", allDptFormatData);
+      this.$store.dispatch("jobs/storeAllJobsRawData", allFormatedJobsData);
       return allFormatedJobsData;
     },
     departmentWiseJobPosts(data = []) {
@@ -252,19 +252,80 @@ export default {
 
       return groups;
     },
+    companyWiseJobPosts(data = []) {
+      let dataArr = data.filter((type) => {
+        return type.company_name !== "not-define";
+      });
+
+      let groups = dataArr.reduce((ac, a) => {
+        let key = a.company_name;
+        ac[key] = (ac[key] || []).concat(a);
+        return ac;
+      }, {});
+      return groups;
+    },
     filterLocationDepartmentJobPosts(jobs = []) {
       this.jobPosts = [];
-
+      var dataArr = [];
       if (
         this.selectedDept == "all" &&
         this.selectedLoc == "all" &&
         this.$util.isEmpty(this.searchquery)
       ) {
-        console.log("if ===== all ");
-        this.totalJobs = jobs.length;
-        this.jobPosts = this.departmentWiseJobPosts(jobs);
+        dataArr = jobs;
+      } else if (
+        this.selectedDept != "all" &&
+        this.selectedLoc == "all" &&
+        this.$util.isEmpty(this.searchquery)
+      ) {
+        dataArr = jobs.filter((type) => {
+          return type.department_name == this.selectedDept;
+        });
+      } else if (
+        this.selectedDept == "all" &&
+        this.selectedLoc != "all" &&
+        this.$util.isEmpty(this.searchquery)
+      ) {
+        dataArr = jobs.filter((type) => {
+          return type.location_name == this.selectedLoc;
+        });
+      } else if (
+        this.selectedDept != "all" &&
+        this.selectedLoc != "all" &&
+        this.$util.isEmpty(this.searchquery)
+      ) {
+        dataArr = jobs.filter((type) => {
+          return (
+            type.department_name == this.selectedDept ||
+            type.location_name == this.selectedLoc
+          );
+        });
+      } else if (
+        this.selectedDept != "all" &&
+        !this.$util.isEmpty(this.searchquery)
+      ) {
+        dataArr = jobs.filter((type) => {
+          return (
+            type.department_name == this.selectedDept &&
+            type.post_title
+              .toLowerCase()
+              .indexOf(this.searchquery.toLowerCase()) >= 0
+          );
+        });
+      } else if (
+        this.selectedLoc != "all" &&
+        !this.$util.isEmpty(this.searchquery)
+      ) {
+        dataArr = jobs.filter((type) => {
+          return (
+            type.location_name == this.selectedLoc &&
+            type.post_title
+              .toLowerCase()
+              .indexOf(this.searchquery.toLowerCase()) >= 0
+          );
+        });
       } else {
-        let dataArr = jobs.filter((type) => {
+        dataArr = jobs.filter((type) => {
           return (
             type.department_name == this.selectedDept ||
             type.location_name == this.selectedLoc ||
@@ -273,27 +334,61 @@ export default {
               .indexOf(this.searchquery.toLowerCase()) >= 0
           );
         });
-        this.totalJobs = dataArr.length;
-        this.jobPosts = this.departmentWiseJobPosts(dataArr);
       }
-      // console.log("this.jobPosts == ", this.jobPosts);
+
+      this.totalJobs = dataArr.length;
+      this.jobPosts = this.departmentWiseJobPosts(dataArr);
+      console.log("this.jobPosts == ", this.jobPosts);
     },
-    debounceSearch(jobs = []) {
+    filterOurCompanies(jobs = []) {
+      this.ourCompaies = [];
+      if (this.$util.isEmpty(this.searchquery)) {
+        this.ourCompaies = this.companyWiseJobPosts(jobs);
+      } else {
+        let dataArr = jobs.filter((type) => {
+          return (
+            type.company_name
+              .toLowerCase()
+              .indexOf(this.searchquery.toLowerCase()) >= 0
+          );
+        });
+        this.ourCompaies = this.companyWiseJobPosts(dataArr);
+      }
+      console.log("this.ourCompaies == ", this.ourCompaies);
+    },
+    debounceSearch(currentTab, jobs = []) {
       clearTimeout(this.debounce);
       this.debounce = setTimeout(() => {
-        this.filterLocationDepartmentJobPosts(jobs);
+        if (currentTab == "a16z") {
+          this.filterLocationDepartmentJobPosts(jobs);
+        } else if (currentTab == "ourcompanies") {
+          this.filterOurCompanies(jobs);
+        }
       }, 600);
     },
-    clearSearch(jobs = []) {
+    clearSearch(currentTab, jobs = []) {
       console.log("clear search");
       this.searchquery = "";
-      this.filterLocationDepartmentJobPosts(jobs);
+      if (currentTab == "a16z") {
+        this.filterLocationDepartmentJobPosts(jobs);
+      } else if (currentTab == "ourcompanies") {
+        this.filterOurCompanies(jobs);
+      }
+    },
+    changeTab(currentTab, jobsData) {
+      this.activeTab = currentTab;
+      this.searchquery = "";
+      console.log("changeTab == ", currentTab);
+      if (currentTab == "a16z") {
+        this.filterLocationDepartmentJobPosts(jobsData);
+      } else if (currentTab == "ourcompanies") {
+        this.filterOurCompanies(jobsData);
+      }
     },
   },
   async mounted() {
-    this.getCompanies();
     this.getAllJobsRawData = await this.getAllJobs();
-    this.filterLocationDepartmentJobPosts(this.getAllJobsRawData);
+    this.changeTab(this.activeTab, this.getAllJobsRawData);
     console.log("mounted getAllJobs = ", this.getAllJobsRawData);
   },
 };

@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <section v-if="!$util.isEmpty(Compaies)">
+    <section v-if="!$util.isEmpty(companyData)">
       <ul class="highlight-list three-cols has-alphabets has-divider">
-        <li v-for="(company, i) in Compaies" :key="i">
-          <span class="title">{{ company.title.rendered }}</span>
+        <li v-for="(company, i) in companyData" :key="i">
+          <span class="title">{{ i }}</span>
           <a href="#" class="btn-link underlined">
-            27 available roles
+            {{ company.length }} available roles
             <span class="icon-arrow-right"></span>
           </a>
         </li>
@@ -20,13 +20,15 @@ export default {
   name: "featuredPost",
   props: {
     Compaies: {
-      type: Array,
+      type: Object,
       required: true,
       default: [],
     },
   },
   data() {
-    return {};
+    return {
+      companyData: [],
+    };
   },
   methods: {
     async getSinglePost(postId = 0) {
@@ -36,6 +38,14 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    const ordered = Object.keys(this.Compaies)
+      .sort()
+      .reduce((obj, key) => {
+        obj[key] = this.Compaies[key];
+        return obj;
+      }, {});
+    this.companyData = ordered;
+  },
 };
 </script>

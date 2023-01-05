@@ -11,14 +11,14 @@
           </div>
           <div class="col-sm-8 col-md-9">
             <h5>
-              <a href="#">{{ job.post_title }}</a>
+              <a href="javascript:void(0)">{{ job.post_title }}</a>
             </h5>
 
             <span class="place">{{ job.location_details }}</span>
           </div>
           <div class="col-sm-2 col-md-1">
             <span class="cta-wrap">
-              <a href="#" class="btn-link underlined">
+              <a href="javascript:void(0)" class="btn-link underlined">
                 Button
                 <span class="icon-arrow-right"></span>
               </a>
