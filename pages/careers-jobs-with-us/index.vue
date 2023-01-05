@@ -158,7 +158,7 @@ export default {
       selectedDept: "all",
       departments: ["Department: All"],
       selectedLoc: "all",
-      locations: ["Location: All", "ha"],
+      locations: ["Location: All"],
       totalJobs: 0,
       ourCompaies: [],
       getAllJobsRawData: [],
@@ -250,8 +250,6 @@ export default {
       }, {});
       // groups = Object.entries(groups).map(([k, v]) => ({ [k]: v }));
 
-      console.log("groups == ", groups);
-
       return groups;
     },
     filterLocationDepartmentJobPosts(jobs = []) {
@@ -263,6 +261,7 @@ export default {
         this.$util.isEmpty(this.searchquery)
       ) {
         console.log("if ===== all ");
+        this.totalJobs = jobs.length;
         this.jobPosts = this.departmentWiseJobPosts(jobs);
       } else {
         let dataArr = jobs.filter((type) => {
@@ -274,9 +273,10 @@ export default {
               .indexOf(this.searchquery.toLowerCase()) >= 0
           );
         });
+        this.totalJobs = dataArr.length;
         this.jobPosts = this.departmentWiseJobPosts(dataArr);
       }
-      console.log("this.jobPosts == ", this.jobPosts);
+      // console.log("this.jobPosts == ", this.jobPosts);
     },
     debounceSearch(jobs = []) {
       clearTimeout(this.debounce);
