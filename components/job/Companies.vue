@@ -4,7 +4,11 @@
       <ul class="highlight-list three-cols has-alphabets has-divider">
         <li v-for="(company, i) in companyData" :key="i">
           <span class="title">{{ i }}</span>
-          <a href="#" class="btn-link underlined">
+          <a
+            href="javascript:void(0)"
+            @click="goToJobsSelectedCompany(i, company)"
+            class="btn-link underlined"
+          >
             {{ company.length }} available roles
             <span class="icon-arrow-right"></span>
           </a>
@@ -31,11 +35,10 @@ export default {
     };
   },
   methods: {
-    async getSinglePost(postId = 0) {
-      this.authors = [];
-      const response = await this.$api.common.getSinglePost(postId);
-      if (!this.$util.isEmpty(response)) {
-      }
+    async goToJobsSelectedCompany(companyName, jobs = []) {
+      await this.$store.dispatch("jobs/storeSelectedCompanyName", companyName);
+      await this.$store.dispatch("jobs/storeSelectedCompanyJobs", jobs);
+      this.$router.push({ name: "careers-jobs-selected-company" });
     },
   },
   mounted() {
@@ -46,6 +49,7 @@ export default {
         return obj;
       }, {});
     this.companyData = ordered;
+    console.log("this.companyData = ", this.companyData);
   },
 };
 </script>

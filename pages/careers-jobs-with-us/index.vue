@@ -171,6 +171,7 @@ export default {
       jobPosts: [],
     };
   },
+
   methods: {
     async getAllJobs() {
       var payload = {
@@ -376,6 +377,7 @@ export default {
       }
     },
     changeTab(currentTab, jobsData) {
+      this.$store.dispatch("jobs/storeActiveTab", currentTab);
       this.activeTab = currentTab;
       this.searchquery = "";
       console.log("changeTab == ", currentTab);
@@ -385,11 +387,19 @@ export default {
         this.filterOurCompanies(jobsData);
       }
     },
+    async getActiveTab() {
+      this.activeTab = await this.$store.getters["jobs/getActiveTab"];
+    },
   },
   async mounted() {
     this.getAllJobsRawData = await this.getAllJobs();
+    await this.getActiveTab();
     this.changeTab(this.activeTab, this.getAllJobsRawData);
-    console.log("mounted getAllJobs = ", this.getAllJobsRawData);
+    // console.log("mounted getAllJobs = ", this.getAllJobsRawData);
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+    this.$store.dispatch("jobs/storeActiveTab", "a16z");
   },
 };
 </script>
