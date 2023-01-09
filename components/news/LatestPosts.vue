@@ -27,7 +27,7 @@
               >
             </span>
           </span>
-          <span v-else>
+          <span class="posted-by" v-else>
             <a href="#">{{ authors[0] }}</a>
           </span>
           <ul

@@ -173,7 +173,7 @@
                     >
                   </span>
                 </span>
-                <span v-else>
+                <span class="posted-by" v-else>
                   <a href="#">{{ post.authors[0] }}</a>
                 </span>
               </div>
