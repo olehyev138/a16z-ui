@@ -23,11 +23,38 @@
         <div class="wrap">
           <nav>
             <span class="menu-title">menu</span>
-            <ul class="nav">
-              <li><a class="active" href="#">about</a></li>
-              <li><a href="#">team</a></li>
-              <li><a href="#">portfolio</a></li>
-              <li><a href="#">jobs</a></li>
+            <ul class="nav" style="display: block">
+              <li>
+                <NuxtLink
+                  :class="currentRoute == 'about' ? 'active' : ''"
+                  to="/about"
+                  >about</NuxtLink
+                >
+              </li>
+              <li>
+                <NuxtLink
+                  :class="currentRoute == 'team' ? 'active' : ''"
+                  to="/team"
+                  >team</NuxtLink
+                >
+              </li>
+              <li>
+                <NuxtLink
+                  :class="currentRoute == 'portfolio' ? 'active' : ''"
+                  to="/portfolio"
+                  >portfolio</NuxtLink
+                >
+              </li>
+              <li>
+                <NuxtLink
+                  :class="
+                    currentRoute == 'careers-jobs-with-us' ? 'active' : ''
+                  "
+                  to="/careers-jobs-with-us"
+                  >jobs</NuxtLink
+                >
+              </li>
+
               <li>
                 <a href="#" class="hasdrop-a">content</a>
                 <div class="drop-menu">
@@ -38,11 +65,25 @@
                           <div class="sub-menu">
                             <span class="menu-title">Focus Areas</span>
                             <ul>
-                              <li><a href="#"><span>01 /</span> law & policy</a></li>
-                              <li><a href="#"><span>02 /</span> company building</a></li>
-                              <li><a href="#"><span>03 /</span> research in practice </a></li>
-                              <li><a href="#"><span>04 /</span> tech trends</a></li>
-                              <li><a href="#"><span>02 /</span> builder blocks</a></li>
+                              <li>
+                                <a href="#"><span>01 /</span> law & policy</a>
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><span>02 /</span> company building</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><span>03 /</span> research in practice
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#"><span>04 /</span> tech trends</a>
+                              </li>
+                              <li>
+                                <a href="#"><span>02 /</span> builder blocks</a>
+                              </li>
                             </ul>
                           </div>
                           <div class="sub-menu">
@@ -68,7 +109,11 @@
               <div class="form-group">
                 <label for="sign-up">Newsletter sign up</label>
                 <div class="input">
-                  <input id="sign-up" type="email" placeholder="Enter email address">
+                  <input
+                    id="sign-up"
+                    type="email"
+                    placeholder="Enter email address"
+                  />
                   <button type="submit" value="Subscribe">Subscribe</button>
                 </div>
               </div>
@@ -82,7 +127,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="search-slide">
       <div class="search-bar">
         <button class="close search-opener"></button>
@@ -91,7 +136,7 @@
             <form class="search-form" action="#">
               <label for="search" class="menu-title">search</label>
               <div class="input">
-                <input id="search" type="email" placeholder="Search">
+                <input id="search" type="email" placeholder="Search" />
                 <button type="submit" value="search">
                   <span class="icon-cross"></span>
                   <span class="icon-search"></span>
@@ -102,27 +147,58 @@
               <ul>
                 <li>
                   <span class="category-title">article /</span>
-                  <span class="title"><a href="#"><span>Cryp</span>to Startup School: relaunched and expanded</a></span>
+                  <span class="title"
+                    ><a href="#"
+                      ><span>Cryp</span>to Startup School: relaunched and
+                      expanded</a
+                    ></span
+                  >
                 </li>
                 <li>
                   <span class="category-title">article /</span>
-                  <span class="title"><a href="#">A Call to the SEC: Treat <span>Cryp</span>to Assets as if Clients Matter</a></span>
+                  <span class="title"
+                    ><a href="#"
+                      >A Call to the SEC: Treat <span>Cryp</span>to Assets as if
+                      Clients Matter</a
+                    ></span
+                  >
                 </li>
                 <li>
                   <span class="category-title">article /</span>
-                  <span class="title"><a href="#">Privacy-Protecting <span>Cryp</span>to Airdrops with Zero Knowledge Proofs</a></span>
+                  <span class="title"
+                    ><a href="#"
+                      >Privacy-Protecting <span>Cryp</span>to Airdrops with Zero
+                      Knowledge Proofs</a
+                    ></span
+                  >
                 </li>
                 <li>
                   <span class="category-title">article /</span>
-                  <span class="title"><a href="#">Minimum Viable Participation in <span>Cryp</span>to: Games, Costs, & Accessibility</a></span>
+                  <span class="title"
+                    ><a href="#"
+                      >Minimum Viable Participation in <span>Cryp</span>to:
+                      Games, Costs, & Accessibility</a
+                    ></span
+                  >
                 </li>
                 <li>
                   <span class="category-title">article /</span>
-                  <span class="title"><a href="#"><span>Cryp</span>to & The Infrastructure Bill — Fact Sheet</a></span>
+                  <span class="title"
+                    ><a href="#"
+                      ><span>Cryp</span>to & The Infrastructure Bill — Fact
+                      Sheet</a
+                    ></span
+                  >
                 </li>
                 <li>
                   <span class="category-title">article /</span>
-                  <span class="title"><a href="#">Fiat Meets <span>Cryp</span>to; Bigger, Bolder Acquisitions; David Swensen’s Legacy (May 2021 fintech newsletter)</a></span>
+                  <span class="title"
+                    ><a href="#"
+                      >Fiat Meets <span>Cryp</span>to; Bigger, Bolder
+                      Acquisitions; David Swensen’s Legacy (May 2021 fintech
+                      newsletter)</a
+                    ></span
+                  >
                 </li>
               </ul>
               <a href="#" class="link">see more results</a>
@@ -137,5 +213,13 @@
 <script>
 export default {
   name: "Header",
+  computed: {
+    currentRoute() {
+      return this.$nuxt.$route.name ? this.$nuxt.$route.name : "";
+    },
+  },
+  created() {
+    console.log("$router.name ", this.$nuxt.$route.name);
+  },
 };
 </script>
