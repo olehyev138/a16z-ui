@@ -80,132 +80,61 @@
       </div>
     </section>
 
-    <div class="section-divider">
-      <div class="container">
+    <div class="section-divider" v-if="!$util.isEmpty(latest_posts)">
+      <div class="container mt-3">
         <span class="block-title">Latest</span>
       </div>
     </div>
 
-    <section class="featured">
+    <section class="featured" v-if="!$util.isEmpty(latest_posts)">
       <div class="container">
-        <div class="article">
+        <div
+          class="article"
+          v-for="(post, i) in latest_posts"
+          :key="i + 'Latest'"
+        >
           <div class="row">
             <div class="col-sm-2">
-              <span class="category-title">article /</span>
+              <span class="category-title">{{ post.type }} /</span>
             </div>
             <div class="col-sm-10 col-md-8">
               <h6>
-                <a href="#">Crypto Startup School: relaunched and expanded</a>
+                <a href="javascript:void(0)"
+                  ><span v-html="$util.showHtml(post.title.rendered)"></span
+                ></a>
               </h6>
-              <span class="posted-by">
-                <a href="#">Anthony Albanese</a>, <a href="#">Bryan Chiang</a>,
-                <a href="#">Sonal Chokshi</a>, <a href="#">Eddy Lazzarin</a>,
-                <a href="#">Justin Thaler</a>, and
-                <a href="#">Ali Yahya</a></span
+              <span
+                class="posted-by"
+                v-if="!$util.isEmpty(post.authors) && post.authors.length > 1"
               >
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">Richard Rosenblatt</a></h6>
-              <span class="posted-by"><a href="#">Chris Dixon</a></span>
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">a16z crypto</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">the can’t be evil NFT licenses</a></h6>
-              <span class="posted-by"
-                ><a href="#">Daren Matsuoka</a>, <a href="#">Chris Dixon</a>,
-                <a href="#">Eddy Lazzarin</a>, and
-                <a href="#">Robert Hackett</a></span
-              >
-              <ul class="tags">
+                <span v-for="(author, i) in post.authors" :key="i">
+                  <a href="javascript:void(0)">{{ author.post_title }}</a>
+
+                  <template
+                    v-if="
+                      i !== post.authors.length - 1 && post.authors.length == 2
+                    "
+                    >&nbsp;and&nbsp;</template
+                  >
+                  <template
+                    v-if="
+                      i !== post.authors.length - 1 && post.authors.length > 2
+                    "
+                    >&nbsp;,&nbsp;</template
+                  >
+                </span>
+              </span>
+              <span class="posted-by" v-else>
+                <a href="javascript:void(0)">{{
+                  post.authors[0].post_title
+                }}</a>
+              </span>
+              <!-- <ul class="tags">
                 <li><a class="tag small-tag" href="#">code releases</a></li>
                 <li><a class="tag small-tag" href="#">crypto & web</a></li>
                 <li><a class="tag small-tag" href="#">open source</a></li>
                 <li><a class="tag small-tag" href="#">a16z crypto</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#"
-                  >blockspace: what comes after PCs, broadband, and
-                  smartphones</a
-                >
-              </h6>
-              <span class="posted-by"
-                ><a href="#">Chris Dixon</a> and
-                <a href="#">Mario Gabriele</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web</a></li>
-                <li><a class="tag small-tag" href="#">a16z crypto</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6>
-                <a href="#">introducing the 2022 state of crypto report</a>
-              </h6>
-              <span class="posted-by"
-                ><a href="#">Daren Matsuoka</a>, <a href="#">Chris Dixon</a>,
-                <a href="#">Eddy Lazzarin</a>, and
-                <a href="#">Robert Hackett</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">gaming</a></li>
-                <li><a class="tag small-tag" href="#">social media</a></li>
-                <li>
-                  <a class="tag small-tag" href="#">online communities</a>
-                </li>
-                <li>
-                  <a class="tag small-tag" href="#">the creator community</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="article">
-          <div class="row">
-            <div class="col-sm-2">
-              <span class="category-title">article /</span>
-            </div>
-            <div class="col-sm-10 col-md-8">
-              <h6><a href="#">investing in lightspark</a></h6>
-              <span class="posted-by"
-                ><a href="#">Sriram Krishnan</a> and
-                <a href="#">Chris Dixon</a></span
-              >
-              <ul class="tags">
-                <li><a class="tag small-tag" href="#">crypto & web3</a></li>
-                <li><a class="tag small-tag" href="#">announcements</a></li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </div>
@@ -228,6 +157,7 @@ export default {
     return {
       general_content: [],
       featured_posts: [],
+      latest_posts: [],
     };
   },
   computed: {
@@ -258,14 +188,24 @@ export default {
 
       if (!this.$util.isEmpty(response) && !this.$util.isEmpty(response.acf)) {
         this.general_content = response.acf;
-
-        // console.log("team profile response = ", response);
         this.featured_posts = response.acf.featured_posts;
+      }
+    },
+    async getTeamMemberLatestPosts(id) {
+      const response = await this.$api.teampage.getTeamMemberLatestPosts(id);
+      if (!this.$util.isEmpty(response)) {
+        response.forEach((element, i) => {
+          if (!this.$util.isEmpty(element.acf.authors)) {
+            response[i]["authors"] = element.acf.authors;
+          }
+        });
+        this.latest_posts = response;
       }
     },
   },
   mounted() {
     this.getTeamMemberContent(this.$route.params.id);
+    this.getTeamMemberLatestPosts(this.$route.params.id);
   },
 };
 </script>

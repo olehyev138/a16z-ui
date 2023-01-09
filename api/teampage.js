@@ -51,4 +51,17 @@ export default (axios) => ({
         });
     });
   },
+  getTeamMemberLatestPosts(id = 0) {
+    return new Promise(function (resolve, reject) {
+      axios
+        .get(`/wp/v2/podcast?author=${id}`)
+        .then(function (response) {
+          resolve(response.data);
+        })
+        .catch(function (error) {
+          // console.log("Show error notification! ", error);
+          reject(error);
+        });
+    });
+  },
 });
