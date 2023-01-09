@@ -3,8 +3,8 @@ export default function ({ $axios, redirect, error: nuxtError }) {
     config.headers = {
       "Content-Type": "application/json",
       Accept: "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      // "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       //Authorization: store.state.auth.tokenlocal, // refers to nuxt.config.js->auth.token
     };
     // console.log("Making request to " + config.url);
@@ -25,5 +25,5 @@ export default function ({ $axios, redirect, error: nuxtError }) {
   //   });
   //   return Promise.resolve(false);
   // });
-  $axios.setBaseURL("http://a16z-crypto2-wp.approvemyviews.com/wp-json/");
+  // $axios.setBaseURL("http://a16z-crypto2-wp.approvemyviews.com/wp-json/");
 }

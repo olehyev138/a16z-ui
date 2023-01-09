@@ -99,7 +99,10 @@ export default {
   ],
   axios: {
     // extra config e.g
-    // BaseURL: 'https://link-to-API'
+    baseURL: "https://a16z-crypto2-wp.approvemyviews.com/wp-json/",
+    proxyHeaders: false,
+    credentials: false,
+    changeOrigin: true,
   },
 
   build: { postcss: null },
