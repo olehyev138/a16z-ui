@@ -393,8 +393,8 @@ export default {
   },
   async mounted() {
     this.getAllJobsRawData = await this.getAllJobs();
-    await this.getActiveTab();
     this.changeTab(this.activeTab, this.getAllJobsRawData);
+    await this.getActiveTab();
     // console.log("mounted getAllJobs = ", this.getAllJobsRawData);
   },
   beforeDestroy() {
