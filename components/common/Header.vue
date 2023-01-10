@@ -3,10 +3,12 @@
   <header id="header">
     <div class="container">
       <div class="logo">
-        <a href="#"><img src="~/assets/images/logo.svg" alt="a16zcrypto" /></a>
+        <NuxtLink to="/"
+          ><img src="~/assets/images/logo.svg" alt="a16zcrypto"
+        /></NuxtLink>
       </div>
       <div class="header-r">
-        <a href="#" class="btn btn--sm">follow us</a>
+        <NuxtLink to="/follow-us" class="btn btn--sm">follow us</NuxtLink>
         <button type="button" class="search">
           <span class="icon-search"></span>
         </button>
