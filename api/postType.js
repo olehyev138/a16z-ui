@@ -8,7 +8,8 @@ export default (axios) => ({
         })
         .catch(function (error) {
           // console.log("Show error notification! ", error);
-          reject(error);
+          // reject(error);
+          resolve();
         });
     });
   },
