@@ -1,6 +1,6 @@
 <!-- Please remove this file from your project -->
 <template>
-  <header id="header" class="mainHeader">
+  <header id="header">
     <div class="container">
       <div class="logo">
         <NuxtLink to="/"
@@ -266,14 +266,16 @@ export default {
       if (process.client) {
         $(".mainHeader").toggleClass("search-active");
       }
+      console.log("openSearchwindow:call");
     },
     closeSearchWindow() {
       if (process.client) {
         $(".mainHeader").removeClass("search-active");
       }
+      console.log("closeSearchWindow:call");
     },
     closeNavbar() {
-      console.log("closeNavbar ");
+      console.log("closeNavbar:call");
       if (process.client) {
         $(".mainHeader").removeClass("nav-active");
         $(".mainHeader").removeClass("search-active");

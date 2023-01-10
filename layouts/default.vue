@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainHeader">
     <Nuxt />
     <Cookies></Cookies>
   </div>
