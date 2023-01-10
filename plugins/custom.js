@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  MobileNav();
+  // MobileNav();
   CustomSelect();
   OpenClose();
   Tabs();
@@ -11,16 +11,16 @@ function MobileNav() {
     navwrap = $(".nav"),
     links = navwrap.find("a"),
     navactive = "nav-active",
-    searchOpener = $('.search-opener');
+    searchOpener = $(".search-opener");
 
   navopener.click(function () {
-    $("body").removeClass('search-active');
+    $("body").removeClass("search-active");
     $("body").toggleClass(navactive);
   });
 
   searchOpener.click(function (e) {
     e.preventDefault();
-    $("body").toggleClass('search-active');
+    $("body").toggleClass("search-active");
   });
 
   $(".nav li").each(function () {

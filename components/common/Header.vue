@@ -9,10 +9,18 @@
       </div>
       <div class="header-r">
         <NuxtLink to="/follow-us" class="btn btn--sm">follow us</NuxtLink>
-        <button type="button" class="search" @click="openSearchNav()">
+        <button
+          type="button"
+          class="search"
+          @click="openSearchNav(), fetchPosts()"
+        >
           <span class="icon-search"></span>
         </button>
-        <button type="button" class="menu nav-opener" @click="openNav()">
+        <button
+          type="button"
+          class="menu nav-opener"
+          @click="openNav(), fetchPosts()"
+        >
           <span class="icon-menu"></span>
         </button>
       </div>
@@ -152,75 +160,68 @@
         ></button>
         <div class="inner">
           <div class="wrap">
-            <form class="search-form" action="#">
+            <div class="search-form">
               <label for="search" class="menu-title">search</label>
               <div class="input">
-                <input id="search" type="email" placeholder="Search" />
-                <button type="submit" value="search">
-                  <span class="icon-cross"></span>
-                  <span class="icon-search"></span>
+                <input
+                  type="text"
+                  v-model="searchQuery"
+                  @input="debounceSearch(allPosts)"
+                  placeholder="Search"
+                />
+                <button>
+                  <span
+                    @click="clearSearchQuery()"
+                    class="icon-cross"
+                    :style="
+                      !$util.isEmpty(searchQuery)
+                        ? 'display:block'
+                        : 'display:none'
+                    "
+                  >
+                  </span>
+                  <span
+                    class="icon-search"
+                    :style="
+                      $util.isEmpty(searchQuery)
+                        ? 'display:block'
+                        : 'display:none'
+                    "
+                  ></span>
                 </button>
               </div>
-            </form>
-            <div class="search-results">
+            </div>
+            <div class="search-results" v-if="!$util.isEmpty(searchResult)">
               <ul>
-                <li>
-                  <span class="category-title">article /</span>
-                  <span class="title"
-                    ><a href="#"
-                      ><span>Cryp</span>to Startup School: relaunched and
-                      expanded</a
-                    ></span
-                  >
-                </li>
-                <li>
-                  <span class="category-title">article /</span>
-                  <span class="title"
-                    ><a href="#"
-                      >A Call to the SEC: Treat <span>Cryp</span>to Assets as if
-                      Clients Matter</a
-                    ></span
-                  >
-                </li>
-                <li>
-                  <span class="category-title">article /</span>
-                  <span class="title"
-                    ><a href="#"
-                      >Privacy-Protecting <span>Cryp</span>to Airdrops with Zero
-                      Knowledge Proofs</a
-                    ></span
-                  >
-                </li>
-                <li>
-                  <span class="category-title">article /</span>
-                  <span class="title"
-                    ><a href="#"
-                      >Minimum Viable Participation in <span>Cryp</span>to:
-                      Games, Costs, & Accessibility</a
-                    ></span
-                  >
-                </li>
-                <li>
-                  <span class="category-title">article /</span>
-                  <span class="title"
-                    ><a href="#"
-                      ><span>Cryp</span>to & The Infrastructure Bill — Fact
-                      Sheet</a
-                    ></span
-                  >
-                </li>
-                <li>
-                  <span class="category-title">article /</span>
-                  <span class="title"
-                    ><a href="#"
-                      >Fiat Meets <span>Cryp</span>to; Bigger, Bolder
-                      Acquisitions; David Swensen’s Legacy (May 2021 fintech
-                      newsletter)</a
-                    ></span
-                  >
+                <li
+                  v-for="(post, i) in searchResult.slice(0, 6)"
+                  :key="i + 'search-result'"
+                >
+                  <span class="category-title">{{ post.post_type }} /</span>
+                  <span class="title">
+                    <a href="javascript:void(0)">
+                      {{ post.post_title }}
+                    </a>
+                  </span>
                 </li>
               </ul>
-              <a href="#" class="link">see more results</a>
+              <a
+                href="javascript:void(0)"
+                class="link"
+                @click="goToSearchResultPage()"
+                v-if="searchResult.length > 6"
+                >see more results</a
+              >
+            </div>
+            <div
+              class="search-results"
+              v-if="$util.isEmpty(searchResult) && !$util.isEmpty(searchQuery)"
+            >
+              <span class="title"
+                ><a href="javascript:void(0)">
+                  {{ searchEmpty }}
+                </a></span
+              >
             </div>
           </div>
         </div>
@@ -232,6 +233,15 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      debounce: null,
+      searchQuery: "",
+      searchEmpty: "Searching....",
+      searchResult: [],
+      allPosts: [],
+    };
+  },
   computed: {
     currentRoute() {
       return this.$nuxt.$route.name ? this.$nuxt.$route.name : "";
@@ -240,13 +250,13 @@ export default {
   methods: {
     openNav() {
       if (process.client) {
-        $(".mainHeader").toggleClass("nav-active");
+        $(".mainHeader").addClass("nav-active");
         this.openNavCommon();
       }
     },
     openSearchNav() {
       if (process.client) {
-        $(".mainHeader").toggleClass("search-active nav-active");
+        $(".mainHeader").addClass("search-active nav-active");
         this.openNavCommon();
       }
     },
@@ -261,10 +271,13 @@ export default {
       }
     },
     closeNavbar() {
+      console.log("closeNavbar ");
       if (process.client) {
         $(".mainHeader").removeClass("nav-active");
-        $(".mainHeader").removeClass("search-active'");
+        $(".mainHeader").removeClass("search-active");
+        $("#contentWindow").removeClass("active");
       }
+      this.clearSearchQuery();
     },
     openNavCommon() {
       if (process.client) {
@@ -290,9 +303,57 @@ export default {
         $("#contentWindow").toggleClass("active");
       }
     },
+    async fetchPosts() {
+      let payload = {
+        post_type: ["any"],
+        posts_per_page: -1,
+      };
+      const response = await this.$api.common.fetchPosts(payload);
+
+      if (
+        !this.$util.isEmpty(response) &&
+        !this.$util.isEmpty(response.posts)
+      ) {
+        if (!this.$util.isEmpty(response.posts.data)) {
+          let posts = response.posts.data;
+          this.allPosts = posts;
+          console.log("navbar search  response allPosts = ", this.allPosts);
+        }
+      }
+    },
+    debounceSearch(postData = []) {
+      this.searchEmpty = "Searching...";
+      this.searchResult = [];
+      clearTimeout(this.debounce);
+      this.debounce = setTimeout(() => {
+        if (!this.$util.isEmpty(this.searchQuery)) {
+          let dataArr = postData.filter((type) => {
+            return (
+              type.post_title
+                .toLowerCase()
+                .indexOf(this.searchQuery.toLowerCase()) >= 0
+            );
+          });
+          this.searchResult = dataArr;
+          if (this.$util.isEmpty(dataArr)) {
+            this.searchEmpty = "No data found!!";
+          }
+          console.log("debounceSearch = ", dataArr);
+        }
+      }, 600);
+    },
+    clearSearchQuery() {
+      this.searchResult = [];
+      this.searchQuery = "";
+    },
+    goToSearchResultPage() {
+      this.$nuxt.$router.push({
+        path: "/search-results",
+        query: { term: this.searchQuery },
+      });
+    },
   },
-  created() {
-    console.log("$router.name ", this.$nuxt.$route.name);
-  },
+  mounted() {},
+  created() {},
 };
 </script>

@@ -667,6 +667,29 @@
         }
       }
     }
+    input[type="text"] {
+      color: $grey-light;
+      border-color: $grey-mid;
+      height: 56px;
+
+      @include placeholder {
+        color: color(black, 6);
+        font-size: 16px;
+      }
+
+      @include media("<tablet") {
+        height: 48px;
+      }
+
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 0 1px $grey-mid inset;
+
+        @include placeholder {
+          color: color(black, 6);
+        }
+      }
+    }
 
     button {
       color: $grey-light;
