@@ -19,7 +19,7 @@
     </b-nav> -->
     <div class="main">
       <section id="overview" class="my-4">
-        <Overview />
+        <Overview :key="updateChart" />
       </section>
       <section id="interactive" class="my-4">
         <OverallIndex />
@@ -28,7 +28,7 @@
         <Methodology></Methodology>
       </section>
       <section id="report" class="my-4">
-        <Reports />
+        <Reports :key="updateChart" />
       </section>
     </div>
     <Footer></Footer>
@@ -44,9 +44,19 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      updateChart: Math.random(),
+    };
   },
   methods: {},
+  mounted() {
+    $nuxt.$on("updateChart", () => {
+      this.updateChart = Math.random() + 2323;
+    });
+  },
+  beforeDestroy() {
+    $nuxt.$off("updateChart");
+  },
 };
 </script>
 <style scoped>

@@ -18,13 +18,14 @@
               :height="chartHeight"
               :options="chartOptions"
               :series="series"
+              :key="updateChart"
             ></apexchart>
           </div>
           <div :class="mainDivChild" v-if="show">
-            <InnovationIndex :height="chartHeight" />
+            <InnovationIndex :height="chartHeight" :key="updateChart" />
           </div>
           <div :class="mainDivChild">
-            <AdoptionIndex :height="chartHeight" />
+            <AdoptionIndex :height="chartHeight" :key="updateChart" />
           </div>
         </div>
       </div>
@@ -131,7 +132,7 @@
                     :max="100"
                     tooltip="hover"
                     v-model="adp.dimension_weight"
-                    @drag-end="updateWeights(inno)"
+                    @drag-end="updateWeights(adp)"
                     :tooltip-formatter="'{value}%'"
                     :rail-style="{ backgroundColor: '#dcdcdc' }"
                     :process-style="{ backgroundColor: '#711858' }"
@@ -151,7 +152,9 @@
         </div>
         <div class="row px-3 m-0">
           <div class="col-6 ps-0">
-            <button class="btnC btnReset my-3">Reset</button>
+            <button class="btnC btnReset my-3" @click="resetIndexes()">
+              Reset
+            </button>
           </div>
           <div class="col-6 pe-0">
             <button v-scroll-to="'#report'" class="btnC btnDownload my-3">
@@ -191,9 +194,12 @@
               showSpecifiqChartData.description
             }}
           </p>
-          <keep-alive>
-            <component v-bind:is="currentSelectedChartComponent"></component>
-          </keep-alive>
+          <!-- <keep-alive> -->
+          <component
+            v-bind:is="currentSelectedChartComponent"
+            :key="updateChart"
+          ></component>
+          <!-- </keep-alive> -->
           <div class="mt-md-5">
             <p class="mb-0 source">
               {{
@@ -227,6 +233,7 @@ export default {
   name: "OverallIndex",
   data() {
     return {
+      updateChart: Math.random(),
       value: 20,
       innovation_rows: [],
       adoption_rows: [],
@@ -696,6 +703,7 @@ export default {
       } else {
         console.log("Invalid dimension passed.");
       }
+      this.recalculateIndexes();
     },
 
     updateThresholds(val) {
@@ -772,6 +780,7 @@ export default {
       } else {
         console.log("Invalid dimension passed.");
       }
+      this.recalculateIndexes();
     },
     recalculateIndexes() {
       this.$store.dispatch("setDataIntoStore", {
@@ -889,6 +898,26 @@ export default {
 
       this.innovation_rows = this.getInnovationRows();
       this.adoption_rows = this.getAdoptionRows();
+
+      this.updateChart = Math.random() + 234267;
+
+      this.aggregateDimensions(
+        active_developers,
+        interested_developers,
+        contract_deployers,
+        verified_smart_contracts,
+        web3_ethers_downloads,
+        academic_publications,
+        job_search_trends,
+        active_addresses,
+        transactions,
+        mobile_wallet_maus,
+        dex_volume,
+        nft_volume,
+        stablecoin_volume,
+        transaction_fees_paid
+      );
+      this.$nuxt.$emit("updateChart");
     },
     resetIndexes() {
       this.$store.dispatch("setDataIntoStore", {
@@ -1003,8 +1032,7 @@ export default {
         type: "SET_DIMENSION14THRESHOLD",
         payload: 10000000,
       });
-      this.innovation_rows = this.getInnovationRows();
-      this.adoption_rows = this.getAdoptionRows();
+      this.recalculateIndexes();
     },
     getInnovationRows() {
       return [
