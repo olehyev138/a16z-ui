@@ -303,6 +303,7 @@ export default {
           $(".mainHeader").removeClass("search-active");
         }
         $("#contentWindow").toggleClass("active");
+        $(".drop-menu").toggle();
       }
     },
     async fetchPosts() {
