@@ -199,8 +199,10 @@
                 >
                   <span class="category-title">{{ post.post_type }} /</span>
                   <span class="title">
-                    <a href="javascript:void(0)">
-                      {{ post.post_title }}
+                    <a
+                      href="javascript:void(0)"
+                      v-html="highlight(post.post_title)"
+                    >
                     </a>
                   </span>
                 </li>
@@ -217,11 +219,11 @@
               class="search-results"
               v-if="$util.isEmpty(searchResult) && !$util.isEmpty(searchQuery)"
             >
-              <span class="title"
-                ><a href="javascript:void(0)">
+              <span class="title">
+                <a href="javascript:void(0)">
                   {{ searchEmpty }}
-                </a></span
-              >
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -256,7 +258,7 @@ export default {
     },
     openSearchNav() {
       if (process.client) {
-        $(".mainHeader").addClass("search-active nav-active");
+        $(".mainHeader").addClass("nav-active search-active");
         this.openNavCommon();
       }
     },
@@ -351,6 +353,13 @@ export default {
         path: "/search-results",
         query: { term: this.searchQuery },
       });
+    },
+    highlight(text) {
+      if (!this.$util.isEmpty(this.searchQuery)) {
+        return text.replace(new RegExp(this.searchQuery, "gi"), (match) => {
+          return "<span>" + match + "</span>";
+        });
+      }
     },
   },
   mounted() {},
