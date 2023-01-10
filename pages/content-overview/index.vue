@@ -14,287 +14,23 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-9">
-            <div class="article-wrap">
+            <div class="article-wrap" v-if="!$util.isEmpty(Allposts)">
               <h6>all posts</h6>
-              <div class="article article-searched-result">
-                <span class="category-title">16.11.22 / article</span>
-                <div class="r-col">
-                  <div class="img">
-                    <img src="@/assets/images/card-img-02.png" alt="" />
-                  </div>
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>man, mosquito, malaria vaccine</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Jorge Conde</a>,
-                      <a href="#">Rajeev Venkayya</a>, and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">16.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>all about NFTs</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Jesse Walden</a>,
-                      <a href="#">Linda Xie</a>, and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              <ContentoverviewPost
+                v-for="(post, i) in posts"
+                :featuredPostData="post"
+                :key="i + 'sec'"
+              ></ContentoverviewPost>
 
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="article article-searched-result">
-                <span class="category-title">12.11.22 / article</span>
-                <div class="r-col">
-                  <div class="r-content">
-                    <h6>
-                      <a href="#"><span>textiles as tech, science, math, culture, or civilization</span></a>
-                    </h6>
-                    <span class="posted-by">
-                      <a href="#">Virginia Postrel</a> and
-                      <a href="#">Sonal Chokshi</a>
-                    </span>
-                    <ul class="tags">
-                      <li>
-                        <a class="tag small-tag" href="#">Crypto & Web3</a>
-                      </li>
-                      <li><a class="tag small-tag" href="#">Blockchain</a></li>
-                      <li><a class="tag small-tag" href="#">NFTs</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              <client-only>
+                <infinite-loading
+                  :identifier="infiniteId"
+                  @infinite="infiniteHandler"
+                >
+                  <div slot="no-more"></div>
+                  <div slot="no-results"></div>
+                </infinite-loading>
+              </client-only>
             </div>
           </div>
           <div class="col-sm-3 xs-first">
@@ -365,11 +101,73 @@ export default {
   head() {
     return {
       title: "Content Overview",
-      open1: false,
-      open2: false,
-      open3: false,
-      open4: false,
     };
+  },
+  data() {
+    return {
+      Allposts: [],
+      posts: [],
+
+      page: 1,
+      per_page: 15,
+      infiniteId: +new Date(),
+    };
+  },
+  methods: {
+    async fetchPosts() {
+      let payload = {
+        post_type: ["any"],
+        posts_per_page: -1,
+      };
+      const response = await this.$api.common.fetchPosts(payload);
+
+      if (
+        !this.$util.isEmpty(response) &&
+        !this.$util.isEmpty(response.posts)
+      ) {
+        if (!this.$util.isEmpty(response.posts.data)) {
+          let posts = response.posts.data;
+          this.Allposts = posts;
+          console.log("editorial page Allposts response = ", this.Allposts);
+        }
+      }
+    },
+
+    async infiniteHandler($state) {
+      var spliceData = [];
+      let allPost = this.Allposts;
+
+      if (allPost.length > this.per_page) {
+        spliceData = this.paginate(allPost);
+      } else {
+        this.posts.push(...allPost);
+        setTimeout(() => {
+          $state.complete();
+        }, 500);
+      }
+
+      if (!this.$util.isEmpty(spliceData)) {
+        this.page += 1;
+        this.posts.push(...spliceData);
+        setTimeout(() => {
+          $state.loaded();
+        }, 500);
+      } else {
+        setTimeout(() => {
+          $state.complete();
+        }, 500);
+      }
+      console.log("infiniteHandler = this.posts", this.posts);
+    },
+    paginate(arrayData = []) {
+      return arrayData.slice(
+        (this.page - 1) * this.per_page,
+        this.page * this.per_page
+      );
+    },
+  },
+  mounted() {
+    this.fetchPosts();
   },
 };
 </script>

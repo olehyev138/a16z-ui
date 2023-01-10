@@ -73,6 +73,11 @@ export default {
       extensions: ["vue"],
       pathPrefix: false,
     },
+    {
+      path: "~/components/contentOverview",
+      extensions: ["vue"],
+      prefix: "contentoverview",
+    },
   ],
 
   buildModules: [
