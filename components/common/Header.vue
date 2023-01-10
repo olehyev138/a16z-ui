@@ -1,6 +1,6 @@
 <!-- Please remove this file from your project -->
 <template>
-  <header id="header">
+  <header id="header" class="mainHeader">
     <div class="container">
       <div class="logo">
         <NuxtLink to="/"
@@ -9,18 +9,26 @@
       </div>
       <div class="header-r">
         <NuxtLink to="/follow-us" class="btn btn--sm">follow us</NuxtLink>
-        <button type="button" class="search">
+        <button type="button" class="search" @click="openSearchNav()">
           <span class="icon-search"></span>
         </button>
-        <button type="button" class="menu nav-opener">
+        <button type="button" class="menu nav-opener" @click="openNav()">
           <span class="icon-menu"></span>
         </button>
       </div>
     </div>
 
     <div class="menu-slide">
-      <a href="#" class="menu-close icon-cross nav-opener"></a>
-      <a href="#" class="menu-search icon-search search-opener"></a>
+      <a
+        href="javascript:void(0)"
+        @click="closeNavbar()"
+        class="menu-close icon-cross nav-opener"
+      ></a>
+      <a
+        href="javascript:void(0)"
+        class="menu-search icon-search search-opener"
+        @click="openSearchwindow()"
+      ></a>
       <div class="inner">
         <div class="wrap">
           <nav>
@@ -58,7 +66,13 @@
               </li>
 
               <li>
-                <a href="#" class="hasdrop-a">content</a>
+                <a
+                  href="javascript:void(0)"
+                  @click="openNavLinkOpen()"
+                  id="contentWindow"
+                  class="hasdrop-a"
+                  >content</a
+                >
                 <div class="drop-menu">
                   <div class="i1">
                     <div class="inner">
@@ -132,7 +146,10 @@
 
     <div class="search-slide">
       <div class="search-bar">
-        <button class="close search-opener"></button>
+        <button
+          class="close search-opener"
+          @click="closeSearchWindow()"
+        ></button>
         <div class="inner">
           <div class="wrap">
             <form class="search-form" action="#">
@@ -218,6 +235,60 @@ export default {
   computed: {
     currentRoute() {
       return this.$nuxt.$route.name ? this.$nuxt.$route.name : "";
+    },
+  },
+  methods: {
+    openNav() {
+      if (process.client) {
+        $(".mainHeader").toggleClass("nav-active");
+        this.openNavCommon();
+      }
+    },
+    openSearchNav() {
+      if (process.client) {
+        $(".mainHeader").toggleClass("search-active nav-active");
+        this.openNavCommon();
+      }
+    },
+    openSearchwindow() {
+      if (process.client) {
+        $(".mainHeader").toggleClass("search-active");
+      }
+    },
+    closeSearchWindow() {
+      if (process.client) {
+        $(".mainHeader").removeClass("search-active");
+      }
+    },
+    closeNavbar() {
+      if (process.client) {
+        $(".mainHeader").removeClass("nav-active");
+        $(".mainHeader").removeClass("search-active'");
+      }
+    },
+    openNavCommon() {
+      if (process.client) {
+        $(".nav li").each(function () {
+          var item = $(this);
+          var drop = item.find("ul");
+          var link = item.find("a").eq(0);
+          if (drop.length) {
+            item.addClass("hasdrop");
+            if (link.length)
+              link
+                .addClass("hasdrop-a")
+                .attr({ "data-more": "", "data-outside": "" });
+          }
+        });
+      }
+    },
+    openNavLinkOpen() {
+      if (process.client) {
+        if ($(".mainHeader").hasClass("search-active")) {
+          $(".mainHeader").removeClass("search-active");
+        }
+        $("#contentWindow").toggleClass("active");
+      }
     },
   },
   created() {
