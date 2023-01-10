@@ -70,6 +70,9 @@ export default {
         }
       }
     },
+    formatDate(date) {
+      return this.$moment(date).format("YYYY.M.D");
+    },
   },
   mounted() {
     this.getSinglePost(this.featuredPostData.ID);

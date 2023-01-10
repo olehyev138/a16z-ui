@@ -154,7 +154,7 @@
             v-html="
               general_content
                 ? general_content.copyright
-                : '&copy; 2022 Andreessen Horowitz'
+                : '&copy; 2023 Andreessen Horowitz'
             "
           ></span>
         </p>
@@ -271,6 +271,12 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    currentYear() {
+      let date = new Date();
+      return this.$moment(date).format("YYYY");
+    },
   },
   methods: {
     async getFooterContent() {

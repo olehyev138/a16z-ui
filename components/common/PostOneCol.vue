@@ -3,8 +3,10 @@
     <div class="row">
       <div class="col-sm-2">
         <span class="category-title" v-if="callFrom != 'policyPage'"
-          >{{ featuredPostData.post_type }} /</span
-        >
+          >{{ formatDate(featuredPostData.post_date) }} /
+          {{ featuredPostData.post_type }}
+        </span>
+
         <span class="category-title" v-else
           >{{ formatDate(featuredPostData.post_date) }} /
           {{ featuredPostData.post_type }}</span

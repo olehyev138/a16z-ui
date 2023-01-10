@@ -52,6 +52,7 @@
           v-for="(post, i) in featured_posts"
           :featuredPostData="post"
           :key="i"
+          :callFrom="'homePageFeature'"
         ></PostOneCol>
       </div>
     </section>
