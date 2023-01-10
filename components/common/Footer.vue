@@ -135,7 +135,7 @@
             <div class="col-md-8">
               <ul class="footer-nav">
                 <li v-for="(menu, i) in footer_menu" :key="i">
-                  <a :href="menu.link">{{ menu.title }}</a>
+                  <NuxtLink :to="menu.link">{{ menu.title }}</NuxtLink>
                 </li>
               </ul>
             </div>
@@ -176,11 +176,11 @@ export default {
         },
         {
           title: "Research",
-          link: "#",
+          link: "/research",
         },
         {
           title: "Policy",
-          link: "#",
+          link: "/policy",
         },
         {
           title: "Legal",
@@ -188,7 +188,7 @@ export default {
         },
         {
           title: "a16z.com",
-          link: "#",
+          link: "/",
         },
       ],
       socials: [
