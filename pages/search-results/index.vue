@@ -6,7 +6,11 @@
       <div class="navigation-bar">
         <div class="container">
           <form class="search-form" action="#">
-            <input type="search" value="Crypto" placeholder="Search" />
+            <input
+              type="search"
+              :value="$nuxt.$route.query.term"
+              placeholder="Search"
+            />
             <button type="reset" value="clear"></button>
           </form>
         </div>
