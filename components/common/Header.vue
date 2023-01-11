@@ -367,5 +367,11 @@ export default {
   },
   mounted() {},
   created() {},
+  beforeDestroy() {
+    console.log("beforeDestroy header");
+    setTimeout(() => {
+      this.closeNavbar();
+    }, 1000);
+  },
 };
 </script>
