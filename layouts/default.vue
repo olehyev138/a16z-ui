@@ -8,6 +8,11 @@
 <script>
 export default {
   name: "layout-default",
+  head() {
+    return {
+      title: "a16ccrypto",
+    };
+  },
   mounted() {
     // this.stickyHeader();
     // this.Tabs();
