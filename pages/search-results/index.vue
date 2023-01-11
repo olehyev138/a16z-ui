@@ -26,10 +26,12 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-4 col-md-2">
-              <a href="#" class="filter-opener">filter</a>
+              <a href="javascript:void(0)" class="filter-opener">filter</a>
               <div class="filter-boxes-wrap">
                 <div class="filter-box">
-                  <a href="#" class="search-topic active">Focus Areas</a>
+                  <a href="javascript:void(0)" class="search-topic active"
+                    >Focus Areas</a
+                  >
                   <ul class="topic-list">
                     <li>
                       <label class="checkbox">
@@ -69,11 +71,13 @@
                   </ul>
                 </div>
                 <div class="filter-box">
-                  <a href="#" class="search-topic active">Formats</a>
+                  <a href="javascript:void(0)" class="search-topic active"
+                    >Formats</a
+                  >
                   <ul class="topic-list">
                     <li>
                       <label class="checkbox">
-                        <input type="checkbox" checked />
+                        <input type="checkbox" />
                         <span class="fake-input"></span>
                         <span class="fake-label">podcasts</span>
                       </label>
@@ -109,7 +113,9 @@
                   </ul>
                 </div>
                 <div class="filter-box">
-                  <a href="#" class="search-topic active">topics/ themes</a>
+                  <a href="javascript:void(0)" class="search-topic active"
+                    >topics/ themes</a
+                  >
                   <ul class="topic-list">
                     <li>
                       <label class="checkbox">
@@ -233,7 +239,9 @@
                   </ul>
                 </div>
                 <div class="filter-box">
-                  <a href="#" class="search-topic active">series</a>
+                  <a href="javascript:void(0)" class="search-topic active"
+                    >series</a
+                  >
                   <ul class="topic-list">
                     <li>
                       <label class="checkbox">

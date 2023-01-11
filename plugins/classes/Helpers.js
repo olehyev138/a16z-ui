@@ -1,138 +1,144 @@
-export const MobileNav = () => {
-  var navopener = $(".nav-opener"),
-    navwrap = $(".nav"),
-    links = navwrap.find("a"),
-    navactive = "nav-active";
+import Vue from "vue";
+Vue.mixin({
+  methods: {
+    OpenClose() {
+      $("[data-more]").next().hide();
+      $("[data-more].active").next().show();
 
-  navopener.click(function () {
-    $("body").toggleClass(navactive);
-  });
+      $("[data-more]").click(function (e) {
+        e.preventDefault();
+        $(this).hasClass("active")
+          ? $(this).removeClass("active").next().slideUp(200)
+          : $(this).addClass("active").next().slideToggle(200);
 
-  $(".nav li").each(function () {
-    var item = $(this);
-    var drop = item.find("ul");
-    var link = item.find("a").eq(0);
-    if (drop.length) {
-      item.addClass("hasdrop");
-      if (link.length)
-        link
-          .addClass("hasdrop-a")
-          .attr({ "data-more": "", "data-outside": "" });
-    }
-  });
+        if ($(this).closest("[data-accordion]").length) {
+          $(this).parent().siblings().find("[data-more]").removeClass("active");
+          $(this).parent().siblings().find("[data-more]").next().slideUp(200);
+        }
+      });
 
-  links.click(function () {
-    $(this).hasClass("hasdrop-a") ? false : $("body").removeClass(navactive);
-  });
+      $("[data-outside]")
+        .next()
+        .find("a:not(.hasdrop-a):not([data-more])")
+        .click(function () {
+          $("[data-outside]").removeClass("active").next("").slideUp(200);
+        });
+      $("[data-outside]").click(function (e) {
+        $("[data-outside]").not(this).removeClass("active").next().slideUp(200);
+      });
 
-  $("html").on("click touchstart pointerdown MSPointerDown", function (e) {
-    var target = $(e.target);
-    if (!target.closest(navopener).length && !target.closest(navwrap).length) {
-      $("body").removeClass(navactive);
-    }
-  });
-};
+      $("html").on("click touchstart pointerdown MSPointerDown", function (e) {
+        var target = $(e.target);
 
-export const OpenClose = () => {
-  $("[data-more]").next().hide();
-  $("[data-more].active").next().show();
+        if (
+          !target.closest("[data-outside]").length &&
+          !target.closest("[data-outside] + *").length
+        ) {
+          setTimeout(function () {
+            $("[data-outside]").removeClass("active").next().slideUp(200);
+          }, 200);
+        }
 
-  $("[data-more]").click(function (e) {
-    e.preventDefault();
-    $(this).hasClass("active")
-      ? $(this).removeClass("active").next().slideUp(200)
-      : $(this).addClass("active").next().slideToggle(200);
+        if (
+          !target.closest("[data-outside-1]").length &&
+          !target.closest("[data-outside-1] + *").length
+        ) {
+          setTimeout(function () {
+            $("[data-outside-1]").removeClass("active").next().slideUp(200);
+          }, 200);
+        }
+      });
+    },
+    Tabs() {
+      $("[data-tab]").click(function (e) {
+        e.preventDefault();
+        var tab_id = $(this).attr("data-tab");
 
-    if ($(this).closest("[data-accordion]").length) {
-      $(this).parent().siblings().find("[data-more]").removeClass("active");
-      $(this).parent().siblings().find("[data-more]").next().slideUp(200);
-    }
-  });
+        $(this).parent().siblings().find("[data-tab]").removeClass("active");
+        $("#" + tab_id)
+          .siblings()
+          .removeClass("active");
 
-  $("[data-outside]")
-    .next()
-    .find("a:not(.hasdrop-a):not([data-more])")
-    .click(function () {
-      $("[data-outside]").removeClass("active").next("").slideUp(200);
-    });
-  $("[data-outside]").click(function (e) {
-    $("[data-outside]").not(this).removeClass("active").next().slideUp(200);
-  });
+        $(this).addClass("active");
+        $("#" + tab_id).addClass("active");
+      });
+      $("#" + $("[data-tab].active").data("tab")).addClass("active");
+    },
+    stickyHeader() {
+      var header = jQuery("#header");
 
-  $("html").on("click touchstart pointerdown MSPointerDown", function (e) {
-    var target = $(e.target);
+      jQuery(window).on("scroll", function () {
+        var scroll = jQuery(window).scrollTop();
+        if (scroll >= 50) {
+          header.addClass("scrolled");
+        } else {
+          header.removeClass("scrolled");
+        }
+      });
+    },
+    CustomSelect() {
+      jQuery("[data-select]").each(function () {
+        var item = jQuery(this),
+          selectDrop = item.next(),
+          linkItems = selectDrop.find("a");
 
-    if (
-      !target.closest("[data-outside]").length &&
-      !target.closest("[data-outside] + *").length
-    ) {
-      setTimeout(function () {
-        $("[data-outside]").removeClass("active").next().slideUp(200);
-      }, 200);
-    }
+        item.attr({ "data-outside": "", "data-more": "" });
 
-    if (
-      !target.closest("[data-outside-1]").length &&
-      !target.closest("[data-outside-1] + *").length
-    ) {
-      setTimeout(function () {
-        $("[data-outside-1]").removeClass("active").next().slideUp(200);
-      }, 200);
-    }
-  });
-};
+        linkItems.on("click", function (e) {
+          e.preventDefault();
+          item.text(jQuery(this).text());
+          selectDrop.slideUp(200);
+          item.removeClass("active").addClass("selected");
 
-export const CustomSelect = () => {
-  jQuery("[data-select]").each(function () {
-    var item = jQuery(this),
-      selectDrop = item.next(),
-      linkItems = selectDrop.find("a");
+          selectDrop.find("li").removeClass("active");
+          jQuery(this).parent().addClass("active");
+        });
 
-    item.attr({ "data-outside": "", "data-more": "" });
+        if (selectDrop.children().hasClass("active")) {
+          item
+            .text(jQuery(this).next().find(".active a").text())
+            .addClass("selected");
+        }
+      });
+    },
+    MobileNav() {
+      var navopener = $(".nav-opener"),
+        navwrap = $(".nav"),
+        links = navwrap.find("a"),
+        navactive = "nav-active";
 
-    linkItems.on("click", function (e) {
-      e.preventDefault();
-      item.text(jQuery(this).text());
-      selectDrop.slideUp(200);
-      item.removeClass("active").addClass("selected");
+      navopener.click(function () {
+        $("body").toggleClass(navactive);
+      });
 
-      selectDrop.find("li").removeClass("active");
-      jQuery(this).parent().addClass("active");
-    });
+      $(".nav li").each(function () {
+        var item = $(this);
+        var drop = item.find("ul");
+        var link = item.find("a").eq(0);
+        if (drop.length) {
+          item.addClass("hasdrop");
+          if (link.length)
+            link
+              .addClass("hasdrop-a")
+              .attr({ "data-more": "", "data-outside": "" });
+        }
+      });
 
-    if (selectDrop.children().hasClass("active")) {
-      item
-        .text(jQuery(this).next().find(".active a").text())
-        .addClass("selected");
-    }
-  });
-};
+      links.click(function () {
+        $(this).hasClass("hasdrop-a")
+          ? false
+          : $("body").removeClass(navactive);
+      });
 
-export const Tabs = () => {
-  $("[data-tab]").click(function (e) {
-    e.preventDefault();
-    var tab_id = $(this).attr("data-tab");
-
-    $(this).parent().siblings().find("[data-tab]").removeClass("active");
-    $("#" + tab_id)
-      .siblings()
-      .removeClass("active");
-
-    $(this).addClass("active");
-    $("#" + tab_id).addClass("active");
-  });
-  $("#" + $("[data-tab].active").data("tab")).addClass("active");
-};
-
-export const stickyHeader = () => {
-  var header = jQuery("#header");
-
-  jQuery(window).on("scroll", function () {
-    var scroll = jQuery(window).scrollTop();
-    if (scroll >= 50) {
-      header.addClass("scrolled");
-    } else {
-      header.removeClass("scrolled");
-    }
-  });
-};
+      $("html").on("click touchstart pointerdown MSPointerDown", function (e) {
+        var target = $(e.target);
+        if (
+          !target.closest(navopener).length &&
+          !target.closest(navwrap).length
+        ) {
+          $("body").removeClass(navactive);
+        }
+      });
+    },
+  },
+});

@@ -8,5 +8,10 @@
 <script>
 export default {
   name: "layout-default",
+  mounted() {
+    // this.stickyHeader();
+    // this.Tabs();
+    // this.CustomSelect();
+  },
 };
 </script>

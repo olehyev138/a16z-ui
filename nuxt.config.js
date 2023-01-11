@@ -24,7 +24,8 @@ export default {
   css: ["@assets/sass/app.scss", "@/assets/css/globals.css"],
 
   plugins: [
-    { src: "~/plugins/custom.js", mode: "client", ssr: true },
+    { src: "~/plugins/custom.js", mode: "client", ssr: false },
+    // { src: "~/plugins/classes/Helpers.js", mode: "client", ssr: false },
     { src: "~/plugins/prism", mode: "client" },
     { src: "~/plugins/infiniteloading", ssr: false },
     { src: "~/plugins/axios" },
