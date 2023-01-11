@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-md-8">
             <div class="highlight-display">
-              <h2>
+              <h2 style="padding-right: 75px">
                 {{
                   !$util.isEmpty(general_content.hero_title)
                     ? general_content.hero_title
@@ -221,6 +221,7 @@ export default {
         this.general_content = response;
         this.featured_posts = response.featured_posts;
         this.categories = response.focus_areas;
+        this.categories = this.categories.sort();
         this.themes = response.themes;
       }
       // console.log(response);

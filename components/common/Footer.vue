@@ -240,11 +240,6 @@ export default {
           iconClass: "icon-apple-music",
         },
         {
-          title: "Overcast",
-          link: "",
-          iconClass: "icon-overcast",
-        },
-        {
           title: "Spotify",
           link: "",
           iconClass: "icon-spotify",
@@ -253,6 +248,11 @@ export default {
           title: "Google Podcast",
           link: "",
           iconClass: "icon-podcasts",
+        },
+        {
+          title: "Overcast",
+          link: "",
+          iconClass: "icon-overcast",
         },
         {
           title: "Stitcher",
